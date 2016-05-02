@@ -51,6 +51,8 @@ end
 
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
+  gem 'coveralls', require: false
+  gem 'simplecov', '~> 0.9', require: false
 end
 
 gem 'rsolr', '~> 1.0'
