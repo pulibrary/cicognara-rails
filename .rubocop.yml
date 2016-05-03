@@ -1,0 +1,21 @@
+require: rubocop-rspec
+
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - 'db/**/*'
+    - 'app/models/marc_indexer.rb' # TODO
+    - 'vendor/**/*'
+
+Rails:
+  Enabled: true
+
+Metrics/LineLength:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/Documentation:
+  Enabled: false
