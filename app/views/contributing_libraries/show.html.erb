@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <td>Label</td>
+    <td><%= @contributing_library.label %></td>
+  </tr>
+  <tr>
+    <td>URI</td>
+    <td><%= link_to @contributing_library.uri, @contributing_library.uri %></td>
+  </tr>
+</table>
+
+<%= link_to 'All Contributing Libraries', contributing_libraries_path %> |
+<%= link_to 'Edit', edit_contributing_library_path(@contributing_library) %> |
+<%= link_to 'Destroy', @contributing_library, method: :delete, data: { confirm: 'Are you sure?' } %>

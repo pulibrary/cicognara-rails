@@ -1,0 +1,9 @@
+<h1>Book</h1>
+
+<p>Digital Cicognara Number: <%= @book.digital_cico_number %></p>
+
+<ul>
+  <li><%= link_to 'List Versions', book_versions_path(@book) %></li>
+</ul>
+
+<%= link_to 'Back to Book List', books_path %>

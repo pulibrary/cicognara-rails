@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Contributing Libraries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contributing_libraries.each do |contributing_library| %>
+      <tr>
+        <td><%= link_to contributing_library.label, contributing_library %></td>
+        <td><%= link_to 'Edit', edit_contributing_library_path(contributing_library) %></td>
+        <td><%= link_to 'Destroy', contributing_library, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add Contributing Library', new_contributing_library_path %>

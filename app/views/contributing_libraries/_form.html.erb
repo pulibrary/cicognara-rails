@@ -1,0 +1,30 @@
+<%= form_for(@contributing_library) do |f| %>
+  <% if @contributing_library.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contributing_library.errors.count, "error") %> prohibited this Contributing Library from being saved:</h2>
+
+      <ul>
+      <% @contributing_library.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>Label</td>
+        <td><%= f.text_field :label %></td>
+      </tr>
+      <tr>
+        <td>URI</td>
+        <td><%= f.text_field :uri %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
