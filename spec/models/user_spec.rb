@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { User.new email: 'alice@example.org' }
+
+  it 'uses the email address for display' do
+    expect(subject.to_s).to eq('alice@example.org')
+  end
 end
