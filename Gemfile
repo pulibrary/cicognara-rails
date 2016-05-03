@@ -55,6 +55,10 @@ group :development, :test do
   gem 'simplecov', '~> 0.9', require: false
 end
 
+group :test do
+  gem 'capybara'
+end
+
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
