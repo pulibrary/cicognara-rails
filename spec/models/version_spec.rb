@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe Version, type: :model do
   let(:contributing_library) { ContributingLibrary.new label: 'Example Library' }
   let(:book) { Book.new digital_cico_number: 'xyz' }
-  subject {
+  subject do
     described_class.new contributing_library: contributing_library, book: book,
-        label: 'version 2', based_on_original: true
-  }
+                        label: 'version 2', based_on_original: true
+  end
 
   it 'has a contributor' do
     expect(subject.contributing_library).to eq(contributing_library)

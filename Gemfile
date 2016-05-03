@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
@@ -48,7 +47,6 @@ group :development do
   gem 'spring'
 end
 
-
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
   gem 'coveralls', require: false
@@ -63,3 +61,5 @@ gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'blacklight-marc', '~> 6.0'
+gem 'rubocop', '~> 0.39.0', require: false
+gem 'rubocop-rspec', require: false
