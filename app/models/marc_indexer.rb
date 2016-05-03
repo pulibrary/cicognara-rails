@@ -8,7 +8,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     settings do
       # type may be 'binary', 'xml', or 'json'
-      provide 'marc_source.type', 'binary'
+      provide 'marc_source.type', 'xml'
       # set this to be non-negative if threshold should be enforced
       provide 'solr_writer.max_skipped', -1
     end
