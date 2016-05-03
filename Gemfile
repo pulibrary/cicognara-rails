@@ -63,3 +63,4 @@ gem 'devise-guests', '~> 0.3'
 gem 'blacklight-marc', '~> 6.0'
 gem 'rubocop', '~> 0.39.0', require: false
 gem 'rubocop-rspec', require: false
+gem 'traject'

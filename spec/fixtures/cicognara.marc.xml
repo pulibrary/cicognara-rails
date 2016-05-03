@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<record xmlns="http://www.loc.gov/MARC21/slim">
+  <leader>01785cam a2200349 a 4500</leader>
+  <controlfield tag="001">8524680</controlfield>
+  <controlfield tag="005">20160419234839.0</controlfield>
+  <controlfield tag="007">he|amu|||bacu</controlfield>
+  <controlfield tag="008">981007s1584    gw c    b     000 0 lat d</controlfield>
+  <datafield ind1=" " ind2=" " tag="035">
+    <subfield code="9">0164-96560</subfield>
+  </datafield>
+  <datafield ind1="7" ind2=" " tag="024">
+    <subfield code="a">2</subfield>
+    <subfield code="2">cico</subfield>
+  </datafield>
+  <datafield ind1="7" ind2=" " tag="024">
+    <subfield code="a">cico:m87</subfield>
+    <subfield code="2">dclib</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="035">
+    <subfield code="9">DCNA98-B6420</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="035">
+    <subfield code="a">143175</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="040">
+    <subfield code="a">DNGA</subfield>
+    <subfield code="c">DNGA</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="099">
+    <subfield code="a">49 no. 2</subfield>
+  </datafield>
+  <datafield ind1="1" ind2=" " tag="100">
+    <subfield code="a">Agrippa von Nettesheim, Heinrich Cornelius,</subfield>
+    <subfield code="d">1486?-1535.</subfield>
+    <subfield code="0">(uri)http://id.loc.gov/authorities/names/n80043375</subfield>
+  </datafield>
+  <datafield ind1="1" ind2="0" tag="245">
+    <subfield code="a">Henrici Cornelii Agrippae ab Nettesheym De incertitudine et vanitate scientiarum declamatio inuestiua</subfield>
+    <subfield code="h">[microform] /</subfield>
+    <subfield code="c">ex postrema authoris recognitione.</subfield>
+  </datafield>
+  <datafield ind1="3" ind2="0" tag="246">
+    <subfield code="a">De incertitudine et vanitate scientiarum declamatio inuestiua</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="260">
+    <subfield code="a">Coloniae :</subfield>
+    <subfield code="b">Apud Theodorum Baumium ...,</subfield>
+    <subfield code="c">Anno 1584.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="300">
+    <subfield code="a">ca. 313 p. :</subfield>
+    <subfield code="b">port.</subfield>
+  </datafield>
+  <datafield ind1="4" ind2=" " tag="510">
+    <subfield code="a">Cicognara,</subfield>
+    <subfield code="c">2</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="533">
+    <subfield code="a">Microfiche.</subfield>
+    <subfield code="b">Cambridge, England :</subfield>
+    <subfield code="c">Chadwyck-Healey,</subfield>
+    <subfield code="d">1989-</subfield>
+    <subfield code="e">9 microfiche : positive.</subfield>
+    <subfield code="f">(Cicognara library)</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Learning and scholarship</subfield>
+    <subfield code="v">Early works to 1800.</subfield>
+    <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh2008106875</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Medicine</subfield>
+    <subfield code="v">Early works to 1800.</subfield>
+    <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh93009493</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Medicine</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">16th century.</subfield>
+    <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh2010101352</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Science</subfield>
+    <subfield code="v">Early works to 1800.</subfield>
+    <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh85118565</subfield>
+  </datafield>
+  <datafield ind1="2" ind2=" " tag="710">
+    <subfield code="a">Fondo Cicognara (Biblioteca apostolica vaticana)</subfield>
+    <subfield code="0">(uri)http://id.loc.gov/authorities/names/nr94016468</subfield>
+  </datafield>
+  <datafield ind1="2" ind2=" " tag="710">
+    <subfield code="a">Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)</subfield>
+    <subfield code="0">(uri)http://id.loc.gov/authorities/names/nr94016472</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="830">
+    <subfield code="a">Cicognara library.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="902">
+    <subfield code="a">jwl</subfield>
+    <subfield code="b">z</subfield>
+    <subfield code="6">a</subfield>
+    <subfield code="7">m</subfield>
+    <subfield code="d">w</subfield>
+    <subfield code="f">0</subfield>
+    <subfield code="e">20140623</subfield>
+  </datafield>
+  <datafield ind1="8" ind2=" " tag="852">
+    <subfield code="0">8271609</subfield>
+    <subfield code="b">safi</subfield>
+    <subfield code="h">MICROFICHE 5</subfield>
+  </datafield>
+</record>
