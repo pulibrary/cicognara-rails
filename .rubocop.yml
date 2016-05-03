@@ -5,6 +5,7 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'app/models/marc_indexer.rb' # TODO
+    - 'vendor/**/*'
 
 Rails:
   Enabled: true

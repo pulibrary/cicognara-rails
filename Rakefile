@@ -6,6 +6,7 @@ require File.expand_path('../config/application', __FILE__)
 Rails.application.load_tasks
 
 require 'bundler/setup'
+require 'rubocop/rake_task'
 require 'solr_wrapper/rake_task'
 
 namespace :blacklight do
@@ -27,6 +28,12 @@ namespace :blacklight do
       end
     end
   end
+end
+
+desc 'Run RuboCop style checker'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.requires << 'rubocop-rspec'
+  task.fail_on_error = true
 end
 
 task :ci do
