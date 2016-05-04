@@ -1,0 +1,22 @@
+require 'rails_helper'
+
+RSpec.describe 'versions/show', type: :view do
+  let(:book) { Book.create! }
+  let(:contrib) { ContributingLibrary.create! label: 'Lib 1', uri: 'http://example.org/lib' }
+  let(:version) { Version.create!(book_id: book, label: 'v1', manifest: 'http://example.org/1', contributing_library_id: contrib.id) }
+
+  before do
+    assign(:book, book)
+    assign(:version, version)
+  end
+
+  after do
+    book.destroy
+    contrib.destroy
+    version.destroy
+  end
+
+  it 'renders attributes in <p>' do
+    render
+  end
+end

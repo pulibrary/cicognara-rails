@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :books, only: [:index, :show] do
+    resources :versions
+  end
+  resources :contributing_libraries
+
   mount Blacklight::Engine => '/'
   Blacklight::Marc.add_routes(self)
   root to: 'catalog#index'
