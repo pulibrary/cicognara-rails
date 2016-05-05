@@ -116,6 +116,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'published_vern_display', label: 'Published'
     config.add_show_field 'lc_callnum_display', label: 'Call number'
     config.add_show_field 'isbn_t', label: 'ISBN'
+    config.add_show_field 'cico_s', label: 'Cicognara number'
+    config.add_show_field 'dclib_s', label: 'DCL id(s)'
+    config.add_show_field 'description_t', label: 'Catalogo entry'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

@@ -7,11 +7,13 @@ class CatalogoItem
   end
 
   def id
-    @xml_element.xpath('./@xml:id').first.value
+    ids = @xml_element.xpath('./@xml:id')
+    ids.empty? ? 'NO_ID' : ids.first.value
   end
 
   def n
-    @xml_element.xpath('./@n').first.value
+    ns = @xml_element.xpath('./@n')
+    ns.empty? ? 'NO_N' : ns.first.value
   end
 
   def corresp
