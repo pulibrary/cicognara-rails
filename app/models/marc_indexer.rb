@@ -215,7 +215,13 @@ class MarcIndexer < Blacklight::Marc::Indexer
     to_field 'edition_t', extract_marc('250ab')
 
     each_record do |record, context|
-      ::Book.create(digital_cico_number: context.output_hash['id'].first)
+      begin
+        ::Book.create(digital_cico_number: context.output_hash['id'].first)
+      # retry if the sqlite3 is locked...
+      rescue ActiveRecord::StatementInvalid => e
+        puts "trying again: #{context.output_hash['id'].first}"
+        ::Book.create(digital_cico_number: context.output_hash['id'].first)
+      end
     end
   end
 end
