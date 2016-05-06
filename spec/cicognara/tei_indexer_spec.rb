@@ -2,8 +2,9 @@ require 'rails_helper'
 require 'tei_helper'
 
 describe TEIIndexer do
-  subject { described_class.new(pathtotei) }
+  subject { described_class.new(pathtotei, pathtoxsl) }
   let(:pathtotei) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:pathtoxsl) { File.join(File.dirname(__FILE__), '../..', 'lib', 'xsl', 'catalogo-item-to-html.xsl') }
 
   describe '#catalogo' do
     it 'has an associated tei file' do
@@ -65,6 +66,12 @@ describe TEIIndexer do
     describe '#text' do
       it 'is a string' do
         expect(subject.items.first.text.class).to eq(String)
+      end
+    end
+
+    describe '#html' do
+      it 'begin with <p> and end with </p>' do
+        expect(%r{^<html:p.*</html:p>$}m =~ subject.items.first.html).to eq(0)
       end
     end
 
