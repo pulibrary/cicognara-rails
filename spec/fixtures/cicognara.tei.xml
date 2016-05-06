@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="schemas/cicognara.rnc" type="application/relax-ng-compact-syntax"?><TEI xmlns="http://www.tei-c.org/ns/1.0">
+<teiHeader type="text">
+  <fileDesc>
+    <titleStmt>
+      <title>Catalogo ragionato dei libri d’arte d’antichità
+      posseduti dal conte cicognara</title>
+    </titleStmt>
+    <publicationStmt>
+      <p part="N">Later</p>
+    </publicationStmt>
+    <sourceDesc default="false">
+      <p part="N">Later</p>
+    </sourceDesc>
+  </fileDesc>
+</teiHeader>
+<text>
+  <body>
+    <div type="section" n="1.1">
+      <pb type="cico" n="1"/>
+      <head>Delle belle arti in generale</head>
+      <list type="catalog">
+	<item xml:id="c1d1e413" n="1">
+	  <label>1.</label>
+	  
+	  <bibl>
+            <author>AGINCOURT
+	    (d’) Seroux</author>, <title>Histoire de l’Art par les
+	    Monumens depuis sa decadence au 4ᵐᵉ siecle, jusque à son
+	    renouvellement au 16.me pour servir de suite à l’histoire
+	    de l’art chez les Anciens.</title>
+	    <pubPlace>Paris</pubPlace> 
+            <date>1811</date> et
+	    <date>1820</date>, <extent>6 vol. fol. fig. ornés de 325
+	    pl. en 24 livraisons.</extent>
+	  </bibl>
+	  <note>La piccola dimensione delle figure e l’inesattezza de’ disegni
+	  non tolgono a quest’opera il merito intrinseco di cui è ripiena,
+	  potendosi dire l’unica che abbiasi di tale estensione, per
+	  illustrare le oscure epoche de’ bassi tempi.</note>
+	  
+	</item>
+	
+	<item xml:id="c1d1e444" n="2" corresp="cico:m87">
+	  <label>2.</label>
+	  <bibl>
+            <author>Agrippae Henrici
+	    Corn.</author>, <title>De incertitude et vanitate
+	    scientiarum, declamatio invectiva, ex postrema
+	    <fw type="foot"/>
+	    <pb type="memofonte"/>
+	    <fw type="head"/>
+	    
+	    auctoris recognitione</title>,
+	    <pubPlace>Coloniæ</pubPlace> 
+            <date>1584</date>, <extent>in
+	  16</extent>.</bibl>
+	  
+	  <note> È trattata la materia estesamente, e quindi la
+	  musica, l’ottica. l’architettura, la pittura, la scultura
+	  sono prese in esame: ma quanto al pregio dell’opera
+	  ritiensi più rara la prima edizione del 1527, e le altre
+	  che apparvero fino al 1536 poiché non erano in quelle
+	  stati tolti alcuni passi che l’autore (per quietamente
+	  vivere) tolse egli stesso dalle posteriori edizioni, come
+	  può leggersi nella sua interessantissima
+	  prefazione.</note>
+	</item>
+	<item xml:id="c1d1e818" n="15" corresp="cico:88n cico:98g">
+          <label>15.</label> 
+          <bibl default="false" status="draft">
+            <author>BROTIO Duacensi Nicol.,</author>
+            <title> Libellus de utilitate et harmonia artium, Antuerpiæ, apud Simonem
+	    Cocum,</title>
+            <date instant="false"> A. 1541,</date> 
+            <extent>8 fig.</extent>
+	    <title>– Addito Libellus Compendiarum virtutis adipiscendæ ec. et carmina.</title>
+          </bibl>
+	  <note anchored="true">Le stampe in legno di cui va adorno questo Libretto sono eleganti e singolari. 12 tav. oltre il frontispizio sono
+	  quelle del primo lib. e 21 sono quelle del secondo. Magnif. esemp.</note>
+        </item>
+      </list>
+    </div>
+  </body>
+</text>
+</TEI>
