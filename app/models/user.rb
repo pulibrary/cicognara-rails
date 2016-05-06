@@ -1,7 +1,23 @@
 class User < ActiveRecord::Base
+  after_initialize :set_default_role
+  validates :role, inclusion: { in: %w(admin curator user), message: '%{value} is not a valid role' }
+
+  def admin?
+    role == 'admin'
+  end
+
+  def curator?
+    role == 'curator'
+  end
+
+  def set_default_role
+    self.role ||= 'user'
+  end
+
   if Blacklight::Utils.needs_attr_accessible?
     attr_accessible :email, :password, :password_confirmation
   end
+
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
   # Include default devise modules. Others available are:

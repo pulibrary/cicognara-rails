@@ -58,6 +58,7 @@ group :test do
 end
 
 gem 'rsolr', '~> 1.0'
+gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'blacklight-marc', '~> 6.0'

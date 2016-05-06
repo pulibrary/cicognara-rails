@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'contributing_library CRUD', type: :feature do
+  before { stub_admin_user }
+
   it 'adds, updates and deletes contributing libraries' do
     visit contributing_libraries_path
     expect(page).to have_link('Add Contributing Library')

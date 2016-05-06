@@ -1,31 +1,9 @@
 class ContributingLibrariesController < ApplicationController
-  before_action :set_contributing_library, only: [:show, :edit, :update, :destroy]
-
-  # GET /contributing_libraries
-  # GET /contributing_libraries.json
-  def index
-    @contributing_libraries = ContributingLibrary.all
-  end
-
-  # GET /contributing_libraries/1
-  # GET /contributing_libraries/1.json
-  def show
-  end
-
-  # GET /contributing_libraries/new
-  def new
-    @contributing_library = ContributingLibrary.new
-  end
-
-  # GET /contributing_libraries/1/edit
-  def edit
-  end
+  load_and_authorize_resource param_method: :contributing_library_params
 
   # POST /contributing_libraries
   # POST /contributing_libraries.json
   def create
-    @contributing_library = ContributingLibrary.new(contributing_library_params)
-
     respond_to do |format|
       if @contributing_library.save
         format.html { redirect_to @contributing_library, notice: 'Contributing Library was successfully created.' }
@@ -62,11 +40,6 @@ class ContributingLibrariesController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_contributing_library
-    @contributing_library = ContributingLibrary.find(params[:id])
-  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def contributing_library_params

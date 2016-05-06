@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include CanCan::ControllerAdditions
+
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
   layout 'blacklight'
