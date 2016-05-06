@@ -16,4 +16,5 @@ RSpec.describe 'CatalogController config', type: :request do
       expect(doc['published_t']).to eq(['Coloniae : Apud Theodorum Baumium ..., Anno 1584.'])
     end
   end
+  after(:all) { Book.destroy_all }
 end

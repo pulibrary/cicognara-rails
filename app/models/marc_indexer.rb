@@ -1,4 +1,8 @@
 $LOAD_PATH.unshift './config'
+require './app/models/book'
+config = CicognaraRails::Application.config.database_configuration[::Rails.env]
+ActiveRecord::Base.establish_connection(config)
+
 class MarcIndexer < Blacklight::Marc::Indexer
   # this mixin defines lambda facotry method get_format for legacy marc formats
   include Blacklight::Marc::Indexer::Formats
@@ -209,5 +213,9 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     # Edition Statement
     to_field 'edition_t', extract_marc('250ab')
+
+    each_record do |record, context|
+      ::Book.create(digital_cico_number: context.output_hash['id'].first)
+    end
   end
 end
