@@ -1,5 +1,5 @@
-require 'tei_helper'
 require 'rails_helper'
+require 'tei_helper'
 
 describe TEIIndexer do
   subject { described_class.new(pathtotei) }

@@ -37,7 +37,6 @@ RuboCop::RakeTask.new(:rubocop) do |task|
 end
 
 task :ci do
-  require 'coveralls/rake/task'
   SolrWrapper.wrap(port: 8888) do |solr|
     solr.with_collection(name: 'cicognara', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'config')) do
       Rake::Task['spec'].invoke
