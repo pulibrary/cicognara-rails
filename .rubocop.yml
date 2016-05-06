@@ -17,6 +17,10 @@ Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
 
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/support/**/*'
+
 RSpec/DescribeClass:
   Exclude:
     - 'spec/routing/**/*'

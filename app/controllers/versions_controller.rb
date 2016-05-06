@@ -1,33 +1,11 @@
 class VersionsController < ApplicationController
+  load_and_authorize_resource param_method: :version_params
   before_action :set_book
   before_action :set_contributing_libraries, only: [:new, :edit]
-  before_action :set_version, only: [:show, :edit, :update, :destroy]
-
-  # GET /books/:book_id/versions
-  # GET /books/:book_id/versions.json
-  def index
-    @versions = Version.all
-  end
-
-  # GET /books/:book_id/versions/1
-  # GET /books/:book_id/versions/1.json
-  def show
-  end
-
-  # GET /books/:book_id/versions/new
-  def new
-    @version = Version.new
-  end
-
-  # GET /versions/1/edit
-  def edit
-  end
 
   # POST /versions
   # POST /versions.json
   def create
-    @version = Version.new(version_params)
-
     respond_to do |format|
       if @version.save
         format.html { redirect_to book_version_path(@book, @version), notice: 'Version was successfully created.' }
@@ -72,10 +50,6 @@ class VersionsController < ApplicationController
 
   def set_contributing_libraries
     @contributing_libraries = ContributingLibrary.all
-  end
-
-  def set_version
-    @version = Version.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Versions', type: :request do
   let(:book) { Book.create }
+  before { stub_admin_user }
 
   after do
     book.destroy

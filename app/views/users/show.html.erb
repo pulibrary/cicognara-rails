@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <td><%= label_tag :email %></td>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <td><%= label_tag :role %></td>
+    <td><%= @user.role %></td>
+  </tr>
+</table>
+
+<%= link_to 'All Users', users_path %> |
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
