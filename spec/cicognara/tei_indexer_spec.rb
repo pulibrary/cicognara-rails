@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 require 'tei_helper'
 
@@ -37,6 +38,11 @@ describe TEIIndexer do
 
     it 'has a correct n property' do
       expect(subject.items.first.n).to eq('1')
+    end
+
+    it 'has a title property' do
+      expected = "Histoire de l’Art par les Monumens depuis sa decadence au 4ᵐᵉ siecle, jusque à son renouvellement au 16.me pour servir de suite à l’histoire de l’art chez les Anciens."
+      expect(subject.items.first.title).to eq expected
     end
 
     describe '#corresp' do
@@ -100,6 +106,10 @@ describe TEIIndexer do
 
       it 'has a description_t field' do
         expect(subject.items.first.solr_doc[:description_t]).not_to be_nil
+      end
+
+      it 'has a description_display field' do
+        expect(subject.items.first.solr_doc[:description_display]).not_to be_nil
       end
 
       it 'does not have dclib_s field when @corresp is not present' do
