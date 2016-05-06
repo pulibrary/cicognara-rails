@@ -26,10 +26,6 @@ class CatalogoItem
     @xml_element.to_str.gsub(/\s+/, ' ').strip
   end
 
-  def html_old
-    '<p>' + text + '</p>'
-  end
-
   def html
     doc = Nokogiri::XML::Document.new
     doc.root = @xml_element
@@ -37,7 +33,7 @@ class CatalogoItem
   end
 
   def solr_doc
-    doc = { id: id, cico_s: n, description_t: html }
+    doc = { id: id, cico_s: n, description_display: html, description_t: text }
     doc[:dclib_s] = corresp unless corresp.empty?
     doc
   end

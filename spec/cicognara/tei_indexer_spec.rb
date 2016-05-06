@@ -71,7 +71,7 @@ describe TEIIndexer do
 
     describe '#html' do
       it 'begin with <p> and end with </p>' do
-        expect(%r{^<html:p.*</html:p>$}m =~ subject.items.first.html).to eq(0)
+        expect(%r{^<p>.*</p>$}m =~ subject.items.first.html).to eq(0)
       end
     end
 
