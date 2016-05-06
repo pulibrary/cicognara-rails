@@ -45,10 +45,12 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails-console'
 end
 
 group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
   gem 'simplecov', '~> 0.9', require: false
 end
 
@@ -63,4 +65,5 @@ gem 'devise-guests', '~> 0.3'
 gem 'blacklight-marc', '~> 6.0'
 gem 'rubocop', '~> 0.39.0', require: false
 gem 'rubocop-rspec', require: false
+gem 'solr_wrapper', '>= 0.3'
 gem 'traject'
