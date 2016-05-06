@@ -107,6 +107,9 @@
          title_series_t^10
          isbn_t
          text
+	 description_t
+	 cico_s
+	 dclib_s
        </str>
        <str name="pf">
          title_unstem_search^1000000
@@ -130,6 +133,9 @@
          title_series_unstem_search^250
          title_series_t^100
          text^10
+	 description_t^10
+	 cico_s^10
+	 dclib_s^10
        </str>
        <str name="author_qf">
          author_unstem_search^200
