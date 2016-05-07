@@ -18,3 +18,13 @@ Or checkout [cicognara-catalogo](https://github.com/pulibrary/cicognara-catalogo
 ```
 TEIPATH=/path/to/cicognara-catalogo/Catalogo_Cicognara.tei.xml rake tei:index
 ```
+
+# To create the initial admin user, create a user account and then make the last user an admin:
+```
+rake set_admin_role
+```
+
+You can also specify an email address to make a particular user an amdin:
+```
+EMAIL=user@example.org rake set_admin_role
+```
