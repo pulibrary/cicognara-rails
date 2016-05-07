@@ -216,11 +216,11 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     each_record do |record, context|
       begin
-        ::Book.create(digital_cico_number: context.output_hash['id'].first)
+        ::Book.first_or_create(digital_cico_number: context.output_hash['id'].first)
       # retry if the sqlite3 is locked...
       rescue ActiveRecord::StatementInvalid => e
         puts "trying again: #{context.output_hash['id'].first}"
-        ::Book.create(digital_cico_number: context.output_hash['id'].first)
+        ::Book.first_or_create(digital_cico_number: context.output_hash['id'].first)
       end
     end
   end

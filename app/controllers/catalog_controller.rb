@@ -98,7 +98,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'subject_t', label: 'Subject'
     config.add_show_field 'contents_t', label: 'Contents'
     config.add_show_field 'edition_t', label: 'Edition'
-    config.add_show_field 'description_t', label: 'Catalogo entry'
     config.add_show_field 'description_display', label: 'Catalogo entry', helper_method: 'render_html'
 
     # "fielded" search configuration. Used by pulldown among other places.
@@ -175,5 +174,10 @@ class CatalogController < ApplicationController
     # Configuration for autocomplete suggestor
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
+  end
+
+  def show
+    super
+    @linked_books = @document.fetch('dclib_s', []).map { |dcn| fetch_one(dcn, {}).last }
   end
 end

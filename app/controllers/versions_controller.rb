@@ -3,9 +3,14 @@ class VersionsController < ApplicationController
   before_action :set_book
   before_action :set_contributing_libraries, only: [:new, :edit]
 
+  def index
+    @versions = Version.where(book_id: params[:book_id])
+  end
+
   # POST /versions
   # POST /versions.json
   def create
+    @version.book_id = @book.id
     respond_to do |format|
       if @version.save
         format.html { redirect_to book_version_path(@book, @version), notice: 'Version was successfully created.' }
@@ -21,7 +26,7 @@ class VersionsController < ApplicationController
   # PATCH/PUT /versions/1.json
   def update
     respond_to do |format|
-      if @version.update(version_params)
+      if @version.update(version_params_with_book)
         format.html { redirect_to book_version_path(@book, @version), notice: 'Version was successfully updated.' }
         format.json { render :show, status: :ok, location: @version }
       else
@@ -60,5 +65,9 @@ class VersionsController < ApplicationController
                                     :version_publication_date, :additional_responsibility,
                                     :provenance, :physical_characteristics, :rights,
                                     :based_on_original)
+  end
+
+  def version_params_with_book
+    version_params.merge(book_id: @book.id)
   end
 end
