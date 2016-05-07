@@ -4,7 +4,7 @@ RSpec.describe VersionsController, type: :controller do
   let(:book) { Book.create digital_cico_number: 'cico:abc' }
   let(:contrib) { ContributingLibrary.create label: 'Library 1', uri: 'http://example.org/lib' }
   let(:valid_attributes) do
-    { label: 'Version 1', manifest: 'http://example.org/1', contributing_library_id: contrib.id }
+    { book_id: book.id, label: 'Version 1', manifest: 'http://example.org/1', contributing_library_id: contrib.id }
   end
   let(:invalid_attributes) { { label: nil } }
 
