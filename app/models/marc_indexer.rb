@@ -79,6 +79,8 @@ class MarcIndexer < Blacklight::Marc::Indexer
       acc.replace [acc.join(' ')] # turn it into a single string
     end
 
+    to_field 'format', literal('marc')
+
     to_field 'language_facet', marc_languages('008[35-37]:041a:041d')
 
     # Title fields
@@ -123,6 +125,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     to_field 'author_t', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq:700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
     to_field 'author_display', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true)
+    to_field 'related_name_display', extract_marc('700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
     to_field 'author_sort', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true, first: true)
 
     # Subject fields
@@ -216,12 +219,36 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     each_record do |record, context|
       begin
-        ::Book.first_or_create(digital_cico_number: context.output_hash['id'].first)
+        ::Book.where(digital_cico_number: context.output_hash['id'].first).first_or_create
       # retry if the sqlite3 is locked...
-      rescue ActiveRecord::StatementInvalid => e
+      rescue ActiveRecord::StatementInvalid, SQLite3::BusyException => e
         puts "trying again: #{context.output_hash['id'].first}"
-        ::Book.first_or_create(digital_cico_number: context.output_hash['id'].first)
+        ::Book.where(digital_cico_number: context.output_hash['id'].first).first_or_create
       end
+
+      # add display fields
+      context.output_hash['published_display'] = context.output_hash['published_t'] unless context.output_hash['published_t'].nil?
+      context.output_hash['title_addl_display'] = context.output_hash['title_addl_t'] unless context.output_hash['title_addl_t'].nil?
+      context.output_hash['title_added_entry_display'] = context.output_hash['title_added_entry_t'] unless context.output_hash['title_added_entry_t'].nil?
+      context.output_hash['title_series_display'] = context.output_hash['title_series_t'] unless context.output_hash['title_series_t'].nil?
+      context.output_hash['subject_display'] = context.output_hash['subject_t'] unless context.output_hash['subject_t'].nil?
+      context.output_hash['contents_display'] = context.output_hash['contents_t'] unless context.output_hash['contents_t'].nil?
+      context.output_hash['edition_display'] = context.output_hash['edition_t'] unless context.output_hash['edition_t'].nil?
+      context.output_hash['language_display'] = context.output_hash['language_facet'] unless context.output_hash['language_facet'].nil?
     end
+  end
+end
+
+class SolrWriterAccumulator < Traject::SolrJsonWriter
+  attr_reader :all_records
+
+  def initialize(argSettings)
+    super
+    @all_records = {}
+  end
+
+  def put(context)
+    super
+    @all_records[context.output_hash['id'].first] = context.output_hash
   end
 end
