@@ -80,24 +80,23 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'title_display', label: 'Title'
-    config.add_index_field 'author_display', label: 'Author'
-    config.add_index_field 'language_facet', label: 'Language'
-    config.add_index_field 'published_t', label: 'Published'
+    config.add_index_field 'cico_s', label: 'Cicognara number'
+    config.add_index_field 'dclib_s', label: 'DCL id(s)'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field 'author_display', label: 'Author'
-    config.add_show_field 'language_facet', label: 'Language'
-    config.add_show_field 'published_t', label: 'Published'
+    config.add_show_field 'language_display', label: 'Language'
+    config.add_show_field 'published_display', label: 'Published'
     config.add_show_field 'cico_s', label: 'Cicognara number'
     config.add_show_field 'dclib_s', label: 'DCL id(s)'
-    config.add_show_field 'title_addl_t', label: 'Other title(s)'
-    config.add_show_field 'title_added_entry_t', label: 'Added entry title(s)'
-    config.add_show_field 'title_series_t', label: 'Series'
-    config.add_show_field 'subject_t', label: 'Subject'
-    config.add_show_field 'contents_t', label: 'Contents'
-    config.add_show_field 'edition_t', label: 'Edition'
+    config.add_show_field 'title_addl_display', label: 'Other title(s)'
+    config.add_show_field 'title_added_entry_display', label: 'Added entry title(s)'
+    config.add_show_field 'title_series_display', label: 'Series'
+    config.add_show_field 'related_name_display', label: 'Related name(s)'
+    config.add_show_field 'subject_display', label: 'Subject'
+    config.add_show_field 'contents_display', label: 'Contents'
+    config.add_show_field 'edition_display', label: 'Edition'
     config.add_show_field 'description_display', label: 'Catalogo entry', helper_method: 'render_html'
 
     # "fielded" search configuration. Used by pulldown among other places.

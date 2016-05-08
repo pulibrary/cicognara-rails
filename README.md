@@ -16,7 +16,7 @@ rake tei:index
 Or checkout [cicognara-catalogo](https://github.com/pulibrary/cicognara-catalogo) and index the full
  Catalogo:
 ```
-TEIPATH=/path/to/cicognara-catalogo/Catalogo_Cicognara.tei.xml rake tei:index
+TEIPATH=/path/to/Catalogo_Cicognara.tei.xml MARCPATH=/path/to/cicognara.mrx.xml rake tei:index
 ```
 
 # To create the initial admin user, create a user account and then make the last user an admin:

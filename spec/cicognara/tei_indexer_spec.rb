@@ -2,10 +2,12 @@ require 'rails_helper'
 require 'tei_helper'
 
 describe TEIIndexer do
-  subject { described_class.new(pathtotei, pathtoxsl) }
+  subject { described_class.new(pathtotei, pathtoxsl, pathtomarc) }
   let(:pathtotei) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:pathtomarc) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
   let(:pathtoxsl) { File.join(File.dirname(__FILE__), '../..', 'lib', 'xsl', 'catalogo-item-to-html.xsl') }
 
+  after(:all) { Book.destroy_all }
   describe '#catalogo' do
     it 'has an associated tei file' do
       expect(subject.catalogo.class).to eq(Nokogiri::XML::Document)
@@ -114,6 +116,25 @@ describe TEIIndexer do
 
       it 'dclib_s field to have 2 values when @corresp has 2 values' do
         expect(subject.items[2].solr_doc[:dclib_s].length).to eq(2)
+      end
+    end
+
+    describe 'marc-related fields' do
+      it 'includes marc fields for indexing' do
+        expect(subject.items[1].solr_doc['title_addl_t']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
+      end
+
+      it 'excludes marc fields for display' do
+        expect(subject.items[1].solr_doc['title_addl_display']).to be_nil
+      end
+
+      it 'keeps only single value for sort fields for entries with multiple marc records' do
+        expect(subject.items[2].solr_doc['pub_date']).to eq(1541)
+      end
+
+      it 'merges fields across multiple marc records' do
+        expect(subject.items[2].solr_doc['subject_topic_facet']).to include('Humanism')
+        expect(subject.items[2].solr_doc['subject_topic_facet']).to include('Conduct of life')
       end
     end
   end

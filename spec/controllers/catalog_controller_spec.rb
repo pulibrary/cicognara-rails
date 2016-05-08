@@ -9,7 +9,7 @@ RSpec.describe CatalogController, type: :controller do
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     xsl = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'xsl', 'catalogo-item-to-html.xsl')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    solr.add(TEIIndexer.new(tei, xsl).solr_docs)
+    solr.add(TEIIndexer.new(tei, xsl, marc).solr_docs)
     solr.commit
   end
 
@@ -29,6 +29,13 @@ RSpec.describe CatalogController, type: :controller do
     it 'does not error when there are no linked books' do
       get :show, id: 'cico:m87'
       expect(assigns(:linked_books)).to eq []
+    end
+
+    it 'book has configured display fields from marc' do
+      get :show, id: 'c1d1e444'
+
+      linked_books = assigns(:linked_books)
+      expect(linked_books.first['title_addl_display']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
     end
   end
 end

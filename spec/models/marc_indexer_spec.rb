@@ -79,7 +79,7 @@ RSpec.describe MarcIndexer, type: :model do
     expect(values.first['pub_date']).to eq([1584])
   end
   it 'adds book object to database with digital cico number' do
-    expect(Book.where(digital_cico_number: 'cico:m87').size).to be > 0
+    expect(Book.where(digital_cico_number: 'cico:m87').size).to eq 1
   end
   after(:all) { Book.destroy_all }
 end
