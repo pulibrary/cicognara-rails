@@ -136,6 +136,10 @@ describe TEIIndexer do
         expect(subject.items[2].solr_doc['subject_topic_facet']).to include('Humanism')
         expect(subject.items[2].solr_doc['subject_topic_facet']).to include('Conduct of life')
       end
+
+      it 'has indexes the marc title for display' do
+        expect(subject.items[1].solr_doc[:title_display]).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
+      end
     end
   end
 

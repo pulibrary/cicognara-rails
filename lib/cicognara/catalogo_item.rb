@@ -38,6 +38,7 @@ class CatalogoItem
     unless corresp.empty?
       doc[:dclib_s] = corresp
       book_fields = get_marc_fields(corresp)
+      doc[:title_display] = (book_fields['title_t'] || []).first
       doc.merge!(book_fields)
     end
     doc
