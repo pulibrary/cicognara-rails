@@ -23,6 +23,11 @@ class CatalogoItem
     c.empty? ? [] : c.first.value.split
   end
 
+  def title
+    title = @xml_element.xpath('./tei:bibl[1]/tei:title[1]', tei: 'http://www.tei-c.org/ns/1.0')
+    title.first.text.gsub(/\s+/, ' ').strip unless title.empty?
+  end
+
   def text
     @xml_element.to_str.gsub(/\s+/, ' ').strip
   end
