@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -18,10 +17,9 @@ ActiveRecord::Schema.define(version: 20160505124159) do
     t.integer  "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_subjects_on_book_id"
+    t.index ["subject_id"], name: "index_book_subjects_on_subject_id"
   end
-
-  add_index "book_subjects", ["book_id"], name: "index_book_subjects_on_book_id"
-  add_index "book_subjects", ["subject_id"], name: "index_book_subjects_on_subject_id"
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id",       null: false
@@ -31,9 +29,8 @@ ActiveRecord::Schema.define(version: 20160505124159) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "document_type"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
-
-  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "books", force: :cascade do |t|
     t.string   "marcxml"
@@ -55,11 +52,10 @@ ActiveRecord::Schema.define(version: 20160505124159) do
     t.integer  "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_creator_roles_on_book_id"
+    t.index ["creator_id"], name: "index_creator_roles_on_creator_id"
+    t.index ["role_id"], name: "index_creator_roles_on_role_id"
   end
-
-  add_index "creator_roles", ["book_id"], name: "index_creator_roles_on_book_id"
-  add_index "creator_roles", ["creator_id"], name: "index_creator_roles_on_creator_id"
-  add_index "creator_roles", ["role_id"], name: "index_creator_roles_on_role_id"
 
   create_table "creators", force: :cascade do |t|
     t.string   "label"
@@ -81,9 +77,8 @@ ActiveRecord::Schema.define(version: 20160505124159) do
     t.string   "user_type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_searches_on_user_id"
   end
-
-  add_index "searches", ["user_id"], name: "index_searches_on_user_id"
 
   create_table "subjects", force: :cascade do |t|
     t.string   "label"
@@ -112,10 +107,9 @@ ActiveRecord::Schema.define(version: 20160505124159) do
     t.datetime "updated_at",                             null: false
     t.boolean  "guest",                  default: false
     t.string   "role"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "versions", force: :cascade do |t|
     t.integer  "contributing_library_id"
@@ -135,9 +129,8 @@ ActiveRecord::Schema.define(version: 20160505124159) do
     t.string   "manifest"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.index ["book_id"], name: "index_versions_on_book_id"
+    t.index ["contributing_library_id"], name: "index_versions_on_contributing_library_id"
   end
-
-  add_index "versions", ["book_id"], name: "index_versions_on_book_id"
-  add_index "versions", ["contributing_library_id"], name: "index_versions_on_contributing_library_id"
 
 end
