@@ -43,7 +43,7 @@ class CatalogoItem
     unless corresp.empty?
       doc[:dclib_s] = corresp
       book_fields = get_marc_fields(corresp)
-      doc[:title_display] = best_title(n, book_fields['title_t']) unless doc[:title_display]
+      doc[:title_display] = best_title(n, book_fields['title_t'] || []) unless doc[:title_display]
       doc.merge!(book_fields)
     end
     doc

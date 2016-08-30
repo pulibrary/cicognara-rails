@@ -19,6 +19,14 @@ Or checkout [cicognara-catalogo](https://github.com/pulibrary/cicognara-catalogo
 TEIPATH=/path/to/Catalogo_Cicognara.tei.xml MARCPATH=/path/to/cicognara.mrx.xml rake tei:index
 ```
 
+# To create html partials with fixture data to app/views/pages/catalogo:
+```
+rake tei:partials
+
+# teipath and partials path can be specified
+TEIPATH=/path/to/cicognara.tei.xml PARTIALSPATH=app/views/pages/partial rake tei:partials
+```
+
 # To create the initial admin user, create a user account and then make the last user an admin:
 ```
 rake set_admin_role
