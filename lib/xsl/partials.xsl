@@ -13,7 +13,7 @@
 
     <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes"/>
 
-    <xsl:param name="path_to_partials">../../app/views/pages</xsl:param>
+    <xsl:param name="path_to_partials">../../app/views/pages/catalogo</xsl:param>
 
     <xsl:template match="tei:pb[@type = 'cico']">
         <span class="pb">
@@ -57,4 +57,44 @@
     </xsl:template>
 
 
+    <xsl:template match="tei:bibl">
+        <span class="bibl">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <xsl:template match="tei:author">
+        <span class="author">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <xsl:template match="tei:note">
+        <div class="note">
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
+    <xsl:template match="tei:title">
+        <span class="title">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <xsl:template match="tei:pubPlace">
+        <span class="pubPlace">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <xsl:template match="tei:date">
+        <span class="date">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <xsl:template match="tei:extent">
+        <span class="extent">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <xsl:template match="tei:p">
+        <p>
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template>
 </xsl:stylesheet>
