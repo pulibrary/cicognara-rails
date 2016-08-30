@@ -1,85 +1,260 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-model href="schemas/cicognara.rnc" type="application/relax-ng-compact-syntax"?><TEI xmlns="http://www.tei-c.org/ns/1.0">
-<teiHeader type="text">
-  <fileDesc>
-    <titleStmt>
-      <title>Catalogo ragionato dei libri d’arte d’antichità
-      posseduti dal conte cicognara</title>
-    </titleStmt>
-    <publicationStmt>
-      <p part="N">Later</p>
-    </publicationStmt>
-    <sourceDesc default="false">
-      <p part="N">Later</p>
-    </sourceDesc>
-  </fileDesc>
-</teiHeader>
-<text>
-  <body>
-    <div type="section" n="1.1">
-      <pb type="cico" n="1"/>
-      <head>Delle belle arti in generale</head>
-      <list type="catalog">
-	<item xml:id="c1d1e413" n="1">
-	  <label>1.</label>
+<?xml version="1.0" encoding="UTF-8"?>
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Catalogo ragionato dei libri d’arte d’antichità
+        posseduti dal conte cicognara, tomo primo</title>
+        <author>CONTE CICOGNARA</author>
+      </titleStmt>
+      <publicationStmt>
+	<p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+	<p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <TEI xml:id="tomo_primo">
+    <teiHeader>
+      <fileDesc>
+        <titleStmt>
+	  <title>Catalogo ragionato dei libri d’arte d’antichità
+	  posseduti dal conte cicognara, tomo primo</title>
+        </titleStmt>
+        <publicationStmt>
+	  <p>Later</p>
+        </publicationStmt>
+        <sourceDesc>
+	  <p>Later</p>
+        </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+        <editorialDecl>
+          <correction>
+            <p>There is no label for the item between 637 and 638.  To
+            support indexing in the DCL application, we have assigned
+            it the number 637.5, pending an authoratative
+            solution.</p>
+          </correction>
+          <correction>
+            <p>The label for item 975 is misprinted in the
+            Memofonte edition; it is corrected here.</p>
+          </correction>
+	  <correction>
+	    <p>The labels for items 511 and 512 are misprinted as
+	    811 and 812 respectively in the Memofonte edition;
+	    they are corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 859 is misprinted as 869 in the
+	    Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 905 is misprinted as 908 in the
+	    Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 1059 is misprinted as 1089 in the
+	    Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 1859 is misprinted as 1869 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 2220 is misprinted as 2200 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 2263 is misprinted as 3263 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 2329 is misprinted as 2829 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 2341 is misprinted as 3341 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
 	  
-	  <bibl>
-            <author>AGINCOURT
-	    (d’) Seroux</author>, <title>Histoire de l’Art par les
-	    Monumens depuis sa decadence au 4ᵐᵉ siecle, jusque à son
-	    renouvellement au 16.me pour servir de suite à l’histoire
-	    de l’art chez les Anciens.</title>
-	    <pubPlace>Paris</pubPlace> 
-            <date>1811</date> et
-	    <date>1820</date>, <extent>6 vol. fol. fig. ornés de 325
-	    pl. en 24 livraisons.</extent>
-	  </bibl>
-	  <note>La piccola dimensione delle figure e l’inesattezza de’ disegni
-	  non tolgono a quest’opera il merito intrinseco di cui è ripiena,
-	  potendosi dire l’unica che abbiasi di tale estensione, per
-	  illustrare le oscure epoche de’ bassi tempi.</note>
-	  
-	</item>
-	
-	<item xml:id="c1d1e444" n="2" corresp="cico:m87">
-	  <label>2.</label>
-	  <bibl>
-            <author>Agrippae Henrici
-	    Corn.</author>, <title>De incertitude et vanitate
-	    scientiarum, declamatio invectiva, ex postrema
-	    <fw type="foot"/>
-	    <pb type="memofonte"/>
-	    <fw type="head"/>
+        </editorialDecl>
+      </encodingDesc>
+    </teiHeader>
+    <text>
+      
+      
+      <body>
+	<div type="section" n="1.1">
+	  <pb type="cico" n="1"/>
+	  <head>Delle belle arti in generale</head>
+	  <list type="catalog">
 	    
-	    auctoris recognitione</title>,
-	    <pubPlace>Coloniæ</pubPlace> 
-            <date>1584</date>, <extent>in
-	  16</extent>.</bibl>
-	  
-	  <note> È trattata la materia estesamente, e quindi la
-	  musica, l’ottica. l’architettura, la pittura, la scultura
-	  sono prese in esame: ma quanto al pregio dell’opera
-	  ritiensi più rara la prima edizione del 1527, e le altre
-	  che apparvero fino al 1536 poiché non erano in quelle
-	  stati tolti alcuni passi che l’autore (per quietamente
-	  vivere) tolse egli stesso dalle posteriori edizioni, come
-	  può leggersi nella sua interessantissima
-	  prefazione.</note>
-	</item>
-	<item xml:id="c1d1e818" n="15" corresp="cico:88n cico:98g">
-          <label>15.</label> 
-          <bibl default="false" status="draft">
-            <author>BROTIO Duacensi Nicol.,</author>
-            <title> Libellus de utilitate et harmonia artium, Antuerpiæ, apud Simonem
-	    Cocum,</title>
-            <date instant="false"> A. 1541,</date> 
-            <extent>8 fig.</extent>
-	    <title>– Addito Libellus Compendiarum virtutis adipiscendæ ec. et carmina.</title>
-          </bibl>
-	  <note anchored="true">Le stampe in legno di cui va adorno questo Libretto sono eleganti e singolari. 12 tav. oltre il frontispizio sono
-	  quelle del primo lib. e 21 sono quelle del secondo. Magnif. esemp.</note>
-        </item>
-      </list>
-    </div>
-  </body>
-</text>
-</TEI>
+	    <item xml:id="c1d1e413" n="1">
+	      <label>1.</label>
+	      <bibl>
+		<author>AGINCOURT (d’) Seroux</author>, <title>Histoire de l’Art
+		par les Monumens depuis sa decadence au 4ᵐᵉ siecle, jusque à son
+		renouvellement au 16.me pour servir de suite à l’histoire de
+		l’art chez les Anciens.</title> <pubPlace>Paris</pubPlace>
+		<date>1811</date> et <date>1820</date>, <extent>6
+		vol. fol. fig. ornés de 325 pl. en 24 livraisons.</extent>
+	      </bibl>
+	      
+	      <note>La piccola dimensione delle figure e l’inesattezza de’
+	      disegni non tolgono a quest’opera il merito intrinseco di cui è
+	      ripiena, potendosi dire l’unica che abbiasi di tale estensione,
+	      per illustrare le oscure epoche de’ bassi tempi.</note>
+	    </item>
+	    
+	    <item xml:id="c1d1e444" n="2" corresp="cico:m87">
+	      <label>2.</label>
+	      <bibl>
+		<author>Agrippae Henrici Corn.</author>, <title>De
+		incertitude et vanitate scientiarum, declamatio invectiva, ex
+		postrema
+		<fw type="foot"/>
+	        <pb type="memofonte"/>
+	        <fw type="head"/>
+		
+		auctoris recognitione</title>,
+		<pubPlace>Coloniæ</pubPlace> 
+		<date>1584</date>, <extent>in
+		16</extent>.
+	      </bibl>
+	      
+	      <note>È trattata la materia estesamente, e quindi la musica,
+	      l’ottica. l’architettura, la pittura, la scultura sono prese in
+	      esame: ma quanto al pregio dell’opera ritiensi più rara la
+	      prima edizione del 1527, e le altre che apparvero fino al 1536
+	      poiché non erano in quelle stati tolti alcuni passi che
+	      l’autore (per quietamente vivere) tolse egli stesso dalle
+	      posteriori edizioni, come può leggersi nella sua
+	      interessantissima prefazione.</note>
+	    </item>
+	    
+	    
+	    
+	    <!-- Number 15 has additional title.  Same author? Bound with? -->
+	    <item xml:id="c1d1e818" n="15" corresp="cico:88n cico:98g">
+              <label>15.</label> 
+              <bibl>
+                <author>BROTIO Duacensi Nicol.</author>,
+                <title> Libellus de utilitate et harmonia artium, Antuerpiæ, apud Simonem
+		Cocum,</title>
+                <date> A. 1541,</date> 
+                <extent>8 fig.</extent>
+	        <title>– Addito Libellus Compendiarum virtutis adipiscendæ ec. et carmina.</title>
+              </bibl>
+	      <note>Le stampe in legno di cui va adorno questo Libretto sono eleganti e singolari. 12 tav. oltre il frontispizio sono
+	      quelle del primo lib. e 21 sono quelle del secondo. Magnif. esemp.</note>
+            </item>
+	  </list>
+        </div>
+        <div type="section" n="1.2">
+          <pb type="cico" n="11"/>
+	  <pb type="memofonte"/>
+	  <fw type="head"/>
+	  <head>Della Pittura Trattati</head>
+	  <list type="catalog">
+	    <item xml:id="c1d1e2260" n="66" corresp="cico:6gq">
+              <label>66.</label> 
+              <bibl>
+                <author>ALBERTI Leon Battista</author>, 
+                <title>La pittura tradotta per mess. Lodovico Domenichi.</title> 
+                <extent>Libri tre,</extent> 
+                <pubPlace>Venezia,</pubPlace>
+	        <publisher> Giolito, </publisher>
+                <date>1547,</date>
+                <ex> in 8.</ex>
+              </bibl>
+	    </item>
+	  </list>
+	</div>
+
+        <closer>FINE DEL PRIMO VOLUME.</closer>
+	
+        <fw type="foot"/>
+      </body>
+    </text>
+  </TEI>
+  <TEI xml:id="tomo_secondo">
+    <teiHeader>
+      <fileDesc>
+        <titleStmt>
+	  <title/>
+        </titleStmt>
+        <publicationStmt>
+	  <p>Later</p>
+        </publicationStmt>
+        <sourceDesc>
+	  <p>Later</p>
+        </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+        <editorialDecl>
+	  <correction>
+	    <p>The label for item 2476 is misprinted as 2470 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 3247 is misprinted as 3347 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 3653 is misprinted as 3656 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 3702 is misprinted as 3701 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>There are two items labeled 3922 in the 1821 edition
+	    (pages 225 and 226 of the second volume). The Memofonte
+	    edition leaves the second item unnumbered; here we have
+	    assigned n="3923" to the second item but restored
+	    its label as printed in the 1821 edition.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 4609 is misprinted as 4608 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 4614 is misprinted as 4616 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+	  <correction>
+	    <p>The label for item 4621 is misprinted as 4321 in
+	    the Memofonte edition; corrected here.</p>
+	  </correction>
+
+        </editorialDecl>
+      </encodingDesc>
+    </teiHeader>
+    <text>
+      <body>
+        <div>
+          <pb type="memofonte"/>
+          <fw type="head"/>
+          <pb type="cico" n="1"/>
+
+          <div type="section"
+               n="2.1">
+	    
+            <head>DELL’ANTICHITÀ IN GENERE</head>
+            <list type="catalog">
+              <item xml:id="c2d1e550" n="2475" corresp="cico:kc5">
+                <label>2475.</label> <bibl><author>ABREGE</author><title> des transactions philosophiques de la Societé Royale de Londres: redigé par Gibelin. Onzieme Partie:
+                antiquité, et beaux arts</title>, <pubPlace>Paris</pubPlace> <date>1789 e 1790</date>, vol. 2, en 8, fig.
+	      </bibl></item>
+	    </list>
+          </div>
+	</div>
+      </body>
+
+    </text>
+  </TEI>
+  
+</teiCorpus>

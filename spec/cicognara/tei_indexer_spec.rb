@@ -17,7 +17,7 @@ describe TEIIndexer do
 
   describe '#items' do
     it 'has a length of 3' do
-      expect(subject.items.length).to eq 3
+      expect(subject.items.length).to eq 5
     end
 
     it 'has an id property' do
@@ -154,8 +154,8 @@ describe TEIIndexer do
   end
 
   describe '#solr_docs' do
-    it 'has a length of 3' do
-      expect(subject.solr_docs.length).to eq 3
+    it 'has a length of 5' do
+      expect(subject.solr_docs.length).to eq 5
     end
   end
 end

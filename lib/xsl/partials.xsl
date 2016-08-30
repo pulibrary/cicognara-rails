@@ -13,7 +13,7 @@
 
     <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes"/>
 
-    <xsl:param name="path_to_partials">../../app/views/pages/catalogo</xsl:param>
+    <xsl:param name="path_to_partials"></xsl:param>
 
     <xsl:template match="tei:pb[@type = 'cico']">
         <span class="pb" id="page_{@n}">
