@@ -16,7 +16,7 @@
     <xsl:param name="path_to_partials">../../app/views/pages/catalogo</xsl:param>
 
     <xsl:template match="tei:pb[@type = 'cico']">
-        <span class="pb">
+        <span class="pb" id="page_{@n}">
             <xsl:value-of select="@n"/>
         </span>
     </xsl:template>
@@ -45,7 +45,7 @@
     </xsl:template>
 
     <xsl:template match="tei:item">
-        <li>
+        <li id="item_{@n}">
             <xsl:apply-templates/>
         </li>
     </xsl:template>
