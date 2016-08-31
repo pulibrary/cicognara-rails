@@ -13,21 +13,22 @@
 
     <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes"/>
 
-    <xsl:param name="path_to_partials"></xsl:param>
-
-    <xsl:template match="tei:pb[@type = 'cico']">
-        <span class="pb" id="page_{@n}">
-            <xsl:value-of select="@n"/>
-        </span>
-    </xsl:template>
+    <xsl:param name="path_to_partials"/>
 
     <xsl:template match="tei:div[@type = 'section']">
         <xsl:result-document exclude-result-prefixes="#all" method="xml"
             href="{$path_to_partials}/section_{@n}.html">
-            <section class="section" id="{@n}">
+            <section class="catalogo-section" id="{@n}">
                 <xsl:apply-templates/>
             </section>
         </xsl:result-document>
+    </xsl:template>
+
+
+    <xsl:template match="tei:pb[@type = 'cico']">
+        <span class="catalogo-pb" id="page_{@n}">
+            <xsl:value-of select="@n"/>
+        </span>
     </xsl:template>
 
     <xsl:template match="tei:head">
@@ -39,56 +40,69 @@
     </xsl:template>
 
     <xsl:template match="tei:list[@type = 'catalog']">
-        <ol class="catalog">
+        <ol class="catalogo-list">
             <xsl:apply-templates/>
         </ol>
     </xsl:template>
 
     <xsl:template match="tei:item">
-        <li id="item_{@n}">
+        <li id="item_{@n}" class="catalogo-item">
             <xsl:apply-templates/>
+            <xsl:if test="@corresp">
+                <nav>
+                    <ul>
+                        <xsl:for-each select="tokenize(@corresp, ' ')">
+                            <li>
+                                <a class="cico-ref" href="/catalog/{current()}">
+                                    <xsl:value-of select="current()"/>
+                                </a>
+                            </li>
+                        </xsl:for-each>
+                    </ul>
+                </nav>
+            </xsl:if>
         </li>
     </xsl:template>
 
     <xsl:template match="tei:item/tei:label">
-        <span class="item-label">
+        <span class="catalogo-item-label">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
 
 
     <xsl:template match="tei:bibl">
-        <span class="bibl">
+        <span class="catalogo-bibl">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     <xsl:template match="tei:author">
-        <span class="author">
+        <span class="catalogo-author">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     <xsl:template match="tei:note">
-        <div class="note">
+        <div class="catalogo-note">
             <xsl:apply-templates/>
         </div>
     </xsl:template>
     <xsl:template match="tei:title">
-        <span class="title">
+        <span class="catalogo-title">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     <xsl:template match="tei:pubPlace">
-        <span class="pubPlace">
+        <span class="catalogo-pubPlace">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     <xsl:template match="tei:date">
-        <span class="date">
+        <span class="catalogo-date">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     <xsl:template match="tei:extent">
-        <span class="extent">
+        <span class="catalogo-extent">
             <xsl:apply-templates/>
         </span>
     </xsl:template>

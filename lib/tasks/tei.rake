@@ -13,6 +13,7 @@ namespace :tei do
   end
 
   task :partials do
+    desc 'Create partials at PARTIALSPATH from document at TEIPATH'
     teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.tei.xml')
     partialspath = ENV['PARTIALSPATH'] || File.join(File.dirname(__FILE__), '../../', 'app/views/pages/catalogo/')
     xslpath = File.join(File.dirname(__FILE__), '../', 'xsl', 'partials.xsl')
