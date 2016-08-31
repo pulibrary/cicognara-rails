@@ -53,7 +53,7 @@
                     <ul>
                         <xsl:for-each select="tokenize(@corresp, ' ')">
                             <li>
-                                <a class="cico-ref" href="{current()}">
+                                <a class="cico-ref" href="/catalog/{current()}">
                                     <xsl:value-of select="current()"/>
                                 </a>
                             </li>
