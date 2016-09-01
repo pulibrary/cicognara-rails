@@ -53,8 +53,8 @@ RSpec.describe 'xsl', type: :request do
         it 'note is wrapped in a div with class catalogo-note' do
           expect(response.body).to have_selector('div.catalogo-note', text: 'Le stampe in legno')
         end
-        it 'cico-ref is wrapped in a link with class cico-ref' do
-          expect(response.body).to have_link('cico:88n', href: '/catalog/cico:88n')
+        it 'title is linked to catalog page' do
+          expect(response.body).to have_link('Libellus de utilitate', href: '/catalog/15')
         end
       end
     end

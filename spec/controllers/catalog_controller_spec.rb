@@ -19,7 +19,7 @@ RSpec.describe CatalogController, type: :controller do
 
   describe 'GET #show' do
     it 'retrieves linked books' do
-      get :show, id: 'c1d1e444'
+      get :show, id: '2'
 
       linked_books = assigns(:linked_books)
       expect(linked_books.length).to eq 1
@@ -32,7 +32,7 @@ RSpec.describe CatalogController, type: :controller do
     end
 
     it 'book has configured display fields from marc' do
-      get :show, id: 'c1d1e444'
+      get :show, id: '2'
 
       linked_books = assigns(:linked_books)
       expect(linked_books.first['title_addl_display']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')

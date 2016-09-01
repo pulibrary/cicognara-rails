@@ -48,19 +48,6 @@
     <xsl:template match="tei:item">
         <li id="item_{@n}" class="catalogo-item">
             <xsl:apply-templates/>
-            <xsl:if test="@corresp">
-                <nav>
-                    <ul>
-                        <xsl:for-each select="tokenize(@corresp, ' ')">
-                            <li>
-                                <a class="cico-ref" href="/catalog/{current()}">
-                                    <xsl:value-of select="current()"/>
-                                </a>
-                            </li>
-                        </xsl:for-each>
-                    </ul>
-                </nav>
-            </xsl:if>
         </li>
     </xsl:template>
 
@@ -88,7 +75,9 @@
     </xsl:template>
     <xsl:template match="tei:title">
         <span class="catalogo-title">
-            <xsl:apply-templates/>
+          <a class="catalog-link" href="/catalog/{./ancestor::tei:item/@n}">
+              <xsl:apply-templates/>
+          </a>
         </span>
     </xsl:template>
     <xsl:template match="tei:pubPlace">

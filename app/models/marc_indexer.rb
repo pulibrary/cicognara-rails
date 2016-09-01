@@ -227,6 +227,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
       end
 
       # add display fields
+      context.output_hash['dclib_display'] = context.output_hash['id']
       context.output_hash['published_display'] = context.output_hash['published_t'] unless context.output_hash['published_t'].nil?
       context.output_hash['title_addl_display'] = context.output_hash['title_addl_t'] unless context.output_hash['title_addl_t'].nil?
       context.output_hash['title_added_entry_display'] = context.output_hash['title_added_entry_t'] unless context.output_hash['title_added_entry_t'].nil?

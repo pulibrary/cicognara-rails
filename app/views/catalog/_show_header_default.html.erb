@@ -1,0 +1,6 @@
+<% # bookmark/folder functions -%>
+<% if document['section_s'].nil? %>
+  <%= render_document_heading(document, :tag => :h1) %>
+<% else %>
+  <h1><%= catalogo_link(document) %></h1>
+<% end %>

@@ -2,15 +2,11 @@
 class CatalogoItem
   attr_accessor :xml_element
 
-  def initialize(xml_element, xsl, marc_collection)
+  def initialize(xml_element, xsl, marc_collection, section_number)
     @xml_element = xml_element
     @xsl = xsl
     @marc_collection = marc_collection
-  end
-
-  def id
-    ids = @xml_element.xpath('./@xml:id')
-    ids.empty? ? 'NO_ID' : ids.first.value
+    @section_number = section_number
   end
 
   def n
@@ -23,8 +19,8 @@ class CatalogoItem
     c.empty? ? [] : c.first.value.split
   end
 
-  def title
-    title = @xml_element.xpath('./tei:bibl[1]/tei:title[1]', tei: 'http://www.tei-c.org/ns/1.0')
+  def item_label
+    title = @xml_element.xpath('./tei:label', tei: 'http://www.tei-c.org/ns/1.0')
     title.first.text.gsub(/\s+/, ' ').strip unless title.empty?
   end
 
@@ -39,20 +35,20 @@ class CatalogoItem
   end
 
   def solr_doc
-    doc = { id: id, cico_s: n, description_display: html, description_t: text }
+    doc = { id: n, cico_s: n, description_display: html, description_t: text, section_s: @section_number }
     unless corresp.empty?
       doc[:dclib_s] = corresp
       book_fields = get_marc_fields(corresp)
-      doc[:title_display] = best_title(n, book_fields['title_t'] || []) unless doc[:title_display]
       doc.merge!(book_fields)
     end
+    doc[:title_display] = title_display(item_label || n, @section_number)
     doc
   end
 
   private
 
-  def best_title(n, marc_title = [])
-    marc_title.first ? marc_title.first : n
+  def title_display(label, section_number)
+    "Catalogo Section #{section_number}, Item #{label.chomp('.')}"
   end
 
   def get_marc_fields(dclib_nums)
@@ -80,6 +76,6 @@ class CatalogoItem
     %w(id format title_display author_display published_display
        title_addl_display title_added_entry_display title_series_display
        subject_display contents_display edition_display language_display
-       related_name_display).each { |f| book.delete(f) }
+       related_name_display dclib_display).each { |f| book.delete(f) }
   end
 end
