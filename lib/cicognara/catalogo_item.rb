@@ -2,11 +2,12 @@
 class CatalogoItem
   attr_accessor :xml_element
 
-  def initialize(xml_element, xsl, marc_collection, section_number)
+  def initialize(xml_element, xsl, marc_collection, section_number, section_head)
     @xml_element = xml_element
     @xsl = xsl
     @marc_collection = marc_collection
     @section_number = section_number
+    @section_head = section_head
   end
 
   def n
@@ -24,30 +25,56 @@ class CatalogoItem
     title.first.text.gsub(/\s+/, ' ').strip unless title.empty?
   end
 
+  def item_titles
+    titles = @xml_element.xpath('./tei:bibl/tei:title', tei: 'http://www.tei-c.org/ns/1.0')
+    titles.map { |t| t.text.gsub(/\s+/, ' ').strip } unless titles.empty?
+  end
+
+  def item_authors
+    authors = @xml_element.xpath('./tei:bibl/tei:author', tei: 'http://www.tei-c.org/ns/1.0')
+    authors.map { |a| a.text.gsub(/\s+/, ' ').strip } unless authors.empty?
+  end
+
+  def item_pubs
+    pubs = @xml_element.xpath('./tei:bibl/tei:pubPlace', tei: 'http://www.tei-c.org/ns/1.0')
+    pubs.map { |p| p.text.gsub(/\s+/, ' ').strip } unless pubs.empty?
+  end
+
+  def item_dates
+    dates = @xml_element.xpath('.//tei:date', tei: 'http://www.tei-c.org/ns/1.0')
+    dates.map { |d| d.text.gsub(/\s+/, ' ').strip } unless dates.empty?
+  end
+
+  def item_notes
+    notes = @xml_element.xpath('./tei:note', tei: 'http://www.tei-c.org/ns/1.0')
+    notes.map { |n| n.text.gsub(/\s+/, ' ').strip } unless notes.empty?
+  end
+
   def text
     @xml_element.to_str.gsub(/\s+/, ' ').strip
   end
 
-  def html
-    doc = Nokogiri::XML::Document.new
-    doc.root = @xml_element
-    @xsl.transform(doc).to_html
-  end
-
   def solr_doc
-    doc = { id: n, cico_s: n, description_display: html, description_t: text, section_s: @section_number }
+    doc = doc_tei_fields
     unless corresp.empty?
       doc[:dclib_s] = corresp
       book_fields = get_marc_fields(corresp)
       doc.merge!(book_fields)
     end
-    doc[:title_display] = title_display(item_label || n, @section_number)
+    doc[:title_display] = solr_title_display(item_label || n, @section_number)
     doc
   end
 
   private
 
-  def title_display(label, section_number)
+  def doc_tei_fields
+    { id: n, cico_s: n, tei_description_unstem_search: text, tei_section_display: @section_number,
+      tei_section_head_italian: @section_head, tei_title_txt: item_titles,
+      tei_author_txt: item_authors, tei_pub_txt: item_pubs, tei_date_display: item_dates,
+      tei_note_italian: item_notes }
+  end
+
+  def solr_title_display(label, section_number)
     "Catalogo Section #{section_number}, Item #{label.chomp('.')}"
   end
 
