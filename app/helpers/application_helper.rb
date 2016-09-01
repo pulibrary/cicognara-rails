@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def render_html(args)
-    args[:document][args[:field]].each_with_index do |value, i|
-      args[:document][args[:field]][i] = value.html_safe
-    end
+  def catalogo_link(document)
+    item = document['id']
+    section = document['section_s'].first
+    link_to(document['title_display'], "/catalogo/section_#{section}/index.html#item_#{item}")
   end
 end

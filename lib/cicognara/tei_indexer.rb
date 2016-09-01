@@ -10,11 +10,9 @@ class TEIIndexer
     @catalogo = File.open(pathtotei) { |f| Nokogiri::XML(f) }
     @items = []
     @marc_collection = prepare_marc(pathtomarc)
-    xpath = @catalogo.xpath("//tei:list[@type='catalog']/tei:item", 'tei' => 'http://www.tei-c.org/ns/1.0')
-    xsl = File.open(pathtoxsl) { |f| Nokogiri::XSLT(f) }
-    xpath.each do |i|
-      items.push(CatalogoItem.new(i, xsl, @marc_collection))
-    end
+    @xsl = File.open(pathtoxsl) { |f| Nokogiri::XSLT(f) }
+    sections = @catalogo.xpath("//tei:div[@type='section']", 'tei' => 'http://www.tei-c.org/ns/1.0')
+    sections.each { |section| process_section(section) }
   end
 
   def solr_docs
@@ -24,6 +22,14 @@ class TEIIndexer
   end
 
   private
+
+  def process_section(section)
+    section_number = section.xpath('@n')
+    xpath = section.xpath(".//tei:list[@type='catalog']/tei:item", 'tei' => 'http://www.tei-c.org/ns/1.0')
+    xpath.each do |i|
+      items.push(CatalogoItem.new(i, @xsl, @marc_collection, section_number))
+    end
+  end
 
   def prepare_marc(pathtomarc)
     indexer = MarcIndexer.new

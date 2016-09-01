@@ -20,29 +20,12 @@ describe TEIIndexer do
       expect(subject.items.length).to eq 5
     end
 
-    it 'has an id property' do
-      expect(subject.items.first.id).not_to be_nil
-    end
-
-    it 'id is a string' do
-      expect(subject.items.first.id.class).to eq(String)
-    end
-
-    it 'has a correct id property' do
-      expect(subject.items.first.id).to eq('c1d1e413')
-    end
-
     it 'has an n property' do
       expect(subject.items.first.n).not_to be_nil
     end
 
     it 'has a correct n property' do
       expect(subject.items.first.n).to eq('1')
-    end
-
-    it 'has a title property' do
-      expected = "Histoire de l’Art par les Monumens depuis sa decadence au 4ᵐᵉ siecle, jusque à son renouvellement au 16.me pour servir de suite à l’histoire de l’art chez les Anciens."
-      expect(subject.items.first.title).to eq expected
     end
 
     describe '#corresp' do
@@ -93,7 +76,7 @@ describe TEIIndexer do
       end
 
       it 'has the right id property' do
-        expect(subject.items.first.solr_doc[:id]).to eq('c1d1e413')
+        expect(subject.items.first.solr_doc[:id]).to eq('1')
       end
 
       it 'has a cico_s field' do
@@ -127,6 +110,10 @@ describe TEIIndexer do
       it 'dclib_s field to have 2 values when @corresp has 2 values' do
         expect(subject.items[2].solr_doc[:dclib_s].length).to eq(2)
       end
+
+      it 'indexes the section number and item number for display' do
+        expect(subject.items[1].solr_doc[:title_display]).to include('1.1', '2')
+      end
     end
 
     describe 'marc-related fields' do
@@ -145,10 +132,6 @@ describe TEIIndexer do
       it 'merges fields across multiple marc records' do
         expect(subject.items[2].solr_doc['subject_topic_facet']).to include('Humanism')
         expect(subject.items[2].solr_doc['subject_topic_facet']).to include('Conduct of life')
-      end
-
-      it 'has indexes the marc title for display' do
-        expect(subject.items[1].solr_doc[:title_display]).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
       end
     end
   end
