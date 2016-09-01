@@ -172,6 +172,15 @@
        </analyzer>
      </fieldType>
 
+     <fieldType name="text_italian" class="solr.TextField" positionIncrementGap="100">
+       <analyzer>
+         <tokenizer class="solr.StandardTokenizerFactory"/>
+         <filter class="solr.ICUFoldingFilterFactory" />
+         <filter class="solr.SnowballPorterFilterFactory" language="Italian" />
+         <!-- <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_it.txt"/> -->
+       </analyzer>
+     </fieldType>
+
     <!-- One can also specify an existing Analyzer class that has a
          default constructor via the class attribute on the analyzer element
     <fieldType name="text_greek" class="solr.TextField">
@@ -194,6 +203,7 @@
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.ICUFoldingFilterFactory" />
         <!-- in this example, we will only use synonyms at query time
         <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
         -->
@@ -201,7 +211,6 @@
       </analyzer>
       <analyzer type="query">
         <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
     </fieldType>
@@ -307,7 +316,7 @@
     <fieldType name="textSpell" class="solr.TextField" positionIncrementGap="100" >
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_en.txt"/>
         <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
@@ -528,6 +537,7 @@
    <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" multiValued="false" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
+   <dynamicField name="*_italian" type="text_italian" indexed="true" stored="true" multiValued="true"/>
    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*suggest" type="textSuggest" indexed="true" stored="false" multiValued="true" />
 
@@ -569,6 +579,9 @@
    
    <!-- sort fields -->
    <copyField source="pub_date" dest="pub_date_sort"/>
+
+   <copyField source="cico_s" dest="cico_unstem_search"/>
+   <copyField source="dclib_s" dest="dclib_unstem_search"/>
    
         
    <!-- spellcheck fields -->
@@ -604,6 +617,8 @@
 
    <!-- for suggestions -->
    <copyField source="*_t" dest="suggest"/>
+   <copyField source="*_txt" dest="suggest"/>
+   <copyField source="tei_section_head_italian" dest="suggest"/>
    <copyField source="*_facet" dest="suggest"/>
    
    <!-- Above, multiple source fields are copied to the [text] field. 

@@ -60,12 +60,6 @@ describe TEIIndexer do
       end
     end
 
-    describe '#html' do
-      it 'begin with <p> and end with </p>' do
-        expect(%r{^<p>.*</p>$}m =~ subject.items.first.html).to eq(0)
-      end
-    end
-
     describe '#solr_doc' do
       it 'is a hash' do
         expect(subject.items.first.solr_doc.class).to eq(Hash)
@@ -87,12 +81,12 @@ describe TEIIndexer do
         expect(subject.items.first.solr_doc[:cico_s]).to eq('1')
       end
 
-      it 'has a description_t field' do
-        expect(subject.items.first.solr_doc[:description_t]).not_to be_nil
+      it 'has a tei_description_unstem_search field' do
+        expect(subject.items.first.solr_doc[:tei_description_unstem_search]).not_to be_nil
       end
 
-      it 'has a description_display field' do
-        expect(subject.items.first.solr_doc[:description_display]).not_to be_nil
+      it 'has a tei_notes_txt field' do
+        expect(subject.items.first.solr_doc[:tei_note_italian]).not_to be_nil
       end
 
       it 'does not have dclib_s field when @corresp is not present' do

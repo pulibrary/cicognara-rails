@@ -80,11 +80,17 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'cico_s', label: 'Cicognara number'
-    config.add_index_field 'dclib_s', label: 'DCL id(s)'
+    config.add_index_field 'tei_title_txt', label: 'Title(s)'
+    config.add_index_field 'tei_author_txt', label: 'Author(s)'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
+    config.add_show_field 'tei_title_txt', label: 'Title(s)'
+    config.add_show_field 'tei_author_txt', label: 'Author(s)'
+    config.add_show_field 'tei_pub_txt', label: 'Publication place(s)'
+    config.add_show_field 'tei_date_display', label: 'Publication date(s)'
+    config.add_show_field 'tei_section_head_italian', label: 'Section head'
+    config.add_show_field 'tei_note_italian', label: 'Note(s)'
     config.add_show_field 'dclib_display', label: 'DCL id'
     config.add_show_field 'author_display', label: 'Author'
     config.add_show_field 'language_display', label: 'Language'

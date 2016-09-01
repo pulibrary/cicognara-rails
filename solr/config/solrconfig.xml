@@ -74,7 +74,7 @@
        <int name="rows">10</int>
 
        <str name="q.alt">*:*</str>
-       <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+       <str name="mm">5&lt;90%</str>
 
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
@@ -87,15 +87,17 @@
        <str name="qf">
          title_unstem_search^100000
          subtitle_unstem_search^50000
+         tei_title_txt^50000
+         tei_author_txt^25000
          title_t^25000
          subtitle_t^10000
          title_addl_unstem_search^5000
          title_addl_t^2500
          title_added_entry_unstem_search^1500
          title_added_entry_t^1250
+         tei_section_head_italian^1000
          subject_topic_unstem_search^1000
          subject_unstem_search^750
-         subject_topic_facet^625
          subject_t^500
          author_unstem_search^250
          author_addl_unstem_search^250
@@ -103,26 +105,29 @@
          author_addl_t^50
          subject_addl_unstem_search^250
          subject_addl_t^50
+         tei_pub_txt^50
          title_series_unstem_search^25
          title_series_t^10
          isbn_t
          text
-	 description_t
-	 cico_s
-	 dclib_s
+         tei_description_unstem_search
+         cico_unstem_search
+         dclib_unstem_search
        </str>
        <str name="pf">
          title_unstem_search^1000000
          subtitle_unstem_search^500000
+         tei_title_txt^500000
+         tei_author_txt^250000
          title_t^250000
          subtitle_t^100000
          title_addl_unstem_search^50000
          title_addl_t^25000
          title_added_entry_unstem_search^15000
          title_added_entry_t^12500
+         tei_section_head_italian^10000
          subject_topic_unstem_search^10000
          subject_unstem_search^7500
-         subject_topic_facet^6250
          subject_t^5000
          author_unstem_search^2500
          author_addl_unstem_search^2500
@@ -130,27 +135,31 @@
          author_addl_t^500
          subject_addl_unstem_search^2500
          subject_addl_t^500
+         tei_pub_txt^500
          title_series_unstem_search^250
          title_series_t^100
          text^10
-	 description_t^10
-	 cico_s^10
-	 dclib_s^10
+         tei_description_unstem_search^10
+         cico_unstem_search^10
+         dclib_unstem_search^10
        </str>
        <str name="author_qf">
          author_unstem_search^200
+         tei_author_txt^200
          author_addl_unstem_search^50
          author_t^20
          author_addl_t
        </str>
        <str name="author_pf">
          author_unstem_search^2000
+         tei_author_txt^2000
          author_addl_unstem_search^500
          author_t^200
          author_addl_t^10
        </str>
        <str name="title_qf">
          title_unstem_search^50000
+         tei_title_txt^50000
          subtitle_unstem_search^25000
          title_addl_unstem_search^10000
          title_t^5000
@@ -163,6 +172,7 @@
        </str>
        <str name="title_pf">
          title_unstem_search^500000
+         tei_title_txt^500000
          subtitle_unstem_search^250000
          title_addl_unstem_search^100000
          title_t^50000
@@ -175,17 +185,17 @@
        </str>
        <str name="subject_qf">
          subject_topic_unstem_search^200
+         tei_section_head_italian^200
          subject_unstem_search^125
-         subject_topic_facet^100
          subject_t^50
          subject_addl_unstem_search^10
          subject_addl_t
        </str>
        <str name="subject_pf">
          subject_topic_unstem_search^2000
+         tei_section_head_italian^2000
          subject_unstem_search^1250
          subject_t^1000
-         subject_topic_facet^500
          subject_addl_unstem_search^100
          subject_addl_t^10
        </str>
@@ -193,31 +203,12 @@
        <int name="ps">3</int>
        <float name="tie">0.01</float>
 
-       <!-- NOT using marc_display because it is large and will slow things down for search results -->
        <str name="fl">
          id, 
          score,
-         author_display,
-         author_vern_display, 
-         format, 
-         isbn_t, 
-         language_facet, 
-         lc_callnum_display,
-         material_type_display, 
-         published_display,
-         published_vern_display,
-         pub_date,
-         title_display,
-         title_vern_display,
-         subject_topic_facet,
-         subject_geo_facet,
-         subject_era_facet,
-         subtitle_display,
-         subtitle_vern_display,
-         url_fulltext_display,
-         url_suppl_display,
-         cico_s,
-         dclib_s
+         tei_title_txt,
+         tei_author_txt,
+         title_display
        </str>
 
        <str name="facet">true</str>
