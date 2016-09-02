@@ -13,7 +13,7 @@
 
     <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes"/>
 
-    <xsl:param name="path_to_partials"/>
+    <xsl:param name="path_to_partials">/tmp/item-partials</xsl:param>
 
     <xsl:template match="tei:div[@type = 'section']">
         <xsl:result-document exclude-result-prefixes="#all" method="xml"

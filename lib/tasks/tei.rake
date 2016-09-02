@@ -16,7 +16,12 @@ namespace :tei do
     desc 'Create partials at PARTIALSPATH from document at TEIPATH'
     teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.tei.xml')
     partialspath = ENV['PARTIALSPATH'] || File.join(File.dirname(__FILE__), '../../', 'app/views/pages/catalogo/')
-    xslpath = File.join(File.dirname(__FILE__), '../', 'xsl', 'partials.xsl')
+    # Generate section partials
+    xslpath = File.join(File.dirname(__FILE__), '../', 'xsl', 'partials-section.xsl')
+    system(%(java -jar bin/saxon9he.jar -s:#{teipath} -xsl:#{xslpath} path_to_partials=#{partialspath}))
+
+    # Generate item partials
+    xslpath = File.join(File.dirname(__FILE__), '../', 'xsl', 'partials-item.xsl')
     system(%(java -jar bin/saxon9he.jar -s:#{teipath} -xsl:#{xslpath} path_to_partials=#{partialspath}))
   end
 end
