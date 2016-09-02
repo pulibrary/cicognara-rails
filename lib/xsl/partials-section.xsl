@@ -15,12 +15,49 @@
 
     <xsl:param name="path_to_partials">/tmp/item-partials</xsl:param>
 
+    <xsl:template match="tei:teiCorpus" mode="toc">
+        <xsl:param name="current-item-number"/>
+        <ol>
+            <xsl:for-each select="//tei:div[@type = 'section']">
+                <li>
+                    <xsl:if test="$current-item-number eq @n">
+                        <xsl:attribute name="class">current</xsl:attribute>
+                    </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="$current-item-number eq @n">
+                            <xsl:value-of select="current()/tei:head/tei:seg[@type = 'main']"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <a href="catalogo/section_{@n}">
+                                <xsl:value-of select="current()/tei:head/tei:seg[@type = 'main']"/>
+                            </a>
+                        </xsl:otherwise>
+                    </xsl:choose>
+
+                </li>
+            </xsl:for-each>
+        </ol>
+    </xsl:template>
+
     <xsl:template match="tei:div[@type = 'section']">
         <xsl:result-document exclude-result-prefixes="#all" method="xml"
             href="{$path_to_partials}/section_{@n}.html">
-            <section class="catalogo-section" id="{@n}">
-                <xsl:apply-templates/>
-            </section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <xsl:apply-templates select="./ancestor::tei:teiCorpus" mode="toc">
+                            <xsl:with-param name="current-item-number">
+                                <xsl:value-of select="current()/@n"/>
+                            </xsl:with-param>
+                        </xsl:apply-templates>
+                    </div>
+                    <div class="col-md-9">
+                        <section class="catalogo-section" id="{@n}">
+                            <xsl:apply-templates/>
+                        </section>
+                    </div>
+                </div>
+            </div>
         </xsl:result-document>
     </xsl:template>
 
@@ -75,9 +112,9 @@
     </xsl:template>
     <xsl:template match="tei:title">
         <span class="catalogo-title">
-          <a class="catalog-link" href="/catalog/{./ancestor::tei:item/@n}">
-              <xsl:apply-templates/>
-          </a>
+            <a class="catalog-link" href="/catalog/{./ancestor::tei:item/@n}">
+                <xsl:apply-templates/>
+            </a>
         </span>
     </xsl:template>
     <xsl:template match="tei:pubPlace">
