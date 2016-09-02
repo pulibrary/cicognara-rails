@@ -6,8 +6,7 @@ RSpec.describe 'xsl', type: :request do
     system 'rake tei:partials'
   end
   describe 'section partials' do
-    let(:doc) { JSON.parse(response.body)['response']['document'] }
-    it 'html page for each partial' do
+    it 'html page for each section partial' do
       get page_path('catalogo/section_2.1')
       expect(response).to have_http_status(200)
     end
@@ -57,6 +56,13 @@ RSpec.describe 'xsl', type: :request do
           expect(response.body).to have_link('Libellus de utilitate', href: '/catalog/15')
         end
       end
+    end
+  end
+
+  describe 'item partials' do
+    it 'html page for each item partial' do
+      get page_path('catalogo/item_15')
+      expect(response).to have_http_status(200)
     end
   end
 end

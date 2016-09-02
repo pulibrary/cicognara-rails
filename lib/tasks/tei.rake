@@ -23,6 +23,5 @@ namespace :tei do
     # Generate item partials
     xslpath = File.join(File.dirname(__FILE__), '../', 'xsl', 'partials-item.xsl')
     system(%(java -jar bin/saxon9he.jar -s:#{teipath} -xsl:#{xslpath} path_to_partials=#{partialspath}))
-
   end
 end
