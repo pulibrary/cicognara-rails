@@ -11,6 +11,16 @@ RSpec.describe 'xsl', type: :request do
       expect(response).to have_http_status(200)
     end
 
+    describe 'section links' do
+      before { get page_path('catalogo/section_1.2') }
+      it 'contain links to other sections' do
+        expect(response.body).to have_link('Dell’antichità in genere', href: '/catalogo/section_2.1/index.html')
+      end
+      it 'does not contain link to current page' do
+        expect(response.body).not_to have_link(href: '/catalogo/section_1.2/index.html')
+      end
+    end
+
     describe 'partials content' do
       before { get page_path('catalogo/section_1.1') }
       describe 'section structure' do
