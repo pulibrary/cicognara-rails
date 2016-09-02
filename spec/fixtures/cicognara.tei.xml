@@ -88,7 +88,7 @@
       <body>
 	<div type="section" n="1.1">
 	  <pb type="cico" n="1"/>
-	  <head>Delle belle arti in generale</head>
+	  <head><seg type="main">Delle belle arti in generale</seg></head>
 	  <list type="catalog">
 	    
 	    <item xml:id="c1d1e413" n="1">
@@ -156,7 +156,7 @@
           <pb type="cico" n="11"/>
 	  <pb type="memofonte"/>
 	  <fw type="head"/>
-	  <head>Della Pittura Trattati</head>
+	  <head><seg type="main">Della Pittura Trattati</seg></head>
 	  <list type="catalog">
 	    <item xml:id="c1d1e2260" n="66" corresp="cico:6gq">
               <label>66.</label> 
@@ -243,7 +243,7 @@
           <div type="section"
                n="2.1">
 	    
-            <head>DELL’ANTICHITÀ IN GENERE</head>
+            <head><seg type="main">Dell’antichità in genere</seg></head>
             <list type="catalog">
               <item xml:id="c2d1e550" n="2475" corresp="cico:kc5">
                 <label>2475.</label> <bibl><author>ABREGE</author><title> des transactions philosophiques de la Societé Royale de Londres: redigé par Gibelin. Onzieme Partie:

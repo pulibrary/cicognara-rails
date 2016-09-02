@@ -2,12 +2,11 @@
 class CatalogoItem
   attr_accessor :xml_element
 
-  def initialize(xml_element, xsl, marc_collection, section_number, section_head)
+  def initialize(xml_element, xsl, marc_collection, section_info)
     @xml_element = xml_element
     @xsl = xsl
     @marc_collection = marc_collection
-    @section_number = section_number
-    @section_head = section_head
+    @section = section_info
   end
 
   def n
@@ -61,21 +60,21 @@ class CatalogoItem
       book_fields = get_marc_fields(corresp)
       doc.merge!(book_fields)
     end
-    doc[:title_display] = solr_title_display(item_label || n, @section_number)
+    doc[:title_display] = solr_title_display(item_label || n)
     doc
   end
 
   private
 
   def doc_tei_fields
-    { id: n, cico_s: n, tei_description_unstem_search: text, tei_section_display: @section_number,
-      tei_section_head_italian: @section_head, tei_title_txt: item_titles,
+    { id: n, cico_s: n, tei_description_unstem_search: text, tei_section_display: @section[:display],
+      tei_section_head_italian: @section[:head], tei_section_number_display: @section[:number],
       tei_author_txt: item_authors, tei_pub_txt: item_pubs, tei_date_display: item_dates,
-      tei_note_italian: item_notes }
+      tei_note_italian: item_notes, tei_title_txt: item_titles }
   end
 
-  def solr_title_display(label, section_number)
-    "Catalogo Section #{section_number}, Item #{label.chomp('.')}"
+  def solr_title_display(label)
+    "Catalogo Item #{label.chomp('.')}"
   end
 
   def get_marc_fields(dclib_nums)

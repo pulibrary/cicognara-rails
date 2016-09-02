@@ -25,10 +25,12 @@ class TEIIndexer
 
   def process_section(section)
     section_number = section.xpath('@n')
-    section_name = section.xpath('tei:head', tei: 'http://www.tei-c.org/ns/1.0').first.text
+    section_head = section.xpath('tei:head', tei: 'http://www.tei-c.org/ns/1.0').first.text
+    section_display = section.xpath("tei:head/tei:seg[@type='main']", tei: 'http://www.tei-c.org/ns/1.0').first.text
+    section_info = { number: section_number, head: section_head, display: section_display }
     xpath = section.xpath(".//tei:list[@type='catalog']/tei:item", tei: 'http://www.tei-c.org/ns/1.0')
     xpath.each do |i|
-      items.push(CatalogoItem.new(i, @xsl, @marc_collection, section_number, section_name))
+      items.push(CatalogoItem.new(i, @xsl, @marc_collection, section_info))
     end
   end
 

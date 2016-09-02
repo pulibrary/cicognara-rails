@@ -105,8 +105,8 @@ describe TEIIndexer do
         expect(subject.items[2].solr_doc[:dclib_s].length).to eq(2)
       end
 
-      it 'indexes the section number and item number for display' do
-        expect(subject.items[1].solr_doc[:title_display]).to include('1.1', '2')
+      it 'indexes the item number for display' do
+        expect(subject.items[1].solr_doc[:title_display]).to include('2')
       end
     end
 
