@@ -29,7 +29,7 @@ RSpec.describe 'CatalogController config', type: :request do
   describe 'show view' do
     it 'contains link to catalogo item view' do
       get solr_document_path('15')
-      expect(response.body).to have_link('Catalogo Section 1.1, Item 15', href: '/catalogo/section_1.1/index.html#item_15')
+      expect(response.body).to have_link('Catalogo Item 15', href: '/catalogo/section_1.1/index.html#item_15')
     end
   end
   after(:all) { Book.destroy_all }
