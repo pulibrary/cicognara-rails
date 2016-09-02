@@ -181,6 +181,13 @@ class CatalogController < ApplicationController
 
   def show
     super
-    @linked_books = @document.fetch('dclib_s', []).map { |dcn| fetch_one(dcn, {}).last }
+    @linked_books = @document.fetch('dclib_s', []).map do |dcn|
+      begin
+        fetch_one(dcn, {}).last
+      rescue
+        nil
+      end
+    end
+    @linked_books.compact!
   end
 end
