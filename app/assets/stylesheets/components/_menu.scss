@@ -1,0 +1,41 @@
+header {
+  background: $beige;
+  height: 50px;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  transition: top 0.2s ease-in-out;
+  width: 100%;
+  text-align: center;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      float: left;
+      padding: 1em;
+    }
+  }
+
+  a {
+    text-transform: uppercase;
+    font: $intro-heading;
+    font-size: 15px;
+    color: $black;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.nav-up {
+  top: -50px;
+}
+
+.nav-down {
+  top: 0;
+}
