@@ -80,8 +80,6 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'tei_title_txt', label: 'Title(s)'
-    config.add_index_field 'tei_author_txt', label: 'Author(s)'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
