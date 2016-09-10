@@ -3,7 +3,6 @@ require 'rails_helper'
 require 'tei_helper'
 
 describe TEIIndexer do
-
   before(:all) do
     pathtotei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     pathtomarc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')

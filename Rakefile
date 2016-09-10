@@ -18,7 +18,7 @@ task :server, [:rails_server_args] do |_t, args|
       begin
         system "bundle exec rails s #{args[:rails_server_args]}"
       rescue Interrupt
-        puts "Shutting down..."
+        puts 'Shutting down...'
       end
     end
   end

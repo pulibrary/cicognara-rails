@@ -38,6 +38,8 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
     config.index.display_type_field = 'format'
+    config.index.partials = [:index_header, :item_partial]
+    config.show.partials = [:show_header, :item_partial, :linked_books]
 
     # solr field configuration for document/show views
     # config.show.title_field = 'title_display'
@@ -80,6 +82,8 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
+    config.add_index_field 'tei_title_txt', label: 'Title(s)'
+    config.add_index_field 'tei_author_txt', label: 'Author(s)'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

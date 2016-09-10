@@ -41,7 +41,7 @@
 
     <xsl:template match="tei:list[@type='catalog']/tei:item">
         <xsl:result-document exclude-result-prefixes="#all" method="xml"
-            href="{$path_to_partials}/item_{@n}.html">
+            href="{$path_to_partials}/_item_{@n}.html">
             <section class="catalogo-item" id="{@n}">
                 <xsl:apply-templates/>
             </section>

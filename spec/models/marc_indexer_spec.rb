@@ -27,7 +27,6 @@ class TestWriter
 end
 
 RSpec.describe MarcIndexer, type: :model do
-
   before(:all) do
     @values = []
     marc_file = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
