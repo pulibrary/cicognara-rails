@@ -2,9 +2,6 @@ require 'rails_helper'
 require 'json'
 
 RSpec.describe 'xsl', type: :request do
-  before(:all) do
-    system 'rake tei:partials'
-  end
   describe 'section partials' do
     it 'html page for each section partial' do
       get page_path('catalogo/section_2.1')
@@ -71,7 +68,7 @@ RSpec.describe 'xsl', type: :request do
 
   describe 'item partials' do
     it 'html page for each item partial' do
-      get page_path('catalogo/item_15')
+      get page_path('catalogo/_item_15')
       expect(response).to have_http_status(200)
     end
   end

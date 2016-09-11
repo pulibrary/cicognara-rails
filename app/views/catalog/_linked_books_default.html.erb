@@ -1,8 +1,8 @@
 <% @linked_books.each do |book| %>
   <div class="col-xs-offset-2">
     <h4><%= book['title_display'] %></h4>
-    <%= render partial: 'show_default_inner', locals: { document: book } %>
-    
+    <%= render partial: 'show_default', locals: { document: book } %>
+
     <% book_record = Book.where(digital_cico_number: book['id']).first
        versions = Version.where(book_id: book_record.id) %>
     <div class="col-xs-offset-3">

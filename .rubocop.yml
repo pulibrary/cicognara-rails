@@ -28,3 +28,6 @@ RSpec/DescribeClass:
 
 Style/Documentation:
   Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
