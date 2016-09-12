@@ -18,11 +18,11 @@ namespace :tei do
     partialspath = ENV['PARTIALSPATH'] || File.join(File.dirname(__FILE__), '../../', 'app/views/pages/catalogo/')
     # Generate section partials
     xslpath = File.join(File.dirname(__FILE__), '../', 'xsl', 'partials-section.xsl')
-    system(%(java -jar bin/saxon9he.jar -s:#{teipath} -xsl:#{xslpath} path_to_partials=#{partialspath}))
+    system(%(java -jar bin/saxon9he.jar -s:#{teipath} -xsl:#{xslpath} path_to_partials=#{partialspath} url_path_prefix=#{ENV['URL_PATH']}))
 
     # Generate item partials
     xslpath = File.join(File.dirname(__FILE__), '../', 'xsl', 'partials-item.xsl')
-    system(%(java -jar bin/saxon9he.jar -s:#{teipath} -xsl:#{xslpath} path_to_partials=#{partialspath}))
+    system(%(java -jar bin/saxon9he.jar -s:#{teipath} -xsl:#{xslpath} path_to_partials=#{partialspath} url_path_prefix=#{ENV['URL_PATH']}))
   end
 
   desc 'Pulls catalogo tei/marc then indexes and generates partials'
