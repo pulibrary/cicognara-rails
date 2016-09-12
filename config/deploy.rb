@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.5.0'
+lock '3.6.1'
 
 set :application, 'cicognara'
 set :repo_url, 'https://github.com/pulibrary/cicognara-rails.git'
@@ -30,7 +30,10 @@ set :linked_files, fetch(:linked_files, []).push('config/secrets.yml', 'db/stagi
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'vendor/bundle')
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env,
+    'MARCPATH' => '/tmp/cicognara.mrx.xml',
+    'TEIPATH' => '/tmp/catalogo.tei.xml',
+    'CATALOGO_VERSION' => 'v1.0'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
@@ -41,11 +44,10 @@ set :passenger_restart_with_touch, true
 
 namespace :deploy do
   after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+    on roles(:web), in: :groups, limit: 3, wait: 5 do
+      within release_path do
+        execute :rake, 'tei:deploy'
+      end
     end
   end
 end
