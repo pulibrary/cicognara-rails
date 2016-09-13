@@ -14,6 +14,7 @@
     <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes"/>
 
     <xsl:param name="path_to_partials">/tmp/item-partials</xsl:param>
+    <xsl:param name="url_path_prefix"></xsl:param>
     
     <xsl:template match="/">
         <xsl:apply-templates select="//tei:div[@type='section']/tei:list[@type='catalog']/tei:item" />
@@ -72,7 +73,7 @@
     </xsl:template>
     <xsl:template match="tei:title">
         <span class="catalogo-title">
-          <a class="catalog-link" href="/catalog/{./ancestor::tei:item/@n}">
+          <a class="catalog-link" href="/{$url_path_prefix}catalog/{./ancestor::tei:item/@n}">
               <xsl:apply-templates/>
           </a>
         </span>

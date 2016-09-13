@@ -14,6 +14,7 @@
     <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes"/>
 
     <xsl:param name="path_to_partials">/tmp/item-partials</xsl:param>
+    <xsl:param name="url_path_prefix"></xsl:param>
 
     <xsl:template match="tei:teiCorpus" mode="toc">
         <xsl:param name="current-item-number"/>
@@ -28,7 +29,7 @@
                             <xsl:value-of select="current()/tei:head/tei:seg[@type = 'main']"/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <a href="/catalogo/section_{@n}/index.html">
+                            <a href="/{$url_path_prefix}catalogo/section_{@n}/index.html">
                                 <xsl:value-of select="current()/tei:head/tei:seg[@type = 'main']"/>
                             </a>
                         </xsl:otherwise>
@@ -112,7 +113,7 @@
     </xsl:template>
     <xsl:template match="tei:title">
         <span class="catalogo-title">
-            <a class="catalog-link" href="/catalog/{./ancestor::tei:item/@n}">
+            <a class="catalog-link" href="/{$url_path_prefix}catalog/{./ancestor::tei:item/@n}">
                 <xsl:apply-templates/>
             </a>
         </span>
