@@ -1,0 +1,15 @@
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Contact Us</h2>
+    <p>For further information or queries, please contact us through this form.</p>
+    <form id="contact-form" action="https://formspree.io/<%= t('blacklight.email.recipient') %>" method="POST">
+      <input type="text" name="name" placeholder="Name">
+      <input type="email" name="_replyto" placeholder="Email" required>
+      <textarea name="comment" placeholder="Message" required></textarea>
+      <input id="submit-form" type="submit" value="Send">
+      <input type="hidden" name="_subject" value="Message from Cicognara Website" />
+      <input type="text" name="_gotcha" style="display:none" />
+      <input type="hidden" name="_next" value="/contact" />
+    </form>
+  </div>
+</section>

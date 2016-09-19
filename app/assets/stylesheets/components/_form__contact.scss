@@ -1,0 +1,54 @@
+.contact {
+  form {
+    margin-bottom: 50px;
+    background: $light-gray;
+    border: 1px solid $light-gray;
+    padding: 2em;
+  }
+
+  input,
+  textarea {
+    -webkit-appearance: none;
+    border-radius: 0;
+    font-size: 16px;
+  }
+
+  input,
+  select,
+  textarea {
+    display: block;
+    color: $black;
+    background-color: $white;
+    border: 3px solid $beige;
+    padding: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+
+    &:focus {
+      background: $white;
+      box-shadow: 0;
+      border: 3px solid $brown;
+      color: $black;
+      outline: none;
+      padding: 1em;
+      transition: border 0.5s ease-in;
+    }
+
+    &[type=submit] {
+      background: $brown;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-color: $brown;
+
+      &:hover {
+        background: $white;
+        transition: background 1s ease-in;
+      }
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 200px;
+  }
+}

@@ -1,0 +1,76 @@
+.facets {
+  .top-panel-heading {
+    padding: 0;
+  }
+
+  .facets-heading {
+    margin: 15px 0;
+  }
+
+  .facets-toggle {
+    margin: 8px;
+    padding: 9px 10px 3px
+  }
+
+  .panel {
+    box-shadow: none;
+  }
+
+  .panel-default > .panel-heading {
+    background: $beige;
+  }
+
+  .facet_limit-active > .panel-heading {
+    color: $black;
+  }
+
+  #facet-panel-collapse.affix {
+    top: 30px;
+
+    @media (min-width: 768px) {
+    width: 220px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 262px;
+    }
+  }
+}
+
+#facet-panel-collapse.affix {
+  position: static;
+  width: auto;
+  top: 0;
+  bottom: 141px;
+  max-height: 100%;
+  overflow-y: auto !important;
+
+  @media (min-width: 768px) {
+    position: fixed;
+    width: 220px;
+    top: 30px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 262px;
+  }
+}
+
+.toc {
+  font-size: 14px;
+  line-height: 1.5em;
+  padding-left: 25px;
+
+  li {
+    padding: 2px;
+  }
+
+  .current {
+    text-decoration: underline;
+  }
+}
+
+.facet-values {
+  font-family: $sans-serif;
+  font-size: 14px;
+}

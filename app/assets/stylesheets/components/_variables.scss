@@ -1,9 +1,17 @@
 $beige: #E6E8DB;
-$red: #672418;
+$red: #971c06;
 $black: #221E1D;
 $brown: #ADAB9D;
 $white: #fff;
+$lighter-gray: #fafafa;
+$light-gray: #efefef;
 
 $sans-serif: "Source Sans Pro", Helvetica, sans-serif;
 $serif: "Cardo", Georgia, serif;
-$intro-heading: 28px "Playfair Display", Georgia, serif;
+$intro-heading: "Playfair Display", Georgia, serif;
+
+
+// bootstrap overrides
+$font-family-serif: "Cardo", Georgia, serif;
+$brand-primary: $black;
+$logo_image: 'cicognara-logo.svg' !default;

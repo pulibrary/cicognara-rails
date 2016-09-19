@@ -1,5 +1,5 @@
 <% @linked_books.each do |book| %>
-  <div class="col-xs-offset-2">
+  <div class="row linked-books">
     <h4><%= book['title_display'] %></h4>
     <%= render partial: 'show_default', locals: { document: book } %>
 

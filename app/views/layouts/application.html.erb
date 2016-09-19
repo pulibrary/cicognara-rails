@@ -19,26 +19,30 @@
     <title><%= render_page_title %></title>
     <%= opensearch_description_tag application_name, opensearch_catalog_url(:format => 'xml') %>
     <%= favicon_link_tag %>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic|Cardo|Source+Sans+Pro:400,300,600,700,900' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
   </head>
+  <% if current_page?(root_path) %>
+    <%= render :partial => 'shared/front_header' %>
+  <% else %>
   <body class="<%= render_body_class %>">
-  <%= render :partial => 'shared/header_navbar' %>
-
-  <%= render partial: 'shared/ajax_modal' %>
-
-  <div id="main-container" class="<%= container_classes %>">
-    <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
-
-    <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
-
-    <div class="row">
+    <%= render :partial => 'shared/header_navbar' %>
+  <% end %>
+    <%= render partial: 'shared/ajax_modal' %>
+    <% if current_page?(root_path) %>
       <%= yield %>
+    <% else %>
+    <div id="main-container" class="<%= container_classes %>">
+      <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
+      <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
+      <div class="row">
+        <%= yield %>
+      </div>
     </div>
-  </div>
-
+    <% end %>
   <%= render :partial => 'shared/footer' %>
   </body>
 </html>

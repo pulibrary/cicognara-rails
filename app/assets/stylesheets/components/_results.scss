@@ -1,0 +1,38 @@
+.constraints-container {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 16px 0 0;
+}
+
+#sortAndPerPage {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+}
+
+.appliedFilter {
+  font-size: 14px;
+}
+
+.suggest {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .page_links,
+  .search-widgets {
+    clear: both;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.25em;
+  }
+}
+
+.page_entries {
+  font-size: 14px;
+}
+
+.page_links {
+  padding: 0;
+}

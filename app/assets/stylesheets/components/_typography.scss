@@ -1,28 +1,66 @@
-h1 {
-  font: $intro-heading;
+.intro h1 {
+  font-family: $intro-heading;
+  font-size: 36px;
   font-weight: 700;
   letter-spacing: .06em;
   margin: 0;
   padding: 0.5em;
   text-align: center;
   text-transform: uppercase;
+
+  @media (min-width: 600px) {
+    font-size: 25px;
+  }
+
+  @media (min-width: 800px) {
+    font-size: 32px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 42px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 51px;
+  }
+
+  .small {
+    color: $black;
+    font-size: 14px;
+    font-weight: 400;
+
+    @media (min-width: 600px) {
+      font-size: 12px;
+    }
+
+    @media (min-width: 800px) {
+      font-size: 15px;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 20px;
+    }
+
+    @media (min-width: 1150px) {
+      font-size: 24px;
+    }
+  }
 }
 
-h2 {
-  font: 30px $sans-serif;
+h2,
+section h1 {
+  font-family: $sans-serif;
+  font-size: 30px;
   font-weight: 700;
   text-align: center;
-
-  // max-width: 600px;
-  margin: 1.5em auto;
+  margin: 0.5em auto 1.5em;
 }
 
 p {
   color: $black;
-  font: 18px $serif;
+  font-family: $serif;
+  font-size: 18px;
   line-height: 1.5em;
-
-  // max-width: 600px;
   margin: 1.5em auto;
 }
 

@@ -15,7 +15,7 @@
 
     <xsl:param name="path_to_partials">/tmp/item-partials</xsl:param>
     <xsl:param name="url_path_prefix"></xsl:param>
-    
+
     <xsl:template match="/">
         <xsl:apply-templates select="//tei:div[@type='section']//tei:list[@type='catalog']/tei:item" />
     </xsl:template>
