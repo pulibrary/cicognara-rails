@@ -17,7 +17,7 @@
     <xsl:param name="url_path_prefix"></xsl:param>
     
     <xsl:template match="/">
-        <xsl:apply-templates select="//tei:div[@type='section']/tei:list[@type='catalog']/tei:item" />
+        <xsl:apply-templates select="//tei:div[@type='section']//tei:list[@type='catalog']/tei:item" />
     </xsl:template>
 
     <xsl:template match="tei:pb[@type = 'cico']">
