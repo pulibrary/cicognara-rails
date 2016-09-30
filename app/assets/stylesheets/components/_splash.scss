@@ -1,0 +1,71 @@
+.intro {
+  background: $beige;
+  background: linear-gradient(to bottom, $beige, $white);
+  bottom: 0;
+  top: 0;
+  display: block;
+  height: 100vh;
+
+  .wrap {
+    @include centerer;
+
+    padding: 30px;
+    max-width: calc(100% - 100px);
+    width: 100%;
+    height: calc(100% - 100px);
+
+    @media (min-width: 600px) {
+      border: 8px solid $black;
+    }
+
+
+    .center {
+      @include centerer;
+
+      width: 100%;
+    }
+  }
+
+  // Triangle pointing downward
+  // .wrap:after, .wrap:before {
+  //   top: 100%;
+  //   left: 50%;
+  //   border: solid $beige;
+  //   content: " ";
+  //   height: 0;
+  //   width: 0;
+  //   position: absolute;
+  //   pointer-events: none;
+  // }
+
+  @media (min-width: 600px) {
+    .wrap:after {
+      border-color: rgba(0, 0, 0, 0);
+      border-top-color: $white;
+      border-width: 15px;
+      margin-left: -15px;
+    }
+
+    .wrap:before {
+      border-color: rgba(194, 225, 245, 0);
+      border-top-color: $black;
+      border-width: 26px;
+      margin-left: -26px;
+    }
+  }
+
+
+  .small {
+    display: block;
+  }
+
+  .italic {
+    font-style: italic;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+}
+
+.blank {
+  min-height: 100vh;
+}

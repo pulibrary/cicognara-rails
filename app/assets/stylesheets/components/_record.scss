@@ -1,0 +1,39 @@
+.blacklight-catalog-show {
+  h1 {
+    font-family: $sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 0.75em;
+  }
+  .browse {
+    margin-bottom: 1em;
+  }
+
+  .linked-books {
+    font-family: $sans-serif;
+    border: 1px solid $light-gray;
+    background: $lighter-gray;
+    margin: 1em;
+    padding: 1.5em;
+    clear: both;
+
+    h4 {
+      margin-top: 0;
+      line-height: 1.4em;
+      font-weight: 600;
+    }
+
+    dl {
+      margin-bottom: 0;
+    }
+    dt {
+      font-weight: 600;
+      color: $black;
+      margin-top: 1em;
+
+      @media (min-width: 768px) {
+        margin-top: 0;
+      }
+    }
+  }
+}

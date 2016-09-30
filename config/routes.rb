@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   mount Blacklight::Engine => '/'
   Blacklight::Marc.add_routes(self)
-  root to: 'catalog#index'
+  root to: 'high_voltage/pages#show', id: 'home'
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
@@ -30,6 +30,15 @@ Rails.application.routes.draw do
   end
 
   get '/*id/index.html' => 'high_voltage/pages#show', as: :page, format: false
+
+  # static pages
+  get '/about' => 'high_voltage/pages#show', id: 'about'
+  get '/partners' => 'high_voltage/pages#show', id: 'partners'
+  get '/contact' => 'high_voltage/pages#show', id: 'contact'
+  get '/news' => 'high_voltage/pages#show', id: 'news'
+  get '/home' => 'high_voltage/pages#show', id: 'home'
+
+  get '/catalogo' => 'high_voltage/pages#show', id: 'catalogo/section_1.1'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

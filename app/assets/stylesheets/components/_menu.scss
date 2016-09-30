@@ -22,20 +22,14 @@ header {
 
   a {
     text-transform: uppercase;
-    font: $intro-heading;
+    font-family: $intro-heading;
     font-size: 15px;
     color: $black;
 
     &:hover {
       box-shadow: none;
+      color: $black;
+      text-decoration: underline;
     }
   }
-}
-
-.nav-up {
-  top: -50px;
-}
-
-.nav-down {
-  top: 0;
 }

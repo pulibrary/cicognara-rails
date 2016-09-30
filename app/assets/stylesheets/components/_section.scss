@@ -2,8 +2,9 @@ section {
   width: 100%;
   display: inline-block;
   position: relative;
+}
 
-  &.what, &.about, &.why, &.partners {
-    background: $white;
-  }
+.wrap {
+  padding: 1rem;
+  width: 100%;
 }

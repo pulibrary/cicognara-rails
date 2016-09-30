@@ -18,7 +18,7 @@
 
     <xsl:template match="tei:teiCorpus" mode="toc">
         <xsl:param name="current-item-number"/>
-        <ol>
+        <ol class="toc">
             <xsl:for-each select="//tei:div[@type = 'section']">
                 <li>
                     <xsl:if test="$current-item-number eq @n">
@@ -45,14 +45,29 @@
             href="{$path_to_partials}/section_{@n}.html">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
-                        <xsl:apply-templates select="./ancestor::tei:teiCorpus" mode="toc">
-                            <xsl:with-param name="current-item-number">
-                                <xsl:value-of select="current()/@n"/>
-                            </xsl:with-param>
-                        </xsl:apply-templates>
+                    <div class="col-sm-3">
+                        <div id="facets" class="facets sidenav">
+                          <div class="top-panel-heading panel-heading">
+                                <button type="button" class="facets-toggle" data-toggle="collapse" data-target="#facet-panel-collapse">
+                                      <span class="sr-only">Toggle table of contents</span>
+                                      <span class="glyphicon glyphicon-menu-hamburger"></span>
+                                </button>
+
+                                <h2 class='facets-heading hidden-sm hidden-md hidden-lg'>
+                                  Table of Contents
+                                </h2>
+                          </div>
+
+                          <div id="facet-panel-collapse" class="collapse panel-group" data-spy="affix" data-offset-top="120">
+                            <xsl:apply-templates select="./ancestor::tei:teiCorpus" mode="toc">
+                                <xsl:with-param name="current-item-number">
+                                    <xsl:value-of select="current()/@n"/>
+                                </xsl:with-param>
+                            </xsl:apply-templates>
+                          </div>
+                        </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-sm-9">
                         <section class="catalogo-section" id="{@n}">
                             <xsl:apply-templates/>
                         </section>
@@ -74,6 +89,22 @@
             <h1>
                 <xsl:apply-templates/>
             </h1>
+        </head>
+    </xsl:template>
+
+    <xsl:template match="tei:div[@n = '2.13']/tei:div/tei:head">
+        <head>
+            <h2>
+                <xsl:apply-templates/>
+            </h2>
+        </head>
+    </xsl:template>
+
+    <xsl:template match="tei:div[@type = 'subsection']/tei:head">
+        <head>
+            <h2>
+                <xsl:apply-templates/>
+            </h2>
         </head>
     </xsl:template>
 

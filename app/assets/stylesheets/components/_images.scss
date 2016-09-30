@@ -1,22 +1,49 @@
 figure {
   margin: 0;
 
+  img {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    max-width: 100%;
+
+    @media (min-width: 480px) {
+      width: 350px;
+    }
+
+    @media (min-width: 600px) {
+      display: inline-block;
+      margin: .5em 1.5em;
+    }
+  }
+
   &.right {
     clear: both;
     margin: 0;
+    display: inline-block;
+    float: right;
+    width: 100%;
+
+    @media (min-width: 600px) {
+      float: right;
+      width: 425px;
+    }
   }
 
   &.left {
     clear: both;
     margin: 0;
+
+    @media (min-width: 600px) {
+      float: left;
+    }
   }
 
   figcaption {
     font-family: $serif;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    padding: 0.5em 1.9em 0.55em;
-    text-align: center;
+    font-size: 0.95em;
+    padding: .5em 1.9em .55em;
+    width: 350px;
   }
 }
 
@@ -40,7 +67,6 @@ img {
     padding: 0;
 
     li {
-      // margin: 1rem 0;
       vertical-align: middle;
       float: left;
       display: inline;

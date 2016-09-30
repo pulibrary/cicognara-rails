@@ -1,3 +1,10 @@
 en:
   blacklight:
-    application_name: 'Blacklight'
+    application_name: 'The Digital Cicognara Library'
+
+    search:
+      form:
+        search:
+          placeholder: 'Search the collection...'
+    email:
+      recipient: 'sbrooke@princeton.edu'

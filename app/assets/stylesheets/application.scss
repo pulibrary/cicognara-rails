@@ -13,15 +13,24 @@
  *= require_self
  */
 
-@import "blacklight";
-@import "catalogo";
-@import "scaffolds";
-@import "versions";
-
-// components
 @import "components/mixins";
 @import "components/variables";
-@import "components/typography";
-@import "components/menu";
+
+@import "blacklight";
+@import "scaffolds";
+
+// components
+@import "components/catalogo__browse";
+@import "components/catalogo__item";
+@import "components/facets";
+@import "components/footer";
+@import "components/form__contact";
+@import "components/forms";
 @import "components/images";
+@import "components/menu";
+@import "components/navbar";
+@import "components/record";
+@import "components/results";
 @import "components/section";
+@import "components/splash";
+@import "components/typography";

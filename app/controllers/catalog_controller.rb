@@ -38,8 +38,9 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_display'
     config.index.display_type_field = 'format'
-    config.index.partials = [:index_header, :item_partial]
-    config.show.partials = [:show_header, :item_partial, :linked_books]
+    config.index.partials = [:item_partial, :index_links]
+    config.show.partials = [:show_header, :item_partial, :show_browse, :linked_books]
+    config.show.document_actions.replace({})
 
     # solr field configuration for document/show views
     # config.show.title_field = 'title_display'
@@ -69,11 +70,11 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    config.add_facet_field 'pub_date', label: 'Publication Year', single: true
-    config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
+    config.add_facet_field 'pub_date', label: 'Publication Year', single: true, limit: true
+    config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: true, index_range: 'A'..'Z'
     config.add_facet_field 'language_facet', label: 'Language', limit: true
-    config.add_facet_field 'subject_geo_facet', label: 'Region'
-    config.add_facet_field 'subject_era_facet', label: 'Era'
+    config.add_facet_field 'subject_geo_facet', label: 'Region', limit: true
+    config.add_facet_field 'subject_era_facet', label: 'Era', limit: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
