@@ -39,7 +39,7 @@ class CatalogController < ApplicationController
     config.index.title_field = 'title_display'
     config.index.display_type_field = 'format'
     config.index.partials = [:item_partial, :index_links]
-    config.show.partials = [:show_header, :item_partial, :show_browse, :linked_books]
+    config.show.partials = [:show_header, :show_browse, :linked_books]
     config.show.document_actions.replace({})
 
     # solr field configuration for document/show views
