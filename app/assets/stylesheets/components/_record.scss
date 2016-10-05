@@ -1,9 +1,12 @@
 .blacklight-catalog-show {
   h1 {
-    font-family: $sans-serif;
     font-size: 30px;
     font-weight: bold;
-    margin: 0 0 0.75em;
+    margin: 0;
+
+    .catalogo-note {
+      font-weight: normal;
+    }
   }
   .browse {
     margin-bottom: 1em;
