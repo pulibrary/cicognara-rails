@@ -8,8 +8,8 @@ RSpec.describe 'high_voltage/pages', type: :routing do
     it 'supports nested routes' do
       expect(get: '/catalogo/section_1.5/index.html').to route_to('high_voltage/pages#show', id: 'catalogo/section_1.5')
     end
-    it 'index.html must be present' do
-      expect(get: '/catalogo/section_1.5').not_to be_routable
+    it 'also supports routes without index.html' do
+      expect(get: '/catalogo/section_1.5').to route_to('high_voltage/pages#show', id: 'catalogo/section_1.5')
     end
   end
 end

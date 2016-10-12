@@ -1,10 +1,10 @@
 <body class="splash">
   <header>
       <ul>
-        <li><a href="/about">About</a></li>
-        <li><a href="/partners">Partners</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/news">News</a></li>
+        <li><%= link_to 'About', static_page_path('about') %></li>
+        <li><%= link_to 'Partners', static_page_path('partners') %></li>
+        <li><%= link_to 'Contact', static_page_path('contact') %></li>
+        <li><%= link_to 'News', static_page_path('news') %></li>
       </ul>
     </header>
     <section class="intro">
@@ -13,7 +13,7 @@
             <h1>The Digital Cicognara Library <span class="small"><span class="italic">An</span> Open-Access Collection <span class="italic">of the</span> Early Literature of the Arts</span></h1>
             <div class="search-browse--home">
               <%= render_search_bar  %>
-              <%= link_to 'Browse the Catalogo', 'catalogo', class: 'btn btn-primary browse-catalogo' %>
+              <%= link_to 'Browse the Catalogo', browse_catalogo_path, class: 'btn btn-primary browse-catalogo' %>
             </div>
           </div>
         </div>

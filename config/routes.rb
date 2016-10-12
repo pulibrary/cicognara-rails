@@ -29,16 +29,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/catalogo' => 'high_voltage/pages#show', as: :browse_catalogo, id: 'catalogo/section_1.1'
   get '/*id/index.html' => 'high_voltage/pages#show', as: :page, format: false
-
-  # static pages
-  get '/about' => 'high_voltage/pages#show', id: 'about'
-  get '/partners' => 'high_voltage/pages#show', id: 'partners'
-  get '/contact' => 'high_voltage/pages#show', id: 'contact'
-  get '/news' => 'high_voltage/pages#show', id: 'news'
-  get '/home' => 'high_voltage/pages#show', id: 'home'
-
-  get '/catalogo' => 'high_voltage/pages#show', id: 'catalogo/section_1.1'
+  get '/*id' => 'high_voltage/pages#show', as: :static_page, format: false
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

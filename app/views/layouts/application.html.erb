@@ -26,10 +26,10 @@
     <%= content_for(:head) %>
   </head>
   <% if current_page?(root_path) %>
-    <%= render :partial => 'shared/front_header' %>
+    <%= render partial: 'shared/front_header' %>
   <% else %>
   <body class="<%= render_body_class %>">
-    <%= render :partial => 'shared/header_navbar' %>
+    <%= render partial: 'shared/header_navbar' %>
   <% end %>
     <%= render partial: 'shared/ajax_modal' %>
     <% if current_page?(root_path) %>
@@ -43,6 +43,6 @@
       </div>
     </div>
     <% end %>
-  <%= render :partial => 'shared/footer' %>
+  <%= render partial: 'shared/footer' %>
   </body>
 </html>
