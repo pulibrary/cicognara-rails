@@ -11,7 +11,7 @@
     </div>
 
     <div class="collapse navbar-collapse" id="user-util-collapse">
-      <%= render :partial=>'/user_util_links' %>
+      <%= render partial: '/user_util_links' %>
     </div>
   </div>
 </div>
@@ -19,6 +19,6 @@
 <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="<%= container_classes %>">
     <%= render_search_bar  %>
-    <%= link_to 'Browse the Catalogo', page_path("catalogo/section_1.1"), class: 'btn btn-primary browse-catalogo' %>
+    <%= link_to 'Browse the Catalogo', browse_catalogo_path, class: 'btn btn-primary browse-catalogo' %>
   </div>
 </div>
