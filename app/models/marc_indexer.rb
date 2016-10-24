@@ -222,14 +222,6 @@ class MarcIndexer < Blacklight::Marc::Indexer
     to_field 'edition_t', extract_marc('250ab')
 
     each_record do |record, context|
-      begin
-        ::Book.where(digital_cico_number: context.output_hash['id'].first).first_or_create
-      # retry if the sqlite3 is locked...
-      rescue ActiveRecord::StatementInvalid, SQLite3::BusyException => e
-        puts "trying again: #{context.output_hash['id'].first}"
-        ::Book.where(digital_cico_number: context.output_hash['id'].first).first_or_create
-      end
-
       # add display fields
       context.output_hash['dclib_display'] = context.output_hash['id']
       context.output_hash['published_display'] = context.output_hash['published_t'] unless context.output_hash['published_t'].nil?

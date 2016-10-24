@@ -65,6 +65,28 @@ ActiveRecord::Schema.define(version: 20161027005742) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.string   "section_head"
+    t.string   "section_display"
+    t.string   "section_number"
+    t.string   "n_value"
+    t.string   "entry_id"
+    t.text     "tei"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["entry_id"], name: "index_entries_on_entry_id"
+    t.index ["n_value"], name: "index_entries_on_n_value"
+  end
+
+  create_table "entry_books", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "entry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_entry_books_on_book_id"
+    t.index ["entry_id"], name: "index_entry_books_on_entry_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "label"
     t.string   "uri"

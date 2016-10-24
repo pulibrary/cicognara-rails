@@ -57,6 +57,8 @@ end
 group :development, :test do
   gem 'simplecov', '~> 0.9', require: false
   gem 'rails-controller-testing'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :test do
