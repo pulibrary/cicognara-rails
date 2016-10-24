@@ -98,14 +98,14 @@ class CatalogController < ApplicationController
     config.add_show_field 'tei_section_head_italian', label: 'Section head'
     config.add_show_field 'tei_note_italian', label: 'Note(s)'
     config.add_show_field 'dclib_display', label: 'DCL id'
-    config.add_show_field 'author_display', label: 'Author'
+    config.add_show_field 'author_display', label: 'Author', link_to_search: true
     config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'published_display', label: 'Published'
     config.add_show_field 'title_addl_display', label: 'Other title(s)'
     config.add_show_field 'title_added_entry_display', label: 'Added entry title(s)'
     config.add_show_field 'title_series_display', label: 'Series'
     config.add_show_field 'related_name_display', label: 'Related name(s)'
-    config.add_show_field 'subject_display', label: 'Subject'
+    config.add_show_field 'subject_display', label: 'Subject', link_to_search: true
     config.add_show_field 'contents_display', label: 'Contents'
     config.add_show_field 'edition_display', label: 'Edition'
 
