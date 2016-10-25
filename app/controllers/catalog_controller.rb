@@ -167,6 +167,11 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('catalogo') do |field|
+      field.label = 'Catalogo #'
+      field.solr_local_parameters = { qf: 'id' }
+    end
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
