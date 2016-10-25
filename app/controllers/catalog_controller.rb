@@ -75,6 +75,9 @@ class CatalogController < ApplicationController
     config.add_facet_field 'language_facet', label: 'Language', limit: true
     config.add_facet_field 'subject_geo_facet', label: 'Region', limit: true
     config.add_facet_field 'subject_era_facet', label: 'Era', limit: true
+    config.add_facet_field 'subject_genre_facet', label: 'Genre', limit: true
+    config.add_facet_field 'name_facet', label: 'Name', limit: true
+    config.add_facet_field 'tei_section_facet', label: 'Section', limit: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request

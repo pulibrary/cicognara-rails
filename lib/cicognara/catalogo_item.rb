@@ -70,7 +70,7 @@ class CatalogoItem
     { id: n, cico_s: n, tei_description_unstem_search: text, tei_section_display: @section[:display],
       tei_section_head_italian: @section[:head], tei_section_number_display: @section[:number],
       tei_author_txt: item_authors, tei_pub_txt: item_pubs, tei_date_display: item_dates,
-      tei_note_italian: item_notes, tei_title_txt: item_titles }
+      tei_note_italian: item_notes, tei_title_txt: item_titles, tei_section_facet: @section[:display] }
   end
 
   def solr_title_display(label)
