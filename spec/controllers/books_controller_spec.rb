@@ -20,7 +20,7 @@ RSpec.describe BooksController, type: :controller do
 
   describe 'GET #show' do
     it 'assigns the requested book as @book' do
-      get :show, id: book
+      get :show, params: { id: book }
       expect(assigns(:book)).to eq(book)
     end
   end
