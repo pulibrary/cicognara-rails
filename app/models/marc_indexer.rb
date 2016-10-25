@@ -59,6 +59,9 @@ class MarcIndexer < Blacklight::Marc::Indexer
       provide 'marc_source.type', 'xml'
       # set this to be non-negative if threshold should be enforced
       provide 'solr_writer.max_skipped', -1
+
+      # configurable logging, quiet by default
+      provide 'log.level', ENV['TRAJECT_LOG_LEVEL'] || 'warn'
     end
 
     to_field 'id' do |record, accumulator|

@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :controller do
   describe 'GET #show' do
     it 'assigns the requested user as @user' do
       user = User.create! valid_attributes
-      get :show, id: user
+      get :show, params: { id: user }
       expect(assigns(:user)).to eq(user)
     end
   end
@@ -27,7 +27,7 @@ RSpec.describe UsersController, type: :controller do
   describe 'GET #edit' do
     it 'assigns the requested user as @user' do
       user = User.create! valid_attributes
-      get :edit, id: user
+      get :edit, params: { id: user }
       expect(assigns(:user)).to eq(user)
     end
   end
@@ -38,7 +38,7 @@ RSpec.describe UsersController, type: :controller do
 
       it 'updates the requested user' do
         user = User.create! valid_attributes
-        put :update, id: user.to_param, user: new_attributes
+        put :update, params: { id: user.to_param, user: new_attributes }
         user.reload
         expect(user.email).to eq('bob@example.org')
         expect(user.role).to eq('curator')
@@ -46,13 +46,13 @@ RSpec.describe UsersController, type: :controller do
 
       it 'assigns the requested user as @user' do
         user = User.create! valid_attributes
-        put :update, id: user, user: valid_attributes
+        put :update, params: { id: user, user: valid_attributes }
         expect(assigns(:user)).to eq(user)
       end
 
       it 'redirects to the user' do
         user = User.create! valid_attributes
-        put :update, id: user, user: valid_attributes
+        put :update, params: { id: user, user: valid_attributes }
         expect(response).to redirect_to(user_path(user))
       end
     end
@@ -60,13 +60,13 @@ RSpec.describe UsersController, type: :controller do
     context 'with invalid params' do
       it 'assigns the user as @user' do
         user = User.create! valid_attributes
-        put :update, id: user.to_param, user: invalid_attributes
+        put :update, params: { id: user.to_param, user: invalid_attributes }
         expect(assigns(:user)).to eq(user)
       end
 
       it "re-renders the 'edit' template" do
         user = User.create! valid_attributes
-        put :update, id: user.to_param, user: invalid_attributes
+        put :update, params: { id: user.to_param, user: invalid_attributes }
         expect(response).to render_template('edit')
       end
     end
@@ -76,13 +76,13 @@ RSpec.describe UsersController, type: :controller do
     it 'destroys the requested user' do
       user = User.create! valid_attributes
       expect do
-        delete :destroy, id: user
+        delete :destroy, params: { id: user }
       end.to change(User, :count).by(-1)
     end
 
     it 'redirects to the users list' do
       user = User.create! valid_attributes
-      delete :destroy, id: user
+      delete :destroy, params: { id: user }
       expect(response).to redirect_to(users_url)
     end
   end
