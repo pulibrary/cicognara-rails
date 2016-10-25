@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'tei_helper'
 
 RSpec.describe 'entry views', type: :feature do
   before(:all) do
@@ -10,6 +11,10 @@ RSpec.describe 'entry views', type: :feature do
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
     solr.add(TEIIndexer.new(tei, xsl, marc).solr_docs)
     solr.commit
+  end
+
+  after(:all) do
+    Book.destroy_all
   end
 
   it 'displays links to controlled terms' do
