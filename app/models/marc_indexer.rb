@@ -128,6 +128,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     to_field 'author_t', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq:700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
     to_field 'author_display', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true)
+    to_field 'name_facet', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq:700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
     to_field 'related_name_display', extract_marc('700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
     to_field 'author_sort', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true, first: true)
 
