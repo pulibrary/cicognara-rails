@@ -22,7 +22,11 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: <%= ENV["CICOGNARA_DB"] %>
+  host: <%= ENV["CICOGNARA_DB_HOST"] %>
+  username: <%= ENV["CICOGNARA_DB_USERNAME"] %>
+  password: <%= ENV["CICOGNARA_DB_PASSWORD"] %>
 
 staging:
   <<: *default
