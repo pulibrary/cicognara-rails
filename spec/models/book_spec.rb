@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  let(:digital_cico_number) { 'xyz' }
-  let(:book) { described_class.new digital_cico_number: digital_cico_number }
+  let(:dc_num) { DcNum.new label: 'xyz' }
+  let(:book) { described_class.new dc_num: dc_num }
   let(:subject1) { Subject.new label: 'puppies' }
   let(:subject2) { Subject.new label: 'kittens' }
   let(:role1) { Role.new label: 'author' }
@@ -13,7 +13,7 @@ RSpec.describe Book, type: :model do
   let(:creator_role2) { CreatorRole.new creator: creator2, role: role2 }
 
   it 'has a digital cico number' do
-    expect(book.digital_cico_number).to eq(digital_cico_number)
+    expect(book.dc_num).to eq(dc_num)
   end
 
   it 'has multiple subjects' do
@@ -34,7 +34,7 @@ RSpec.describe Book, type: :model do
     book.save
     # create a new book object with the same dcnum as book: xyz
     expect {
-      described_class.create digital_cico_number: digital_cico_number
+      described_class.create dc_num: dc_num
     }.to raise_error ActiveRecord::RecordInvalid    
   end
 end
