@@ -26,4 +26,26 @@ RSpec.describe 'entry views', type: :feature do
     expect(page).to have_link 'De incertitude et vanitate scientiarum, declamatio invectiva, ex postrema auctoris recognitione'
     expect(page).not_to have_link 'Addito Libellus Compendiarum virtutis adipiscendæ ec. et carmina.'
   end
+
+  describe 'a logged in user' do
+    before do
+      @user = stub_admin_user
+    end
+
+    it 'displays an admin menu' do
+      visit '/'
+      expect(page).to have_selector 'a.user-display-name', text: @user.to_s
+      expect(page).to have_link 'Books', href: books_path
+      expect(page).to have_link 'Contributing Libraries', href: contributing_libraries_path
+      expect(page).to have_link 'Users', href: users_path
+      expect(page).to have_link 'Log Out', href: main_app.destroy_user_session_path
+    end
+  end
+
+  describe 'an anonymous user' do
+    it 'shows a login link' do
+      visit '/'
+      expect(page).to have_link 'Log In', href: main_app.new_user_session_path
+    end
+  end
 end
