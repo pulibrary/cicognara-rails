@@ -2,7 +2,7 @@
 module Cicognara
   class CatalogoItem
     attr_accessor :entry
-    delegate :n, :text, :item_authors, :item_pubs, :item_dates, :item_notes, :item_titles, :item_label, :section_display, :section_head, :section_number, :books, :corresp, to: :entry
+    delegate :n, :text, :item_authors, :item_pubs, :item_dates, :item_notes, :item_titles, :item_label, :section_display, :section_head, :section_number, :books, to: :entry
 
     def initialize(entry)
       @entry = entry
@@ -10,7 +10,7 @@ module Cicognara
 
     def solr_doc
       doc = doc_tei_fields
-      unless corresp.empty?
+      unless books.empty? && corresp.empty?
         doc[:dclib_s] = corresp
         book_fields = marc_fields
         doc.merge!(book_fields)
@@ -20,6 +20,10 @@ module Cicognara
     end
 
     private
+
+    def corresp
+      (entry.corresp + books.map(&:digital_cico_number)).uniq
+    end
 
     def doc_tei_fields
       { id: n, cico_s: n, tei_description_unstem_search: text, tei_section_display: section_display,

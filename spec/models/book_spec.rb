@@ -35,4 +35,25 @@ RSpec.describe Book, type: :model do
     # create a new book object with the same dcnum as book: xyz
     expect { described_class.create digital_cico_number: digital_cico_number }.to raise_error ActiveRecord::RecordNotUnique
   end
+
+  describe '#to_solr' do
+    before(:all) do
+      described_class.destroy_all
+      Entry.destroy_all
+      pathtotei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
+      pathtomarc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
+      @subject = Cicognara::TEIIndexer.new(pathtotei, pathtomarc)
+    end
+    let(:version) do
+      Version.create! contributing_library: contributing_library, book: described_class.first,
+                      label: 'version 2', based_on_original: true
+    end
+    let(:contributing_library) { ContributingLibrary.create! label: 'Example Library', uri: 'http://www.example.org' }
+    it 'indexes contributing libraries' do
+      version
+      b = described_class.first
+
+      expect(b.to_solr['contributing_library_facet']).to eq ['Example Library']
+    end
+  end
 end

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'version CRUD', type: :feature do
-  let(:book) { Book.first_or_create digital_cico_number: 'cico:abc' }
-  let(:contrib) { ContributingLibrary.first_or_create label: 'Library 1', uri: 'http://example.org' }
+  let(:book) { Book.find_or_create_by digital_cico_number: 'cico:abc' }
+  let(:contrib) { ContributingLibrary.find_or_create_by label: 'Library 1', uri: 'http://example.org' }
 
   before do
     stub_admin_user
