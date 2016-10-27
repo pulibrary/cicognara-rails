@@ -1,13 +1,11 @@
 require 'rails_helper'
-require 'tei_helper'
 
 RSpec.describe CatalogController, type: :controller do
   before(:all) do
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
-    xsl = File.join(File.dirname(__FILE__), '..', '..', 'lib', 'xsl', 'catalogo-item-to-html.xsl')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    solr.add(TEIIndexer.new(tei, xsl, marc).solr_docs)
+    solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
     solr.commit
   end
 
