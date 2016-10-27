@@ -59,6 +59,7 @@ class Entry < ApplicationRecord
     end
 
     def value
+      return '' unless string
       string.text.gsub(/\s+/, ' ').strip
     end
 
