@@ -1,3 +1,4 @@
+# coding: utf-8
 $LOAD_PATH.unshift './config'
 require './app/models/book'
 config = CicognaraRails::Application.config.database_configuration[::Rails.env]
@@ -90,7 +91,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
     #    primary title
 
     to_field 'title_t', extract_marc('245abchknps')
-    to_field 'title_display', extract_marc('245abcfghknps', trim_punctuation: true, alternate_script: false)
+    to_field 'title_display', extract_marc('245abcfgknps', trim_punctuation: true, alternate_script: false)
 
     #    additional title fields
     to_field 'title_addl_t',
