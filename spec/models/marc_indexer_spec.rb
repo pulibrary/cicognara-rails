@@ -80,5 +80,21 @@ RSpec.describe MarcIndexer, type: :model do
   it 'does not have the term microform in the 245 field' do
     expect(@values.first['title_display'].first).not_to match(/microform/)
   end
+  it 'does not have Fondo Cicognara or Leopoldo Cicognara Program in title_added_entry_t' do
+    expect(@values.first['title_added_entry_t']).not_to match(/Fondo Cicognara/)
+    expect(@values.first['title_added_entry_t']).not_to match(/Leopoldo Cicognara Program/)
+  end
+  it 'does not have Fondo Cicognara or Leopoldo Cicognara Program in author_t' do
+    expect(@values.first['author_t']).not_to match(/Fondo Cicognara/)
+    expect(@values.first['author_t']).not_to match(/Leopoldo Cicognara Program/)
+  end
+  it 'does not have Fondo Cicognara or Leopoldo Cicognara Program in name_facet' do
+    expect(@values.first['name_facet']).not_to match(/Fondo Cicognara/)
+    expect(@values.first['name_facet']).not_to match(/Leopoldo Cicognara Program/)
+  end
+  it 'does not have Fondo Cicognara or Leopoldo Cicognara Program in related_name_display' do
+    expect(@values.first['related_name_display'].first).not_to match(/Fondo Cicognara/)
+    expect(@values.first['related_name_display'].first).not_to match(/Leopoldo Cicognara Program/)
+  end
   after(:all) { Book.destroy_all }
 end
