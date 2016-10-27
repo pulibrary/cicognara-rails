@@ -18,6 +18,7 @@ RSpec.describe 'versions/new', type: :view do
     render
 
     assert_select 'form[action=?][method=?]', book_versions_path(book), 'post' do
+      expect(rendered).to have_unchecked_field 'version_based_on_original'
     end
   end
 end

@@ -165,6 +165,7 @@ GEM
     orm_adapter (0.5.0)
     parser (2.3.1.2)
       ast (~> 2.2)
+    pg (0.18.4)
     pkg-config (1.1.7)
     powerpack (0.1.1)
     rack (2.0.1)
@@ -324,6 +325,7 @@ DEPENDENCIES
   high_voltage (~> 3.0.0)
   jbuilder (~> 2.0)
   jquery-rails
+  pg
   rails (~> 5.0)
   rails-controller-testing
   rsolr (~> 1.0)
