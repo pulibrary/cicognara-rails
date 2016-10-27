@@ -29,4 +29,10 @@ RSpec.describe Book, type: :model do
     expect(book.creator_roles.last.creator).to eq(creator2)
     expect(book.creator_roles.last.role).to eq(role2)
   end
+
+  it 'requires dcnum to be unique' do
+    book.save
+    # create a new book object with the same dcnum as book: xyz
+    expect { described_class.create digital_cico_number: digital_cico_number }.to raise_error ActiveRecord::RecordNotUnique
+  end
 end
