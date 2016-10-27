@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'rails_helper'
 
 class TestWriter
@@ -75,6 +76,9 @@ RSpec.describe MarcIndexer, type: :model do
   end
   it 'takes pub_date from 008' do
     expect(@values.first['pub_date']).to eq([1584])
+  end
+  it 'does not have the term microform in the 245 field' do
+    expect(@values.first['title_display'].first).not_to match(/microform/)
   end
   after(:all) { Book.destroy_all }
 end
