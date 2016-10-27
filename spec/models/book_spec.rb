@@ -46,7 +46,9 @@ RSpec.describe Book, type: :model do
     end
     let(:version) do
       Version.create! contributing_library: contributing_library, book: described_class.first,
-                      label: 'version 2', based_on_original: true
+                      label: 'version 2', based_on_original: true, owner_system_number: '1234',
+                      rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+                      manifest: 'http://example.org/1.json'
     end
     let(:contributing_library) { ContributingLibrary.create! label: 'Example Library', uri: 'http://www.example.org' }
     it 'indexes contributing libraries' do
@@ -65,7 +67,9 @@ RSpec.describe Book, type: :model do
     context "when a digitized version isn't available" do
       let(:version) do
         Version.create! contributing_library: contributing_library, book: described_class.first,
-                        label: 'version 2', based_on_original: false
+                        label: 'version 2', based_on_original: false, owner_system_number: '1234',
+                        rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+                        manifest: 'http://example.org/1.json'
       end
       it 'indexes it as false' do
         version
