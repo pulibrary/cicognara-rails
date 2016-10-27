@@ -37,8 +37,6 @@ ActiveRecord::Schema.define(version: 20161027005742) do
     t.string   "digital_cico_number"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "dc_num"
-    t.index ["dc_num"], name: "index_books_on_dc_num", unique: true
     t.index ["digital_cico_number"], name: "index_books_on_digital_cico_number", unique: true
   end
 
