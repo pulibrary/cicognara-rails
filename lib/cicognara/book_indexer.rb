@@ -7,7 +7,7 @@ module Cicognara
 
     def to_solr
       @to_solr ||=
-        Tempfile.open do |f|
+        Tempfile.open("book_marc") do |f|
           f.write combined_marc
           f.close
           indexer.process(f.path)
