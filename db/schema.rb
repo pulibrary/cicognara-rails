@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505124159) do
+ActiveRecord::Schema.define(version: 20161027005742) do
 
   create_table "book_subjects", force: :cascade do |t|
     t.integer  "book_id"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20160505124159) do
     t.string   "digital_cico_number"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "dc_num"
+    t.index ["dc_num"], name: "index_books_on_dc_num", unique: true
+    t.index ["digital_cico_number"], name: "index_books_on_digital_cico_number", unique: true
   end
 
   create_table "contributing_libraries", force: :cascade do |t|
