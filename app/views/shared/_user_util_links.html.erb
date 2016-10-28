@@ -4,5 +4,8 @@
     <li><%= link_to 'Partners', static_page_path('partners') %></li>
     <li><%= link_to 'Contact', static_page_path('contact') %></li>
     <li><%= link_to 'News', static_page_path('news') %></li>
+    <% if current_user %>
+      <li><%= render partial: 'shared/admin_menu' %></li>
+    <% end %>
   </ul>
 </div>

@@ -12,4 +12,10 @@
       <li><a href="http://www.library.illinois.edu/" target="_blank"><%= image_tag 'illinois.png', alt: 'University of Illinois at Urbana-Champaign Library' %></a></li>
     </ul>
   </section>
+  <section class="bottom">
+    <span>&copy; 2016 The Trustees of Princeton University. All rights reserved.</span>
+    <% unless current_user %>
+      | <%= link_to 'Log In', main_app.new_user_session_path %>
+    <% end %>
+  </section>
 </footer>

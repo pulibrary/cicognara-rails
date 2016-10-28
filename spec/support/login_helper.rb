@@ -4,6 +4,7 @@ module LoginHelper
     allow(user).to receive(:admin?).and_return(true)
     allow(user).to receive(:bookmarks).and_return([])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    user
   end
 end
 
