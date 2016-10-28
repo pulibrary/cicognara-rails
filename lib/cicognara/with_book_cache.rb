@@ -14,7 +14,7 @@ module Cicognara
       CatalogoItem.new(self).solr_doc
     end
 
-    def books
+    def books(*args)
       super.map do |book|
         BookWithCachedSolr.new(book, book_records[book.digital_cico_number])
       end
