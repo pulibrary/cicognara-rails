@@ -5,12 +5,21 @@ RSpec.describe VersionsController, type: :controller do
   let(:book) { Book.create digital_cico_number: 'cico:abc', entries: [entry] }
   let(:contrib) { ContributingLibrary.create label: 'Library 1', uri: 'http://example.org/lib' }
   let(:valid_attributes) do
-    { book_id: book.id, label: 'Version 1', manifest: 'http://example.org/1', contributing_library_id: contrib.id }
+    {
+      book_id: book.id,
+      label: 'Version 1',
+      manifest: 'http://example.org/1',
+      contributing_library_id: contrib.id,
+      rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+      owner_system_number: '1234',
+      based_on_original: false
+    }
   end
   let(:invalid_attributes) { { label: nil } }
 
   before do
     stub_admin_user
+    Book.destroy_all
   end
 
   after do
@@ -54,18 +63,18 @@ RSpec.describe VersionsController, type: :controller do
     context 'with valid params' do
       it 'creates a new Version' do
         expect do
-          post :create, params: { book_id: book, version: valid_attributes }
+          post :create, params: { book_id: book.id, version: valid_attributes }
         end.to change(Version, :count).by(1)
       end
 
       it 'assigns a newly created version as @version' do
-        post :create, params: { book_id: book, version: valid_attributes }
+        post :create, params: { book_id: book.id, version: valid_attributes }
         expect(assigns(:version)).to be_a(Version)
         expect(assigns(:version)).to be_persisted
       end
 
       it 'redirects to the created version' do
-        post :create, params: { book_id: book, version: valid_attributes }
+        post :create, params: { book_id: book.id, version: valid_attributes }
         expect(response).to redirect_to(book_version_url(book, Version.last))
       end
 

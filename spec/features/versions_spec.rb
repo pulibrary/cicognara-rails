@@ -25,6 +25,8 @@ RSpec.describe 'version CRUD', type: :feature do
     fill_in 'version_label', with: 'Version 1'
     fill_in 'version_manifest', with: 'http://example.org/1'
     select 'Library 1', from: 'version_contributing_library_id'
+    fill_in 'version_rights', with: 'http://creativecommons.org/publicdomain/mark/1.0/'
+    fill_in 'version_owner_system_number', with: '1234'
     click_on 'Create Version'
 
     expect(page).to have_content('Version was successfully created.')
