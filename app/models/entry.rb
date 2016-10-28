@@ -3,6 +3,7 @@ class Entry < ApplicationRecord
   has_many :entry_books
   has_many :books, through: :entry_books
   attribute :tei, :tei_type
+  before_save :assign_n_value
 
   def to_solr
     Cicognara::CatalogoItem.new(self).solr_doc
@@ -59,6 +60,7 @@ class Entry < ApplicationRecord
     end
 
     def value
+      return nil unless string.respond_to?(:text)
       string.text.gsub(/\s+/, ' ').strip
     end
 
@@ -67,5 +69,11 @@ class Entry < ApplicationRecord
         NormalizedString.new(x).value
       end
     end
+  end
+
+  private
+
+  def assign_n_value
+    self.n_value = n
   end
 end

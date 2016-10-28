@@ -3,11 +3,17 @@ require 'rails_helper'
 RSpec.describe 'searching', type: :feature do
   before(:all) do
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    MarcIndexer.new.process(marc)
-
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
+
+    contributing_library = ContributingLibrary.create! label: 'Example Library', uri: 'http://www.example.org'
+    Version.create! contributing_library: contributing_library, book: Book.first,
+                    label: 'version 2', based_on_original: true
+    b = Book.first
+    entries = b.entries
+    docs = ([b] + entries).map(&:to_solr)
+    solr.add(docs)
     solr.commit
   end
 
@@ -39,6 +45,9 @@ RSpec.describe 'searching', type: :feature do
 
     expect(page).to have_selector 'h3.facet-field-heading', text: 'Section'
     expect(page).to have_link 'Delle belle arti in generale'
+
+    expect(page).to have_selector 'h3.facet-field-heading', text: 'Contributing Library'
+    expect(page).to have_link 'Example Library'
   end
 
   it 'suggests titles, authors, subjects and institutions, but not other fields' do

@@ -6,7 +6,7 @@ module Cicognara
     end
 
     def book_documents
-      @book_documents ||= BookIndexer.new(books).to_solr
+      entries_with_cached_book_solrs.flat_map(&:books).flat_map(&:to_solr)
     end
 
     def books
@@ -19,8 +19,14 @@ module Cicognara
 
     def entries_with_cached_book_solrs
       entries.map do |entry|
-        WithBookCache.new(entry, book_documents)
+        WithBookCache.new(entry, unmerged_book_documents)
       end
+    end
+
+    private
+
+    def unmerged_book_documents
+      @unmerged_book_documents ||= BookIndexer.new(books).to_solr
     end
   end
 end

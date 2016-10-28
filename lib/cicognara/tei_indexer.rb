@@ -20,7 +20,7 @@ module Cicognara
     end
 
     def solr_docs
-      @solr_docs ||= bulk_entry_indexer.book_documents.values + bulk_entry_indexer.entry_documents
+      @solr_docs ||= bulk_entry_indexer.book_documents + bulk_entry_indexer.entry_documents
     end
 
     def entries

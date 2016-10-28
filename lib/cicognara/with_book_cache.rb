@@ -28,7 +28,7 @@ module Cicognara
       end
 
       def to_solr
-        Array.wrap(solr_documents).first
+        Array.wrap(solr_documents).first.merge(extra_solr)
       end
     end
   end
