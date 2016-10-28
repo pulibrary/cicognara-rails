@@ -79,6 +79,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'name_facet', label: 'Name', limit: true
     config.add_facet_field 'tei_section_facet', label: 'Section', limit: true
     config.add_facet_field 'contributing_library_facet', label: 'Contributing Library', limit: true
+    config.add_facet_field 'digitized_version_available_facet', label: 'Digitized Version Available', limit: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request

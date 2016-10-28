@@ -14,7 +14,12 @@ class Book < ActiveRecord::Base
 
   def extra_solr
     {
-      'contributing_library_facet' => contributing_libraries.map(&:label)
+      'contributing_library_facet' => contributing_libraries.map(&:label),
+      'digitized_version_available_facet' => [digitized_version_available?.to_s.capitalize]
     }
+  end
+
+  def digitized_version_available?
+    versions.map(&:based_on_original?).include?(true)
   end
 end
