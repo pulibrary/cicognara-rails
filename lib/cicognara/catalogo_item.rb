@@ -26,7 +26,7 @@ module Cicognara
     end
 
     def doc_tei_fields
-      { id: n, cico_s: n, tei_description_unstem_search: text, tei_section_display: section_display,
+      { id: n, cico_s: n, cico_sort: n, tei_description_unstem_search: text, tei_section_display: section_display,
         tei_section_head_italian: section_head, tei_section_number_display: section_number,
         tei_author_txt: item_authors, tei_pub_txt: item_pubs, tei_date_display: item_dates,
         tei_note_italian: item_notes, tei_title_txt: item_titles, tei_section_facet: section_display }
