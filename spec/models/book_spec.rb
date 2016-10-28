@@ -55,5 +55,23 @@ RSpec.describe Book, type: :model do
 
       expect(b.to_solr['contributing_library_facet']).to eq ['Example Library']
     end
+    context 'when a digitized version is available' do
+      it 'indexes that fact' do
+        version
+        b = described_class.first
+        expect(b.to_solr['digitized_version_available_facet']).to eq ['True']
+      end
+    end
+    context "when a digitized version isn't available" do
+      let(:version) do
+        Version.create! contributing_library: contributing_library, book: described_class.first,
+                        label: 'version 2', based_on_original: false
+      end
+      it 'indexes it as false' do
+        version
+        b = described_class.first
+        expect(b.to_solr['digitized_version_available_facet']).to eq ['False']
+      end
+    end
   end
 end
