@@ -9,7 +9,7 @@ class Book < ActiveRecord::Base
   attribute :marcxml, :marc_nokogiri_type
 
   def to_solr
-    Cicognara::BookIndexer.new(self).to_solr.values.first.merge(extra_solr)
+    ::Cicognara::BookIndexer.new(self).to_solr.values.first.merge(extra_solr)
   end
 
   def extra_solr

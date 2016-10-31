@@ -10,12 +10,12 @@ namespace :csv do
       begin
         existing = Version.where(owner_system_number: row['owner_system_number']).first
         if existing
-          existing.attributes = CSVMapper.map(row.to_h)
+          existing.attributes = Cicognara::CSVMapper.map(row.to_h)
           existing.save
-          logger.info "Updated version #{v.id} #{row['digital_cico_number']} #{row['label']}"
+          logger.info "Updated version #{existing.id} #{row['digital_cico_number']} #{row['label']}"
           next
         end
-        v = Version.create CSVMapper.map(row.to_h)
+        v = Version.create Cicognara::CSVMapper.map(row.to_h)
         logger.info "Created version #{v.id} #{row['digital_cico_number']} #{row['label']}"
       rescue ArgumentError => e
         logger.warn e.to_s
