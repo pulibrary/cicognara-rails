@@ -20,5 +20,9 @@ module Cicognara
     def items
       section.xpath(".//tei:list[@type='catalog']/tei:item", tei: 'http://www.tei-c.org/ns/1.0')
     end
+
+    def ids
+      items.map { |x| x.attribute('id').value }
+    end
   end
 end
