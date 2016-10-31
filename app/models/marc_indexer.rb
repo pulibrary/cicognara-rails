@@ -228,7 +228,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
       context.output_hash['title_addl_display'] = context.output_hash['title_addl_t'] unless context.output_hash['title_addl_t'].nil?
       context.output_hash['title_added_entry_display'] = context.output_hash['title_added_entry_t'] unless context.output_hash['title_added_entry_t'].nil?
       context.output_hash['title_series_display'] = context.output_hash['title_series_t'] unless context.output_hash['title_series_t'].nil?
-      context.output_hash['subject_display'] = context.output_hash['subject_t'] unless context.output_hash['subject_t'].nil?
+      context.output_hash['subject_facet'] = context.output_hash['subject_t'] unless context.output_hash['subject_t'].nil?
       context.output_hash['contents_display'] = context.output_hash['contents_t'] unless context.output_hash['contents_t'].nil?
       context.output_hash['edition_display'] = context.output_hash['edition_t'] unless context.output_hash['edition_t'].nil?
       context.output_hash['language_display'] = context.output_hash['language_facet'] unless context.output_hash['language_facet'].nil?
