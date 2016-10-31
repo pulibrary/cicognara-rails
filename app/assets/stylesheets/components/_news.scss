@@ -1,0 +1,16 @@
+.news-entry {
+  h2 {
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .dateline {
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: $sans-serif;
+  }
+  .dateline+p {
+    margin-top: 0;
+  }
+}
