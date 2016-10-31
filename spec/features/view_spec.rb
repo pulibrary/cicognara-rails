@@ -17,8 +17,13 @@ RSpec.describe 'entry views', type: :feature do
 
   it 'displays links to controlled terms' do
     visit '/catalog/15'
-    expect(page).to have_link 'Brontius, Nicolaus, 16th century', href: '/catalog?f%5Bauthor_display%5D%5B%5D=Brontius%2C+Nicolaus%2C+16th+century'
-    expect(page).to have_link 'Humanism—Early works to 1800', href: '/catalog?f%5Bsubject_display%5D%5B%5D=Humanism%E2%80%94Early+works+to+1800'
+    expect(page).to have_link 'Brontius, Nicolaus, 16th century', href: '/catalog?f%5Bname_facet%5D%5B%5D=Brontius%2C+Nicolaus%2C+16th+century'
+    expect(page).to have_link 'Humanism—Early works to 1800', href: '/catalog?f%5Bsubject_facet%5D%5B%5D=Humanism%E2%80%94Early+works+to+1800'
+  end
+
+  it 'entries are matched on book name search' do
+    visit '/catalog?f%5Bname_facet%5D%5B%5D=Brontius%2C+Nicolaus%2C+16th+century'
+    expect(page).to have_link nil, href: '/catalog/15'
   end
 
   it 'searches by catalogo # without finding dates, etc.' do

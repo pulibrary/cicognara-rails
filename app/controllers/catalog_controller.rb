@@ -77,6 +77,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_era_facet', label: 'Era', limit: true
     config.add_facet_field 'subject_genre_facet', label: 'Genre', limit: true
     config.add_facet_field 'name_facet', label: 'Name', limit: true
+    config.add_facet_field 'subject_facet', label: 'Subject', show: false
     config.add_facet_field 'tei_section_facet', label: 'Section', limit: true
     config.add_facet_field 'contributing_library_facet', label: 'Contributing Library', limit: true
     config.add_facet_field 'digitized_version_available_facet', label: 'Digitized Version Available', limit: true
@@ -100,14 +101,14 @@ class CatalogController < ApplicationController
     config.add_show_field 'tei_section_head_italian', label: 'Section head'
     config.add_show_field 'tei_note_italian', label: 'Note(s)'
     config.add_show_field 'dclib_display', label: 'DCL id'
-    config.add_show_field 'author_display', label: 'Author', link_to_search: true
+    config.add_show_field 'author_display', label: 'Author', link_to_search: :name_facet
     config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'published_display', label: 'Published'
     config.add_show_field 'title_addl_display', label: 'Other title(s)'
     config.add_show_field 'title_added_entry_display', label: 'Added entry title(s)'
     config.add_show_field 'title_series_display', label: 'Series'
-    config.add_show_field 'related_name_display', label: 'Related name(s)'
-    config.add_show_field 'subject_display', label: 'Subject', link_to_search: true
+    config.add_show_field 'related_name_display', label: 'Related name(s)', link_to_search: :name_facet
+    config.add_show_field 'subject_t', label: 'Subject', link_to_search: :subject_facet
     config.add_show_field 'contents_display', label: 'Contents'
     config.add_show_field 'edition_display', label: 'Edition'
 
