@@ -130,8 +130,20 @@ class MarcIndexer < Blacklight::Marc::Indexer
     to_field 'author_t', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq:700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
     to_field 'author_display', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true)
     to_field 'name_facet', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq:700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
-    to_field 'related_name_display', extract_marc('700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
+    to_field 'related_name_display', extract_marc('700aqbcdk:711abcdfgklnpq', trim_punctuation: true)
     to_field 'author_sort', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true, first: true)
+
+    # Filter 710s with subfield a beginning 'Fondo Cicognara' or 'Leopoldo Cicognara Program'
+    to_field 'related_name_display' do |record, accumulator|
+      Traject::MarcExtractor.cached('710abcdfgkln').collect_matching_lines(record) do |field, spec, extractor|
+        subfield_a = extractor.collect_subfields(field, spec).first
+        unless (subfield_a =~ /^Fondo Cicognara/ || subfield_a =~ /^Leopoldo Cicognara Program/)
+          accumulator << field.value
+        end
+      end
+    end
+
+
 
     # Subject fields
     to_field 'subject_t' do |record, accumulator|

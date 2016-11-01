@@ -93,8 +93,8 @@ RSpec.describe MarcIndexer, type: :model do
     expect(@values.first['name_facet']).not_to match(/Leopoldo Cicognara Program/)
   end
   it 'does not have Fondo Cicognara or Leopoldo Cicognara Program in related_name_display' do
-    expect(@values.first['related_name_display'].first).not_to match(/Fondo Cicognara/)
-    expect(@values.first['related_name_display'].first).not_to match(/Leopoldo Cicognara Program/)
+    expect(@values.first['related_name_display']).to be nil
+    expect(@values[2]['related_name_display'].first).to match(/Bogus/)
   end
   after(:all) { Book.destroy_all }
 end
