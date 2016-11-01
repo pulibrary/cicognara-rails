@@ -277,6 +277,10 @@
       <subfield code="a">Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)</subfield>
       <subfield code="0">(uri)http://id.loc.gov/authorities/names/nr94016472</subfield>
     </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Bogus place</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/nr94016472</subfield>
+    </datafield>
     <datafield ind1=" " ind2="0" tag="830">
       <subfield code="a">Cicognara library.</subfield>
     </datafield>
