@@ -1,0 +1,15 @@
+<a href="#" data-toggle="dropdown" class="dropdown-toggle user-display-name banner">
+  <%= current_user %>
+  <span class="caret"></span>
+</a>
+<ul class="dropdown-menu dropdown-menu-right">
+  <% if current_user.admin? || current_user.curator? %>
+    <li><%= link_to 'Books', books_path, class: 'books', role: 'menuitem' %></li>
+    <li><%= link_to 'Contributing Libraries', contributing_libraries_path, class: 'contributors', role: 'menuitem' %></li>
+  <% end %>
+  <% if current_user.admin? %>
+    <li><%= link_to 'Users', users_path, class: 'users', role: 'menuitem' %></li>
+  <% end %>
+  <li class="divider"></li>
+  <li><%= link_to 'Log Out', main_app.destroy_user_session_path, class: 'log-out', role: 'menuitem' %></li>
+</ul>

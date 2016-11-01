@@ -81,6 +81,10 @@ RSpec.describe Entry, type: :model do
         expect(subject.to_solr[:cico_s]).not_to be_nil
       end
 
+      it 'has a cico_sort field' do
+        expect(subject.to_solr[:cico_s]).to eq '1'
+      end
+
       it 'has the right cico_s field value' do
         expect(subject.to_solr[:cico_s]).to eq('1')
       end

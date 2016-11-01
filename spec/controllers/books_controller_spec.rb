@@ -5,6 +5,7 @@ RSpec.describe BooksController, type: :controller do
 
   before do
     stub_admin_user
+    Book.delete_all
   end
 
   after do

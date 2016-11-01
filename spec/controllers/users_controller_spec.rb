@@ -6,6 +6,7 @@ RSpec.describe UsersController, type: :controller do
 
   before do
     stub_admin_user
+    User.delete_all
   end
 
   describe 'GET #index' do

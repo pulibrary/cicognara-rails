@@ -13,14 +13,19 @@ header {
     margin: 0;
     display: inline-block;
 
-    li {
+    li.banner {
       display: inline-block;
       float: left;
       padding: 1em;
     }
+
+    li.banner-right {
+      position: absolute;
+      right: 1em;
+    }
   }
 
-  a {
+  a.banner {
     text-transform: uppercase;
     font-family: $intro-heading;
     font-size: 15px;
@@ -33,3 +38,4 @@ header {
     }
   }
 }
+

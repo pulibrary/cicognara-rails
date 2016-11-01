@@ -2,7 +2,7 @@
 module Cicognara
   class CatalogoItem
     attr_accessor :entry
-    delegate :n, :text, :item_authors, :item_pubs, :item_dates, :item_notes, :item_titles, :item_label, :section_display, :section_head, :section_number, :books, :corresp, to: :entry
+    delegate :n, :text, :item_authors, :item_pubs, :item_dates, :item_notes, :item_titles, :item_label, :section_display, :section_head, :section_number, :books, to: :entry
 
     def initialize(entry)
       @entry = entry
@@ -10,7 +10,7 @@ module Cicognara
 
     def solr_doc
       doc = doc_tei_fields
-      unless corresp.empty?
+      unless books.empty? && corresp.empty?
         doc[:dclib_s] = corresp
         book_fields = marc_fields
         doc.merge!(book_fields)
@@ -21,8 +21,12 @@ module Cicognara
 
     private
 
+    def corresp
+      (entry.corresp + books.map(&:digital_cico_number)).uniq
+    end
+
     def doc_tei_fields
-      { id: n, cico_s: n, tei_description_unstem_search: text, tei_section_display: section_display,
+      { id: n, cico_s: n, cico_sort: n, tei_description_unstem_search: text, tei_section_display: section_display,
         tei_section_head_italian: section_head, tei_section_number_display: section_number,
         tei_author_txt: item_authors, tei_pub_txt: item_pubs, tei_date_display: item_dates,
         tei_note_italian: item_notes, tei_title_txt: item_titles, tei_section_facet: section_display }
@@ -54,9 +58,9 @@ module Cicognara
     end
 
     def remove_display_fields(book)
-      %w(id format title_display author_display published_display
-         title_addl_display title_added_entry_display title_series_display
-         subject_display contents_display edition_display language_display
+      %w(id format title_display published_display title_addl_display
+         title_added_entry_display title_series_display
+         contents_display edition_display language_display
          related_name_display dclib_display).each { |f| book.delete(f) }
     end
   end
