@@ -205,4 +205,8 @@ class CatalogController < ApplicationController
     end
     @linked_books.compact!
   end
+
+  def has_search_parameters?
+    true
+  end
 end

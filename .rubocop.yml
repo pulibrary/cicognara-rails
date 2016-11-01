@@ -17,6 +17,10 @@ Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
 
+Style/PredicateName:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+
 RSpec/AnyInstance:
   Exclude:
     - 'spec/support/**/*'
