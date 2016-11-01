@@ -5,6 +5,7 @@ RSpec.describe 'searching', type: :feature do
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
+    solr.delete_by_query('*:*')
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
 
     contributing_library = ContributingLibrary.create! label: 'Example Library', uri: 'http://www.example.org'
@@ -21,6 +22,7 @@ RSpec.describe 'searching', type: :feature do
 
   after(:all) do
     Book.destroy_all
+    Entry.destroy_all
   end
 
   it 'displays facets' do
