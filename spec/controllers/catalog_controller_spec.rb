@@ -5,12 +5,14 @@ RSpec.describe CatalogController, type: :controller do
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
+    solr.delete_by_query('*:*')
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
     solr.commit
   end
 
   after(:all) do
     Book.destroy_all
+    Entry.destroy_all
   end
 
   describe 'GET #show' do
@@ -32,6 +34,16 @@ RSpec.describe CatalogController, type: :controller do
 
       linked_books = assigns(:linked_books)
       expect(linked_books.first['title_addl_display']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
+    end
+  end
+
+  describe 'GET #index' do
+    render_views
+    let(:response_body) { Capybara::Node::Simple.new(response.body) }
+    it "doesn't show the welcome page" do
+      get :index
+
+      expect(response_body).to have_selector '.document'
     end
   end
 end
