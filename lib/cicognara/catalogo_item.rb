@@ -58,7 +58,7 @@ module Cicognara
     end
 
     def remove_display_fields(book)
-      %w(id format title_display published_display title_addl_display
+      %w(id format title_display author_display published_display title_addl_display
          title_added_entry_display title_series_display
          contents_display edition_display language_display
          related_name_display dclib_display).each { |f| book.delete(f) }
