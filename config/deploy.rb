@@ -28,8 +28,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'vendor/bundle')
 
 # Default value for default_env is {}
 set :default_env,
-    'MARCPATH' => '/tmp/cicognara.mrx.xml',
-    'TEIPATH' => '/tmp/catalogo.tei.xml',
+    'MARCPATH' => 'public/cicognara.mrx.xml',
+    'TEIPATH' => 'public/catalogo.tei.xml',
     'CATALOGO_VERSION' => 'v1.1'
 
 # Default value for keep_releases is 5
