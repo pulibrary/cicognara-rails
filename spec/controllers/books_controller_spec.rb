@@ -25,4 +25,12 @@ RSpec.describe BooksController, type: :controller do
       expect(assigns(:book)).to eq(book)
     end
   end
+
+  describe 'GET #manifest' do
+    it 'builds a manifest based on id' do
+      get :manifest, params: { id: book.id, format: :json }
+
+      expect(response).to be_success
+    end
+  end
 end

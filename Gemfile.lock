@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/pulibrary/pul_uv_rails.git
+  revision: 8af5f89f2c8e33834b64e6ef213a7e09f5d4c153
+  specs:
+    pul_uv_rails (1.7.27)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -127,6 +133,10 @@ GEM
     high_voltage (3.0.0)
     httpclient (2.8.2.3)
     i18n (0.7.0)
+    iiif-presentation (0.1.0)
+      activesupport (>= 3.2.18)
+      faraday (~> 0.9.0)
+      json
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -336,11 +346,13 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.3)
   high_voltage (~> 3.0.0)
+  iiif-presentation
   jbuilder (~> 2.0)
   jquery-rails
   pg
   pry-byebug
   pry-rails
+  pul_uv_rails!
   rails (~> 5.0)
   rails-controller-testing
   rsolr (~> 1.0)

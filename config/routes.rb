@@ -29,6 +29,18 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :entries, only: [] do
+    member do
+      get :manifest, defaults: { format: :json }
+    end
+  end
+
+  resources :books, only: [] do
+    member do
+      get :manifest, defaults: { format: :json }
+    end
+  end
+
   get '/catalogo' => 'high_voltage/pages#show', as: :browse_catalogo, id: 'catalogo/section_1.1'
   get '/*id/index.html' => 'high_voltage/pages#show', as: :page, format: false
   get '/*id' => 'high_voltage/pages#show', as: :static_page, format: false
