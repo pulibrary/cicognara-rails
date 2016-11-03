@@ -29,4 +29,8 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  def manifest_url
+    UrlGenerator.new.manifest_entry_path(id: id)
+  end
 end
