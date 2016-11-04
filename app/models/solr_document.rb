@@ -31,6 +31,6 @@ class SolrDocument
   use_extension(Blacklight::Document::DublinCore)
 
   def manifest_url
-    UrlGenerator.new.manifest_entry_path(id: id)
+    ::UrlGenerator.new.manifest_entry_path(id: id)
   end
 end

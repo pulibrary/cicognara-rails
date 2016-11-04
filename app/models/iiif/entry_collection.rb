@@ -25,7 +25,7 @@ module IIIF
     end
 
     def helper
-      @helper ||= UrlGenerator.new
+      @helper ||= ::UrlGenerator.new
     end
   end
 end
