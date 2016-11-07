@@ -127,20 +127,12 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     # Author fields
 
-    to_field 'author_t', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq:700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
     to_field 'author_display', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true)
-    to_field 'name_facet', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq:700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true)
-    to_field 'related_name_display', extract_marc('700aqbcdk:711abcdfgklnpq', trim_punctuation: true)
     to_field 'author_sort', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true, first: true)
 
-    # Filter 710s with subfield a beginning 'Fondo Cicognara' or 'Leopoldo Cicognara Program'
-    to_field 'related_name_display' do |record, accumulator|
-      Traject::MarcExtractor.cached('710abcdfgkln').collect_matching_lines(record) do |field, spec, extractor|
-        subfield_a = extractor.collect_subfields(field, spec).first
-        unless (subfield_a =~ /^Fondo Cicognara/ || subfield_a =~ /^Leopoldo Cicognara Program/)
-          accumulator << field.value
-        end
-      end
+    # Filter out 700/710/711s beginning with 'Fondo Cicognara' or 'Leopoldo Cicognara Program'
+    to_field 'related_name_display', extract_marc('700aqbcdk:710abcdfgkln:711abcdfgklnpq', trim_punctuation: true) do |record, accumulator|
+      accumulator.delete_if { |v| v =~ /^Fondo Cicognara/ || v =~ /^Leopoldo Cicognara Program/ }
     end
 
 
@@ -245,6 +237,13 @@ class MarcIndexer < Blacklight::Marc::Indexer
       context.output_hash['contents_display'] = context.output_hash['contents_t'] unless context.output_hash['contents_t'].nil?
       context.output_hash['edition_display'] = context.output_hash['edition_t'] unless context.output_hash['edition_t'].nil?
       context.output_hash['language_display'] = context.output_hash['language_facet'] unless context.output_hash['language_facet'].nil?
+
+      # author search and facet fields combined of 100/110/11 author_display and 700/710/711 related_name_display fields
+      author_facet = [context.output_hash['related_name_display'], context.output_hash['author_display']].flatten.compact.uniq
+      unless author_facet.empty?
+        context.output_hash['author_t'] = author_facet
+        context.output_hash['name_facet'] = author_facet 
+      end
     end
   end
 end
