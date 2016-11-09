@@ -22,3 +22,4 @@ module CicognaraRails
     config.autoload_paths << Rails.root.join('lib')
   end
 end
+require 'cicognara'
