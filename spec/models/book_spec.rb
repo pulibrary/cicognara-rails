@@ -76,6 +76,11 @@ RSpec.describe Book, type: :model do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to eq ['False']
       end
+      it 'indexes the manifest' do
+        version
+        b = described_class.first
+        expect(b.to_solr['manifests_s']).to eq ['http://example.org/1.json']
+      end
     end
   end
 end

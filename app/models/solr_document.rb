@@ -33,4 +33,8 @@ class SolrDocument
   def manifest_url
     UrlGenerator.new.manifest_entry_path(id: id)
   end
+
+  def manifests
+    fetch(:manifests_s, [])
+  end
 end

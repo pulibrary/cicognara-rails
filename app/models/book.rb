@@ -15,7 +15,8 @@ class Book < ActiveRecord::Base
   def extra_solr
     {
       'contributing_library_facet' => contributing_libraries.map(&:label),
-      'digitized_version_available_facet' => [digitized_version_available?.to_s.capitalize]
+      'digitized_version_available_facet' => [digitized_version_available?.to_s.capitalize],
+      'manifests_s' => versions.map(&:manifest)
     }
   end
 
