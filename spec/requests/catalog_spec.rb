@@ -34,7 +34,7 @@ RSpec.describe 'CatalogController config', type: :request do
   describe 'show view' do
     it 'contains link to catalogo item view' do
       get solr_document_path('15')
-      expect(response.body).to have_link('Browse View', href: '/catalogo/section_1.1/index.html#item_15')
+      expect(response.body).to have_link('Browse View', href: '/catalogo/section_1.1#item_15')
     end
     describe 'when solr doc from dc_lib is not found' do
       it 'dclib marc record is not indexed' do

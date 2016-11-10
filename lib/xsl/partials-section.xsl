@@ -29,7 +29,7 @@
                             <xsl:value-of select="current()/tei:head/tei:seg[@type = 'main']"/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <a href="/{$url_path_prefix}catalogo/section_{@n}/index.html">
+                            <a href="/{$url_path_prefix}catalogo/section_{@n}">
                                 <xsl:value-of select="current()/tei:head/tei:seg[@type = 'main']"/>
                             </a>
                         </xsl:otherwise>
