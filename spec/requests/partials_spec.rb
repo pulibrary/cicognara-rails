@@ -4,14 +4,14 @@ require 'json'
 RSpec.describe 'xsl', type: :request do
   describe 'section partials' do
     it 'html page for each section partial' do
-      get page_path('catalogo/section_2.1')
+      get static_page_path('catalogo/section_2.1')
       expect(response).to have_http_status(200)
     end
 
     describe 'section links' do
-      before { get page_path('catalogo/section_1.2') }
+      before { get static_page_path('catalogo/section_1.2') }
       it 'contain links to other sections' do
-        expect(response.body).to have_link('Dell’antichità in genere', href: '/catalogo/section_2.1/index.html')
+        expect(response.body).to have_link('Dell’antichità in genere', href: '/catalogo/section_2.1')
       end
       it 'does not contain link to current page' do
         expect(response.body).not_to have_link(href: '/catalogo/section_1.2/index.html')
@@ -19,7 +19,7 @@ RSpec.describe 'xsl', type: :request do
     end
 
     describe 'partials content' do
-      before { get page_path('catalogo/section_1.1') }
+      before { get static_page_path('catalogo/section_1.1') }
       describe 'section structure' do
         it 'includes id attribute for items' do
           expect(response.body).to have_selector('li#item_2')
@@ -68,7 +68,7 @@ RSpec.describe 'xsl', type: :request do
 
   describe 'item partials' do
     it 'html page for each item partial' do
-      get page_path('catalogo/_item_15')
+      get static_page_path('catalogo/_item_15')
       expect(response).to have_http_status(200)
     end
   end

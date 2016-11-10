@@ -42,7 +42,6 @@ Rails.application.routes.draw do
   end
 
   get '/catalogo' => 'high_voltage/pages#show', as: :browse_catalogo, id: 'catalogo/section_1.1'
-  get '/*id/index.html' => 'high_voltage/pages#show', as: :page, format: false
   get '/*id' => 'high_voltage/pages#show', as: :static_page, format: false
 
   # The priority is based upon order of creation: first created -> highest priority.
