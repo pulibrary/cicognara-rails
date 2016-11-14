@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let(:valid_attributes) { { email: 'alice@example.org', role: 'admin', password: 'abcdefg' } }
+  let(:valid_attributes) { { email: 'alice@example.org', role: 'admin' } }
   let(:invalid_attributes) { { email: nil } }
 
   before do
@@ -68,7 +68,8 @@ RSpec.describe UsersController, type: :controller do
       it "re-renders the 'edit' template" do
         user = User.create! valid_attributes
         put :update, params: { id: user.to_param, user: invalid_attributes }
-        expect(response).to render_template('edit')
+        expect(response).to redirect_to(user_path(user))
+        expect(response).not_to be_successful
       end
     end
   end
