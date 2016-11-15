@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.find_by(email: data['email'])
-    user = User.create(name: data['name'], email: data['email']) unless user
+    user = User.create(email: data['email']) unless user
     user
   end
 
