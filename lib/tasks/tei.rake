@@ -7,6 +7,7 @@ namespace :tei do
     marcpath = ENV['MARCPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.marc.xml')
     solr_server = Blacklight.connection_config[:url]
     solr = RSolr.connect(url: solr_server)
+    solr.delete_by_query('*:*')
     solr.add(Cicognara::TEIIndexer.new(teipath, marcpath).solr_docs)
     solr.commit
   end
