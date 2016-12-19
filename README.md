@@ -32,3 +32,13 @@ You can also specify an email address to make a particular user an amdin:
 ```
 EMAIL=user@example.org rake set_admin_role
 ```
+
+# Deploying:
+When deploying, make sure the desired cicognara-catalogo (MARC and TEI) release is specified:
+```
+# config/deploy.rb`
+set :default_env,
+    'MARCPATH' => 'public/cicognara.mrx.xml',
+    'TEIPATH' => 'public/catalogo.tei.xml',
+    'CATALOGO_VERSION' => 'v1.2'
+```
