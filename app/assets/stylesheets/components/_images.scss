@@ -39,11 +39,16 @@ figure {
     }
   }
 
+  &.center {
+    text-align: center;
+  }
+
   figcaption {
     font-family: $serif;
     font-size: 0.95em;
     padding: .5em 1.9em .55em;
     width: 350px;
+    margin: 0 auto;
   }
 }
 
