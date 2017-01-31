@@ -39,14 +39,8 @@ figure {
     }
   }
 
-  // BROKEN 
   &.center {
-    clear: both;
-    margin: 0 auto;
-
-    @media (min-width: 600px) {
-      margin: 0 auto;
-    }
+    text-align: center;
   }
 
   figcaption {
@@ -54,6 +48,7 @@ figure {
     font-size: 0.95em;
     padding: .5em 1.9em .55em;
     width: 350px;
+    margin: 0 auto;
   }
 }
 
