@@ -39,6 +39,16 @@ figure {
     }
   }
 
+  // BROKEN 
+  &.center {
+    clear: both;
+    margin: 0 auto;
+
+    @media (min-width: 600px) {
+      margin: 0 auto;
+    }
+  }
+
   figcaption {
     font-family: $serif;
     font-size: 0.95em;
