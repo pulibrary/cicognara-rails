@@ -21,13 +21,13 @@ describe Cicognara::TEIIndexer do
   describe '#books' do
     it 'builds the same index as if #to_solr was called' do
       expect(@subject.books[0].to_solr).to eq @subject.solr_docs[0]
-      expect(@subject.solr_docs[4]).to eq @subject.entries[1].to_solr
+      expect(@subject.solr_docs[5]).to eq @subject.entries[1].to_solr
     end
   end
 
   describe '#solr_docs' do
-    it 'has a length of 8' do
-      expect(@subject.solr_docs.length).to eq 8
+    it 'has a length of 10' do
+      expect(@subject.solr_docs.length).to eq 10
     end
   end
 end

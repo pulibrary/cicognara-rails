@@ -150,6 +150,18 @@
 	      <note>Le stampe in legno di cui va adorno questo Libretto sono eleganti e singolari. 12 tav. oltre il frontispizio sono
 	      quelle del primo lib. e 21 sono quelle del secondo. Magnif. esemp.</note>
             </item>
+
+        <item xml:id="c1d1e1398" n="35" corresp="cico:gzw cico:vzk">
+          <label>35.</label>
+          <bibl>
+            <author>GHIBERTI (Lorenzo)</author>,
+            <title> Commentario inedito sulle arti estratto da manoscritti della Magliabechiana e pubblicato nel volume secondo della
+            Storia della scultura di L. Cicognara,</title>
+	        <pubPlace>Venezia</pubPlace>
+            <date>1805,</date>
+            <extent> in 8, M. 36.</extent>
+            </bibl>
+          </item>
 	  </list>
         </div>
         <div type="section" n="1.2">
@@ -158,7 +170,7 @@
 	  <fw type="head"/>
 	  <head><seg type="main">Della Pittura Trattati</seg></head>
 	  <list type="catalog">
-	    <item xml:id="c1d1e2260" n="66" corresp="cico:6gq">
+	    <item xml:id="c1d1e2260" n="66" corresp="cico:6gq cico:vzk">
               <label>66.</label> 
               <bibl>
                 <author>ALBERTI Leon Battista</author>, 

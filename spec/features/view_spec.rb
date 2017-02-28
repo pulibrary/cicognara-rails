@@ -32,6 +32,11 @@ RSpec.describe 'entry views', type: :feature do
     expect(page).not_to have_link 'Addito Libellus Compendiarum virtutis adipiscendæ ec. et carmina.'
   end
 
+  it 'displays marc info once when an entry dclib num matches twice on a single record' do
+    visit '/catalog/35'
+    expect(page.all('.linked-books').length).to eq 1
+  end
+
   describe 'a logged in user' do
     before do
       @user = stub_admin_user

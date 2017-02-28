@@ -205,6 +205,7 @@ class CatalogController < ApplicationController
       end
     end
     @linked_books.compact!
+    @linked_books.uniq!(&:_source) if @linked_books.length > 1
   end
 
   def has_search_parameters?

@@ -227,8 +227,13 @@ class MarcIndexer < Blacklight::Marc::Indexer
     to_field 'edition_t', extract_marc('250ab')
 
     each_record do |record, context|
+      # keep id unique key single valued, but use alt_id to serve docs in Blacklight
+      id = context.output_hash['id']
+      context.output_hash['id'] = id[0..0]
+      context.output_hash['alt_id'] = id
+
       # add display fields
-      context.output_hash['dclib_display'] = context.output_hash['id']
+      context.output_hash['dclib_display'] = id
       context.output_hash['published_display'] = context.output_hash['published_t'] unless context.output_hash['published_t'].nil?
       context.output_hash['title_addl_display'] = context.output_hash['title_addl_t'] unless context.output_hash['title_addl_t'].nil?
       context.output_hash['title_added_entry_display'] = context.output_hash['title_added_entry_t'] unless context.output_hash['title_added_entry_t'].nil?
