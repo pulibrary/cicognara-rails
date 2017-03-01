@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<collection>
-  <record xmlns="http://www.loc.gov/MARC21/slim">
+<collection xmlns="http://www.loc.gov/MARC21/slim">
+  <record>
     <leader>01785cam a2200349 a 4500</leader>
     <controlfield tag="001">8524680</controlfield>
     <controlfield tag="005">20160419234839.0</controlfield>
@@ -111,7 +111,7 @@
       <subfield code="h">MICROFICHE 5</subfield>
     </datafield>
   </record>
-  <record xmlns="http://www.loc.gov/MARC21/slim">
+  <record>
     <leader>01414cam a2200325 a 4500</leader>
     <controlfield tag="001">8524683</controlfield>
     <controlfield tag="005">20160420000226.0</controlfield>
@@ -207,7 +207,7 @@
       <subfield code="h">MICROFICHE 5</subfield>
     </datafield>
   </record>
-  <record xmlns="http://www.loc.gov/MARC21/slim">
+  <record>
     <leader>01422cam a2200289 a 4500</leader>
     <controlfield tag="001">8524684</controlfield>
     <controlfield tag="005">20160420000226.0</controlfield>
@@ -295,6 +295,105 @@
     </datafield>
     <datafield ind1="8" ind2=" " tag="852">
       <subfield code="0">8271614</subfield>
+      <subfield code="b">safi</subfield>
+      <subfield code="h">MICROFICHE 5</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01479cam a2200313 a 4500</leader>
+    <controlfield tag="001">8544955</controlfield>
+    <controlfield tag="005">20170118151537.0</controlfield>
+    <controlfield tag="007">he|amu|||bacu</controlfield>
+    <controlfield tag="008">981022s1805    it      bb    000 0 ita d</controlfield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="9">0170-62260</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="024">
+      <subfield code="a">35</subfield>
+      <subfield code="2">cico</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="024">
+      <subfield code="a">cico:gzw</subfield>
+      <subfield code="2">dclib</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="024">
+      <subfield code="a">cico:vzk</subfield>
+      <subfield code="2">dclib</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CStRLIN)DCNA98-B6678</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">207328</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DNGA</subfield>
+      <subfield code="c">DNGA</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Ghiberti, Lorenzo,</subfield>
+      <subfield code="d">1378-1455.</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/n78096136</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Commentario inedito di Lorenzo Ghiberti</subfield>
+      <subfield code="h">[microform] :</subfield>
+      <subfield code="b">estratto da manoscritti della Biblioteca Magliabecchiana.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">[S.l. :</subfield>
+      <subfield code="b">s.n.,</subfield>
+      <subfield code="c">1805]</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">38 p.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Fiche no. 35, copy 2 has BAV no. IVM36 (8)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references.</subfield>
+    </datafield>
+    <datafield ind1="4" ind2=" " tag="510">
+      <subfield code="a">Cicognara,</subfield>
+      <subfield code="c">35</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="533">
+      <subfield code="a">Microfiche.</subfield>
+      <subfield code="b">Urbana, Ill. :</subfield>
+      <subfield code="c">Leopoldo Cicognara Program at the University of Illinois Library in Association with the Vatican Library ;</subfield>
+      <subfield code="b">Bassingbourn, Cambridgeshire, U.K. :</subfield>
+      <subfield code="c">Chadwyck-Healy Microform,</subfield>
+      <subfield code="d">1989- .</subfield>
+      <subfield code="e">1 microfiche : positive.</subfield>
+      <subfield code="f">(Cicognara Library)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Art.</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh85007461</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Fondo Cicognara (Biblioteca apostolica vaticana)</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/nr94016468</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/nr94016472</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="830">
+      <subfield code="a">Cicognara library.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">jwl</subfield>
+      <subfield code="b">z</subfield>
+      <subfield code="6">a</subfield>
+      <subfield code="7">m</subfield>
+      <subfield code="d">w</subfield>
+      <subfield code="f">0</subfield>
+      <subfield code="e">20140710</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="852">
+      <subfield code="0">8289598</subfield>
       <subfield code="b">safi</subfield>
       <subfield code="h">MICROFICHE 5</subfield>
     </datafield>

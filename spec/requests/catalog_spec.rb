@@ -23,6 +23,16 @@ RSpec.describe 'CatalogController config', type: :request do
     it 'stores dclib for display' do
       expect(doc['dclib_display']).to eq(['cico:m87'])
     end
+    describe 'multiple dclibs in single marc record' do
+      it 'multiple dclibs can display for a single marc record' do
+        get solr_document_path('cico:gzw'), as: :json
+        expect(doc['dclib_display']).to eq(['cico:gzw', 'cico:vzk'])
+      end
+      it 'document is retrieved on alt_id' do
+        get solr_document_path('cico:vzk'), as: :json
+        expect(doc['id']).to eq('cico:gzw')
+      end
+    end
   end
   describe 'index view' do
     it 'marc records do not appear in search results' do
@@ -45,6 +55,11 @@ RSpec.describe 'CatalogController config', type: :request do
         get solr_document_path('66'), as: :json
         dclib = JSON.parse(response.body)['response']['document']['dclib_s']
         expect(dclib).to include('cico:6gq')
+      end
+      it 'catalog item has alt_id field' do
+        get solr_document_path('66'), as: :json
+        dclib = JSON.parse(response.body)['response']['document']
+        expect(dclib['alt_id']).to include('66')
       end
       it 'catalog item renders without error' do
         get solr_document_path('66')
