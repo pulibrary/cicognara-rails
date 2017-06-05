@@ -1,0 +1,5 @@
+<% if document.manifests.present? %>
+  <div class="viewer mirador">
+    <%= mirador_tag(options: {data: document.mirador_manifests, windowObjects: [{loadedManifest: document.manifests[0]}]})%>
+  </div>
+<% end %>

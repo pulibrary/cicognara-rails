@@ -37,4 +37,12 @@ class SolrDocument
   def manifests
     fetch(:manifests_s, [])
   end
+
+  def mirador_manifests
+    manifests.map do |manifest|
+      {
+        manifestUri: manifest
+      }
+    end
+  end
 end

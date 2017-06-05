@@ -15,5 +15,6 @@
 //= require bootstrap-sprockets
 // Required by Blacklight
 //= require blacklight/blacklight
+//= require mirador
 
 //= require_tree .

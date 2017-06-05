@@ -127,6 +127,8 @@ GEM
     execjs (2.7.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.4.4)
@@ -159,12 +161,20 @@ GEM
       unf
     marc-fastxmlwriter (1.0.0)
       marc (~> 1.0)
+    material_icons (2.2.1)
+      railties (>= 3.2)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    mirador_rails (0.5.0)
+      font-awesome-rails
+      jquery-rails
+      material_icons
+      openseadragon
+      tinymce-rails
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -192,6 +202,8 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    openseadragon (0.3.3)
+      rails (> 3.2.0)
     orm_adapter (0.5.0)
     parser (2.3.1.2)
       ast (~> 2.2)
@@ -308,6 +320,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
+    tinymce-rails (4.6.3)
+      railties (>= 3.1.1)
     traject (2.3.1)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
@@ -368,6 +382,7 @@ DEPENDENCIES
   iiif-presentation
   jbuilder (~> 2.0)
   jquery-rails
+  mirador_rails
   omniauth-google-oauth2
   pg
   pry-byebug
@@ -392,4 +407,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.12.5
+   1.13.7

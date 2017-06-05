@@ -40,7 +40,8 @@ class CatalogController < ApplicationController
     config.index.display_type_field = 'format'
     config.index.partials = [:item_partial, :index_links]
     config.show.partials = [:show_header, :show_browse, :linked_books]
-    config.show.partials.insert(1, :universal_viewer)
+    # config.show.partials.insert(1, :universal_viewer)
+    config.show.partials.insert(1, :mirador)
     config.show.document_actions.replace({})
 
     # solr field configuration for document/show views
