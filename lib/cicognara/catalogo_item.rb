@@ -16,10 +16,15 @@ module Cicognara
         doc.merge!(book_fields)
       end
       doc[:title_display] = solr_title_display(item_label || n)
+      doc['digitized_version_available_facet'] = resolve_avail(doc['digitized_version_available_facet'])
       doc
     end
 
     private
+
+    def resolve_avail(arr)
+      (arr || []).include?('True') ? 'True' : 'False'
+    end
 
     def corresp
       (entry.corresp + books.map(&:digital_cico_number)).uniq

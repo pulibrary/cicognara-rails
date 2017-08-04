@@ -5,6 +5,12 @@ RSpec.describe Entry, type: :model do
   before(:all) do
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
+    book = Book.find_or_create_by! digital_cico_number: 'cico:m87'
+    Version.create! contributing_library: ContributingLibrary.first, book: book,
+                    label: 'version 2', based_on_original: false, owner_system_number: '1234',
+                    rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+                    manifest: 'http://example.org/1.json'
+
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
     solr.commit
@@ -114,6 +120,10 @@ RSpec.describe Entry, type: :model do
 
         it 'indexes the item number for display' do
           expect(subject.to_solr[:title_display]).to include('2')
+        end
+
+        it 'has a digitized content' do
+          expect(subject.to_solr['digitized_version_available_facet']).to eq('True')
         end
       end
       context 'when corresp has 2 values' do
