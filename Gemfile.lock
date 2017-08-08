@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/pulibrary/pul_uv_rails.git
-  revision: 8af5f89f2c8e33834b64e6ef213a7e09f5d4c153
+  revision: ce493942cfdbfd398f686c34324312df03cf6bf2
   specs:
-    pul_uv_rails (1.7.27)
+    pul_uv_rails (2.0.1)
 
 GEM
   remote: https://rubygems.org/
