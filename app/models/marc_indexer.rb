@@ -127,7 +127,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     # Author fields
 
-    to_field 'author_display', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true)
+    to_field 'author_display', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true, first: true)
     to_field 'author_sort', extract_marc('100aqbcdk:110abcdfgkln:111abcdfgklnpq', trim_punctuation: true, first: true)
 
     # Filter out 700/710/711s beginning with 'Fondo Cicognara' or 'Leopoldo Cicognara Program'
