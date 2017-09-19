@@ -19,7 +19,7 @@ module IIIF
     end
 
     def collections
-      entry.books.includes(:versions).map do |book|
+      entry.books.select { |book| !book.versions.empty? }.map do |book|
         IIIF::BookCollection.new(book).collection
       end
     end
