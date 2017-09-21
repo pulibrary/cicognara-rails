@@ -9,7 +9,9 @@
       <div class="col-xs-offset-3">
         <ul>
           <% versions.each do |version| %>
-            <li><%= link_to version.label, book_version_path(book_record, version) %></li>
+            <% if can? :show, version %>
+              <li><%= link_to version.label, book_version_path(book_record, version) %></li>
+            <% end %>
           <% end %>
           <% if can? :create, Version %>
             <li><%= link_to 'Add a version', new_book_version_path(book_record) %></li>
