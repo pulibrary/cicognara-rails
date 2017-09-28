@@ -54,7 +54,7 @@ RSpec.describe 'searching', type: :feature do
     expect(page).to have_link 'Example Library'
 
     expect(page).to have_selector 'h3.facet-field-heading', text: 'Digitized Version Available'
-    expect(page).to have_link 'True'
+    expect(page).to have_link 'Yes'
   end
 
   it 'suggests titles, authors, subjects and institutions, but not other fields' do

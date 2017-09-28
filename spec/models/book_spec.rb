@@ -61,7 +61,7 @@ RSpec.describe Book, type: :model do
       it 'indexes that fact' do
         version
         b = described_class.first
-        expect(b.to_solr['digitized_version_available_facet']).to eq ['True']
+        expect(b.to_solr['digitized_version_available_facet']).to eq ['Yes']
       end
     end
     context "when a digitized version isn't available" do
@@ -74,7 +74,7 @@ RSpec.describe Book, type: :model do
       it 'indexes it as false' do
         version
         b = described_class.first
-        expect(b.to_solr['digitized_version_available_facet']).to eq ['True']
+        expect(b.to_solr['digitized_version_available_facet']).to eq ['Yes']
       end
       it 'indexes the manifest' do
         version
