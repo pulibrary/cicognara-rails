@@ -182,7 +182,8 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
     config.add_sort_field 'score desc, title_sort asc', label: 'relevance'
     config.add_sort_field 'cico_sort asc', label: 'catalogo nr'
-    config.add_sort_field 'pub_date_sort desc, title_sort asc', label: 'year'
+    config.add_sort_field 'pub_date_sort asc, title_sort asc', label: 'year (oldest first)'
+    config.add_sort_field 'pub_date_sort desc, title_sort asc', label: 'year (newest first)'
     config.add_sort_field 'author_sort asc, title_sort asc', label: 'author'
     config.add_sort_field 'title_sort asc', label: 'title'
 
