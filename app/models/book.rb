@@ -21,6 +21,6 @@ class Book < ActiveRecord::Base
   end
 
   def digitized_version_available?
-    versions.empty? ? 'False' : 'True'
+    versions.empty? ? 'No' : 'Yes'
   end
 end

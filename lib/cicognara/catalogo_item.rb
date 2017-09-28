@@ -23,7 +23,7 @@ module Cicognara
     private
 
     def resolve_avail(arr)
-      (arr || []).include?('True') ? 'True' : 'False'
+      (arr || []).include?('Yes') ? 'Yes' : 'No'
     end
 
     def corresp
