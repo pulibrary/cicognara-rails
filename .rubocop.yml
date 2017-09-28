@@ -13,6 +13,10 @@ Rails:
 Metrics/LineLength:
   Enabled: false
 
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/catalog_controller.rb'
+
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'

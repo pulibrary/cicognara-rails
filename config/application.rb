@@ -20,6 +20,9 @@ module CicognaraRails
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths << Rails.root.join('lib')
+
+    # Use custom error pages
+    config.exceptions_app = routes
   end
 end
 require 'cicognara'
