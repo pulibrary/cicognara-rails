@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Books</h1>
+<h1>All Books</h1>
 
-<ul>
-  <% @books.each do |book| %>
-    <li><%= link_to book.digital_cico_number, book %></li>
+<ul class="item-index">
+  <% @books.select { |b| b.digital_cico_number.present? }.sort_by(&:digital_cico_number).each do |book| %>
+    <li class="item-link"><%= link_to book.digital_cico_number, book %></li>
   <% end %>
 </ul>

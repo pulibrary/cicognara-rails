@@ -2,10 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Version, type: :routing do
   describe 'routing' do
-    it 'routes to #index' do
-      expect(get: '/books/1/versions').to route_to('versions#index', book_id: '1')
-    end
-
     it 'routes to #new' do
       expect(get: '/books/1/versions/new').to route_to('versions#new', book_id: '1')
     end

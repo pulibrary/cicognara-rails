@@ -2,8 +2,29 @@
 
 <p>Digital Cicognara Number: <%= @book.digital_cico_number %></p>
 
-<ul>
-  <li><%= link_to 'List Versions', book_versions_path(@book) %></li>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Contributor</th>
+      <th></th>
+    </tr>
+  </thead>
 
-<%= link_to 'Back to Book List', books_path %>
+  <tbody>
+    <% @book.versions.each do |version| %>
+      <tr>
+        <td><%= link_to version.label, book_version_path(@book, version) %></td>
+        <td><%= version.contributing_library.label %></td>
+        <td><%= link_to 'View', book_version_path(@book, version), class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_book_version_path(@book, version), class: 'btn btn-primary' %>
+            <%= link_to 'Destroy', book_version_path(@book, version), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back to All Books', books_path, class: 'btn btn-default'  %>
+<%= link_to 'Add Version', new_book_version_path(@book), class: 'btn btn-primary' %>

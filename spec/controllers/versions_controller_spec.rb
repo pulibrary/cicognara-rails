@@ -27,14 +27,6 @@ RSpec.describe VersionsController, type: :controller do
     contrib.destroy
   end
 
-  describe 'GET #index' do
-    it 'assigns all versions as @versions' do
-      version = Version.create! valid_attributes
-      get :index, params: { book_id: book }
-      expect(assigns(:versions)).to eq([version])
-    end
-  end
-
   describe 'GET #show' do
     it 'assigns the requested version as @version' do
       version = Version.create! valid_attributes
@@ -152,7 +144,7 @@ RSpec.describe VersionsController, type: :controller do
     it 'redirects to the versions list' do
       version = Version.create! valid_attributes
       delete :destroy, params: { book_id: book, id: version }
-      expect(response).to redirect_to(book_versions_url(book))
+      expect(response).to redirect_to(book_url(book))
     end
   end
 end
