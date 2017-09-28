@@ -1,23 +1,25 @@
 <% @linked_books.each do |book| %>
-  <div class="row linked-books">
-    <h4><%= book['title_display'] %></h4>
-    <%= render partial: 'show_default', locals: { document: book } %>
+  <% if book['format'] %>
+    <div class="row linked-books">
+      <h4><%= book['title_display'] %></h4>
+      <%= render partial: 'show_default', locals: { document: book } %>
 
-    <% book_record = Book.where(digital_cico_number: book['id']).first %>
-    <% if book_record %>
-      <% versions = Version.where(book_id: book_record.id) %>
-      <div class="col-xs-offset-3">
-        <ul>
-          <% versions.each do |version| %>
-            <% if can? :show, version %>
-              <li><%= link_to version.label, book_version_path(book_record, version) %></li>
+      <% book_record = Book.where(digital_cico_number: book['id']).first %>
+      <% if book_record %>
+        <% versions = Version.where(book_id: book_record.id) %>
+        <div class="col-xs-offset-3">
+          <ul>
+            <% versions.each do |version| %>
+              <% if can? :show, version %>
+                <li><%= link_to version.label, book_version_path(book_record, version) %></li>
+              <% end %>
             <% end %>
-          <% end %>
-          <% if can? :create, Version %>
-            <li><%= link_to 'Add a version', new_book_version_path(book_record) %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
+            <% if can? :create, Version %>
+              <li><%= link_to 'Add a version', new_book_version_path(book_record) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
