@@ -45,6 +45,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/404', to: 'errors#not_found', via: :all
+  get '/500', to: 'errors#internal_server_error', via: :all
+
   get '/catalogo' => 'high_voltage/pages#show', as: :browse_catalogo, id: 'catalogo/section_1.1'
   get '/*id' => 'high_voltage/pages#show', as: :static_page, format: false
 

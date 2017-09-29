@@ -210,6 +210,8 @@ class CatalogController < ApplicationController
     end
     @linked_books.compact!
     @linked_books.uniq!(&:_source) if @linked_books.length > 1
+  rescue Blacklight::Exceptions::RecordNotFound
+    render 'errors/not_found', status: 404
   end
 
   def has_search_parameters?
