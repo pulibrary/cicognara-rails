@@ -17,7 +17,7 @@ RSpec.describe 'version CRUD', type: :feature do
     visit contributing_library_path contrib
     expect(page).to have_content('Library 1')
 
-    visit book_versions_path book
+    visit book_path book
     expect(page).to have_link('Add Version')
     click_on 'Add Version'
 
@@ -34,7 +34,7 @@ RSpec.describe 'version CRUD', type: :feature do
     expect(page).to have_link('http://example.org/1', href: 'http://example.org/1')
 
     # update the version
-    visit book_versions_path book
+    visit book_path book
     expect(page).to have_link('Edit')
     click_on 'Edit'
 
@@ -48,7 +48,7 @@ RSpec.describe 'version CRUD', type: :feature do
     expect(page).to have_link('http://example.org/1a', href: 'http://example.org/1a')
 
     # delete the version
-    visit book_versions_path book
+    visit book_path book
     expect(page).to have_link('Destroy')
     click_on 'Destroy'
     expect(page).to have_content('Version was successfully destroyed.')

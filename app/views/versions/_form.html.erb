@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <table>
+  <table class="table">
     <tbody>
       <tr>
         <td><%= f.label :label %></td>
@@ -75,6 +75,11 @@
   <%= f.hidden_field(:book_id, value: @book_id) %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit(class: 'btn btn-primary') %>
+    <% if @version.new_record? %>
+      <%= link_to 'Back to Book', book_path(@book), class: 'btn btn-default' %>
+    <% else %>
+      <%= link_to 'Cancel', book_version_path(@book, @version), class: 'btn btn-default' %>
+    <% end %>
   </div>
 <% end %>

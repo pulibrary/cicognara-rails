@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :books, only: [:index, :show] do
-    resources :versions
+    resources :versions, except: :index
   end
   resources :contributing_libraries
 
