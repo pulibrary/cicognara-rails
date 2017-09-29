@@ -21,6 +21,17 @@ RSpec.describe 'entry views', type: :feature do
     expect(page).to have_link 'Humanism—Early works to 1800', href: '/catalog?f%5Bsubject_facet%5D%5B%5D=Humanism%E2%80%94Early+works+to+1800'
   end
 
+  it 'displays metadata' do
+    visit '/catalog/15'
+    expect(page).to have_selector 'dd.blacklight-dclib_display', text: 'cico:88n'
+    expect(page).to have_selector 'dd.blacklight-cico_id_display', text: '15-1'
+    expect(page).to have_selector 'dd.blacklight-language_display', text: 'Latin'
+    expect(page).to have_selector 'dd.blacklight-description_display', text: '2 v. : ill.'
+    expect(page).to have_selector 'dd.blacklight-note_display', text: 'Imprint from colophon.'
+    expect(page).to have_selector 'dd.blacklight-published_display', text: 'Antverpiae : Apud Simonem Cocum, Anno 1541.'
+    expect(page).to have_selector 'dd.blacklight-title_addl_display', text: 'Libellus de vtilitate et harmonia artium tum futuro iurisconsulto, tum liberalium disciplinarum politiorisue literaturae studiosis utilissimus, Libellus de utilitate et harmonia, and Libellvs de vtilitate et harmonia'
+  end
+
   it 'entries are matched on book name search' do
     visit '/catalog?f%5Bname_facet%5D%5B%5D=Brontius%2C+Nicolaus%2C+16th+century'
     expect(page).to have_link nil, href: '/catalog/15'

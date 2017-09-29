@@ -78,6 +78,19 @@ class MarcIndexer < Blacklight::Marc::Indexer
       accumulator.replace(ids.uniq)
     end
 
+    to_field 'cico_id_t' do |record, accumulator|
+      ids = []
+      Traject::MarcExtractor.cached('024a').collect_matching_lines(record) do |field, spec, extractor|
+        id = extractor.collect_subfields(field, spec).first
+        unless id.nil?
+          field.subfields.each do |s_field|
+            ids << id if (s_field.code == '2') and s_field.value == 'cico'
+          end
+        end
+      end
+      accumulator.replace(ids.uniq)
+    end
+
     to_field 'marc_display', get_xml
     to_field 'text', extract_all_marc_values do |_r, acc|
       acc.replace [acc.join(' ')] # turn it into a single string
@@ -124,6 +137,10 @@ class MarcIndexer < Blacklight::Marc::Indexer
         accumulator << str if accumulator[0].nil?
       end
     end
+
+    # Note/Description fields
+    to_field 'description_t', extract_marc('300ab')
+    to_field 'note_t', extract_marc('500a')
 
     # Author fields
 
@@ -242,6 +259,9 @@ class MarcIndexer < Blacklight::Marc::Indexer
       context.output_hash['contents_display'] = context.output_hash['contents_t'] unless context.output_hash['contents_t'].nil?
       context.output_hash['edition_display'] = context.output_hash['edition_t'] unless context.output_hash['edition_t'].nil?
       context.output_hash['language_display'] = context.output_hash['language_facet'] unless context.output_hash['language_facet'].nil?
+      context.output_hash['description_display'] = context.output_hash['description_t'] unless context.output_hash['description_t'].nil?
+      context.output_hash['note_display'] = context.output_hash['note_t'] unless context.output_hash['note_t'].nil?
+      context.output_hash['cico_id_display'] = context.output_hash['cico_id_t'] unless context.output_hash['cico_id_t'].nil?
 
       # author search and facet fields combined of 100/110/11 author_display and 700/710/711 related_name_display fields
       author_facet = [context.output_hash['related_name_display'], context.output_hash['author_display']].flatten.compact.uniq
