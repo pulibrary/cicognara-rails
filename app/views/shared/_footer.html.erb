@@ -13,7 +13,7 @@
     </ul>
   </section>
   <section class="bottom">
-    <span>&copy; 2016 The Trustees of Princeton University. All rights reserved.</span>
+    <span>&copy; <%= current_year %> The Trustees of Princeton University. All rights reserved.</span>
     <% unless current_user %>
       | <%= link_to 'Log In', main_app.new_user_session_path %>
     <% end %>

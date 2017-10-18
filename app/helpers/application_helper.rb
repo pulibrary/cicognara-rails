@@ -4,4 +4,8 @@ module ApplicationHelper
     section = document['tei_section_number_display'].first
     static_page_path("catalogo/section_#{section}", anchor: "item_#{item}")
   end
+
+  def current_year
+    DateTime.current.year
+  end
 end
