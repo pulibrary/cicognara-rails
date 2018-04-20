@@ -55,7 +55,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'bixby'
   gem 'simplecov', '~> 0.9', require: false
   gem 'rails-controller-testing'
   gem 'pry-rails'
@@ -66,6 +65,7 @@ group :test do
   gem 'capybara'
 end
 
+gem 'bixby'
 gem 'rsolr', '~> 1.0'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
