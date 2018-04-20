@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -55,6 +55,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'bixby'
   gem 'simplecov', '~> 0.9', require: false
   gem 'rails-controller-testing'
   gem 'pry-rails'
@@ -70,12 +71,12 @@ gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'blacklight-marc', '~> 6.0'
-gem 'rubocop', '~> 0.39.0', require: false
-gem 'rubocop-rspec', require: false
 gem 'solr_wrapper', '>= 0.3'
 gem 'traject'
 gem 'high_voltage', '~> 3.0.0'
 gem 'validate_url'
 gem 'pul_uv_rails', github: 'pulibrary/pul_uv_rails'
 gem 'iiif-presentation'
+gem 'nokogiri', '~> 1.8.1'
+gem 'omniauth', '~> 1.3.2'
 gem 'omniauth-google-oauth2'
