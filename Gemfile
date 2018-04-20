@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -77,4 +77,6 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'validate_url'
 gem 'pul_uv_rails', github: 'pulibrary/pul_uv_rails'
 gem 'iiif-presentation'
+gem 'nokogiri', '~> 1.8.1'
+gem 'omniauth', '~> 1.3.2'
 gem 'omniauth-google-oauth2'
