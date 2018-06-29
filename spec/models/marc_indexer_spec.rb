@@ -91,4 +91,13 @@ RSpec.describe MarcIndexer, type: :model do
     expect(@values.first['related_name_display']).to be nil
     expect(@values[2]['related_name_display'].first).to eq 'Bogus place'
   end
+  it 'indexes Cicognara numbers from the 510 field' do
+    expect(@values[4]['cico_id_display']).to eq(%w[4716 4025])
+  end
+  it 'indexes note labels' do
+    expect(@values[4]['note_display']).to include('<strong>Fiche no.:</strong> 4716=4025.')
+  end
+  it 'indexes hierarchical places' do
+    expect(@values[4]['place_display']).to eq(['Germany—Bremen'])
+  end
 end
