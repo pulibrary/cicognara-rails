@@ -117,7 +117,6 @@ class MarcIndexer < Blacklight::Marc::Indexer
     #    additional title fields
     to_field 'title_addl_t',
              extract_marc(%W(
-               245abnps
                130#{ATOZ}
                240abcdefgklmnopqrs
                210ab
@@ -251,6 +250,9 @@ class MarcIndexer < Blacklight::Marc::Indexer
     # Edition Statement
     to_field 'edition_t', extract_marc('250ab')
 
+    # Hierarchical Place
+    to_field 'place_t', extract_marc('752abcdfgh')
+
     each_record do |record, context|
       # keep id unique key single valued, but use alt_id to serve docs in Blacklight
       id = context.output_hash['id']
@@ -270,6 +272,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
       context.output_hash['description_display'] = context.output_hash['description_t'] unless context.output_hash['description_t'].nil?
       context.output_hash['note_display'] = context.output_hash['note_t'] unless context.output_hash['note_t'].nil?
       context.output_hash['cico_id_display'] = context.output_hash['cico_id_t'] unless context.output_hash['cico_id_t'].nil?
+      context.output_hash['place_display'] = context.output_hash['place_t'] unless context.output_hash['place_t'].nil?
 
       # author search and facet fields combined of 100/110/11 author_display and 700/710/711 related_name_display fields
       author_facet = [context.output_hash['related_name_display'], context.output_hash['author_display']].flatten.compact.uniq

@@ -115,6 +115,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'subject_t', label: 'Subject', link_to_search: :subject_facet
     config.add_show_field 'contents_display', label: 'Contents'
     config.add_show_field 'edition_display', label: 'Edition'
+    config.add_show_field 'place_display', label: 'Place'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

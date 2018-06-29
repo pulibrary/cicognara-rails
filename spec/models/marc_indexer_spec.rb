@@ -47,7 +47,6 @@ RSpec.describe MarcIndexer, type: :model do
     expect(@values.first['id']).to eq(['cico:m87'])
   end
   it 'indexes additional titles' do
-    expect(@values.first['title_addl_t']).to include 'Henrici Cornelii Agrippae ab Nettesheym De incertitudine et vanitate scientiarum declamatio inuestiua'
     expect(@values.first['title_addl_t']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
   end
   it 'converts language code to label in language_facet' do
