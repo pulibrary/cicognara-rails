@@ -251,7 +251,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
     to_field 'edition_t', extract_marc('250ab')
 
     # Hierarchical Place
-    to_field 'place_t', extract_marc('752abcdfgh')
+    to_field 'place_t', extract_marc('752abcdfgh', separator: SEPARATOR)
 
     each_record do |record, context|
       # keep id unique key single valued, but use alt_id to serve docs in Blacklight
