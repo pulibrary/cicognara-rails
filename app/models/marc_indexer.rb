@@ -88,6 +88,14 @@ class MarcIndexer < Blacklight::Marc::Indexer
           end
         end
       end
+      Traject::MarcExtractor.cached('510c').collect_matching_lines(record) do |field, spec, extractor|
+        id = extractor.collect_subfields(field, spec).last
+        unless id.nil?
+          field.subfields.each do |s_field|
+            ids << id if (s_field.code == 'a') and s_field.value == 'Cicognara,'
+          end
+        end
+      end
       accumulator.replace(ids.uniq)
     end
 
@@ -140,7 +148,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     # Note/Description fields
     to_field 'description_t', extract_marc('300ab')
-    to_field 'note_t', extract_marc('500a')
+    to_field 'note_t', extract_marc('5003a')
 
     # Author fields
 
