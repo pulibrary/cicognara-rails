@@ -8,7 +8,12 @@ namespace :csv do
 
     CSV.foreach(ARGV[1], headers: true) do |row|
       begin
-        existing = Version.where(owner_system_number: row['owner_system_number']).first
+        contrib = ContributingLibrary.where(label: row['contributing_library']).first
+        unless contrib
+          logger.warn "Unable to find contributing library: #{row['contributing_library']}"
+          next
+        end
+        existing = Version.where(owner_system_number: row['owner_system_number'], contributing_library: contrib).first
         if existing
           existing.attributes = Cicognara::CSVMapper.map(row.to_h)
           existing.save
