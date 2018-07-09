@@ -6,7 +6,7 @@ class Book < ActiveRecord::Base
   has_many :entries, through: :entry_books
   has_many :versions
   has_many :contributing_libraries, through: :versions
-  attribute :marcxml, :marc_nokogiri_type
+  has_many :marc_records
 
   def to_solr
     ::Cicognara::BookIndexer.new(self).to_solr.values.first.merge(extra_solr)
@@ -22,5 +22,9 @@ class Book < ActiveRecord::Base
 
   def digitized_version_available?
     versions.empty? ? 'No' : 'Yes'
+  end
+
+  def marcxml
+    marc_records.map(&:source)
   end
 end

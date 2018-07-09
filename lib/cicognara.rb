@@ -3,7 +3,6 @@ module Cicognara
   require 'cicognara/with_book_cache'
   require 'cicognara/bulk_entry_indexer'
   require 'cicognara/section'
-  require 'cicognara/marc_record'
   require 'cicognara/tei_indexer'
   require 'cicognara/book_indexer'
   require 'cicognara/csv_mapper'

@@ -157,8 +157,11 @@ RSpec.describe Entry, type: :model do
         end
 
         it 'merges fields across multiple marc records' do
-          expect(subject.to_solr['subject_topic_facet']).to include('Humanism')
-          expect(subject.to_solr['subject_topic_facet']).to include('Conduct of life')
+          solr_document = subject.to_solr
+
+          expect(solr_document).to include('subject_topic_facet')
+          expect(solr_document['subject_topic_facet']).to include('Humanism')
+          expect(solr_document['subject_topic_facet']).to include('Conduct of life')
         end
       end
     end

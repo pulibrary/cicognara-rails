@@ -12,6 +12,12 @@ AllCops:
 Rails:
   Enabled: true
 
+Metrics/AbcSize:
+  Exclude:
+    - 'app/models/marc_record.rb'
+    - 'lib/cicognara/catalogo_item.rb'
+    - 'app/models/marc_indexer.rb'
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/models/entry_spec.rb'
@@ -19,6 +25,11 @@ Metrics/BlockLength:
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+    - 'app/models/marc_indexer.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/models/marc_indexer.rb'
 
 Metrics/LineLength:
   Enabled: false
@@ -26,6 +37,13 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+    - 'app/models/marc_indexer.rb'
+    - 'app/models/marc_record.rb'
+    - 'lib/cicognara/tei_indexer.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/models/marc_indexer.rb'
 
 Style/BlockComments:
   Exclude:

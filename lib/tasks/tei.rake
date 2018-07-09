@@ -12,6 +12,14 @@ namespace :tei do
     solr.commit
   end
 
+  desc 'purge all solr documents.'
+  task purge: :environment do
+    solr_server = Blacklight.connection_config[:url]
+    solr = RSolr.connect(url: solr_server)
+    solr.delete_by_query('*:*')
+    solr.commit
+  end
+
   desc 'Create partials at PARTIALSPATH from document at TEIPATH'
   task :partials do
     teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.tei.xml')

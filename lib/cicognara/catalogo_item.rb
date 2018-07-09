@@ -45,7 +45,7 @@ module Cicognara
       book_fields = {}
       books.each do |book|
         book_doc = book.to_solr
-        book_fields.merge!(book_doc) { |_, oldval, newval| (newval + oldval).uniq } unless book_doc.nil?
+        book_fields.merge!(book_doc) { |_, oldval, newval| (Array.wrap(newval) + Array.wrap(oldval)).uniq } unless book_doc.nil?
       end
       # fields to ignore
       remove_display_fields(book_fields)

@@ -28,7 +28,7 @@ RSpec.describe 'CatalogController config', type: :request do
       end
       it 'document is retrieved on alt_id' do
         get solr_document_path('cico:vzk'), as: :json
-        expect(doc['id']).to eq('cico:gzw')
+        expect(doc['id']).to match %r{file\:\/\/.+?\/fixtures\/cicognara\.marc\.xml\/\/marc\:record\[3\]}
       end
     end
   end

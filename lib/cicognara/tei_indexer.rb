@@ -4,7 +4,6 @@ require 'cicognara/catalogo_item'
 require 'cicognara/with_book_cache'
 require 'cicognara/bulk_entry_indexer'
 require 'cicognara/section'
-require 'cicognara/marc_record'
 require './app/models/marc_indexer'
 
 module Cicognara
@@ -13,7 +12,9 @@ module Cicognara
 
     def initialize(pathtotei, pathtomarc)
       @catalogo = File.open(pathtotei) { |f| Nokogiri::XML(f) }
-      @marc = File.open(pathtomarc) { |f| Nokogiri::XML(f) }
+      @marc_file_path = pathtomarc
+      @marc = File.open(@marc_file_path) { |f| Nokogiri::XML(f) }
+
       Entry.transaction do
         build_entries
         entries.each(&:save)
@@ -80,23 +81,47 @@ module Cicognara
       entry.section_display = section.section_display
     end
 
-    def book_fetch(key, existing_books)
-      Array(existing_books[key]).first || Book.new(digital_cico_number: key)
+    # This needs to reconcile the DCL numbers
+    # Currently, it is assumed that each MarcRecord only has one DCL number
+    def process_marc_records
+      books = {}
+
+      marc_records.each do |marc_record|
+        # Book objects make be constructed here from the TEI
+        # (Here the DCL Number is extracted from the TEI)
+        marc_record.digital_cico_numbers.each do |digital_cico_number|
+          book = Book.where(digital_cico_number: digital_cico_number).first_or_create do |created_book|
+            created_book.digital_cico_number = digital_cico_number
+          end
+
+          # MARC-XML markup is inserted in the Book object
+          # There are many MARC records associated with any given Book
+          book.marc_records << marc_record
+          books[digital_cico_number] = book
+        end
+      end
+
+      books.values
     end
 
-    def process_marc_records
-      records = marc_records.map { |x| MarcRecord.new(x) }.group_by(&:book_id)
-      existing_books = Book.includes(:versions, :contributing_libraries).where(digital_cico_number: records.keys).group_by(&:digital_cico_number)
-      records.map do |key, inner_records|
-        book = book_fetch(key, existing_books)
-        book.marcxml = inner_records.first.source
-        book.marcxml_will_change!
-        book
-      end
+    def marc_file_uri_base
+      ['file://', Pathname.new(@marc_file_path)].join
+    end
+
+    def marc_xpath
+      '//marc:record'
+    end
+
+    def marc_file_uri(idx)
+      [marc_file_uri_base, marc_xpath, "[#{idx}]"].join
+    end
+
+    def marc_elements
+      marc.xpath(marc_xpath, marc: 'http://www.loc.gov/MARC21/slim')
     end
 
     def marc_records
-      marc.xpath('.//marc:record', marc: 'http://www.loc.gov/MARC21/slim')
+      marc_elements.map.with_index { |_element, idx| MarcRecord.resolve(marc_file_uri(idx), @marc_file_path) }
     end
   end
 end

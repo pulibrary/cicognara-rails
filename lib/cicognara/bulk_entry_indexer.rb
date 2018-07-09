@@ -10,7 +10,7 @@ module Cicognara
     end
 
     def books
-      entries.flat_map(&:books)
+      entries.flat_map(&:books).uniq(&:id)
     end
 
     def entry_documents
