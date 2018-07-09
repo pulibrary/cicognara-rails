@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/cicognara-rails
+    environment:
+      CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+    docker:
+      - image: circleci/ruby:2.3-node-browsers
+        environment:
+          RAILS_ENV: test
+          CICOGNARA_DB_HOST: localhost
+          CICOGNARAP_DB_USERNAME: cicognara
+    steps:
+      - checkout
+      - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+      # Dependencies
+      # Restore the dependency cache
+      - type: cache-restore
+        name: Restore bundle cache
+        key: cicognara-rails-{{ checksum "Gemfile.lock" }}
+      - run: 'bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+          --jobs=4 --retry=3 '
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: cicognara-rails-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+      # project database settings
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:migrate
+      - run: bundle exec rails db:migrate RAILS_ENV=test
+      # Test
+      - run: bundle exec rake rubocop
+      - run: bundle exec rake ci
+      # Save test results
+      - store_test_results:
+          path: /tmp/circleci-test-results
+      # Save artifacts
+      - store_artifacts:
+          path: /tmp/circleci-artifacts
+      - store_artifacts:
+          path: tmp/capybara
+      - store_artifacts:
+          path: /tmp/circleci-test-results
