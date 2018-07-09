@@ -53,8 +53,14 @@ RSpec.describe 'entry views', type: :feature do
       @user = stub_admin_user
     end
 
-    it 'displays an admin menu' do
+    it 'displays navigation and an admin menu' do
       visit '/'
+      expect(page).to have_link 'About', href: '/about'
+      expect(page).to have_link 'Partners', href: '/partners'
+      expect(page).to have_link 'Contact', href: '/contact'
+      expect(page).to have_link 'News', href: '/news'
+      expect(page).to have_link 'Twitter', href: 'https://twitter.com/DigiCicognara'
+
       expect(page).to have_selector 'a.user-display-name', text: @user.to_s
       expect(page).to have_link 'Books', href: books_path
       expect(page).to have_link 'Contributing Libraries', href: contributing_libraries_path
@@ -64,8 +70,13 @@ RSpec.describe 'entry views', type: :feature do
   end
 
   describe 'an anonymous user' do
-    it 'shows a login link' do
+    it 'displays navigation and a login link' do
       visit '/'
+      expect(page).to have_link 'About', href: '/about'
+      expect(page).to have_link 'Partners', href: '/partners'
+      expect(page).to have_link 'Contact', href: '/contact'
+      expect(page).to have_link 'News', href: '/news'
+      expect(page).to have_link 'Twitter', href: 'https://twitter.com/DigiCicognara'
       expect(page).to have_link 'Log In', href: main_app.new_user_session_path
     end
   end
