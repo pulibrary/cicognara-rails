@@ -101,12 +101,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'tei_date_display', label: 'Publication date(s)'
     config.add_show_field 'tei_section_head_italian', label: 'Section head'
     config.add_show_field 'tei_note_italian', label: 'Note(s)'
-    config.add_show_field 'dclib_display', label: 'DCL id'
+    config.add_show_field 'dclib_display', label: 'DCL number'
     config.add_show_field 'cico_id_display', label: 'Cicognara number'
     config.add_show_field 'author_display', label: 'Author', link_to_search: :name_facet
     config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'description_display', label: 'Description'
-    config.add_show_field 'note_display', label: 'Note'
+    config.add_show_field 'note_display', label: 'Note', separator_options: { words_connector: '<br/>', two_words_connector: '<br/>', last_word_connector: '<br/>' }
     config.add_show_field 'published_display', label: 'Published'
     config.add_show_field 'title_addl_display', label: 'Other title(s)'
     config.add_show_field 'title_added_entry_display', label: 'Added entry title(s)'
@@ -115,6 +115,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'subject_t', label: 'Subject', link_to_search: :subject_facet
     config.add_show_field 'contents_display', label: 'Contents'
     config.add_show_field 'edition_display', label: 'Edition'
+    config.add_show_field 'place_display', label: 'Place'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
