@@ -19,12 +19,6 @@ RSpec.describe VersionsController, type: :controller do
 
   before do
     stub_admin_user
-    Book.destroy_all
-  end
-
-  after do
-    book.destroy
-    contrib.destroy
   end
 
   describe 'GET #show' do

@@ -10,12 +10,6 @@ RSpec.describe 'versions/show', type: :view do
     assign(:version, version)
   end
 
-  after do
-    book.destroy
-    contrib.destroy
-    version.destroy
-  end
-
   it 'renders attributes in <p>' do
     render
   end

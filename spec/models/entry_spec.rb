@@ -2,11 +2,12 @@
 require 'rails_helper'
 
 RSpec.describe Entry, type: :model do
-  before(:all) do
+  before do
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     book = Book.find_or_create_by! digital_cico_number: 'cico:m87'
-    Version.create! contributing_library: ContributingLibrary.first, book: book,
+    contrib = ContributingLibrary.find_or_create_by! label: 'Example Library', uri: 'http://example.org'
+    Version.create! contributing_library: contrib, book: book,
                     label: 'version 2', based_on_original: false, owner_system_number: '1234',
                     rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
                     manifest: 'http://example.org/1.json'

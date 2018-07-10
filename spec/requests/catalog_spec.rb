@@ -3,8 +3,6 @@ require 'json'
 
 RSpec.describe 'CatalogController config', type: :request do
   before(:all) do
-    Book.destroy_all
-    Entry.destroy_all
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
@@ -67,5 +65,4 @@ RSpec.describe 'CatalogController config', type: :request do
       end
     end
   end
-  after(:all) { Book.destroy_all }
 end

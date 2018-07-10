@@ -10,12 +10,6 @@ RSpec.describe 'versions/edit', type: :view do
     assign(:version, version)
   end
 
-  after do
-    book.destroy
-    contrib.destroy
-    version.destroy
-  end
-
   it 'renders the edit version form' do
     render
 

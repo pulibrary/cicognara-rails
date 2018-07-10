@@ -8,15 +8,9 @@ describe Cicognara::CSVMapper do
   let(:bad_book_csv) { load_csv 'sample_bad_book.csv' }
   let(:bad_contrib_csv) { load_csv 'sample_bad_contrib.csv' }
 
-  before(:all) do
-    Book.destroy_all
+  before do
     @book = Book.create digital_cico_number: 'cico:m87'
     @contrib = ContributingLibrary.create label: 'Contributor 1', uri: 'http://example.org/'
-  end
-
-  after(:all) do
-    @book.destroy
-    @contrib.destroy
   end
 
   describe 'good sample' do

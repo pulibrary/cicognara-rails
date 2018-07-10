@@ -63,6 +63,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 gem 'bixby'
@@ -78,5 +79,5 @@ gem 'validate_url'
 gem 'pul_uv_rails', github: 'pulibrary/pul_uv_rails'
 gem 'iiif-presentation'
 gem 'nokogiri', '~> 1.8.1'
-gem 'omniauth', '~> 1.3.2'
+gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-google-oauth2'

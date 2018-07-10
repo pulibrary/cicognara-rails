@@ -9,11 +9,6 @@ RSpec.describe 'versions/new', type: :view do
     assign(:version, Version.new)
   end
 
-  after do
-    book.destroy
-    contrib.destroy
-  end
-
   it 'renders new version form' do
     render
 

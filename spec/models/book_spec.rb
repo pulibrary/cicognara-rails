@@ -37,9 +37,7 @@ RSpec.describe Book, type: :model do
   end
 
   describe '#to_solr' do
-    before(:all) do
-      described_class.destroy_all
-      Entry.destroy_all
+    before do
       pathtotei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
       pathtomarc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
       @subject = Cicognara::TEIIndexer.new(pathtotei, pathtomarc)

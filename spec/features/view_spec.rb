@@ -11,10 +11,6 @@ RSpec.describe 'entry views', type: :feature do
     solr.commit
   end
 
-  after(:all) do
-    Book.destroy_all
-  end
-
   it 'displays links to controlled terms' do
     visit '/catalog/15'
     expect(page).to have_link 'Brontius, Nicolaus, 16th century', href: '/catalog?f%5Bname_facet%5D%5B%5D=Brontius%2C+Nicolaus%2C+16th+century'
