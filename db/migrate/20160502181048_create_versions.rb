@@ -1,4 +1,4 @@
-class CreateVersions < ActiveRecord::Migration
+class CreateVersions < ActiveRecord::Migration[5.0]
   def change
     create_table :versions do |t|
       t.references :contributing_library, index: true, foreign_key: true
