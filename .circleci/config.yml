@@ -10,7 +10,12 @@ jobs:
         environment:
           RAILS_ENV: test
           CICOGNARA_DB_HOST: localhost
-          CICOGNARAP_DB_USERNAME: cicognara
+          CICOGNARA_DB_USERNAME: cicognara
+      - image: postgres:10.3-alpine
+        environment:
+          POSTGRES_USER: cicognara
+          POSTGRES_DB: cicognara_test
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout
       - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
