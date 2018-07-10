@@ -8,4 +8,14 @@ module ApplicationHelper
   def current_year
     DateTime.current.year
   end
+
+  def layout(manifests)
+    if manifests.length < 2
+      '1x1'
+    elsif manifests.length == 2
+      '1x2'
+    else
+      "#{manifests.length / 2}x2"
+    end
+  end
 end

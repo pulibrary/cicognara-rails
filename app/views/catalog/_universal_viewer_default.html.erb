@@ -1,4 +1,9 @@
 <% if document.manifests.present? %>
-  <div class="uv viewer" data-uri="<%= document.manifest_url %>"></div>
-  <%= PulUvRails::UniversalViewer.script_tag %>
+  <div class="viewer">
+    <% manifests = document.manifests.map do |manifest|
+      {manifestUri: manifest, location: "Digital Cicognara Library"}
+    end
+  %>
+<%= mirador_tag(height: '100%', options: {layout: layout(document.manifests), data: manifests, windowObjects: document.manifests.map{|x| {loadedManifest: x}}}) %>
+  </div>
 <% end %>
