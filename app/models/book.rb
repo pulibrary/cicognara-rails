@@ -6,6 +6,8 @@ class Book < ActiveRecord::Base
   has_many :entries, through: :entry_books
   has_many :versions
   has_many :contributing_libraries, through: :versions
+  has_one :iiif_resource
+
   attribute :marcxml, :marc_nokogiri_type
 
   def to_solr
