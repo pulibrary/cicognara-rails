@@ -37,4 +37,8 @@ class SolrDocument
   def manifests
     fetch(:manifests_s, [])
   end
+
+  def book
+    @book ||= Book.find(fetch(:book_id_s, []).first)
+  end
 end

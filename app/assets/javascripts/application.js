@@ -17,3 +17,16 @@
 //= require blacklight/blacklight
 
 //= require_tree .
+
+$(document).ready(function() {
+  $("*[data-manifest-uri]").click(function(e) {
+    e.preventDefault()
+    if($(this).parent().hasClass("active")) {
+      return
+    }
+    $(".uv").attr("data-uri", $(this).attr("data-manifest-uri"))
+    $("*[data-manifest-uri]").parent().removeClass("active")
+    $(this).parent().addClass("active")
+    window.initPlayers($(".uv"))
+  })
+})

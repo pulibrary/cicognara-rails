@@ -1,4 +1,19 @@
 <% if document.manifests.present? %>
-  <div class="uv viewer" data-uri="<%= document.manifest_url %>"></div>
-  <%= PulUvRails::UniversalViewer.script_tag %>
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked" id="manifest-tabs">
+        <% document.book.versions.to_a.each_with_index do |version, index| %>
+          <li <%= 'class="active"'.html_safe if index == 0 %>>
+            <a href="#" data-manifest-uri='<%= version.manifest %>'>
+              <%= "#{version.label} - #{version.contributing_library.label}" %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div class="uv viewer" data-uri="<%= document.manifests.first %>"></div>
+      <%= PulUvRails::UniversalViewer.script_tag %>
+    </div>
+  </div>
 <% end %>
