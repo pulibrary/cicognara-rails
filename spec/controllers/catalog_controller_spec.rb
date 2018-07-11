@@ -10,11 +10,6 @@ RSpec.describe CatalogController, type: :controller do
     solr.commit
   end
 
-  after(:all) do
-    Book.destroy_all
-    Entry.destroy_all
-  end
-
   describe 'GET #show' do
     it 'retrieves linked books' do
       get :show, params: { id: '2' }

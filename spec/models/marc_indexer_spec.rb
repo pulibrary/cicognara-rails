@@ -91,5 +91,4 @@ RSpec.describe MarcIndexer, type: :model do
     expect(@values.first['related_name_display']).to be nil
     expect(@values[2]['related_name_display'].first).to eq 'Bogus place'
   end
-  after(:all) { Book.destroy_all }
 end

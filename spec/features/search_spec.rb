@@ -20,11 +20,6 @@ RSpec.describe 'searching', type: :feature do
     solr.commit
   end
 
-  after(:all) do
-    Book.destroy_all
-    Entry.destroy_all
-  end
-
   it 'displays facets' do
     visit '/catalog?q='
     expect(page.status_code).to eq(200)

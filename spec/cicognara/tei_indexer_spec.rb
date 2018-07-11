@@ -4,14 +4,11 @@ require 'rails_helper'
 
 describe Cicognara::TEIIndexer do
   before(:all) do
-    Book.destroy_all
-    Entry.destroy_all
     pathtotei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     pathtomarc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     @subject = described_class.new(pathtotei, pathtomarc)
   end
 
-  after(:all) { Book.destroy_all }
   describe '#catalogo' do
     it 'has an associated tei file' do
       expect(@subject.catalogo.class).to eq(Nokogiri::XML::Document)

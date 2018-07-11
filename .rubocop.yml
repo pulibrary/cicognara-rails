@@ -12,6 +12,10 @@ AllCops:
 Rails:
   Enabled: true
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/models/entry_spec.rb'
+
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
@@ -41,6 +45,9 @@ RSpec/DescribeClass:
     - 'spec/views/**/*'
 
 Style/Documentation:
+  Enabled: false
+
+RSpec/ExampleLength:
   Enabled: false
 
 RSpec/InstanceVariable:

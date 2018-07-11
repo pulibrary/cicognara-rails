@@ -6,7 +6,6 @@ RSpec.describe ContributingLibrariesController, type: :controller do
 
   before do
     stub_admin_user
-    ContributingLibrary.delete_all
   end
 
   describe 'GET #index' do
