@@ -24,11 +24,18 @@ RSpec.describe IIIF::EntryCollection do
                     rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
                     manifest: 'http://example.org/2.json'
   end
+  let(:version_3) do
+    Version.create! contributing_library: contributing_library, book: entry.books.second,
+                    label: 'version 3', based_on_original: false, owner_system_number: '1234',
+                    rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+                    manifest: 'http://example.org/3.json'
+  end
 
   describe '#as_json' do
     before do
       version_1
       version_2
+      version_3
     end
     let(:json) { JSON.parse(subject.to_json) }
     let(:entry) { Entry.where(n_value: '15').first }
@@ -36,10 +43,10 @@ RSpec.describe IIIF::EntryCollection do
       it 'generates a collection with two sub-collections each with a manifest' do
         expect(json['label']).to eq entry.item_label
         expect(json['collections'].length).to eq 2
-        expect(json['collections'][0]['manifests'].length).to eq 1
-        labels = [json['collections'][0]['label'], json['collections'][1]['label']]
-        expect(labels).to contain_exactly('Libellus compendiariam tum virtutis adipiscendae tum literarum parandarum rationem perdoce[n?]s, bene beateq[ue] uiuere cupienti, aprimis utilis authore Nicolao Bro[n?]tio Duacensi ; adiecta sunt ab eode[m] carmina, facile[?] studendi Iuri modu[m?] tradentia', 'Libellus de vtilitate et harmonia artium tum futuro iurisconsulto, tum liberalium disciplinarum politiorisue literaturae studiosis utilissimus authore Nicolao Bro[n?]tio duacensi')
-        expect(json['collections'][1]['manifests'].length).to eq 1
+        collection_labels = [json['collections'][0]['label'], json['collections'][1]['label']]
+        expect(collection_labels).to contain_exactly('Libellus compendiariam tum virtutis adipiscendae tum literarum parandarum rationem perdoce[n?]s, bene beateq[ue] uiuere cupienti, aprimis utilis authore Nicolao Bro[n?]tio Duacensi ; adiecta sunt ab eode[m] carmina, facile[?] studendi Iuri modu[m?] tradentia', 'Libellus de vtilitate et harmonia artium tum futuro iurisconsulto, tum liberalium disciplinarum politiorisue literaturae studiosis utilissimus authore Nicolao Bro[n?]tio duacensi')
+        version_labels = json['collections'].map { |c| c['manifests'] }.map { |arr| arr.map { |m| m['label'] } }
+        expect(version_labels).to contain_exactly(['version 1'], ['version 3', 'version 2'])
       end
     end
   end
