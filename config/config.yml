@@ -1,0 +1,22 @@
+defaults: &defaults
+  events:
+    server: 'amqp://localhost:5672'
+    exchange: 'plum_events'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  events:
+    server: <%= ENV["CICOGNARA_RABBITMQ_URL"] %>
+    exchange: <%= ENV["CICOGNARA_RABBITMQ_EXCHANGE"] %>
+
+staging:
+  <<: *defaults
+  events:
+    server: <%= ENV["CICOGNARA_RABBITMQ_URL"] %>
+    exchange: <%= ENV["CICOGNARA_RABBITMQ_EXCHANGE"] %>

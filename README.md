@@ -42,3 +42,14 @@ set :default_env,
     'TEIPATH' => 'public/catalogo.tei.xml',
     'CATALOGO_VERSION' => 'v1.2'
 ```
+
+### Auto-update from [Figgy](https://github.com/pulibrary/figgy)
+
+Figgy announces events to a durable RabbitMQ fanout exchange. In order to use them, do the
+following:
+
+1. Configure the `events` settings in `config/config.yml`
+2. Run `WORKERS=FiggyEventHandler rake sneakers:run`
+
+This will subscribe to the Figgy events and update the Cicognara records when they're
+created, updated, or deleted.

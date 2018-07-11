@@ -8,6 +8,7 @@ Rails.application.load_tasks
 require 'bundler/setup'
 require 'rubocop/rake_task'
 require 'solr_wrapper/rake_task'
+require 'sneakers/tasks'
 
 desc 'Run Solr and Blacklight for interactive development'
 task :server, [:rails_server_args] do |_t, args|
