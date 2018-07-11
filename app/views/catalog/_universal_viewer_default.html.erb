@@ -4,6 +4,6 @@
       {manifestUri: manifest, location: "Digital Cicognara Library"}
     end
   %>
-<%= mirador_tag(height: '100%', options: {layout: layout(document.manifests), data: manifests, windowObjects: document.manifests.map{|x| {loadedManifest: x}}}) %>
+<%= mirador_tag(height: '100%', options: {layout: layout(document.manifests), windowSettings: { sidePanelVisible: false }, data: manifests, windowObjects: document.manifests.map{|x| {loadedManifest: x}}}) %>
   </div>
 <% end %>
