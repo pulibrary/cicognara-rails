@@ -1,5 +1,5 @@
 # Place any default configuration for solr_wrapper here
-# port: 8983
+port: 8985
 version: 7.1.0
 cloud: true
 instance_dir: tmp/solr-development

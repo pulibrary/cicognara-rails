@@ -6,9 +6,11 @@ class Book < ActiveRecord::Base
   has_many :entries, through: :entry_books
   has_many :versions
   has_many :contributing_libraries, through: :versions
-  has_one :iiif_resource
+  belongs_to :iiif_resource, class_name: "IIIF::Resource"
+  has_and_belongs_to_many :collections
 
   attribute :marcxml, :marc_nokogiri_type
+  validates :digital_cico_number, presence: true
 
   def to_solr
     ::Cicognara::BookIndexer.new(self).to_solr.values.first.merge(extra_solr)

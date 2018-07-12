@@ -28,6 +28,24 @@ task :server, [:rails_server_args] do |_t, args|
   end
 end
 
+namespace :cicognara do
+  desc 'Run Solr for interactive development'
+  task :solr_server, [:rails_server_args] do |_t, args|
+    #ENV['RAILS_ENV'] ||= 'test'
+    #SolrWrapper.wrap(config: 'config/solr_wrapper_test.yml') do |solr|
+    SolrWrapper.wrap do |solr|
+      solr.with_collection(name: 'cicognara', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'config')) do
+        begin
+          puts 'Solr running at http://localhost:8983/solr/cicognara/, ^C to exit'
+          sleep
+        rescue Interrupt
+          puts 'Shutting down...'
+        end
+      end
+    end
+  end
+end
+
 desc 'Run Solr and Blacklight for test suite'
 task :test_server do
   ENV['RAILS_ENV'] ||= 'test'
