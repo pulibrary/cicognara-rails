@@ -15,12 +15,13 @@ class Book < ActiveRecord::Base
   def extra_solr
     {
       'contributing_library_facet' => contributing_libraries.map(&:label),
-      'digitized_version_available_facet' => [digitized_version_available?],
+      'digitized_version_available_facet' => digitized_version_available,
       'manifests_s' => versions.map(&:manifest)
     }
   end
 
-  def digitized_version_available?
-    versions.empty? ? 'No' : 'Yes'
+  def digitized_version_available
+    return ['None'] if versions.empty?
+    versions.map { |v| v.based_on_original? ? 'Microfiche' : 'Matching copy' }
   end
 end

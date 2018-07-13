@@ -71,15 +71,15 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
+    config.add_facet_field 'name_facet', label: 'Name', limit: true
     config.add_facet_field 'pub_date', label: 'Publication Year', single: true, limit: true
-    config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: true, index_range: 'A'..'Z'
+    config.add_facet_field 'subject_era_facet', label: 'Era', limit: true
     config.add_facet_field 'language_facet', label: 'Language', limit: true
     config.add_facet_field 'subject_geo_facet', label: 'Region', limit: true
-    config.add_facet_field 'subject_era_facet', label: 'Era', limit: true
     config.add_facet_field 'subject_genre_facet', label: 'Genre', limit: true
-    config.add_facet_field 'name_facet', label: 'Name', limit: true
+    config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: true, index_range: 'A'..'Z'
     config.add_facet_field 'subject_facet', label: 'Subject', show: false
-    config.add_facet_field 'tei_section_facet', label: 'Section', limit: true
+    config.add_facet_field 'tei_section_facet', label: 'Catalogo Section', limit: true
     config.add_facet_field 'contributing_library_facet', label: 'Contributing Library', limit: true
     config.add_facet_field 'digitized_version_available_facet', label: 'Digitized Version Available', limit: true
 

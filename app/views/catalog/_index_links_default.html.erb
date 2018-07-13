@@ -1,5 +1,11 @@
 <div class="view-links col-md-12">
   <% counter = document_counter_with_offset(document_counter) %>
-    <%= link_to_document document, 'Catalog View', counter: counter, class: 'btn btn-xs btn-default' %>
-    <%= link_to 'Browse View', catalogo_link(document), class: 'btn btn-xs btn-default' %>
+    <%= link_to 'Browse full Catalogo', catalogo_link(document), class: 'btn btn-xs btn-default' %>
+    <% ['Microfiche', 'Matching copy'].each do |val| %>
+      <% if document['digitized_version_available_facet']&.include?(val) %>
+        <span class="digitized-<%= val.downcase %> label label-<%= val == 'Microfiche' ? 'default' : 'success' %>">
+          <%= val %>
+        </span>
+      <% end %>
+    <% end %>
 </div>
