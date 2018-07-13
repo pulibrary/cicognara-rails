@@ -25,18 +25,18 @@ RSpec.describe 'catalog/_index_links_default.html.erb' do
     end
   end
   context 'when there is a matching copy' do
-    let(:document) { base_doc.merge(digitized_version_available_facet: ['Matching Copy']).stringify_keys }
+    let(:document) { base_doc.merge(digitized_version_available_facet: ['Matching copy']).stringify_keys }
 
     it 'has a only Microfiche badge' do
-      expect(rendered).to have_selector '.digitized-matching', text: 'Matching Copy'
+      expect(rendered).to have_selector '.digitized-matching', text: 'Matching copy'
       expect(rendered).not_to have_selector '.digitized-microfiche'
     end
   end
   context 'when there is a matching copy' do
-    let(:document) { base_doc.merge(digitized_version_available_facet: ['Microfiche', 'Matching Copy']).stringify_keys }
+    let(:document) { base_doc.merge(digitized_version_available_facet: ['Microfiche', 'Matching copy']).stringify_keys }
 
     it 'has both Matching and Microfiche badges' do
-      expect(rendered).to have_selector '.digitized-matching', text: 'Matching Copy'
+      expect(rendered).to have_selector '.digitized-matching', text: 'Matching copy'
       expect(rendered).to have_selector '.digitized-microfiche', text: 'Microfiche'
     end
   end

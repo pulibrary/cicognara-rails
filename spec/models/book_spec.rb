@@ -75,9 +75,9 @@ RSpec.describe Book, type: :model do
       before do
         matching_version
       end
-      it 'indexes the manifest and digitized_version=Matching Copy' do
+      it 'indexes the manifest and digitized_version=Matching copy' do
         b = described_class.first
-        expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Matching Copy')
+        expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Matching copy')
         expect(b.to_solr['manifests_s']).to eq ['http://example.org/3.json']
       end
     end
@@ -86,9 +86,9 @@ RSpec.describe Book, type: :model do
         microfiche_version
         matching_version
       end
-      it 'indexes both manifests and digitized_version=Microfiche & Matching Copy' do
+      it 'indexes both manifests and digitized_version=Microfiche & Matching copy' do
         b = described_class.first
-        expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Microfiche', 'Matching Copy')
+        expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Microfiche', 'Matching copy')
         expect(b.to_solr['manifests_s']).to contain_exactly('http://example.org/2.json', 'http://example.org/3.json')
       end
     end

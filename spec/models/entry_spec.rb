@@ -124,7 +124,7 @@ RSpec.describe Entry, type: :model do
         end
 
         it 'has a digitized content' do
-          expect(subject.to_solr['digitized_version_available_facet']).to eq(['Matching Copy'])
+          expect(subject.to_solr['digitized_version_available_facet']).to eq(['Matching copy'])
         end
       end
       context 'when corresp has 2 values' do
