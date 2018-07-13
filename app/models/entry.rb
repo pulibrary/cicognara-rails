@@ -1,12 +1,18 @@
 # frozen_string_literal: true
 class Entry < ApplicationRecord
-  has_many :entry_books
-  has_many :books, through: :entry_books
+  #has_many :entry_books
+  #has_many :books, through: :entry_books
+  has_many :books
+
   attribute :tei, :tei_type
   before_save :assign_n_value
 
   def to_solr
-    Cicognara::CatalogoItem.new(self).solr_doc
+    catalogo_item.solr_doc
+  end
+
+  def catalogo_item
+    @catalogo_item ||= Cicognara::CatalogoItem.new(self)
   end
 
   def n
@@ -14,6 +20,9 @@ class Entry < ApplicationRecord
     ns.empty? ? 'NO_N' : ns.first.value
   end
 
+  # Extracts identifiers referring to the bibliographic sources
+  # i. e. references to what are modeled as Books
+  # @return [Array<String>] the identifiers
   def corresp
     c = tei.xpath('./@corresp')
     c.empty? ? [] : c.first.value.split

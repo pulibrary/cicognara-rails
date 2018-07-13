@@ -96,7 +96,7 @@ module Cicognara
 
           # MARC-XML markup is inserted in the Book object
           # There are many MARC records associated with any given Book
-          book.marc_records << marc_record
+          book.marc_record = marc_record
           books[digital_cico_number] = book
         end
       end

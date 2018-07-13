@@ -22,7 +22,8 @@ module Cicognara
         end
       end
 
-      @marc_solr = indexer.writer.all_records
+      #binding.pry
+      @marc_solr = indexer.writer.all_records unless marc_records.empty?
     end
 
     def blank_records
@@ -39,11 +40,11 @@ module Cicognara
     end
 
     def marc_documents
-      books.map(&:marcxml).flatten.map(&:clone)
+      books.map(&:marcxml).map(&:clone)
     end
 
     def marc_records
-      books.map(&:marc_records).flatten
+      books.map(&:marc_record).compact
     end
 
     def marc_collection(document)
