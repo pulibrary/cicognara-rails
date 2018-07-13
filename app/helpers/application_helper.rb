@@ -8,4 +8,8 @@ module ApplicationHelper
   def current_year
     DateTime.current.year
   end
+
+  def html_safe(args)
+    args[:document][args[:field]].join('<br/>').html_safe
+  end
 end

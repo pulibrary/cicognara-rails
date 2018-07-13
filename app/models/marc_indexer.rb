@@ -147,7 +147,18 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
     # Note/Description fields
     to_field 'description_t', extract_marc('300ab')
-    to_field 'note_t', extract_marc('5003a')
+
+    to_field 'note_t' do |record, accumulator|
+      Traject::MarcExtractor.cached('500a').collect_matching_lines(record) do |field, spec, extractor|
+        note = extractor.collect_subfields(field, spec).first
+        unless note.nil?
+          field.subfields.each do |s_field|
+            note = "<strong>" + s_field.value + "</strong> " + note if (s_field.code == '3')
+          end
+          accumulator << note
+        end
+      end
+    end
 
     # Author fields
 
