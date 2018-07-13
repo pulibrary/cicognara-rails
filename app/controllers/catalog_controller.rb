@@ -101,7 +101,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'tei_date_display', label: 'Publication date(s)'
     config.add_show_field 'tei_section_head_italian', label: 'Section head'
     config.add_show_field 'tei_note_italian', label: 'Note(s)'
-    config.add_show_field 'title_addl_display', label: 'Other title(s)', separator_options: { words_connector: '<br/>', two_words_connector: '<br/>', last_word_connector: '<br/>' }
+    config.add_show_field 'title_addl_display', label: 'Other title(s)', helper_method: :ul
     config.add_show_field 'edition_display', label: 'Edition'
     config.add_show_field 'author_display', label: 'Author', link_to_search: :name_facet
     config.add_show_field 'published_display', label: 'Imprint'

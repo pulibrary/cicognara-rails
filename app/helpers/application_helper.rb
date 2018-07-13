@@ -9,7 +9,17 @@ module ApplicationHelper
     DateTime.current.year
   end
 
+  def ul(args)
+    value = args[:document][args[:field]]
+    if value.length == 1
+      value.first
+    else
+      content_tag(:ul, safe_join(value.map { |v| content_tag(:li, v) }))
+    end
+  end
+
   def html_safe(args)
-    args[:document][args[:field]].join('<br/>').html_safe
+    args[:document][args[:field]].map!(&:html_safe)
+    ul(args)
   end
 end

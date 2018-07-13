@@ -25,7 +25,7 @@ RSpec.describe 'entry views', type: :feature do
     expect(page).to have_selector 'dd.blacklight-description_display', text: '2 v. : ill.'
     expect(page).to have_selector 'dd.blacklight-note_display', text: 'Imprint from colophon.'
     expect(page).to have_selector 'dd.blacklight-published_display', text: 'Antverpiae : Apud Simonem Cocum, Anno 1541.'
-    expect(page).to have_selector 'dd.blacklight-title_addl_display', text: 'Libellus de utilitate et harmoniaLibellvs de vtilitate et harmonia'
+    expect(page).to have_selector 'dd.blacklight-title_addl_display > ul > li', text: 'Libellus de utilitate et harmonia'
   end
 
   it 'entries are matched on book name search' do
