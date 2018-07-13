@@ -20,10 +20,10 @@ module IIIF
     private
 
     def manifests
-      book.versions.map(&:manifest).compact.each_with_index.map do |id, num|
+      book.versions.sort_by { |v| v.based_on_original ? 1 : 0 }.map do |v|
         IIIF::Presentation::Manifest.new.tap do |c|
-          c['@id'] = id
-          c['label'] = "Version #{num + 1}"
+          c['@id'] = v.manifest
+          c['label'] = v.label
         end
       end
     end
