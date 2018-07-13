@@ -27,6 +27,7 @@ $(document).ready(function() {
     $(".uv").attr("data-uri", $(this).attr("data-manifest-uri"))
     $("*[data-manifest-uri]").parent().removeClass("active")
     $(this).parent().addClass("active")
+    document.location.hash = ''
     window.initPlayers($(".uv"))
   })
   function exitHandler() {
@@ -38,6 +39,8 @@ $(document).ready(function() {
         frame.style.position = null
         frame.style.top = null
         frame.style.left = null
+        frame.style.width = "100%"
+        frame.style.height = "100%"
       })
     } else {
       sleep(200).then(() => {
