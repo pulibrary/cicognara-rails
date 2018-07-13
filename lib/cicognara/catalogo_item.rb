@@ -23,7 +23,8 @@ module Cicognara
     private
 
     def resolve_avail(arr)
-      (arr || []).include?('Yes') ? 'Yes' : 'No'
+      arr = (arr || []).flatten.uniq
+      arr.length == 1 ? arr : arr.reject { |v| v == 'None' }
     end
 
     def corresp
