@@ -33,18 +33,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :entries, only: [] do
-    member do
-      get :manifest, defaults: { format: :json }
-    end
-  end
-
-  resources :books, only: [] do
-    member do
-      get :manifest, defaults: { format: :json }
-    end
-  end
-
   get '/404', to: 'errors#not_found', via: :all
   get '/500', to: 'errors#internal_server_error', via: :all
 

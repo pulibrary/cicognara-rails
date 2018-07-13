@@ -30,10 +30,6 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
-  def manifest_url
-    UrlGenerator.new.manifest_entry_path(id: id)
-  end
-
   def manifests
     fetch(:manifests_s, [])
   end

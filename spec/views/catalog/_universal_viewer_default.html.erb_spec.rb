@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'catalog/_universal_viewer_default.html.erb' do
-  let(:document) { instance_double(SolrDocument, manifest_url: 'http://www.test.com', manifests: manifests) }
+  let(:document) { instance_double(SolrDocument, manifests: manifests) }
   let(:manifests) { [] }
 
   before do
