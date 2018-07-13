@@ -29,4 +29,31 @@ $(document).ready(function() {
     $(this).parent().addClass("active")
     window.initPlayers($(".uv"))
   })
+  function exitHandler() {
+    var fullscreen = document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement
+
+    if (fullscreen !== true) {
+      sleep(200).then(() => {
+        var frame = document.getElementsByTagName("iframe")[0]
+        frame.style.position = null
+        frame.style.top = null
+        frame.style.left = null
+      })
+    } else {
+      sleep(200).then(() => {
+        var frame = document.getElementsByTagName("iframe")[0]
+        frame.style.position = "absolute"
+      })
+    }
+  }
+  function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time))
+  }
+  if (document.addEventListener) {
+    document.addEventListener("webkitfullscreenchange",function() { exitHandler(this) }, false)
+    document.addEventListener("mozfullscreenchange",function() { exitHandler(this) }, false)
+    document.addEventListener("fullscreenchange",function() { exitHandler(this) }, false)
+    document.addEventListener("MSFullscreenChange",function() { exitHandler(this) }, false)
+  }
+  $(".viewer").trigger("resize")
 })
