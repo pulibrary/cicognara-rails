@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027005742) do
+ActiveRecord::Schema.define(version: 20180713162431) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "book_subjects", force: :cascade do |t|
-    t.integer  "book_id"
-    t.integer  "subject_id"
+    t.integer "book_id"
+    t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_book_subjects_on_book_id"
@@ -22,35 +25,45 @@ ActiveRecord::Schema.define(version: 20161027005742) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.integer  "user_id",       null: false
-    t.string   "user_type"
-    t.string   "document_id"
-    t.string   "title"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "document_type"
+    t.integer "user_id", null: false
+    t.string "user_type"
+    t.string "document_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "document_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|
-    t.string   "marcxml"
-    t.string   "digital_cico_number"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string "marcxml"
+    t.string "digital_cico_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["digital_cico_number"], name: "index_books_on_digital_cico_number", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "entry_id"
+    t.string "text"
+    t.datetime "timestamp"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_comments_on_entry_id"
+  end
+
   create_table "contributing_libraries", force: :cascade do |t|
-    t.string   "label"
-    t.string   "uri"
+    t.string "label"
+    t.string "uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "creator_roles", force: :cascade do |t|
-    t.integer  "book_id"
-    t.integer  "creator_id"
-    t.integer  "role_id"
+    t.integer "book_id"
+    t.integer "creator_id"
+    t.integer "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_creator_roles_on_book_id"
@@ -59,28 +72,28 @@ ActiveRecord::Schema.define(version: 20161027005742) do
   end
 
   create_table "creators", force: :cascade do |t|
-    t.string   "label"
-    t.string   "uri"
+    t.string "label"
+    t.string "uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "entries", force: :cascade do |t|
-    t.string   "section_head"
-    t.string   "section_display"
-    t.string   "section_number"
-    t.string   "n_value"
-    t.string   "entry_id"
-    t.text     "tei"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string "section_head"
+    t.string "section_display"
+    t.string "section_number"
+    t.string "n_value"
+    t.string "entry_id"
+    t.text "tei"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["entry_id"], name: "index_entries_on_entry_id"
     t.index ["n_value"], name: "index_entries_on_n_value"
   end
 
   create_table "entry_books", force: :cascade do |t|
-    t.integer  "book_id"
-    t.integer  "entry_id"
+    t.integer "book_id"
+    t.integer "entry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_entry_books_on_book_id"
@@ -88,72 +101,73 @@ ActiveRecord::Schema.define(version: 20161027005742) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string   "label"
-    t.string   "uri"
+    t.string "label"
+    t.string "uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "searches", force: :cascade do |t|
-    t.text     "query_params"
-    t.integer  "user_id"
-    t.string   "user_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.text "query_params"
+    t.integer "user_id"
+    t.string "user_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string   "label"
-    t.string   "uri"
-    t.string   "genre"
-    t.string   "geographic"
-    t.string   "name"
-    t.string   "temporal"
-    t.string   "topic"
+    t.string "label"
+    t.string "uri"
+    t.string "genre"
+    t.string "geographic"
+    t.string "name"
+    t.string "temporal"
+    t.string "topic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "guest",                  default: false
-    t.string   "role"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "guest", default: false
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "versions", force: :cascade do |t|
-    t.integer  "contributing_library_id"
-    t.integer  "book_id"
-    t.string   "owner_call_number"
-    t.string   "owner_system_number"
-    t.string   "other_number"
-    t.string   "label"
-    t.string   "version_edition_statement"
-    t.string   "version_publication_statement"
-    t.string   "version_publication_date"
-    t.string   "additional_responsibility"
-    t.string   "provenance"
-    t.string   "physical_characteristics"
-    t.string   "rights"
-    t.boolean  "based_on_original"
-    t.string   "manifest"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer "contributing_library_id"
+    t.integer "book_id"
+    t.string "owner_call_number"
+    t.string "owner_system_number"
+    t.string "other_number"
+    t.string "label"
+    t.string "version_edition_statement"
+    t.string "version_publication_statement"
+    t.string "version_publication_date"
+    t.string "additional_responsibility"
+    t.string "provenance"
+    t.string "physical_characteristics"
+    t.string "rights"
+    t.boolean "based_on_original"
+    t.string "manifest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_versions_on_book_id"
     t.index ["contributing_library_id"], name: "index_versions_on_contributing_library_id"
   end
 
+  add_foreign_key "comments", "entries"
 end

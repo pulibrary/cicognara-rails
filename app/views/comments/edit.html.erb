@@ -1,0 +1,25 @@
+<h1>Editing Comment</h1>
+
+<%= form_with(model: @comment, local: true) do |form| %>
+  <%= form.hidden_field(:entry_id, value: @comment.entry_id) %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_area :text, id: :comment_text %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update comment", class: 'btn btn-default' %>
+    <%= link_to 'Cancel', solr_document_path(@comment.entry_id), class: 'btn btn-default' %>
+  </div>
+<% end %>
