@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713161202) do
+ActiveRecord::Schema.define(version: 20180714000125) do
 
   create_table "book_subjects", force: :cascade do |t|
     t.integer "book_id"
@@ -38,18 +38,9 @@ ActiveRecord::Schema.define(version: 20180713161202) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "marc_file_uri"
-    t.integer "iiif_resource_id"
     t.integer "entry_id"
     t.index ["digital_cico_number"], name: "index_books_on_digital_cico_number", unique: true
     t.index ["entry_id"], name: "index_books_on_entry_id"
-    t.index ["iiif_resource_id"], name: "index_books_on_iiif_resource_id"
-  end
-
-  create_table "books_collections", force: :cascade do |t|
-    t.integer "book_id"
-    t.integer "collection_id"
-    t.index ["book_id"], name: "index_books_collections_on_book_id"
-    t.index ["collection_id"], name: "index_books_collections_on_collection_id"
   end
 
   create_table "books_creators", id: false, force: :cascade do |t|
@@ -57,17 +48,6 @@ ActiveRecord::Schema.define(version: 20180713161202) do
     t.integer "creator_id"
     t.index ["book_id"], name: "index_books_creators_on_book_id"
     t.index ["creator_id"], name: "index_books_creators_on_creator_id"
-  end
-
-  create_table "books_marc_records", id: false, force: :cascade do |t|
-    t.integer "book_id"
-    t.integer "marc_record_id"
-    t.index ["book_id"], name: "index_books_marc_records_on_book_id"
-    t.index ["marc_record_id"], name: "index_books_marc_records_on_marc_record_id"
-  end
-
-  create_table "collections", force: :cascade do |t|
-    t.string "slug"
   end
 
   create_table "contributing_libraries", force: :cascade do |t|
@@ -117,8 +97,13 @@ ActiveRecord::Schema.define(version: 20180713161202) do
     t.index ["entry_id"], name: "index_entry_books_on_entry_id"
   end
 
-  create_table "iiif_resources", force: :cascade do |t|
-    t.string "url"
+  create_table "iiif_manifests", force: :cascade do |t|
+    t.string "uri"
+    t.string "label"
+    t.integer "version_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["version_id"], name: "index_iiif_manifests_on_version_id"
   end
 
   create_table "marc_records", force: :cascade do |t|
@@ -197,8 +182,10 @@ ActiveRecord::Schema.define(version: 20180713161202) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "volume_id"
+    t.integer "iiif_manifest_id"
     t.index ["book_id"], name: "index_versions_on_book_id"
     t.index ["contributing_library_id"], name: "index_versions_on_contributing_library_id"
+    t.index ["iiif_manifest_id"], name: "index_versions_on_iiif_manifest_id"
     t.index ["volume_id"], name: "index_versions_on_volume_id"
   end
 

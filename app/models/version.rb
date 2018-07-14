@@ -1,9 +1,13 @@
 class Version < ActiveRecord::Base
   belongs_to :contributing_library
   belongs_to :volume
+
+  belongs_to :iiif_manifest, class_name: "IIIF::Manifest", foreign_key: "iiif_manifest_id"
+
   has_one :book, through: :volume
   validates :label, :contributing_library, :owner_system_number, presence: true
-  validates :manifest, :rights, url: true
+  #validates :manifest, :rights, url: true
+  validates :rights, url: true
   validates :based_on_original, inclusion: { in: [true, false] }
 
   after_commit :update_index

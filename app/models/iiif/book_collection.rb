@@ -1,8 +1,11 @@
 module IIIF
   class BookCollection
     include Rails.application.routes.url_helpers
+
     attr_reader :book
+
     delegate :to_json, to: :collection
+
     def initialize(book)
       @book = book
     end
@@ -17,19 +20,22 @@ module IIIF
         end
     end
 
-    private
-
-    def manifests
-      book.versions.map(&:manifest).compact.each_with_index.map do |id, num|
-        IIIF::Presentation::Manifest.new.tap do |c|
-          c['@id'] = id
-          c['label'] = "Version #{num + 1}"
-        end
+    def self.build_manifest(iiif_record, index = 0)
+      IIIF::Presentation::Manifest.new.tap do |manifest|
+        label = "Version #{index + 1}"
+        manifest['@id'] = iiif_record.uri
+        manifest['label'] = label
       end
     end
 
-    def helper
-      @helper ||= UrlGenerator.new
-    end
+    private
+
+      def manifests
+        book.versions.each_with_index.map { |version, index| IIIF::Manifest.build_presentation(version.iiif_manifest) }
+      end
+
+      def helper
+        @helper ||= UrlGenerator.new
+      end
   end
 end
