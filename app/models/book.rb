@@ -16,7 +16,8 @@ class Book < ActiveRecord::Base
     {
       'contributing_library_facet' => contributing_libraries.map(&:label),
       'digitized_version_available_facet' => digitized_version_available,
-      'manifests_s' => versions.map(&:manifest)
+      'manifests_s' => versions.map(&:manifest),
+      'book_id_s' => [id]
     }
   end
 
