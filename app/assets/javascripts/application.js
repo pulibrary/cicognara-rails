@@ -34,7 +34,7 @@ $(document).ready(function() {
     var fullscreen = document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement
 
     if (fullscreen !== true) {
-      sleep(200).then(() => {
+      sleep(200).then(function() {
         var frame = document.getElementsByTagName("iframe")[0]
         frame.style.position = null
         frame.style.top = null
@@ -43,14 +43,14 @@ $(document).ready(function() {
         frame.style.height = "100%"
       })
     } else {
-      sleep(200).then(() => {
+      sleep(200).then(function() {
         var frame = document.getElementsByTagName("iframe")[0]
         frame.style.position = "absolute"
       })
     }
   }
   function sleep(time) {
-    return new Promise((resolve) => setTimeout(resolve, time))
+    return new Promise(function(resolve) { setTimeout(resolve, time) } )
   }
   if (document.addEventListener) {
     document.addEventListener("webkitfullscreenchange",function() { exitHandler(this) }, false)
