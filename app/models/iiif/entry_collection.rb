@@ -11,24 +11,24 @@ module IIIF
 
     private
 
-      def collection
-        @collection ||=
-          IIIF::Presentation::Collection.new.tap do |c|
-            c.label = entry.item_label
-            c['@id'] = helper.manifest_entry_url(id: entry.n_value)
-            c.collections = collections
-          end
-      end
-
-      def collections
-        binding.pry
-        entry.books.select { |book| !book.versions.empty? }.map do |book|
-          IIIF::BookCollection.new(book).collection
+    def collection
+      @collection ||=
+        IIIF::Presentation::Collection.new.tap do |c|
+          c.label = entry.item_label
+          c['@id'] = helper.manifest_entry_url(id: entry.n_value)
+          c.collections = collections
         end
-      end
+    end
 
-      def helper
-        @helper ||= UrlGenerator.new
+    def collections
+      # binding.pry
+      entry.books.select { |book| !book.versions.empty? }.map do |book|
+        IIIF::BookCollection.new(book).collection
       end
+    end
+
+    def helper
+      @helper ||= UrlGenerator.new
+    end
   end
 end

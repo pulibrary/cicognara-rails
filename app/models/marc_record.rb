@@ -3,10 +3,11 @@ class MarcRecord < ApplicationRecord
   belongs_to :book
   attribute :source, :marc_nokogiri_type
 
-  def self.resolve(file_uri, _marc_path)
+  def self.resolve(file_uri)
     # Search for the MARC record
     # Retrieve the file path from the URI
-    file_path_m = %r{file\:\/\/(.+?\..+?)(\/\/.+?)\[(\d+)\]}.match(file_uri)
+    file_path_m = %r{file\:\/\/(.+?)(\/\/.+?)\[(\d+)\]}.match(file_uri)
+    # binding.pry
     raise StandardError, "Failed to extract the file path from #{file_uri}" unless file_path_m
 
     file_path = file_path_m[1]

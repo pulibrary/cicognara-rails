@@ -18,9 +18,9 @@ module Cicognara
       super.map do |book|
         solr_documents = []
 
-        #book.marc_records.each do |marc_record|
+        # book.marc_records.each do |marc_record|
         #  solr_documents << book_records[marc_record.file_uri] if book_records.key? marc_record.file_uri
-        #end
+        # end
         solr_documents << book_records[book.marc_record.file_uri] if book_records.key? book.marc_record.file_uri
         BookWithCachedSolr.new(book, solr_documents)
       end

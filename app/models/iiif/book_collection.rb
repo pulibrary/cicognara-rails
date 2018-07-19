@@ -30,12 +30,12 @@ module IIIF
 
     private
 
-      def manifests
-        book.versions.each_with_index.map { |version, index| IIIF::Manifest.build_presentation(version.iiif_manifest) }
-      end
+    def manifests
+      book.versions.each_with_index.map { |version, _index| version.iiif_manifest&.manifest_values }
+    end
 
-      def helper
-        @helper ||= UrlGenerator.new
-      end
+    def helper
+      @helper ||= UrlGenerator.new
+    end
   end
 end

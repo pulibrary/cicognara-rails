@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 class Entry < ApplicationRecord
-  #has_many :entry_books
-  #has_many :books, through: :entry_books
   has_many :books
 
   attribute :tei, :tei_type
@@ -16,6 +14,7 @@ class Entry < ApplicationRecord
   end
 
   def n
+    # binding.pry
     ns = tei.xpath('./@n')
     ns.empty? ? 'NO_N' : ns.first.value
   end
@@ -83,6 +82,7 @@ class Entry < ApplicationRecord
   private
 
   def assign_n_value
+    # binding.pry
     self.n_value = n
   end
 end

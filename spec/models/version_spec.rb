@@ -36,13 +36,13 @@ RSpec.describe Version, type: :model do
     expect { described_class.create! attr.except(:based_on_original) }.to raise_error ActiveRecord::RecordInvalid
     expect { described_class.create! attr.except(:contributing_library) }.to raise_error ActiveRecord::RecordInvalid
     expect { described_class.create! attr.except(:label) }.to raise_error ActiveRecord::RecordInvalid
-    expect { described_class.create! attr.except(:manifest) }.to raise_error ActiveRecord::RecordInvalid
+    # expect { described_class.create! attr.except(:manifest) }.to raise_error ActiveRecord::RecordInvalid
     expect { described_class.create! attr.except(:owner_system_number) }.to raise_error ActiveRecord::RecordInvalid
     expect { described_class.create! attr.except(:rights) }.to raise_error ActiveRecord::RecordInvalid
   end
 
   it 'validates manifest and rights are urls' do
-    expect { described_class.create! attr.merge(manifest: 'foo') }.to raise_error ActiveRecord::RecordInvalid
+    # expect { described_class.create! attr.merge(manifest: 'foo') }.to raise_error ActiveRecord::RecordInvalid
     expect { described_class.create! attr.merge(rights: 'foo') }.to raise_error ActiveRecord::RecordInvalid
   end
 end

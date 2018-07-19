@@ -22,7 +22,7 @@ module Cicognara
         end
       end
 
-      #binding.pry
+      # binding.pry
       @marc_solr = indexer.writer.all_records unless marc_records.empty?
     end
 

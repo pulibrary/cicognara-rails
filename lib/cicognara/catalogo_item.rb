@@ -26,8 +26,13 @@ module Cicognara
       (arr || []).include?('Yes') ? 'Yes' : 'No'
     end
 
+    def book_digital_cico_numbers
+      books.map(&:digital_cico_number).compact
+    end
+
     def corresp
-      (entry.corresp + books.map(&:digital_cico_number)).uniq
+      return nil if entry.corresp.empty? && book_digital_cico_numbers.empty?
+      (entry.corresp + book_digital_cico_numbers).uniq
     end
 
     def doc_tei_fields

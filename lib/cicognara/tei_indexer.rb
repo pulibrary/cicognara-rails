@@ -64,6 +64,7 @@ module Cicognara
       section.items.map do |i|
         entry = entry_fetch(i.attributes['id'].value, existing_entries)
         assign_section(entry, section)
+        # binding.pry
         entry.tei = i
         entry.tei_will_change!
         entry.n_value = entry.n
@@ -121,7 +122,7 @@ module Cicognara
     end
 
     def marc_records
-      marc_elements.map.with_index { |_element, idx| MarcRecord.resolve(marc_file_uri(idx), @marc_file_path) }
+      marc_elements.map.with_index { |_element, idx| MarcRecord.resolve(marc_file_uri(idx)) }
     end
   end
 end

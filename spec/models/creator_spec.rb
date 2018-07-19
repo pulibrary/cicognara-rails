@@ -13,7 +13,8 @@ RSpec.describe Creator, type: :model do
 
   context 'with a role relator linked to the authority' do
     subject(:creator) { described_class.create(label: 'Alice', uri: 'http://id.loc.gov/authorities/names/n88194580', roles: [role]) }
-    let(:role) { Role.create(label: "test role") }
+
+    let(:role) { Role.create(label: 'test role') }
 
     it 'accesses the roles' do
       expect(creator.roles).not_to be_empty

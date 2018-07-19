@@ -9,7 +9,7 @@ module Cicognara
         book: map_reference(Book, 'digital_cico_number', row['digital_cico_number']),
         contributing_library: map_reference(ContributingLibrary, 'label', row['contributing_library']),
         based_on_original: row['based_on_original'] == 'TRUE',
-        iiif_manifest: build_iiif_manifest(row["manifest"], row_index)
+        iiif_manifest: build_iiif_manifest(row['manifest'], row_index)
       }.merge(row.keep_if { |k, _v| !mapped_keys.include? k })
     end
 

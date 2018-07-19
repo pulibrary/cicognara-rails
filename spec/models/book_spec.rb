@@ -2,13 +2,15 @@ require 'rails_helper'
 
 describe Book, type: :model do
   subject(:book) { described_class.create }
+
   let(:digital_cico_number) { 'xyz' }
 
   context 'when a volume of the book has been imported' do
     subject(:book) { described_class.create(volumes: [volume]) }
+
     let(:volume) { Volume.new(digital_cico_number: digital_cico_number) }
 
-    describe "#digital_cico_numbers" do
+    describe '#digital_cico_numbers' do
       it 'accesses digital cico numbers' do
         expect(book.digital_cico_numbers).to eq [volume.digital_cico_number]
       end
@@ -17,13 +19,14 @@ describe Book, type: :model do
 
   context 'when a creator authorities have been linked' do
     subject(:book) { described_class.create(creators: [creator1, creator2]) }
+
     let(:role1) { Role.create(label: 'author') }
     let(:role2) { Role.create(label: 'engraver') }
 
     let(:creator1) { Creator.create(label: 'Alice', roles: [role1]) }
     let(:creator2) { Creator.create(label: 'Bob', roles: [role2]) }
 
-    describe "#creators" do
+    describe '#creators' do
       it 'accesses the Volume Objects' do
         expect(book.creators.length).to eq(2)
         expect(book.creators.first).to be_a Creator
@@ -35,10 +38,11 @@ describe Book, type: :model do
 
   context 'when a subject authority has been linked' do
     subject(:book) { described_class.create(subjects: [subject1, subject2]) }
+
     let(:subject1) { Subject.create(label: 'puppies') }
     let(:subject2) { Subject.create(label: 'kittens') }
 
-    describe "#subjects" do
+    describe '#subjects' do
       it 'accesses the Subject Objects' do
         expect(book.subjects.length).to eq(2)
         expect(book.subjects.first).to be_a Subject
@@ -50,9 +54,10 @@ describe Book, type: :model do
 
   describe '#to_solr' do
     subject(:book) { described_class.create(volumes: [volume], marc_record: marc_record) }
+
     let(:pathtomarc) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
     let(:marcxml) { File.open(pathtomarc) { |f| Nokogiri::XML(f) } }
-    let(:file_uri) { "file:///test.mrx//marc:record[0]" }
+    let(:file_uri) { 'file:///test.mrx//marc:record[0]' }
     let(:marc_record) { MarcRecord.create(source: marcxml, file_uri: file_uri) }
     let(:contributing_library) { ContributingLibrary.create! label: 'Example Library', uri: 'http://www.example.org' }
     let(:version) do
@@ -67,7 +72,6 @@ describe Book, type: :model do
     end
     let(:volume) { Volume.new(digital_cico_number: digital_cico_number, versions: [version]) }
     let(:pathtotei) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
-
 
     before do
       volume

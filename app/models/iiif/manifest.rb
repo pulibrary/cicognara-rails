@@ -4,20 +4,17 @@ module IIIF
       'iiif_'
     end
 
-    #def self.build_presentation(iiif_manifest, uri = nil, label = nil)
-    def self.build_presentation(iiif_manifest)
-      #iiif_manifest.uri = uri
-      #iiif_manifest.label = "Version #{index + 1}"
-      #iiif_manifest.save
-
-      IIIF::Presentation::Manifest.new.tap do |p|
-        p["@id"] = iiif_manifest.uri
-        p["label"] = iiif_manifest.label
-      end
-    end
-
-    #has_one :version
     belongs_to :version
 
+    delegate :to_json, to: :manifest_values
+
+    # private
+
+    def manifest_values
+      @manifest_values ||= IIIF::Presentation::Manifest.new.tap do |p|
+        p['@id'] = uri
+        p['label'] = label
+      end
+    end
   end
 end
