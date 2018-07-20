@@ -1,4 +1,4 @@
-<%= form_for([@book, @version]) do |f| %>
+<%= form_for(@version) do |f| %>
   <% if @version.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@version.errors.count, "error") %> prohibited this version from being saved:</h2>
@@ -19,11 +19,11 @@
       </tr>
       <tr>
         <td><%= f.label :manifest %></td>
-        <td><%= f.text_field :manifest %></td>
+        <td><%= f.collection_select :iiif_manifest_id, iiif_manifests, :id, :label, { prompt: true }, { required: true } %></td>
       </tr>
       <tr>
         <td><%= f.label :contributing_library %></td>
-        <td><%= f.collection_select :contributing_library_id, (@contributing_libraries || []), :id, :label, { prompt: true }, { required: true } %></td>
+        <td><%= f.collection_select :contributing_library_id, contributing_libraries, :id, :label, { prompt: true }, { required: true } %></td>
       </tr>
       <tr>
         <td><%= f.label :owner_call_number %></td>
@@ -72,14 +72,14 @@
     </tbody>
   </table>
 
-  <%= f.hidden_field(:book_id, value: @book_id) %>
+  <%= f.hidden_field(:volume_id, value: @version.volume_id) %>
 
   <div class="actions">
     <%= f.submit(class: 'btn btn-primary') %>
     <% if @version.new_record? %>
-      <%= link_to 'Back to Book', book_path(@book), class: 'btn btn-default' %>
+      <%= link_to 'Back to Book', book_path(@version.volume.book), class: 'btn btn-default' %>
     <% else %>
-      <%= link_to 'Cancel', book_version_path(@book, @version), class: 'btn btn-default' %>
+      <%= link_to 'Cancel', book_volume_version_path(@version.volume.book, @version.volume, @version), class: 'btn btn-default' %>
     <% end %>
   </div>
 <% end %>

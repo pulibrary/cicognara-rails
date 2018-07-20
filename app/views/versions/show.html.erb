@@ -57,6 +57,6 @@
   </tr>
 </table>
 
-<%= link_to 'Back to Book', book_path(@book), class: 'btn btn-default' %>
-<%= link_to 'Edit', edit_book_version_path(@book, @version), class: 'btn btn-primary' %>
-<%= link_to 'Destroy', book_version_path(@book, @version), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back to Volume', volume_path(@volume), class: 'btn btn-default' %>
+<%= link_to 'Edit', edit_volume_version_path(@volume, @version), class: 'btn btn-primary' %>
+<%= link_to 'Destroy', volume_version_path(@volume, @version), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>

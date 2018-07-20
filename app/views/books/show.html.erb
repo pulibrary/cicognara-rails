@@ -12,14 +12,16 @@
   </thead>
 
   <tbody>
-    <% @book.versions.each do |version| %>
-      <tr>
-        <td><%= link_to version.label, book_version_path(@book, version) %></td>
-        <td><%= version.contributing_library.label %></td>
-        <td><%= link_to 'View', book_version_path(@book, version), class: 'btn btn-default' %>
-            <%= link_to 'Edit', edit_book_version_path(@book, version), class: 'btn btn-primary' %>
-            <%= link_to 'Destroy', book_version_path(@book, version), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @book.volumes.each do |volume| %>
+      <% volume.versions.each do |version| %>
+        <tr>
+          <td><%= link_to version.label, book_version_path(@book, version) %></td>
+          <td><%= version.contributing_library.label %></td>
+          <td><%= link_to 'View', book_volume_version_path(@book, @volume, version), class: 'btn btn-default' %>
+              <%= link_to 'Edit', edit_book_volume_version_path(@book, @volume, version), class: 'btn btn-primary' %>
+              <%= link_to 'Destroy', book_volume_version_path(@book, @volume, version), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
@@ -27,4 +29,4 @@
 <br>
 
 <%= link_to 'Back to All Books', books_path, class: 'btn btn-default'  %>
-<%= link_to 'Add Version', new_book_version_path(@book), class: 'btn btn-primary' %>
+<%= link_to 'Add Volume', new_book_version_path(@book), class: 'btn btn-primary' %>

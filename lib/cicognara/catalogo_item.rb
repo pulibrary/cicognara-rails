@@ -10,7 +10,7 @@ module Cicognara
 
     def solr_doc
       doc = doc_tei_fields
-      unless books.empty? && corresp.empty?
+      unless books.empty? && corresp.blank?
         doc[:dclib_s] = corresp
         book_fields = marc_fields
         doc.merge!(book_fields)
