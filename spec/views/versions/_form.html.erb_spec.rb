@@ -35,7 +35,7 @@ RSpec.describe 'versions/_form', type: :view do
     end
   end
 
-  context "when the form is being used to create a new Version" do
+  context 'when the form is being used to create a new Version' do
     let(:new_version) { Version.new }
 
     before do
@@ -43,7 +43,7 @@ RSpec.describe 'versions/_form', type: :view do
       new_version.volume = volume
     end
 
-    it "sets the default field values" do
+    it 'sets the default field values' do
       render(partial: 'versions/form', locals: { iiif_manifests: [iiif_manifest], contributing_libraries: [contributing_library] })
 
       expect(rendered).to have_unchecked_field 'version_based_on_original'

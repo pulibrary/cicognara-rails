@@ -16,14 +16,14 @@ class Version < ActiveRecord::Base
 
   private
 
-    def solr_docs
-      return [] unless book
-      return [book.to_solr] unless book.entry
+  def solr_docs
+    return [] unless book
+    return [book.to_solr] unless book.entry
 
-      ([book.to_solr] + [book.entry.to_solr]).compact
-    end
+    ([book.to_solr] + [book.entry.to_solr]).compact
+  end
 
-    def solr
-      Blacklight.default_index.connection
-    end
+  def solr
+    Blacklight.default_index.connection
+  end
 end

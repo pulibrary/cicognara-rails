@@ -56,8 +56,6 @@ RSpec.describe IIIF::EntryCollection do
 
     context 'when given an entry with two books each with a manifest' do
       it 'generates a collection with two sub-collections each with a manifest' do
-        collections = json['collections']
-
         expect(json['label']).to eq entry.item_label
         expect(json['collections'].length).to eq 2
         expect(json['collections'][0]['manifests'].length).to eq 1

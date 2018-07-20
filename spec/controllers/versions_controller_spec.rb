@@ -46,7 +46,7 @@ RSpec.describe VersionsController, type: :controller do
   describe 'GET #edit' do
     let(:version) { Version.create(valid_attributes) }
     it 'assigns the requested version as @version' do
-      #version = Version.create! valid_attributes
+      # version = Version.create! valid_attributes
       get :edit, params: { book_id: book, volume_id: volume, id: version }
       expect(assigns(:version)).to eq(version)
     end
@@ -72,7 +72,7 @@ RSpec.describe VersionsController, type: :controller do
         expect(response).to redirect_to(book_volume_version_url(volume.book, volume, Version.last))
       end
 
-      context "when the Version is indexed into Solr" do
+      context 'when the Version is indexed into Solr' do
         let(:doc) do
           solr.get(
             'select',
@@ -93,7 +93,7 @@ RSpec.describe VersionsController, type: :controller do
           expect(doc).to include 'facet_counts'
           expect(doc['facet_counts']).to include 'facet_fields'
           expect(doc['facet_counts']['facet_fields']).to include 'contributing_library_facet'
-          expect(doc['facet_counts']['facet_fields']['contributing_library_facet']).to eq(["Library 1", 2])
+          expect(doc['facet_counts']['facet_fields']['contributing_library_facet']).to eq(['Library 1', 2])
         end
       end
     end

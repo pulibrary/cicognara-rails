@@ -39,50 +39,50 @@ RSpec.describe 'versions/show', type: :view do
   it 'renders attributes in <p>' do
     render(template: 'versions/show', locals: { version_iiif_manifest_link: link_to(nil, version.iiif_manifest.uri) })
 
-    expect(rendered).to have_css("td", text: "Label")
-    expect(rendered).to have_css("td", text: version.label)
+    expect(rendered).to have_css('td', text: 'Label')
+    expect(rendered).to have_css('td', text: version.label)
 
-    expect(rendered).to have_css("td", text: "Manifest")
+    expect(rendered).to have_css('td', text: 'Manifest')
     expect(rendered).to have_link(version.iiif_manifest.uri, href: version.iiif_manifest.uri)
 
-    expect(rendered).to have_css("td", text: "Contributing library")
+    expect(rendered).to have_css('td', text: 'Contributing library')
     expect(rendered).to have_link(contributing_library.label, href: contributing_library_path(contributing_library))
 
-    expect(rendered).to have_css("td", text: "Owner call number")
-    expect(rendered).to have_css("td", text: version.owner_call_number)
+    expect(rendered).to have_css('td', text: 'Owner call number')
+    expect(rendered).to have_css('td', text: version.owner_call_number)
 
-    expect(rendered).to have_css("td", text: "Owner system number")
-    expect(rendered).to have_css("td", text: version.owner_system_number)
+    expect(rendered).to have_css('td', text: 'Owner system number')
+    expect(rendered).to have_css('td', text: version.owner_system_number)
 
-    expect(rendered).to have_css("td", text: "Other number")
-    expect(rendered).to have_css("td", text: version.other_number)
+    expect(rendered).to have_css('td', text: 'Other number')
+    expect(rendered).to have_css('td', text: version.other_number)
 
-    expect(rendered).to have_css("td", text: "Version edition statement")
-    expect(rendered).to have_css("td", text: version.version_edition_statement)
+    expect(rendered).to have_css('td', text: 'Version edition statement')
+    expect(rendered).to have_css('td', text: version.version_edition_statement)
 
-    expect(rendered).to have_css("td", text: "Version publication statement")
-    expect(rendered).to have_css("td", text: version.version_publication_statement)
+    expect(rendered).to have_css('td', text: 'Version publication statement')
+    expect(rendered).to have_css('td', text: version.version_publication_statement)
 
-    expect(rendered).to have_css("td", text: "Version publication date")
-    expect(rendered).to have_css("td", text: version.version_publication_date)
+    expect(rendered).to have_css('td', text: 'Version publication date')
+    expect(rendered).to have_css('td', text: version.version_publication_date)
 
-    expect(rendered).to have_css("td", text: "Additional responsibility")
-    expect(rendered).to have_css("td", text: version.additional_responsibility)
+    expect(rendered).to have_css('td', text: 'Additional responsibility')
+    expect(rendered).to have_css('td', text: version.additional_responsibility)
 
-    expect(rendered).to have_css("td", text: "Provenance")
-    expect(rendered).to have_css("td", text: version.provenance)
+    expect(rendered).to have_css('td', text: 'Provenance')
+    expect(rendered).to have_css('td', text: version.provenance)
 
-    expect(rendered).to have_css("td", text: "Physical characteristics")
-    expect(rendered).to have_css("td", text: version.physical_characteristics)
+    expect(rendered).to have_css('td', text: 'Physical characteristics')
+    expect(rendered).to have_css('td', text: version.physical_characteristics)
 
-    expect(rendered).to have_css("td", text: "Rights")
-    expect(rendered).to have_css("td", text: version.rights)
+    expect(rendered).to have_css('td', text: 'Rights')
+    expect(rendered).to have_css('td', text: version.rights)
 
-    expect(rendered).to have_css("td", text: "Based on original")
-    expect(rendered).to have_css("input[type=\"checkbox\"][value=\"1\"]")
+    expect(rendered).to have_css('td', text: 'Based on original')
+    expect(rendered).to have_css('input[type="checkbox"][value="1"]')
 
-    expect(rendered).to have_link("Back to Book", href: book_path(volume.book))
-    expect(rendered).to have_link("Edit", href: edit_book_volume_version_path(volume.book, volume, version))
-    expect(rendered).to have_link("Destroy", href: book_volume_version_path(volume.book, volume, version))
+    expect(rendered).to have_link('Back to Book', href: book_path(volume.book))
+    expect(rendered).to have_link('Edit', href: edit_book_volume_version_path(volume.book, volume, version))
+    expect(rendered).to have_link('Destroy', href: book_volume_version_path(volume.book, volume, version))
   end
 end

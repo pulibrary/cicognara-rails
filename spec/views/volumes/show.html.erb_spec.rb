@@ -41,11 +41,11 @@ RSpec.describe 'volumes/show', type: :view do
   it 'renders attributes in <p>' do
     render
 
-    expect(rendered).to have_css("td", text: digital_cico_number)
+    expect(rendered).to have_css('td', text: digital_cico_number)
     expect(rendered).to have_link(version.label, href: book_volume_version_path(volume.book, volume, version))
-    expect(rendered).to have_css("td", text: contributing_library.label)
-    expect(rendered).to have_link("View", href: book_volume_version_path(volume.book, volume, version))
-    expect(rendered).to have_link("Edit", href: edit_book_volume_version_path(volume.book, volume, version))
-    expect(rendered).to have_link("Destroy", href: book_volume_version_path(volume.book, volume, version))
+    expect(rendered).to have_css('td', text: contributing_library.label)
+    expect(rendered).to have_link('View', href: book_volume_version_path(volume.book, volume, version))
+    expect(rendered).to have_link('Edit', href: edit_book_volume_version_path(volume.book, volume, version))
+    expect(rendered).to have_link('Destroy', href: book_volume_version_path(volume.book, volume, version))
   end
 end

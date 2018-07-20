@@ -23,49 +23,15 @@ RSpec.describe Entry, type: :model do
   let(:file_uri) { 'file:///test.mrx//marc:record[0]' }
   let(:marc_record) { MarcRecord.create(source: marcxml, file_uri: file_uri) }
   let(:book) { Book.create(volumes: [volume], marc_record: marc_record) }
-
-  # let(:teixml) { File.open(tei_path) { |f| Nokogiri::XML(f) } }
-  # teixml.xpath("//tei:item", "tei": "http://www.tei-c.org/ns/1.0").length
   let(:teixml) do
     document = File.open(tei_path) { |f| Nokogiri::XML(f) }
     document.xpath('//tei:item', "tei": 'http://www.tei-c.org/ns/1.0')
   end
   let(:tei_path) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
-
-  before do
-    #     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    #     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
-    #     book = Book.find_or_create_by(digital_cico_number: 'cico:m87')
-    #     contrib = ContributingLibrary.find_or_create_by! label: 'Example Library', uri: 'http://example.org'
-    #     Version.create(
-    #       contributing_library: contrib,
-    #       #book: book,
-    #       label: 'version 2', based_on_original: false, owner_system_number: '1234',
-    #       rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
-    #       #manifest: 'http://example.org/1.json'
-    #     )
-    #
-    #     solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    #     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
-    #     solr.commit
-    solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    # solr.add(Cicognara::TEIIndexer.new(tei_path, marc_path).solr_docs)
-    solr.commit
-  end
-
-  let(:solr_docs) do
-    # solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    # docs = #solr.add(Cicognara::TEIIndexer.new(tei_path, marc_path).solr_docs)
-    # solr.commit
-    Cicognara::TEIIndexer.new(tei_path, marc_path).solr_docs
-  end
+  let(:solr_docs) { Cicognara::TEIIndexer.new(tei_path, marc_path).solr_docs }
 
   describe '#entries' do
-    before do
-      # solr_docs
-    end
     it 'has an n property' do
-      # binding.pry
       expect(entry.n).not_to be_nil
     end
 
@@ -74,7 +40,6 @@ RSpec.describe Entry, type: :model do
     end
 
     it 'has a correct n property' do
-      # binding.pry
       expect(entry.n).to eq('1')
     end
 
@@ -114,8 +79,6 @@ RSpec.describe Entry, type: :model do
         end
         let(:book) { Book.create(volumes: [volume], marc_record: marc_record) }
         let(:book_2) { Book.create(volumes: [volume], marc_record: marc_record_2) }
-
-        # let(:entry) { Entry.create(tei: teixml, n_value: '15', books: [book, book_2]) }
 
         it 'has length 2' do
           expect(entry.corresp.length).to eq 2
@@ -189,6 +152,7 @@ RSpec.describe Entry, type: :model do
           expect(entry.to_solr['digitized_version_available_facet']).to eq('Yes')
         end
       end
+
       context 'when corresp has 2 values' do
         subject(:entry) { described_class.create(tei: teixml[2], n_value: '15', books: [book]) }
 
@@ -210,7 +174,6 @@ RSpec.describe Entry, type: :model do
         end
 
         it 'includes marc fields for indexing' do
-          # binding.pry
           expect(entry.to_solr['title_addl_t']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
         end
 
@@ -247,12 +210,9 @@ RSpec.describe Entry, type: :model do
           let(:book) { Book.create(volumes: [volume], marc_record: marc_record) }
           let(:book_2) { Book.create(volumes: [volume], marc_record: marc_record_2) }
           let(:entry) { Entry.create(tei: teixml, n_value: '15', books: [book, book_2]) }
-
           let(:solr_document) { entry.to_solr }
 
           it 'merges fields across multiple marc records' do
-            # solr_document = entry.to_solr
-
             expect(solr_document).to include('subject_topic_facet')
             expect(solr_document['subject_topic_facet']).to include('Humanism')
             expect(solr_document['subject_topic_facet']).to include('Conduct of life')

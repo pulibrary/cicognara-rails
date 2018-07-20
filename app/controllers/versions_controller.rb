@@ -1,8 +1,8 @@
 class VersionsController < ApplicationController
   load_and_authorize_resource param_method: :version_params
-  #before_action :set_book, only: :new
+  # before_action :set_book, only: :new
   before_action :set_volume, only: :new
-  #before_action :set_contributing_libraries, only: [:new, :edit]
+  # before_action :set_contributing_libraries, only: [:new, :edit]
   helper_method :contributing_libraries
   helper_method :version_iiif_manifest_link
 
@@ -64,37 +64,37 @@ class VersionsController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def volume
-      @volume ||= Volume.find(params[:volume_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def volume
+    @volume ||= Volume.find(params[:volume_id])
+  end
 
-    def set_volume
-      @version.volume = volume
-    end
+  def set_volume
+    @version.volume = volume
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def version_params
-      params.require(:version).permit(
-        :volume_id,
-        :label,
-        :iiif_manifest_id,
-        :contributing_library_id,
-        :owner_call_number,
-        :owner_system_number,
-        :other_number,
-        :version_edition_statement,
-        :version_publication_statement,
-        :version_publication_date,
-        :additional_responsibility,
-        :provenance,
-        :physical_characteristics,
-        :rights,
-        :based_on_original
-      )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def version_params
+    params.require(:version).permit(
+      :volume_id,
+      :label,
+      :iiif_manifest_id,
+      :contributing_library_id,
+      :owner_call_number,
+      :owner_system_number,
+      :other_number,
+      :version_edition_statement,
+      :version_publication_statement,
+      :version_publication_date,
+      :additional_responsibility,
+      :provenance,
+      :physical_characteristics,
+      :rights,
+      :based_on_original
+    )
+  end
 
-    def version_params_with_volume
-      version_params.merge(volume_id: volume.id)
-    end
+  def version_params_with_volume
+    version_params.merge(volume_id: volume.id)
+  end
 end
