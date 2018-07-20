@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe VersionsController, type: :controller do
-  #let(:entry) { Entry.create }
   let(:entry) { Entry.create(n_value: '15') }
-  #let(:book) { Book.create(digital_cico_number: 'cico:abc', entry: entry) }
   let(:marc_path) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
   let(:marcxml) { File.open(marc_path) { |f| Nokogiri::XML(f) } }
   let(:file_uri) { 'file:///test.mrx//marc:record[0]' }

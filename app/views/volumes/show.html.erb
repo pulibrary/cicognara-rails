@@ -1,0 +1,24 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <td><%= label_tag :digital_cico_number %></td>
+      <td><%= @volume.digital_cico_number %></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table">
+  <tbody>
+    <% @volume.versions.each do |version| %>
+      <tr>
+        <td><%= link_to version.label, book_volume_version_path(@volume.book, @volume, version) %></td>
+        <td><%= version.contributing_library.label %></td>
+        <td><%= link_to 'View', book_volume_version_path(@volume.book, @volume, version), class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_book_volume_version_path(@volume.book, @volume, version), class: 'btn btn-primary' %>
+            <%= link_to 'Destroy', book_volume_version_path(@volume.book, @volume, version), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Book', book_path(@volume.book), class: 'btn btn-default' %>

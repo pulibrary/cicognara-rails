@@ -1,9 +1,10 @@
 class VersionsController < ApplicationController
   load_and_authorize_resource param_method: :version_params
-  #before_action :set_book
-  #before_action :set_volume
+  #before_action :set_book, only: :new
+  before_action :set_volume, only: :new
   #before_action :set_contributing_libraries, only: [:new, :edit]
   helper_method :contributing_libraries
+  helper_method :version_iiif_manifest_link
 
   def index
     @versions = Version.where(book_id: params[:book_id])
@@ -56,6 +57,11 @@ class VersionsController < ApplicationController
     @iiif_manifests ||= IIIF::Manifest.all.to_a
   end
 
+  def version_iiif_manifest_link(options = nil, html_options = nil)
+    return if version.iiif_manifest.nil?
+    @version_iiif_manifest_link ||= link_to(nil, version.iiif_manifest.uri, options, html_options)
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -63,7 +69,9 @@ class VersionsController < ApplicationController
       @volume ||= Volume.find(params[:volume_id])
     end
 
-
+    def set_volume
+      @version.volume = volume
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def version_params

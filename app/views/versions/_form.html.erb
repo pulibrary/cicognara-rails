@@ -1,4 +1,4 @@
-<%= form_for(@version) do |f| %>
+<%= form_for([@version.volume.book, @version.volume, @version]) do |f| %>
   <% if @version.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@version.errors.count, "error") %> prohibited this version from being saved:</h2>
