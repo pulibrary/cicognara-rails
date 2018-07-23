@@ -17,6 +17,8 @@ Metrics/AbcSize:
     - 'app/models/marc_record.rb'
     - 'lib/cicognara/catalogo_item.rb'
     - 'app/models/marc_indexer.rb'
+    - 'app/controllers/versions_controller.rb'
+    - 'lib/cicognara/book_indexer.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -41,6 +43,7 @@ Metrics/MethodLength:
     - 'app/models/marc_indexer.rb'
     - 'app/models/marc_record.rb'
     - 'lib/cicognara/tei_indexer.rb'
+    - 'app/controllers/versions_controller.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -53,6 +56,17 @@ Style/BlockComments:
 Naming/PredicateName:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - 'app/models/book.rb'
+    - 'app/models/creator.rb'
+    - 'app/models/role.rb'
+    - 'app/models/subject.rb'
+
+Rails/HasManyOrHasOneDependent:
+  Exclude:
+    - 'app/models/version.rb'
 
 RSpec/AnyInstance:
   Exclude:

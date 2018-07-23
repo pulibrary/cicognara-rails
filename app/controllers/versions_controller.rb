@@ -1,7 +1,9 @@
 class VersionsController < ApplicationController
   load_and_authorize_resource param_method: :version_params
   # before_action :set_book, only: :new
-  before_action :set_volume, only: :new
+  before_action :version_volume, only: :new
+  before_action :contributing_libraries, only: [:new, :edit]
+  before_action :iiif_manifests, only: [:new, :edit]
   # before_action :set_contributing_libraries, only: [:new, :edit]
   helper_method :contributing_libraries
   helper_method :version_iiif_manifest_link
@@ -57,9 +59,9 @@ class VersionsController < ApplicationController
     @iiif_manifests ||= IIIF::Manifest.all.to_a
   end
 
-  def version_iiif_manifest_link(options = nil, html_options = nil)
-    return if version.iiif_manifest.nil?
-    @version_iiif_manifest_link ||= link_to(nil, version.iiif_manifest.uri, options, html_options)
+  def version_iiif_manifest_link(html_options = {})
+    return if @version.iiif_manifest.nil?
+    @version_iiif_manifest_link ||= view_context.link_to(@version.iiif_manifest.uri, @version.iiif_manifest.uri, html_options)
   end
 
   private
@@ -69,7 +71,7 @@ class VersionsController < ApplicationController
     @volume ||= Volume.find(params[:volume_id])
   end
 
-  def set_volume
+  def version_volume
     @version.volume = volume
   end
 

@@ -27,7 +27,7 @@ namespace :csv do
         logger.warn e.to_s
       end
 
-      row += 1
+      row_index += 1
     end
   end
 end

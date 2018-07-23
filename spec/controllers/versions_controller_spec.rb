@@ -46,7 +46,6 @@ RSpec.describe VersionsController, type: :controller do
   describe 'GET #edit' do
     let(:version) { Version.create(valid_attributes) }
     it 'assigns the requested version as @version' do
-      # version = Version.create! valid_attributes
       get :edit, params: { book_id: book, volume_id: volume, id: version }
       expect(assigns(:version)).to eq(version)
     end

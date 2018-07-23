@@ -1,6 +1,32 @@
 # frozen_string_literal: true
 class Entry < ApplicationRecord
-  has_many :books
+  # Class used to normalize text extracted from the XML Document
+  class NormalizedString
+    attr_reader :string
+
+    # Constructor
+    # @param string [String] string being normalized
+    def initialize(string)
+      @string = string
+    end
+
+    # Generates the normalized value
+    # @return [String]
+    def value
+      return nil unless string.respond_to?(:text)
+      string.text.gsub(/\s+/, ' ').strip
+    end
+
+    # Generates the normalized values if the string is an Array
+    # @return [Array<String>]
+    def array_value
+      string.map do |x|
+        self.class.new(x).value
+      end
+    end
+  end
+
+  has_many :books, dependent: :destroy
 
   attribute :tei, :tei_type
   before_save :assign_n_value
@@ -14,7 +40,6 @@ class Entry < ApplicationRecord
   end
 
   def n
-    # binding.pry
     ns = tei.xpath('./@n')
     ns.empty? ? 'NO_N' : ns.first.value
   end
@@ -61,28 +86,9 @@ class Entry < ApplicationRecord
     NormalizedString.new(tei).value
   end
 
-  class NormalizedString
-    attr_reader :string
-    def initialize(string)
-      @string = string
-    end
-
-    def value
-      return nil unless string.respond_to?(:text)
-      string.text.gsub(/\s+/, ' ').strip
-    end
-
-    def array_value
-      string.map do |x|
-        NormalizedString.new(x).value
-      end
-    end
-  end
-
   private
 
   def assign_n_value
-    # binding.pry
     self.n_value = n
   end
 end

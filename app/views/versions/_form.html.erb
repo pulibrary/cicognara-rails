@@ -19,11 +19,11 @@
       </tr>
       <tr>
         <td><%= f.label :manifest %></td>
-        <td><%= f.collection_select :iiif_manifest_id, iiif_manifests, :id, :label, { prompt: true }, { required: true } %></td>
+        <td><%= f.collection_select :iiif_manifest_id, @iiif_manifests, :id, :uri, { prompt: true }, { required: true } %></td>
       </tr>
       <tr>
         <td><%= f.label :contributing_library %></td>
-        <td><%= f.collection_select :contributing_library_id, contributing_libraries, :id, :label, { prompt: true }, { required: true } %></td>
+        <td><%= f.collection_select :contributing_library_id, @contributing_libraries, :id, :label, { prompt: true }, { required: true } %></td>
       </tr>
       <tr>
         <td><%= f.label :owner_call_number %></td>
