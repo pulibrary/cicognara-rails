@@ -2,7 +2,7 @@
   <% counter = document_counter_with_offset(document_counter) %>
     <%= link_to 'Browse full Catalogo', catalogo_link(document), class: 'btn btn-xs btn-default' %>
     <% ['Microfiche', 'Matching copy'].each do |val| %>
-      <% if document['digitized_version_available_facet']&.include?(val) %>
+      <% if document['digitized_version_available_facet'] && document['digitized_version_available_facet'].include?(val) %>
         <span class="digitized-<%= val.downcase %> label label-<%= val == 'Microfiche' ? 'default' : 'success' %>">
           <%= val %>
         </span>
