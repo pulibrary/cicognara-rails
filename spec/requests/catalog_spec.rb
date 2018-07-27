@@ -44,6 +44,11 @@ RSpec.describe 'CatalogController config', type: :request do
       get solr_document_path('15')
       expect(response.body).to have_link('Browse View', href: '/catalogo/section_1.1#item_15')
     end
+    it 'displays notes_t 500$3 in bold ' do
+      get solr_document_path('4025')
+      expect(response.body).to have_xpath('//*[@id="doc_4025"]/div[2]/dl/dd[7]/ul/li[1]/strong')
+      expect(response.body).to have_xpath('//*[@id="doc_4025"]/div[2]/dl/dd[7]/ul/li[2]/strong')
+    end
     describe 'when solr doc from dc_lib is not found' do
       it 'dclib marc record is not indexed' do
         get solr_document_path('cico:6gq')

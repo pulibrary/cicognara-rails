@@ -252,9 +252,7 @@
           <fw type="head"/>
           <pb type="cico" n="1"/>
 
-          <div type="section"
-               n="2.1">
-	    
+          <div type="section" n="2.1">
             <head><seg type="main">Dell’antichità in genere</seg></head>
             <list type="catalog">
               <item xml:id="c2d1e550" n="2475" corresp="cico:kc5">
@@ -263,7 +261,21 @@
 	      </bibl></item>
 	    </list>
           </div>
-	</div>
+          <div type="section" n="2.11">
+            <head><seg type="main">Vedute di città</seg>
+	       e descrizioni di monumenti, e antichità,
+	       templi, palazzi, ed altri edifici
+	       grandiosi fuori di Roma.</head>
+
+               <list type="catalog">
+          <item xml:id="c2d1e11582" n="4025" corresp="dcl:6kg">
+                     <label>4025.</label> <bibl><author>IKENII Conradi</author>,<title> Antiquitates hebraicae</title>, <pubPlace>Bremae</pubPlace> <date>1764</date>, in 8.
+          </bibl></item>
+      </list>
+  </div>
+	    </div>
+
+
       </body>
 
     </text>

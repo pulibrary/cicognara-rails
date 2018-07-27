@@ -398,4 +398,136 @@
       <subfield code="h">MICROFICHE 5</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01751cam a2200421Ia 4500</leader>
+    <controlfield tag="001">171610</controlfield>
+    <controlfield tag="005">20180627133546.0</controlfield>
+    <controlfield tag="007">he amu---bacu</controlfield>
+    <controlfield tag="008">010618s1764    gw      b     001 0 lat d</controlfield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)ocm82313349</subfield>
+    </datafield>
+    <datafield tag="040" ind1=" " ind2=" ">
+      <subfield code="a">DNGA</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="c">NGA</subfield>
+      <subfield code="d">OCLCG</subfield>
+      <subfield code="d">OCLCF</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">NGA</subfield>
+    </datafield>
+    <datafield tag="024" ind1="8" ind2=" ">
+      <subfield code="a">dcl:6kg</subfield>
+      <subfield code="2">dclib</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)82313349</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">171610</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">Iken, Conrad,</subfield>
+      <subfield code="d">1689-1753.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">Antiquitates hebraicae secundum triplicem Iudaeorum statum :</subfield>
+      <subfield code="b">ecclesiasticum, politicum et oeconomicum /</subfield>
+      <subfield code="c">breviter delineatae a Conrado Ikenio.</subfield>
+    </datafield>
+    <datafield tag="246" ind1="3" ind2="0">
+      <subfield code="a">Antiqvitates hebraicae secvndvm triplicem Jvdaeorvm statvm</subfield>
+    </datafield>
+    <datafield tag="246" ind1="1" ind2=" ">
+      <subfield code="i">Fiche title:</subfield>
+      <subfield code="a">Ikenisu, C. Antiqutates Herbraicae, 1764</subfield>
+    </datafield>
+    <datafield tag="250" ind1=" " ind2=" ">
+      <subfield code="a">Editio quarta.</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="1">
+      <subfield code="a">Bremae :</subfield>
+      <subfield code="b">Sumptibus Gerhardi Wilhelmi Rumpii,</subfield>
+      <subfield code="c">1764.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">624 pages</subfield>
+    </datafield>
+    <datafield tag="336" ind1=" " ind2=" ">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield tag="337" ind1=" " ind2=" ">
+      <subfield code="a">microform</subfield>
+      <subfield code="b">h</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield tag="338" ind1=" " ind2=" ">
+      <subfield code="a">microfiche</subfield>
+      <subfield code="b">he</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+      <subfield code="3">Double numbers:</subfield>
+      <subfield code="a">Cicognara 4716 and 4025 are listed in the &quot;Catalogo&quot;, but they are the same copy.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+      <subfield code="3">Fiche no.:</subfield>
+      <subfield code="a">4716=4025.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+      <subfield code="3">BAV shelf mark:</subfield>
+      <subfield code="a">Cicognara III.4716.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+      <subfield code="3">Ancient signature:</subfield>
+      <subfield code="a">III.A.2=6.</subfield>
+    </datafield>
+    <datafield tag="500" ind1=" " ind2=" ">
+      <subfield code="a">Includes indexes.</subfield>
+    </datafield>
+    <datafield tag="510" ind1="4" ind2=" ">
+      <subfield code="a">Cicognara,</subfield>
+      <subfield code="c">4716</subfield>
+    </datafield>
+    <datafield tag="510" ind1="4" ind2=" ">
+      <subfield code="a">Cicognara,</subfield>
+      <subfield code="c">4025</subfield>
+    </datafield>
+    <datafield tag="533" ind1=" " ind2=" ">
+      <subfield code="a">Microfiche.</subfield>
+      <subfield code="b">Cambridge, England :</subfield>
+      <subfield code="c">Chadwyck-Healey,</subfield>
+      <subfield code="d">1989-</subfield>
+      <subfield code="e">11 microfiches : positive.</subfield>
+      <subfield code="f">(Cicognara library).</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Jews</subfield>
+      <subfield code="x">Social life and customs</subfield>
+      <subfield code="y">To 70 A.D.</subfield>
+    </datafield>
+    <datafield tag="710" ind1="2" ind2=" ">
+      <subfield code="a">Fondo Cicognara (Biblioteca apostolica vaticana)</subfield>
+    </datafield>
+    <datafield tag="710" ind1="2" ind2=" ">
+      <subfield code="a">Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)</subfield>
+    </datafield>
+    <datafield tag="752" ind1=" " ind2=" ">
+      <subfield code="a">Germany</subfield>
+      <subfield code="d">Bremen</subfield>
+      <subfield code="2">naf</subfield>
+    </datafield>
+    <datafield tag="830" ind1=" " ind2="0">
+      <subfield code="a">Cicognara library.</subfield>
+    </datafield>
+    <datafield tag="852" ind1="0" ind2=" ">
+      <subfield code="a">National Gallery of Art</subfield>
+      <subfield code="b">FICH</subfield>
+      <subfield code="h">MFC 49</subfield>
+      <subfield code="i">no. 4716</subfield>
+    </datafield>
+  </record>
 </collection>

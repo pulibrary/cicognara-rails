@@ -11,7 +11,10 @@
   .browse {
     margin-bottom: 1em;
   }
-
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
   .linked-books {
     font-family: $sans-serif;
     border: 1px solid $light-gray;
