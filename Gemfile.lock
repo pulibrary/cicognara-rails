@@ -156,7 +156,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     library_stdnums (1.4.1)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -214,7 +214,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.6)
@@ -382,6 +382,7 @@ DEPENDENCIES
   iiif-presentation
   jbuilder (~> 2.7.0)
   jquery-rails
+  loofah (>= 2.2.3)
   nokogiri (~> 1.8.1)
   omniauth (~> 1.8.1)
   omniauth-google-oauth2
@@ -389,6 +390,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   pul_uv_rails!
+  rack (>= 2.0.6)
   rails (~> 5.1.6)
   rails-controller-testing
   rsolr (~> 1.0)

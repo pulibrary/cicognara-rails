@@ -55,10 +55,10 @@ group :development do
 end
 
 group :development, :test do
-  gem 'simplecov', '~> 0.9', require: false
-  gem 'rails-controller-testing'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'rails-controller-testing'
+  gem 'simplecov', '~> 0.9', require: false
 end
 
 group :test do
@@ -67,18 +67,20 @@ group :test do
 end
 
 gem 'bixby'
-gem 'rsolr', '~> 1.0'
+gem 'blacklight-marc', '~> 6.0'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'devise-guests', '~> 0.6.1'
-gem 'blacklight-marc', '~> 6.0'
-gem 'solr_wrapper', '~> 2.0.0'
-gem 'traject'
 gem 'high_voltage', '~> 3.0.0'
-gem 'validate_url'
-gem 'pul_uv_rails', github: 'pulibrary/pul_uv_rails'
 gem 'iiif-presentation'
+gem 'loofah', '>= 2.2.3'
 gem 'nokogiri', '~> 1.8.1'
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-google-oauth2'
+gem 'pul_uv_rails', github: 'pulibrary/pul_uv_rails'
+gem 'rsolr', '~> 1.0'
+gem 'solr_wrapper', '~> 2.0.0'
+gem 'rack', '>= 2.0.6'
 gem 'rubyzip', '>= 1.2.2'
+gem 'traject'
+gem 'validate_url'
