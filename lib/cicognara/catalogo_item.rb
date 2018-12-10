@@ -1,11 +1,13 @@
 # catalogo_item.rb
 module Cicognara
   class CatalogoItem
-    attr_accessor :entry
-    delegate :n, :text, :item_authors, :item_pubs, :item_dates, :item_notes, :item_titles, :item_label, :section_display, :section_head, :section_number, :books, to: :entry
+    attr_accessor :with_book_cache
+    delegate :n, :text, :item_authors, :item_pubs, :item_dates, :item_notes, :item_titles, :item_label, :section_display, :section_head, :section_number, :books, to: :with_book_cache
 
-    def initialize(entry)
-      @entry = entry
+    # Constructor
+    # @param [WithBookCache]
+    def initialize(with_book_cache)
+      @with_book_cache = with_book_cache
     end
 
     def solr_doc
@@ -13,7 +15,10 @@ module Cicognara
       unless books.empty? && corresp.empty?
         doc[:dclib_s] = corresp
         book_fields = marc_fields
-        doc.merge!(book_fields)
+        doc.merge!(book_fields) do |_, oldval, newval|
+          values = Array.wrap(newval) + Array.wrap(oldval)
+          values.uniq
+        end
       end
       doc[:title_display] = solr_title_display(item_label || n)
       doc['digitized_version_available_facet'] = resolve_avail(doc['digitized_version_available_facet'])
@@ -22,52 +27,59 @@ module Cicognara
 
     private
 
-    def resolve_avail(arr)
-      arr = (arr || []).flatten.uniq
-      arr.length == 1 ? arr : arr.reject { |v| v == 'None' }
-    end
-
-    def corresp
-      (entry.corresp + books.map(&:digital_cico_number)).uniq
-    end
-
-    def doc_tei_fields
-      { id: n, alt_id: n, cico_s: n, cico_sort: n, tei_description_unstem_search: text, tei_section_display: section_display,
-        tei_section_head_italian: section_head, tei_section_number_display: section_number,
-        tei_author_txt: item_authors, tei_pub_txt: item_pubs, tei_date_display: item_dates,
-        tei_note_italian: item_notes, tei_title_txt: item_titles, tei_section_facet: section_display }
-    end
-
-    def solr_title_display(label)
-      "Catalogo Item #{label.chomp('.')}"
-    end
-
-    def marc_fields
-      book_fields = {}
-      books.each do |book|
-        book_doc = book.to_solr
-        book_fields.merge!(book_doc) { |_, oldval, newval| (newval + oldval).uniq } unless book_doc.nil?
+      def resolve_avail(arr)
+        arr = (arr || []).flatten.uniq
+        arr.length == 1 ? arr : arr.reject { |v| v == 'None' }
       end
-      # fields to ignore
-      remove_display_fields(book_fields)
 
-      # single-valued fields
-      field_first_value(book_fields)
+      def corresp
+        dlc_numbers = books.map(&:digital_cico_numbers)
+        (with_book_cache.corresp + dlc_numbers.flatten).uniq
+      end
 
-      book_fields['text'] = book_fields['text'].join(' ') unless book_fields['text'].nil?
-      book_fields
-    end
+      def doc_tei_fields
+        { id: n, alt_id: n, cico_s: n, cico_sort: n, tei_description_unstem_search: text, tei_section_display: section_display,
+          tei_section_head_italian: section_head, tei_section_number_display: section_number,
+          tei_author_txt: item_authors, tei_pub_txt: item_pubs, tei_date_display: item_dates,
+          tei_note_italian: item_notes, tei_title_txt: item_titles, tei_section_facet: section_display }
+      end
 
-    def field_first_value(book)
-      %w(marc_display title_sort author_sort
-         pub_date).each { |f| book[f] = book[f].first unless book[f].nil? }
-    end
+      def solr_title_display(label)
+        "Catalogo Item #{label.chomp('.')}"
+      end
 
-    def remove_display_fields(book)
-      %w(id format title_display author_display published_display title_addl_display
-         title_added_entry_display title_series_display
-         contents_display edition_display language_display
-         related_name_display dclib_display).each { |f| book.delete(f) }
-    end
+      def marc_fields
+        book_fields = {}
+        # This are not Book Models, but BookWithCachedSolr
+        books.each do |book|
+          book_doc = book.to_solr
+          next if book_doc.nil?
+
+          book_fields.merge!(book_doc) do |_, oldval, newval|
+            values = Array.wrap(newval) + Array.wrap(oldval)
+            values.uniq
+          end
+        end
+        # fields to ignore
+        remove_display_fields(book_fields)
+
+        # single-valued fields
+        field_first_value(book_fields)
+
+        book_fields['text'] = book_fields['text'].join(' ') unless book_fields['text'].nil?
+        book_fields.symbolize_keys
+      end
+
+      def field_first_value(book)
+        %w(marc_display title_sort author_sort
+           pub_date).each { |f| book[f] = book[f].first unless book[f].nil? }
+      end
+
+      def remove_display_fields(book)
+        %w(id format title_display author_display published_display title_addl_display
+           title_added_entry_display title_series_display
+           contents_display edition_display language_display
+           related_name_display alt_id).each { |f| book.delete(f) }
+      end
   end
 end

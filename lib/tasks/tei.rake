@@ -8,7 +8,15 @@ namespace :tei do
     solr_server = Blacklight.connection_config[:url]
     solr = RSolr.connect(url: solr_server)
     solr.delete_by_query('*:*')
-    solr.add(Cicognara::TEIIndexer.new(teipath, marcpath).solr_docs)
+    indexer = Cicognara::TEIIndexer.new(teipath, marcpath, solr)
+    indexer.index
+  end
+
+  desc 'purge all solr documents.'
+  task purge: :environment do
+    solr_server = Blacklight.connection_config[:url]
+    solr = RSolr.connect(url: solr_server)
+    solr.delete_by_query('*:*')
     solr.commit
   end
 

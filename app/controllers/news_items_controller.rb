@@ -52,13 +52,13 @@ class NewsItemsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_news_item
-    @news_item = NewsItem.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_news_item
+      @news_item = NewsItem.find(params[:id])
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def news_item_params
-    params.require(:news_item).permit(:body, :title).merge(user_id: current_user.id, timestamp: DateTime.now.in_time_zone)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def news_item_params
+      params.require(:news_item).permit(:body, :title).merge(user_id: current_user.id, timestamp: DateTime.now.in_time_zone)
+    end
 end

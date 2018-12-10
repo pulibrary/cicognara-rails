@@ -1,10 +1,10 @@
-<% @linked_books.each do |book| %>
-  <% if book['format'] %>
+<% @linked_documents.each do |document| %>
+  <% if document['format'] %>
     <div class="row linked-books">
-      <h4><%= book['title_display'] %></h4>
-      <%= render partial: 'show_default', locals: { document: book } %>
+      <h4><%= document['title_display'] %></h4>
+      <%= render partial: 'show_default', locals: { document: document } %>
 
-      <% book_record = Book.where(digital_cico_number: book['id']).first %>
+      <% book_record = Book.where(id: document['book_id_s']).first %>
       <% if book_record %>
         <% versions = Version.where(book_id: book_record.id) %>
         <div class="col-xs-offset-3">

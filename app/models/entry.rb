@@ -73,7 +73,7 @@ class Entry < ApplicationRecord
 
   private
 
-  def assign_n_value
-    self.n_value = n
-  end
+    def assign_n_value
+      self.n_value = n
+    end
 end

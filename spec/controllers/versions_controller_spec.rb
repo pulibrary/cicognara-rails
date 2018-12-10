@@ -2,7 +2,12 @@ require 'rails_helper'
 
 RSpec.describe VersionsController, type: :controller do
   let(:entry) { Entry.create }
-  let(:book) { Book.create digital_cico_number: 'cico:abc', entries: [entry] }
+  let(:marc_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:tei_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:solr_client) { Blacklight.default_index.connection }
+  let(:tei_indexer) { Cicognara::TEIIndexer.new(tei_documents, marc_documents, solr_client) }
+  let(:solr_documents) { tei_indexer.solr_docs }
+  let(:book) { Book.first }
   let(:contrib) { ContributingLibrary.create label: 'Library 1', uri: 'http://example.org/lib' }
   let(:valid_attributes) do
     {
@@ -18,9 +23,11 @@ RSpec.describe VersionsController, type: :controller do
   let(:invalid_attributes) { { label: nil } }
 
   before do
-    stub_admin_user
     stub_manifest('http://example.org/1.json')
     stub_manifest('http://example.org/2.json')
+    solr_client.add(solr_documents)
+    solr_client.commit
+    stub_admin_user
   end
 
   describe 'GET #show' do
@@ -69,7 +76,7 @@ RSpec.describe VersionsController, type: :controller do
       it 'updates the solr index for its book and its entries' do
         post :create, params: { book_id: book, version: valid_attributes }
 
-        doc = solr.get('select', params: { qt: 'document', q: "id:#{RSolr.solr_escape(book.digital_cico_number)} OR id:#{RSolr.solr_escape(entry.n_value)}", :"facet.field" => 'contributing_library_facet', :facet => 'on' })
+        doc = solr.get('select', params: { qt: 'document', q: "dclib_s:#{RSolr.solr_escape(book.digital_cico_numbers.first)} OR id:#{RSolr.solr_escape(entry.n_value)}", :"facet.field" => 'contributing_library_facet', :facet => 'on' })
         facets = Hash[doc['facet_counts']['facet_fields']['contributing_library_facet'].each_slice(2).to_a]
 
         expect(facets['Library 1']).to eq 2

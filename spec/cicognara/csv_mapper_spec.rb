@@ -7,14 +7,22 @@ describe Cicognara::CSVMapper do
   let(:good_csv) { load_csv 'sample_good.csv' }
   let(:bad_book_csv) { load_csv 'sample_bad_book.csv' }
   let(:bad_contrib_csv) { load_csv 'sample_bad_contrib.csv' }
+  let(:marc_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:tei_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:solr_client) { Blacklight.default_index.connection }
+  let(:tei_indexer) { Cicognara::TEIIndexer.new(tei_documents, marc_documents, solr_client) }
+  let(:solr_documents) { tei_indexer.solr_docs }
 
   before do
-    @book = Book.create digital_cico_number: 'cico:m87'
+    solr_client.add(solr_documents)
+    solr_client.commit
+    @book = Book.first
+
     @contrib = ContributingLibrary.create label: 'Contributor 1', uri: 'http://example.org/'
   end
 
   describe 'good sample' do
-    subject { described_class.map(good_csv) }
+    subject(:results) { described_class.map(good_csv) }
 
     it 'maps book and contributing library' do
       expect(subject[:book]).to eq @book

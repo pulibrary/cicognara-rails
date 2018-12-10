@@ -6,10 +6,20 @@ class Book < ActiveRecord::Base
   has_many :entries, through: :entry_books
   has_many :versions
   has_many :contributing_libraries, through: :versions
-  attribute :marcxml, :marc_nokogiri_type
+  has_one :marc_record
+
+  def indexer
+    @indexer ||= Cicognara::BookIndexer.new(self)
+  end
+
+  def solr_documents
+    @solr_documents ||= indexer.to_solr
+  end
 
   def to_solr
-    ::Cicognara::BookIndexer.new(self).to_solr.values.first.merge(extra_solr)
+    values = solr_documents.values.compact
+    return if values.empty?
+    values.first.merge(extra_solr)
   end
 
   def extra_solr
@@ -23,7 +33,7 @@ class Book < ActiveRecord::Base
   end
 
   def manifests
-    @manifests ||= versions.map(&:manifest)
+    versions.map(&:manifest)
   end
 
   def range_labels_from_manifests
@@ -42,4 +52,10 @@ class Book < ActiveRecord::Base
     return ['None'] if versions.empty?
     versions.map { |v| v.based_on_original? ? 'Microfiche' : 'Matching copy' }
   end
+
+  def marcxml
+    marc_record.source
+  end
+
+  delegate :digital_cico_numbers, to: :marc_record
 end

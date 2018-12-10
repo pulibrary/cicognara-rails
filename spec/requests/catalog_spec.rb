@@ -2,17 +2,22 @@ require 'rails_helper'
 require 'json'
 
 RSpec.describe 'CatalogController config', type: :request do
-  before(:all) do
+  let(:tei) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:marc) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:solr) { Blacklight.default_index.connection }
+  let(:indexer) { Cicognara::TEIIndexer.new(tei, marc, solr) }
+  let(:solr_docs) { indexer.solr_docs }
+  before do
     stub_manifest('http://example.org/1.json')
-    tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
-    marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
+    solr.delete_by_query('*:*')
+    solr.add(solr_docs)
     solr.commit
   end
   describe 'document stored fields' do
     let(:doc) { JSON.parse(response.body)['response']['document'] }
-    before { get solr_document_path('cico:m87'), as: :json }
+    before do
+      get solr_document_path('cico:m87'), as: :json
+    end
     it 'stores language_facet for display' do
       expect(doc['language_facet']).to eq(['Latin'])
     end
@@ -20,7 +25,8 @@ RSpec.describe 'CatalogController config', type: :request do
       expect(doc['published_t']).to eq(['Coloniae : Apud Theodorum Baumium ..., Anno 1584.'])
     end
     it 'stores dclib for display' do
-      expect(doc['dclib_display']).to eq(['cico:m87'])
+      get solr_document_path('cico:98g'), as: :json
+      expect(doc['dclib_display']).to eq(['cico:98g'])
     end
     describe 'multiple dclibs in single marc record' do
       it 'multiple dclibs can display for a single marc record' do
@@ -29,7 +35,9 @@ RSpec.describe 'CatalogController config', type: :request do
       end
       it 'document is retrieved on alt_id' do
         get solr_document_path('cico:vzk'), as: :json
-        expect(doc['id']).to eq('cico:gzw')
+        expect(doc['alt_id']).to include('cico:vzk')
+        file_uri_digest = Digest::MD5.hexdigest(doc['file_uri_s'].first)
+        expect(doc['id']).to eq(file_uri_digest)
       end
     end
   end

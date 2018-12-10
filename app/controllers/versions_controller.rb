@@ -48,26 +48,26 @@ class VersionsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_book
-    @book = Book.find(params[:book_id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_book
+      @book = Book.find(params[:book_id])
+    end
 
-  def set_contributing_libraries
-    @contributing_libraries = ContributingLibrary.all
-  end
+    def set_contributing_libraries
+      @contributing_libraries = ContributingLibrary.all
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def version_params
-    params.require(:version).permit(:book_id, :label, :manifest, :contributing_library_id,
-                                    :owner_call_number, :owner_system_number, :other_number,
-                                    :version_edition_statement, :version_publication_statement,
-                                    :version_publication_date, :additional_responsibility,
-                                    :provenance, :physical_characteristics, :rights,
-                                    :based_on_original)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def version_params
+      params.require(:version).permit(:book_id, :label, :manifest, :contributing_library_id,
+                                      :owner_call_number, :owner_system_number, :other_number,
+                                      :version_edition_statement, :version_publication_statement,
+                                      :version_publication_date, :additional_responsibility,
+                                      :provenance, :physical_characteristics, :rights,
+                                      :based_on_original)
+    end
 
-  def version_params_with_book
-    version_params.merge(book_id: @book.id)
-  end
+    def version_params_with_book
+      version_params.merge(book_id: @book.id)
+    end
 end

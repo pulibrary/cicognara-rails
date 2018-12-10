@@ -8,7 +8,7 @@ RSpec.describe 'Blacklight search fields', type: :request do
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
+    solr.add(Cicognara::TEIIndexer.new(tei, marc, solr).solr_docs)
     solr.commit
   end
   it 'section head is searchable in all_fields' do

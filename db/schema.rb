@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20181212212903) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "book_subjects", id: :serial, force: :cascade do |t|
     t.integer "book_id"
     t.integer "subject_id"
@@ -33,15 +36,15 @@ ActiveRecord::Schema.define(version: 20181212212903) do
   end
 
   create_table "books", id: :serial, force: :cascade do |t|
-    t.string "marcxml"
-    t.string "digital_cico_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["digital_cico_number"], name: "index_books_on_digital_cico_number", unique: true
+    t.string "marc_file_uri"
+    t.bigint "marc_record_id"
+    t.index ["marc_record_id"], name: "index_books_on_marc_record_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "entry_id"
+    t.bigint "entry_id"
     t.string "text"
     t.datetime "timestamp"
     t.integer "user_id"
@@ -97,7 +100,17 @@ ActiveRecord::Schema.define(version: 20181212212903) do
     t.index ["entry_id"], name: "index_entry_books_on_entry_id"
   end
 
-  create_table "news_items", id: :serial, force: :cascade do |t|
+  create_table "marc_records", force: :cascade do |t|
+    t.string "file_uri"
+    t.text "source"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_marc_records_on_book_id"
+    t.index ["file_uri"], name: "index_marc_records_on_file_uri"
+  end
+
+  create_table "news_items", force: :cascade do |t|
     t.string "body"
     t.datetime "timestamp"
     t.string "title"
@@ -177,12 +190,14 @@ ActiveRecord::Schema.define(version: 20181212212903) do
 
   add_foreign_key "book_subjects", "books"
   add_foreign_key "book_subjects", "subjects"
+  add_foreign_key "books", "marc_records"
   add_foreign_key "comments", "entries"
   add_foreign_key "creator_roles", "books"
   add_foreign_key "creator_roles", "creators"
   add_foreign_key "creator_roles", "roles"
   add_foreign_key "entry_books", "books"
   add_foreign_key "entry_books", "entries"
+  add_foreign_key "marc_records", "books"
   add_foreign_key "versions", "books"
   add_foreign_key "versions", "contributing_libraries"
 end

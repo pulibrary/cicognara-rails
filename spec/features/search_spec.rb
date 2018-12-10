@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe 'searching', type: :feature do
-  before(:all) do
+  let(:tei) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:marc) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:solr) { Blacklight.default_index.connection }
+  let(:indexer) { Cicognara::TEIIndexer.new(tei, marc, solr) }
+  let(:solr_docs) { indexer.solr_docs }
+
+  before do
     stub_manifest('http://example.org/1.json')
-    marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
-    solr = RSolr.connect(url: Blacklight.connection_config[:url])
     solr.delete_by_query('*:*')
-    solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
+    solr.add(solr_docs)
 
     contributing_library = ContributingLibrary.create! label: 'Example Library', uri: 'http://www.example.org'
     Version.create! contributing_library: contributing_library, book: Book.first,

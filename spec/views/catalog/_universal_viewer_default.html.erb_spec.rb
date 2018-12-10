@@ -7,7 +7,7 @@ RSpec.describe 'catalog/_universal_viewer_default.html.erb' do
   before do
     contributing_library = instance_double(ContributingLibrary, label: 'Princeton University Library')
     version = instance_double(Version, manifest: manifests.first, label: 'Best Copy', contributing_library: contributing_library, based_on_original?: false)
-    book = instance_double(Book, versions: [version], digital_cico_number: 'dcl:xyz')
+    book = instance_double(Book, versions: [version], digital_cico_numbers: ['dcl:xyz'])
     allow(document).to receive(:book).and_return(book)
     allow(version).to receive(:book).and_return(book)
     render partial: 'catalog/universal_viewer_default', locals: { document: document }

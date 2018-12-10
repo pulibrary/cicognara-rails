@@ -41,8 +41,8 @@ class ContributingLibrariesController < ApplicationController
 
   private
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def contributing_library_params
-    params.require(:contributing_library).permit(:label, :uri)
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def contributing_library_params
+      params.require(:contributing_library).permit(:label, :uri)
+    end
 end

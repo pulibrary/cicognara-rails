@@ -12,17 +12,25 @@ AllCops:
 Rails:
   Enabled: true
 
+Layout/IndentationConsistency:
+  EnforcedStyle: rails
+
 Metrics/AbcSize:
   Exclude:
     - 'spec/support/login_helper.rb'
+    - 'app/models/marc_record.rb'
+    - 'lib/cicognara/catalogo_item.rb'
+    - 'lib/cicognara/book_indexer.rb'
 
 Metrics/BlockLength:
   Exclude:
     - 'spec/models/entry_spec.rb'
+    - 'spec/controllers/versions_controller_spec.rb'
 
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+    - 'lib/cicognara/tei_indexer.rb'
 
 Metrics/LineLength:
   Enabled: false
@@ -31,6 +39,10 @@ Metrics/MethodLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
     - 'app/models/ability.rb'
+    - 'app/models/marc_record.rb'
+    - 'lib/cicognara/catalogo_item.rb'
+    - 'lib/cicognara/tei_indexer.rb'
+    - 'lib/cicognara/book_indexer.rb'
 
 Style/BlockComments:
   Exclude:

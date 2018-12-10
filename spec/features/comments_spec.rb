@@ -7,11 +7,11 @@ RSpec.describe 'comments', type: :feature do
 
   before do
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    MarcIndexer.new.process(marc)
-
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
+
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
+    docs = Cicognara::TEIIndexer.new(tei, marc, solr).solr_docs
+    solr.add(docs)
     solr.commit
 
     comment

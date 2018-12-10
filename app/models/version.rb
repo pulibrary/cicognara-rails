@@ -14,7 +14,7 @@ class Version < ActiveRecord::Base
 
   private
 
-  def solr
-    Blacklight.default_index.connection
-  end
+    def solr
+      Blacklight.default_index.connection
+    end
 end

@@ -16,7 +16,9 @@ module Cicognara
 
     def books(*args)
       super.map do |book|
-        BookWithCachedSolr.new(book, book_records[book.digital_cico_number])
+        solr_documents = []
+        solr_documents << book_records[book.marc_record.file_uri_digest] if book_records.key?(book.marc_record.file_uri_digest)
+        BookWithCachedSolr.new(book, solr_documents)
       end
     end
 
@@ -28,6 +30,7 @@ module Cicognara
       end
 
       def to_solr
+        return extra_solr if solr_documents.empty?
         Array.wrap(solr_documents).first.merge(extra_solr)
       end
     end

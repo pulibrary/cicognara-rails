@@ -202,16 +202,17 @@ class CatalogController < ApplicationController
 
   def show
     super
-    @linked_books = @document.fetch('dclib_s', []).map do |dcn|
+    linked_book_docs = @document.fetch('dclib_s', []).map do |dcn|
       begin
         fetch_one(dcn, {}).last
       rescue
         nil
       end
     end
-    @linked_books.compact!
-    @linked_books.uniq!(&:_source) if @linked_books.length > 1
     @comments = Comment.where(entry_id: params[:id])
+    linked_book_docs.compact!
+    linked_book_docs.uniq!(&:_source) if linked_book_docs.length > 1
+    @linked_documents = linked_book_docs
   rescue Blacklight::Exceptions::RecordNotFound
     render 'errors/not_found', status: 404
   end
