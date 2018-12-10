@@ -57,4 +57,18 @@ task :ci do
   end
 end
 
+task :development do
+  ENV['RAILS_ENV'] ||= 'test'
+  SolrWrapper.wrap(config: 'config/solr_wrapper_test.yml') do |solr|
+    solr.with_collection(name: 'cicognara', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'config')) do
+      begin
+        puts 'Solr running at http://localhost:8888/solr/cicognara/, ^C to exit'
+        sleep
+      rescue Interrupt
+        puts 'Shutting down...'
+      end
+    end
+  end
+end
+
 task default: :ci

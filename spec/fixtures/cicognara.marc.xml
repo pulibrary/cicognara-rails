@@ -397,6 +397,9 @@
       <subfield code="b">safi</subfield>
       <subfield code="h">MICROFICHE 5</subfield>
     </datafield>
+    <datafield ind1="4" ind2="1" tag="856">
+      <subfield code="u">http://arks.princeton.edu/ark:/88435/sb397c01j</subfield>
+    </datafield>
   </record>
   <record>
     <leader>01751cam a2200421Ia 4500</leader>

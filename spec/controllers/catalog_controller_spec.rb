@@ -12,24 +12,26 @@ RSpec.describe CatalogController, type: :controller do
   end
 
   describe 'GET #show' do
-    it 'retrieves linked books' do
+    let(:marc_path) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+
+    it 'retrieves linked documents' do
       get :show, params: { id: '2' }
 
-      linked_books = assigns(:linked_books)
-      expect(linked_books.length).to eq 1
-      expect(linked_books.first['id']).to eq 'cico:m87'
+      linked_documents = assigns(:linked_documents)
+      expect(linked_documents.length).to eq 1
+      expect(linked_documents.first['id']).to include 'fixtures/cicognara.marc.xml//marc:record[0]'
     end
 
-    it 'does not error when there are no linked books' do
-      get :show, params: { id: 'cico:m87' }
-      expect(assigns(:linked_books)).to eq []
+    it 'does not error when there are no linked documents' do
+      get :show, params: { id: '1' }
+      expect(assigns(:linked_documents)).to eq []
     end
 
     it 'book has configured display fields from marc' do
       get :show, params: { id: '2' }
 
-      linked_books = assigns(:linked_books)
-      expect(linked_books.first['title_addl_display']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
+      linked_documents = assigns(:linked_documents)
+      expect(linked_documents.first['title_addl_display']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')
     end
   end
 

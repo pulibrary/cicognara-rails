@@ -1,23 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe 'Versions', type: :request do
-  let(:book) { Book.create!(digital_cico_number: 'cico:xyz') }
+  let(:marc_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:tei_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:solr_client) { Blacklight.default_index.connection }
+  let(:tei_indexer) { Cicognara::TEIIndexer.new(tei_documents, marc_documents) }
+  let(:solr_documents) { tei_indexer.solr_docs }
+  let(:book) { Book.first }
   let(:contrib) { ContributingLibrary.create!(label: 'Library 1', uri: 'http://example.org/lib') }
   let(:version) do
     Version.create!(book_id: book.id, label: 'Version 1', manifest: 'http://example.org/1.json',
                     contributing_library_id: contrib.id, owner_system_number: '1234',
                     rights: 'http://creativecommons.org/publicdomain/mark/1.0/', based_on_original: false)
   end
-
   before do
-    stub_admin_user
     stub_manifest('http://example.org/1.json')
-  end
-
-  after do
-    version.destroy
-    contrib.destroy
-    book.destroy
+    solr_client.add(solr_documents)
+    solr_client.commit
+    stub_admin_user
   end
 
   describe 'GET versions' do

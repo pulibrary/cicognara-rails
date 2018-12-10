@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 20180713162431) do
   end
 
   create_table "books", id: :serial, force: :cascade do |t|
-    t.string "marcxml"
-    t.string "digital_cico_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["digital_cico_number"], name: "index_books_on_digital_cico_number", unique: true
+    t.string "marc_file_uri"
+    t.integer "marc_record_id"
+    t.index ["marc_record_id"], name: "index_books_on_marc_record_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -98,6 +98,16 @@ ActiveRecord::Schema.define(version: 20180713162431) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_entry_books_on_book_id"
     t.index ["entry_id"], name: "index_entry_books_on_entry_id"
+  end
+
+  create_table "marc_records", force: :cascade do |t|
+    t.string "file_uri"
+    t.text "source"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_marc_records_on_book_id"
+    t.index ["file_uri"], name: "index_marc_records_on_file_uri"
   end
 
   create_table "roles", id: :serial, force: :cascade do |t|

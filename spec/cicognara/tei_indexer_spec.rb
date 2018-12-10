@@ -3,32 +3,34 @@
 require 'rails_helper'
 
 describe Cicognara::TEIIndexer do
+  subject(:tei_indexer) { described_class.new(pathtotei, pathtomarc) }
+
+  let(:pathtotei) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:pathtomarc) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+
   before do
     stub_manifest('http://example.org/1.json')
-  end
-
-  before(:all) do
-    pathtotei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
-    pathtomarc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    @subject = described_class.new(pathtotei, pathtomarc)
+    tei_indexer
   end
 
   describe '#catalogo' do
     it 'has an associated tei file' do
-      expect(@subject.catalogo.class).to eq(Nokogiri::XML::Document)
+      expect(tei_indexer.catalogo.class).to eq(Nokogiri::XML::Document)
     end
   end
 
   describe '#books' do
-    it 'builds the same index as if #to_solr was called' do
-      expect(@subject.books[0].to_solr).to eq @subject.solr_docs[0]
-      expect(@subject.solr_docs[5]).to eq @subject.entries[0].to_solr
+    it 'retrieves the books' do
+      expect(tei_indexer.books.size).to eq(5)
+      expect(tei_indexer.books.first).to be_a Book
+      expect(tei_indexer.books.last).to be_a Book
     end
   end
 
   describe '#solr_docs' do
-    it 'has a length of 12' do
-      expect(@subject.solr_docs.length).to eq 12
+    it 'indexes all of the documents' do
+      documents = tei_indexer.solr_docs
+      expect(documents.length).to eq 14
     end
   end
 end

@@ -1,8 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Version, type: :model do
+  subject { described_class.new attr }
+
   let(:contributing_library) { ContributingLibrary.new label: 'Example Library' }
-  let(:book) { Book.new digital_cico_number: 'xyz' }
+  let(:marc_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:tei_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:solr_client) { Blacklight.default_index.connection }
+  let(:tei_indexer) { Cicognara::TEIIndexer.new(tei_documents, marc_documents) }
+  let(:solr_documents) { tei_indexer.solr_docs }
+  let(:book) { Book.first }
   let(:attr) do
     {
       contributing_library: contributing_library,
@@ -14,7 +21,11 @@ RSpec.describe Version, type: :model do
       owner_system_number: 'abc123'
     }
   end
-  subject { described_class.new attr }
+
+  before do
+    solr_client.add(solr_documents)
+    solr_client.commit
+  end
 
   it 'has a contributor' do
     expect(subject.contributing_library).to eq(contributing_library)

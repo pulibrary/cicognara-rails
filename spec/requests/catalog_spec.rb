@@ -2,11 +2,13 @@ require 'rails_helper'
 require 'json'
 
 RSpec.describe 'CatalogController config', type: :request do
-  before(:all) do
+  before do
     stub_manifest('http://example.org/1.json')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
+
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
+    solr.delete_by_query('*:*')
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
     solr.commit
   end
@@ -29,7 +31,7 @@ RSpec.describe 'CatalogController config', type: :request do
       end
       it 'document is retrieved on alt_id' do
         get solr_document_path('cico:vzk'), as: :json
-        expect(doc['id']).to eq('cico:gzw')
+        expect(doc['id']).to match %r{file\:\/\/.+?\/fixtures\/cicognara\.marc\.xml\/\/marc\:record\[3\]}
       end
     end
   end

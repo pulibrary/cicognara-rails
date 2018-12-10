@@ -5,7 +5,7 @@
         <% document.book.versions.to_a.each_with_index do |version, index| %>
           <li <%= 'class="active"'.html_safe if index == 0 %>>
             <a href="#" data-manifest-uri='<%= version.manifest %>'>
-              <%= version.based_on_original? ? 'Microfiche' : 'Matching Copy' %> (<%= version.book.digital_cico_number %>)<br/>
+              <%= version.based_on_original? ? 'Microfiche' : 'Matching Copy' %> (<%= version.book.digital_cico_numbers.join(', ') %>)<br/>
               <span class="contrib"><%= version.contributing_library.label %></span>
             </a>
           </li>

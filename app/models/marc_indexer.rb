@@ -5,7 +5,7 @@ config = CicognaraRails::Application.config.database_configuration[::Rails.env]
 ActiveRecord::Base.establish_connection(config)
 
 class MarcIndexer < Blacklight::Marc::Indexer
-  # this mixin defines lambda facotry method get_format for legacy marc formats
+  # This mixin defines the lambda factory method get_format for legacy MARC formats
   include Blacklight::Marc::Indexer::Formats
 
   SEPARATOR = '—'
@@ -65,16 +65,32 @@ class MarcIndexer < Blacklight::Marc::Indexer
       provide 'log.level', ENV['TRAJECT_LOG_LEVEL'] || 'warn'
     end
 
-    to_field 'id' do |record, accumulator|
+    to_field 'dclib_s' do |record, accumulator|
       ids = []
       Traject::MarcExtractor.cached('024a').collect_matching_lines(record) do |field, spec, extractor|
         id = extractor.collect_subfields(field, spec).first
         unless id.nil?
           field.subfields.each do |s_field|
-            ids << id if (s_field.code == '2') and s_field.value == 'dclib'
+            ids << id if (s_field.code == '2') && s_field.value == 'dclib'
           end
         end
       end
+      accumulator.replace(ids.uniq)
+    end
+
+    to_field 'ark_s' do |record, accumulator|
+      ids = []
+      Traject::MarcExtractor.cached('856').collect_matching_lines(record) do |field, spec, extractor|
+        id = extractor.collect_subfields(field, spec).first
+        unless id.nil?
+          field.subfields.each do |s_field|
+            if (s_field.code == 'u') && (ark_m = %r{\/(ark\:\/.+)$}.match(s_field.value))
+              ids << ark_m[1]
+            end
+          end
+        end
+      end
+
       accumulator.replace(ids.uniq)
     end
 
@@ -84,7 +100,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
         id = extractor.collect_subfields(field, spec).first
         unless id.nil?
           field.subfields.each do |s_field|
-            ids << id if (s_field.code == '2') and s_field.value == 'cico'
+            ids << id if (s_field.code == '2') && s_field.value == 'cico'
           end
         end
       end
@@ -92,7 +108,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
         id = extractor.collect_subfields(field, spec).last
         unless id.nil?
           field.subfields.each do |s_field|
-            ids << id if (s_field.code == 'a') and s_field.value == 'Cicognara,'
+            ids << id if (s_field.code == 'a') && s_field.value == 'Cicognara,'
           end
         end
       end
@@ -265,13 +281,15 @@ class MarcIndexer < Blacklight::Marc::Indexer
     to_field 'place_t', extract_marc('752abcdfgh', separator: SEPARATOR)
 
     each_record do |record, context|
-      # keep id unique key single valued, but use alt_id to serve docs in Blacklight
-      id = context.output_hash['id']
-      context.output_hash['id'] = id[0..0]
-      context.output_hash['alt_id'] = id
+      context.output_hash['id'] = @current_marc_file_uri
+      context.output_hash['file_uri_s'] = @current_marc_file_uri
+  
+       # Use alt_id to serve docs in Blacklight
+      dclib = context.output_hash['dclib_s']
+      context.output_hash['alt_id'] = dclib
 
       # add display fields
-      context.output_hash['dclib_display'] = id
+      context.output_hash['dclib_display'] = dclib
       context.output_hash['published_display'] = context.output_hash['published_t'] unless context.output_hash['published_t'].nil?
       context.output_hash['title_addl_display'] = context.output_hash['title_addl_t'] unless context.output_hash['title_addl_t'].nil?
       context.output_hash['title_added_entry_display'] = context.output_hash['title_added_entry_t'] unless context.output_hash['title_added_entry_t'].nil?
@@ -293,6 +311,11 @@ class MarcIndexer < Blacklight::Marc::Indexer
       end
     end
   end
+
+  def process(file_path, file_uri)
+    @current_marc_file_uri = file_uri
+     super(file_path)
+  end
 end
 
 class SolrWriterAccumulator < Traject::SolrJsonWriter
@@ -305,6 +328,7 @@ class SolrWriterAccumulator < Traject::SolrJsonWriter
 
   def put(context)
     super
-    @all_records[context.output_hash['id'].first] = context.output_hash
+    documents_key = context.output_hash['id']
+    @all_records[documents_key] = context.output_hash
   end
 end

@@ -28,23 +28,40 @@ class TestWriter
 end
 
 RSpec.describe MarcIndexer, type: :model do
+  subject(:marc_indexer) do
+    indexer = described_class.new
+    indexer.writer = writer
+    indexer
+  end
+
+  let(:writer) { TestWriter.new(@values) }
+  let(:marc_file) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:file_uri) { 'file://dir/file.mrx//marc:record[0]' }
+
   before(:all) do
     @values = []
-    marc_file = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    subject = described_class.new
-    subject.writer = TestWriter.new(@values)
-    subject.process(marc_file)
+  end
+
+  before do
+    marc_indexer.process(marc_file, file_uri)
   end
 
   it 'indexes marc for display' do
     expect(@values.first['marc_display']).not_to be nil
   end
 
+  it 'indexes 024$a values using the dclib_display field' do
+    expect(@values.first['dclib_display']).to eq(['cico:m87'])
+  end
+
   it 'indexes title' do
     expect(@values.first['title_t']).to eq(['Henrici Cornelii Agrippae ab Nettesheym De incertitudine et vanitate scientiarum declamatio inuestiua [microform] / ex postrema authoris recognitione.'])
   end
-  it 'takes id from dclib in 024' do
-    expect(@values.first['id']).to eq(['cico:m87'])
+  it 'indexes the ID using the file URI' do
+    expect(@values.first['id']).to eq(file_uri)
+  end
+  it 'indexes the file_uri_s using the file URI' do
+    expect(@values.first['file_uri_s']).to eq(file_uri)
   end
   it 'indexes additional titles' do
     expect(@values.first['title_addl_t']).to include('De incertitudine et vanitate scientiarum declamatio inuestiua')

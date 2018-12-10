@@ -28,7 +28,8 @@ module Cicognara
     end
 
     def corresp
-      (entry.corresp + books.map(&:digital_cico_number)).uniq
+      dlc_numbers = books.map(&:digital_cico_numbers)
+      (entry.corresp + dlc_numbers.flatten).uniq
     end
 
     def doc_tei_fields
@@ -46,7 +47,11 @@ module Cicognara
       book_fields = {}
       books.each do |book|
         book_doc = book.to_solr
-        book_fields.merge!(book_doc) { |_, oldval, newval| (newval + oldval).uniq } unless book_doc.nil?
+        next if book_doc.nil?
+        book_fields.merge!(book_doc) do |_, oldval, newval|
+          values = Array.wrap(newval) + Array.wrap(oldval)
+          values.uniq
+        end
       end
       # fields to ignore
       remove_display_fields(book_fields)

@@ -15,10 +15,13 @@ Rails:
 Metrics/AbcSize:
   Exclude:
     - 'spec/support/login_helper.rb'
+    - 'app/models/marc_record.rb'
+    - 'lib/cicognara/catalogo_item.rb'
 
 Metrics/BlockLength:
   Exclude:
     - 'spec/models/entry_spec.rb'
+    - 'spec/controllers/versions_controller_spec.rb'
 
 Metrics/ClassLength:
   Exclude:
@@ -30,6 +33,9 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+    - 'app/models/marc_record.rb'
+    - 'lib/cicognara/catalogo_item.rb'
+    - 'lib/cicognara/tei_indexer.rb'
 
 Style/BlockComments:
   Exclude:

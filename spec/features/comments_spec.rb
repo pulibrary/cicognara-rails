@@ -4,15 +4,18 @@ RSpec.describe 'comments', type: :feature do
   let(:user) { User.create! email: 'user@example.org', role: 'curator' }
   let(:comment) { Comment.create! text: 'comment 1', entry_id: entry.id, user_id: user.id, timestamp: DateTime.now.in_time_zone }
   let(:entry) { Entry.first }
+  let(:marc) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:tei) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:file_uri) { "file://#{marc}//marc:record[0]" }
+  let(:tei_indexer) { Cicognara::TEIIndexer.new(tei, marc) }
+  let(:tei_solr_documents) { tei_indexer.solr_docs }
+  let(:solr_client) { Blacklight.default_index.connection }
 
   before do
-    marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    MarcIndexer.new.process(marc)
+    MarcIndexer.new.process(marc, file_uri)
 
-    tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
-    solr = RSolr.connect(url: Blacklight.connection_config[:url])
-    solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
-    solr.commit
+    solr_client.add(tei_solr_documents)
+    solr_client.commit
 
     comment
   end

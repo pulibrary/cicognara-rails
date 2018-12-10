@@ -1,18 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe 'version CRUD', type: :feature do
-  let(:book) { Book.find_or_create_by digital_cico_number: 'cico:abc' }
   let(:contrib) { ContributingLibrary.find_or_create_by label: 'Library 1', uri: 'http://example.org' }
+  let(:marc_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:tei_documents) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:solr_client) { Blacklight.default_index.connection }
+  let(:tei_indexer) { Cicognara::TEIIndexer.new(tei_documents, marc_documents) }
+  let(:solr_documents) { tei_indexer.solr_docs }
+  let(:book) { Book.first }
 
   before do
+    solr_client.add(solr_documents)
+    solr_client.commit
     stub_admin_user
     stub_manifest('http://example.org/1.json')
     stub_manifest('http://example.org/2.json')
-  end
-
-  after do
-    book.destroy
-    contrib.destroy
   end
 
   it 'adds, updates and deletes versions' do

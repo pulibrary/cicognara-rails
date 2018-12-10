@@ -12,19 +12,27 @@ module Cicognara
     private
 
     def marc_solr
-      @marc_solr ||=
+      return @marc_solr if @marc_solr
+
+      marc_records.each do |marc_record|
         Tempfile.open('book_marc') do |f|
-          f.write combined_marc
+          f.write(marc_collection(marc_record.source))
           f.close
-          indexer.process(f.path)
-          indexer.writer.all_records
+          indexer.process(f.path, marc_record.file_uri)
         end
+      end
+
+      @marc_solr = indexer.writer.all_records
     end
 
     def blank_records
-      books.each_with_object({}) do |book, hsh|
-        hsh[book.digital_cico_number] = { 'id' => book.digital_cico_number }
+      output = {}
+      books.each do |book|
+        book.digital_cico_numbers do |_digital_cico_number|
+          output[book.digital_cico_number] = { 'id' => book.digital_cico_number }
+        end
       end
+      output
     end
 
     def indexer
@@ -34,17 +42,20 @@ module Cicognara
         end
     end
 
-    def all_marc
-      books.map(&:marcxml).map(&:clone)
+    def marc_documents
+      marc_docs = books.map(&:marcxml)
+      marc_docs.map(&:clone)
     end
 
-    def combined_marc
-      builder = Nokogiri::XML('<collection></collection>')
-      all_marc.each do |record|
-        next unless record.root.present?
-        builder.root << record.root
-      end
-      builder.to_xml
+    def marc_records
+      books.map(&:marc_record)
+    end
+
+    def marc_collection(document)
+      collection = Nokogiri::XML('<collection></collection>')
+      return unless document.root.present?
+      collection.root << document.root
+      collection.to_xml
     end
   end
 end

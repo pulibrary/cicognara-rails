@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'entry views', type: :feature do
-  before(:all) do
-    stub_manifest('http://example.org/1.json')
-    marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
-    MarcIndexer.new.process(marc)
 
-    tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
-    solr = RSolr.connect(url: Blacklight.connection_config[:url])
+  let(:marc) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml') }
+  let(:tei) { File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml') }
+  let(:file_uri) { 'file://dir/file.mrx//marc:record[0]' }
+  let(:solr) { RSolr.connect(url: Blacklight.connection_config[:url]) }
+
+  before do
+    stub_manifest('http://example.org/1.json')
+    MarcIndexer.new.process(marc, file_uri)
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
     solr.commit
   end
@@ -20,7 +22,6 @@ RSpec.describe 'entry views', type: :feature do
 
   it 'displays metadata' do
     visit '/catalog/15'
-    expect(page).to have_selector 'dd.blacklight-dclib_display', text: 'cico:88n'
     expect(page).to have_selector 'dd.blacklight-cico_id_display', text: '15-1'
     expect(page).to have_selector 'dd.blacklight-language_display', text: 'Latin'
     expect(page).to have_selector 'dd.blacklight-description_display', text: '2 v. : ill.'

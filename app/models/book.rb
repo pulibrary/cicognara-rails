@@ -6,10 +6,13 @@ class Book < ActiveRecord::Base
   has_many :entries, through: :entry_books
   has_many :versions
   has_many :contributing_libraries, through: :versions
-  attribute :marcxml, :marc_nokogiri_type
+  has_one :marc_record
 
   def to_solr
-    ::Cicognara::BookIndexer.new(self).to_solr.values.first.merge(extra_solr)
+    solr_document = Cicognara::BookIndexer.new(self).to_solr
+    values = solr_document.values
+    return if values.empty?
+    values.first.merge(extra_solr)
   end
 
   def extra_solr
@@ -42,4 +45,10 @@ class Book < ActiveRecord::Base
     return ['None'] if versions.empty?
     versions.map { |v| v.based_on_original? ? 'Microfiche' : 'Matching copy' }
   end
+
+  def marcxml
+    marc_record.source
+  end
+
+  delegate :digital_cico_numbers, to: :marc_record
 end
