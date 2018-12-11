@@ -6,6 +6,15 @@ module LoginHelper
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     user
   end
+
+  def stub_public_user
+    user = double('user')
+    allow(user).to receive(:admin?).and_return(false)
+    allow(user).to receive(:curator?).and_return(false)
+    allow(user).to receive(:bookmarks).and_return([])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    user
+  end
 end
 
 RSpec.configure do |config|

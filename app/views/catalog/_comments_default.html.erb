@@ -1,0 +1,20 @@
+<% @comments.each do |comment| %>
+  <div class="comment">
+    <p class="comment-text"><%= comment.text %></p>
+    <p class="comment-byline">
+      by <span class="comment-email"><%= comment.user.email %></span>
+      at <span class="comment-timestamp"><%= comment.timestamp %></span>
+      <% if can?(:edit, comment) %>
+        <%= link_to 'Edit', edit_comment_path(comment), class: 'btn-sm btn-primary' %>
+        <%= link_to 'Delete', comment, method: :delete, data: { confirm: "Delete comment?" }, class: 'btn-sm btn-danger' %>
+      <% end %>
+    </p>
+  </div>
+<% end %>
+<% if can?(:create, Comment) %>
+  <%= form_for Comment.new do |f| %>
+    <%= f.hidden_field(:entry_id, value: params[:id]) %>
+    <%= f.text_area :text %>
+    <%= f.submit "Add Comment" %>
+  <% end %>
+<% end %>

@@ -12,6 +12,10 @@ AllCops:
 Rails:
   Enabled: true
 
+Metrics/AbcSize:
+  Exclude:
+    - 'spec/support/login_helper.rb'
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/models/entry_spec.rb'
