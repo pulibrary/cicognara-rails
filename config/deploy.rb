@@ -41,7 +41,8 @@ set :passenger_restart_with_touch, true
 set :passenger_restart_with_touch, true
 
 namespace :deploy do
-  after :restart, :clear_cache do
+  desc 'Reindex and generate partials'
+  task :reindex do
     on roles(:web), in: :groups, limit: 3, wait: 5 do
       within release_path do
         execute :rake, 'tei:deploy'
