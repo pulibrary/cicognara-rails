@@ -1,0 +1,29 @@
+<%= form_with(model: news_item, local: true) do |form| %>
+  <div class="news-item-form">
+    <% if news_item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(news_item.errors.count, "error") %> prohibited this news item from being saved:</h2>
+
+        <ul>
+        <% news_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title, id: :news_item_title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :body %>
+      <%= form.trix_editor :body %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Submit" %>
+    </div>
+  </div>
+<% end %>

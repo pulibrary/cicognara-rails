@@ -1,0 +1,20 @@
+.news-item-form {
+  #news_item_title {
+    width: 100%;
+  }
+
+  label[for=news_item_title] {
+    font-size: 20px;
+  }
+
+  label[for=news_item_body] {
+    font-size: 20px;
+  }
+
+  font-size: 18px;
+}
+
+.news-item-body {
+  font-size: 18px;
+  margin-top: 15px;
+}

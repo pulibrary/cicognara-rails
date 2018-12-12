@@ -54,7 +54,7 @@ RSpec.describe 'entry views', type: :feature do
       expect(page).to have_link 'About', href: '/about'
       expect(page).to have_link 'Partners', href: '/partners'
       expect(page).to have_link 'Contact', href: '/contact'
-      expect(page).to have_link 'News', href: '/news'
+      expect(page).to have_link 'News', href: '/news_items'
       expect(page).to have_link 'Twitter', href: 'https://twitter.com/DigiCicognara'
 
       expect(page).to have_selector 'a.user-display-name', text: @user.to_s
@@ -71,7 +71,7 @@ RSpec.describe 'entry views', type: :feature do
       expect(page).to have_link 'About', href: '/about'
       expect(page).to have_link 'Partners', href: '/partners'
       expect(page).to have_link 'Contact', href: '/contact'
-      expect(page).to have_link 'News', href: '/news'
+      expect(page).to have_link 'News', href: '/news_items'
       expect(page).to have_link 'Twitter', href: 'https://twitter.com/DigiCicognara'
       expect(page).to have_link 'Log In', href: main_app.new_user_session_path
     end

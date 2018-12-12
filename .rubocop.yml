@@ -30,6 +30,7 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+    - 'app/models/ability.rb'
 
 Style/BlockComments:
   Exclude:

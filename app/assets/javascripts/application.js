@@ -16,6 +16,7 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 
+//= require trix
 //= require_tree .
 
 $(document).ready(function() {

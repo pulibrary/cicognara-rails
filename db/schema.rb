@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713162431) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20181212212903) do
 
   create_table "book_subjects", force: :cascade do |t|
     t.integer "book_id"
@@ -44,7 +41,7 @@ ActiveRecord::Schema.define(version: 20180713162431) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "entry_id"
+    t.integer "entry_id"
     t.string "text"
     t.datetime "timestamp"
     t.integer "user_id"
@@ -98,6 +95,15 @@ ActiveRecord::Schema.define(version: 20180713162431) do
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_entry_books_on_book_id"
     t.index ["entry_id"], name: "index_entry_books_on_entry_id"
+  end
+
+  create_table "news_items", force: :cascade do |t|
+    t.string "body"
+    t.datetime "timestamp"
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -169,5 +175,4 @@ ActiveRecord::Schema.define(version: 20180713162431) do
     t.index ["contributing_library_id"], name: "index_versions_on_contributing_library_id"
   end
 
-  add_foreign_key "comments", "entries"
 end

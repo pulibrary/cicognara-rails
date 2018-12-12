@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:create, :edit, :update, :destroy]
+  resources :news_items
 
   get '/404', to: 'errors#not_found', via: :all
   get '/500', to: 'errors#internal_server_error', via: :all

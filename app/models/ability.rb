@@ -1,11 +1,13 @@
 class Ability
   include CanCan::Ability
+  attr_reader :current_user
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
-    if user.admin?
+    @current_user = user || User.new # guest user (not logged in)
+
+    if current_user.admin?
       admin_permissions
-    elsif user.curator?
+    elsif current_user.curator?
       curator_permissions
     else
       public_permissions
@@ -19,7 +21,12 @@ class Ability
   def curator_permissions
     can :read, Book
     can :create, Comment
-    can [:edit, :update, :delete], Comment do |obj|
+    can [:edit, :update, :destroy], Comment do |obj|
+      obj.user_id == current_user.id
+    end
+    can :read, NewsItem
+    can :create, NewsItem
+    can [:edit, :update, :destroy], NewsItem do |obj|
       obj.user_id == current_user.id
     end
     can :manage, Version
@@ -27,5 +34,6 @@ class Ability
 
   def public_permissions
     can :read, Comment
+    can :read, NewsItem
   end
 end

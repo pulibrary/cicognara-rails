@@ -1,0 +1,21 @@
+<section id="news">
+  <div class="wrap">
+    <h1>Latest News</h1>
+    <% if can?(:create, NewsItem) %>
+      <%= button_to 'Add News Item', new_news_item_path, method: :get, class: 'news-item-add-button' %>
+    <% end %>
+    <% @news_items.each do |news_item| %>
+      <div class="news-entry">
+        <h2 class="news-item-title"><%= news_item.title %></h2>
+        <p class="dateline"><%= news_item.timestamp.strftime("%d %B %Y") %></p>
+        <div class="news-item-body"><%= news_item.body.html_safe %></div>
+        <% if can?(:edit, news_item) %>
+          <td><%= link_to 'Edit', edit_news_item_path(news_item) %></td>
+        <% end %>
+        <% if can?(:destroy, news_item) %>
+          <td><%= link_to 'Destroy', news_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
