@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 describe Cicognara::TEIIndexer do
+  before do
+    stub_manifest('http://example.org/1.json')
+  end
+
   before(:all) do
     pathtotei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     pathtomarc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')

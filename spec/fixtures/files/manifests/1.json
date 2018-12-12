@@ -1,0 +1,273 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Manifest",
+  "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest",
+  "label": [
+    "L'Antenore"
+  ],
+  "description": "BAV no. IV M 63 (12)",
+  "viewingHint": "individuals",
+  "metadata": [
+    {
+      "label": "Created At",
+      "value": [
+        "12/12/18 06:24:42 PM UTC"
+      ]
+    },
+    {
+      "label": "Updated At",
+      "value": [
+        "12/12/18 06:24:42 PM UTC"
+      ]
+    },
+    {
+      "label": "Author",
+      "value": [
+        "Pignoria, Lorenzo, 1571-1631"
+      ]
+    },
+    {
+      "label": "References",
+      "value": [
+        "Cicognara, 4067"
+      ]
+    },
+    {
+      "label": "Created",
+      "value": [
+        "01/01/1625"
+      ]
+    },
+    {
+      "label": "Extent",
+      "value": [
+        "49 p"
+      ]
+    },
+    {
+      "label": "Identifier",
+      "value": [
+        "ark:/88435/h128nh983"
+      ]
+    },
+    {
+      "label": "Title",
+      "value": [
+        {
+          "@value": "L'Antenore",
+          "@language": "ita"
+        }
+      ]
+    },
+    {
+      "label": "Contributor",
+      "value": [
+        "Fondo Cicognara (Biblioteca apostolica vaticana)",
+        "Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)"
+      ]
+    },
+    {
+      "label": "Creator",
+      "value": [
+        "Pignoria, Lorenzo, 1571-1631"
+      ]
+    },
+    {
+      "label": "Date",
+      "value": [
+        "1625"
+      ]
+    },
+    {
+      "label": "Description",
+      "value": [
+        "BAV no. IV M 63 (12)",
+        "Colophon: In Padova, per Gio. Battista Martini, & Liuio Pasquati sam pat. cam. MDCXXV."
+      ]
+    },
+    {
+      "label": "Language",
+      "value": [
+        "Italian"
+      ]
+    },
+    {
+      "label": "Local Identifier",
+      "value": [
+        "dcl:b5v"
+      ]
+    },
+    {
+      "label": "Publisher",
+      "value": [
+        "In Padoua : Appresso Pietro Paolo Tozzi, 1625."
+      ]
+    },
+    {
+      "label": "Subject",
+      "value": [
+        "Antenor (Legendary character)"
+      ]
+    },
+    {
+      "label": "Source Metadata Identifier",
+      "value": [
+        "8546328"
+      ]
+    },
+    {
+      "label": "Call Number",
+      "value": [
+        "MICROFICHE 5"
+      ]
+    },
+    {
+      "label": "Location",
+      "value": [
+        "SAFI MICROFICHE 5"
+      ]
+    },
+    {
+      "label": "PDF Type",
+      "value": [
+        "gray"
+      ]
+    },
+    {
+      "label": "Member Of Collections",
+      "value": [
+        "Bibliotheca Cicognara"
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/sequence/normal",
+      "rendering": [
+        {
+          "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/pdf",
+          "label": "Download as PDF",
+          "format": "application/pdf"
+        }
+      ],
+      "canvases": [
+        {
+          "@type": "sc:Canvas",
+          "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/canvas/c2cd5f35-ac4c-4925-a5e0-1a37aa6bd749",
+          "label": "1",
+          "rendering": [
+            {
+              "@id": "https://figgy.princeton.edu/downloads/c2cd5f35-ac4c-4925-a5e0-1a37aa6bd749/file/b1ed8c5f-57c4-4c6e-995e-03a58710ac5f",
+              "label": "Download the original file",
+              "format": "image/tiff"
+            }
+          ],
+          "width": 2960,
+          "height": 249,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@type": "dctypes:Image",
+                "@id": "https://libimages1.princeton.edu/loris/figgy_prod/5b%2F01%2F5f%2F5b015f45b4ae460db3ae55a055df320b%2Fintermediate_file.jp2/full/!1000,/0/default.jpg",
+                "height": 249,
+                "width": 2960,
+                "format": "image/jpeg",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://libimages1.princeton.edu/loris/figgy_prod/5b%2F01%2F5f%2F5b015f45b4ae460db3ae55a055df320b%2Fintermediate_file.jp2",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              },
+              "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/image/c2cd5f35-ac4c-4925-a5e0-1a37aa6bd749",
+              "on": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/canvas/c2cd5f35-ac4c-4925-a5e0-1a37aa6bd749"
+            }
+          ]
+        },
+        {
+          "@type": "sc:Canvas",
+          "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/canvas/17e6b552-b7d2-4ba2-8e64-09253d651990",
+          "label": "35",
+          "rendering": [
+            {
+              "@id": "https://figgy.princeton.edu/downloads/17e6b552-b7d2-4ba2-8e64-09253d651990/file/48b47682-366d-4ae5-b1fe-022ccaf00e73",
+              "label": "Download the original file",
+              "format": "image/tiff"
+            }
+          ],
+          "width": 5339,
+          "height": 4279,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@type": "dctypes:Image",
+                "@id": "https://libimages1.princeton.edu/loris/figgy_prod/9f%2F53%2F31%2F9f5331531e004e318dc66342ccc42744%2Fintermediate_file.jp2/full/!1000,/0/default.jpg",
+                "height": 4279,
+                "width": 5339,
+                "format": "image/jpeg",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://libimages1.princeton.edu/loris/figgy_prod/9f%2F53%2F31%2F9f5331531e004e318dc66342ccc42744%2Fintermediate_file.jp2",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              },
+              "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/image/17e6b552-b7d2-4ba2-8e64-09253d651990",
+              "on": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/canvas/17e6b552-b7d2-4ba2-8e64-09253d651990"
+            }
+          ]
+        }
+      ],
+      "viewingHint": "individuals"
+    }
+  ],
+  "structures": [
+    {
+      "@type": "sc:Range",
+      "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/range/r57cddd52-e29f-4ded-a316-5c689e336d63",
+      "label": "Logical",
+      "viewingHint": "top",
+      "ranges": [
+        "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/range/r5888fcc1-6b73-4c8f-8fdc-065d866f90bc",
+        "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/range/r9d9af548-51e5-48be-8b97-08462d89f339"
+      ],
+      "canvases": []
+    },
+    {
+      "@type": "sc:Range",
+      "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/range/r5888fcc1-6b73-4c8f-8fdc-065d866f90bc",
+      "label": "Aardvark",
+      "ranges": [],
+      "canvases": [
+        "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest/canvas/c2cd5f35-ac4c-4925-a5e0-1a37aa6bd749"
+      ]
+    }
+  ],
+  "seeAlso": [
+    {
+      "@id": "https://figgy.princeton.edu/catalog/65d234ac-b6bb-482a-9e01-afe1167a446a.jsonld",
+      "format": "application/ld+json"
+    },
+    {
+      "@id": "https://bibdata.princeton.edu/bibliographic/8546328",
+      "format": "text/xml"
+    }
+  ],
+  "license": "http://cicognara.org/microfiche_copyright",
+  "thumbnail": {
+    "@id": "https://libimages1.princeton.edu/loris/figgy_prod/5b%2F01%2F5f%2F5b015f45b4ae460db3ae55a055df320b%2Fintermediate_file.jp2/full/!200,150/0/default.jpg",
+    "service": {
+      "@context": "http://iiiif.io/api/image/2/context.json",
+      "@id": "https://libimages1.princeton.edu/loris/figgy_prod/5b%2F01%2F5f%2F5b015f45b4ae460db3ae55a055df320b%2Fintermediate_file.jp2",
+      "profile": "http;//iiiif.io/api/image/2/level2.json"
+    }
+  },
+  "rendering": {
+    "@id": "http://arks.princeton.edu/ark:/88435/h128nh983",
+    "format": "text/html"
+  },
+  "logo": "https://figgy.princeton.edu/assets/vatican-f101dc8edbdd7cfb0b0152c2d2304e805c215cbff0e7ac25fb72dbfd1c568bfc.png"
+}

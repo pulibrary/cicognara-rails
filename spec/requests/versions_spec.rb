@@ -4,11 +4,15 @@ RSpec.describe 'Versions', type: :request do
   let(:book) { Book.create!(digital_cico_number: 'cico:xyz') }
   let(:contrib) { ContributingLibrary.create!(label: 'Library 1', uri: 'http://example.org/lib') }
   let(:version) do
-    Version.create!(book_id: book.id, label: 'Version 1', manifest: 'http://example.org/1',
+    Version.create!(book_id: book.id, label: 'Version 1', manifest: 'http://example.org/1.json',
                     contributing_library_id: contrib.id, owner_system_number: '1234',
                     rights: 'http://creativecommons.org/publicdomain/mark/1.0/', based_on_original: false)
   end
-  before { stub_admin_user }
+
+  before do
+    stub_admin_user
+    stub_manifest('http://example.org/1.json')
+  end
 
   after do
     version.destroy

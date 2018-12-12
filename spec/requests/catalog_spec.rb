@@ -3,6 +3,7 @@ require 'json'
 
 RSpec.describe 'CatalogController config', type: :request do
   before(:all) do
+    stub_manifest('http://example.org/1.json')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
