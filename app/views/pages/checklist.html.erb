@@ -1,7 +1,206 @@
 <section class="checklist" id="checklist">
   <div class="wrap">
-    <h1>Metadata Checklist</h1>
+    <h1>Metadata Checklist for Contributing to the Digital Cicognara Library</h1>
     <p>
+      If you cannot fulfill all the requirements listed below, please email
+      <%= mail_to "cicognara@googlegroups.com" %> and we will work with you on
+      finding a solution.  If the required fields for source metadata are not in the
+      recommended fields, please email <%= mail_to "portal@getty.edu" %> with the
+      information on where the required fields are located.
     </p>
+    <p>
+      For further details on contributions or terminology used below, please also check
+      the <%= link_to "contributor FAQs page", static_page_path('faq') %>.
+    </p>
+    <h3>Signed Getty Research Portal Contributor’s Agreement</h3>
+    <ul class="normal-size-text">
+      <li>Located here: <%= link_to nil, "http://www.getty.edu/research/tools/portal/terms.html" %></li>
+    </ul>
+    <h3>Digital Facsimile</h3>
+    <ul class="normal-size-text">
+      <li>
+        Fully digitized copy of a volume matching an entry in
+        <em><%= link_to "Cicognara’s Catalogo ragionato dei libri d’arte e d’antichità (1821)", "/catalogo" %></em>.
+      </li>
+      <li>Freely available (e.g. not password-protected or IP-dependent)</li>
+      <li>Downloadable through contributor’s website</li>
+      <li>Full-text searchable, if possible</li>
+    </ul>
+    <h3>Source Metadata</h3>
+    <ul class="normal-size-text">
+      <li>In MARC, MODS (can be wrapped in METS), Dublin Core or Getty CSV format
+      <li>Source metadata should include the fields listed below:
+      <ul>
+        <li>A link to the digital facsimile</li>
+        <li>Title</li>
+        <li>If in MARC format, static unique identifier in 001 field</li>
+        <li>A link to the IIIF manifest (see table for recommended field)</li>
+        <li>The Digital Cicognara Library number (DCL #, see table for recommended field with place holders “xyz”)</li>
+        <li>Cicognara <em>Catalogo</em> number (see table for recommended field with place holders “xyz”)</li>
+      </ul>
+    </ul>
+    <table class="table">
+      <thead>
+        <th></th>
+        <th>MARC</th>
+        <th>MODS</th>
+        <th>Dublin Core</th>
+        <th>CSV</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">IIIF Manifest	856</th>
+          <td>856 41 $u [URI]</td>
+          <td>
+            <div>&lt;relatedItem type="otherFormat"&gt;</div>
+            <div>&nbsp;&nbsp;&lt;identifier type="uri"&gt;</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;[URI]</div>
+            <div>&nbsp;&nbsp;&lt;/identifier&gt;</div>
+            <div>&lt;/relatedItem&gt;</div>
+          </td>
+          <td>
+            <div>&lt;dc:hasFormat&gt;</div>
+            <div>&nbsp;&nbsp;[URI]</div>
+            <div>&lt;/dc:hasFormat&gt;</div>
+          </td>
+          <td>IIIF Manifest URL</td>
+        </tr>
+        <tr>
+          <th scope="row">DCL Number (DCL#)</th>
+          <td>024 8_ $a dcl:xyz 	</td>
+          <td>
+            <div>&lt;mods:identifier type="local"&gt;</div>
+            <div>&nbsp;&nbsp;dcl:xyz</div>
+            <div>&lt;/mods:identifier&gt;</div>
+          </td>
+          <td>
+            <div>&lt;dc:identifier&gt;</div>
+            <div>&nbsp;&nbsp;dcl:xyz</div>
+            <div>&lt;/dc:identifier&gt;</div>
+          </td>
+          <td>DCL Number</td>
+        </tr>
+        <tr>
+          <th scope="row">Cicognara <em>Catalogo</em> Number</th>
+          <td>510 4_ $a Cicognara, $c xyz</td>
+          <td>
+            <div>&lt;mods:identifier type="local"&gt;</div>
+            <div>&nbsp;&nbsp;Cicognara, xyz</div>
+            <div>&lt;/mods:identifier&gt;</div>
+          </td>
+          <td>
+            <div>&lt;dc:identifier&gt;</div>
+            <div>&nbsp;&nbsp;Cicognara, xyz</div>
+            <div>&lt;/dc:identifier&gt;</div>
+          </td>
+          <td>Cicognara Number</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>IIIF Manifest</h3>
+    <p>
+      Fields to include in the
+      <%= link_to "International Image Interoperability Framework (IIIF)", "https://iiif.io"%>
+      manifest:
+    </p>
+    <ul class="normal-size-text">
+      <li>Digital Cicognara Library number (DCL #)</li>
+      <li>Cicognara <em>Catalogo</em> number</li>
+      <li>Author</li>
+      <li>Title</li>
+      <li>Place of publication</li>
+      <li>Year of publication</li>
+      <li>Attribution or credit line of holding institution</li>
+      <li>Shelf mark of holding institution</li>
+      <li>Link to the digitized copy (DOI, URL, URN)</li>
+      <li>
+        Link to bibliographic information (further information on the physical description
+        of the matching volume)</li>
+      <li>Rights statement or link to a rights statement</li>
+      <li>Link to OCR full text (if available)</li>
+    </ul>
+    <p>
+      Example of a IIIF manifest in the Digital Cicognara Library project:
+      <%= link_to nil, "https://digi.ub.uni-heidelberg.de/diglit/iiif/junius1694/manifest.json" %>
+    </p>
+    <p class="bold-text">
+    Sample metadata section of a IIIF manifest in the Digital Cicognara Library project:
+    </p>
+    <pre class="code-block">
+    "metadata" : [
+          {
+             "label" : "Author",
+             "value" : [
+                "Junius, Franciscus; Graevius, Johannes Georgius   [Hrsg.]"
+             ]
+          },
+          {
+             "label" : "Location",
+             "value" : [
+                "Rotterdam"
+             ]
+          },
+          {
+             "label" : "Date",
+             "value" : [
+                "1694"
+             ]
+          },
+          {
+             "label" : "Published",
+             "value" : [
+                "Rotterdam, 1694"
+             ]
+          },
+          {
+             "label" : "Identifier (URN)",
+             "value" : [
+                "&lt;a href='http://nbn-resolving.de/urn:nbn:de:bsz:16-diglit-280404'&gt;urn:nbn:de:bsz:16-diglit-280404&lt;/a&gt;"
+             ]
+          },
+          {
+             "label" : "Identifier (DOI)",
+             "value" : [
+                "&lt;a href='https://doi.org/10.11588/diglit.28040'&gt;10.11588/diglit.28040&lt;/a&gt;"
+             ]
+          },
+          {
+             "label" : "Local Identifier",
+             "value" : [
+                "Cicognara, 148"
+             ]
+          },
+          {
+             "label" : "Local Identifier",
+             "value" : [
+                "dcl:f88"
+             ]
+          },
+          {
+             "label" : "Bibliographic Information",
+             "value" : [
+                "&lt;a href='https://katalog.ub.uni-heidelberg.de/titel/67887612'&gt;View in catalogue&lt;/a&gt;"
+             ]
+          },
+          {
+             "label" : "Shelfmark",
+             "value" : [
+                "C 5936 Folio RES"
+             ]
+          }
+       ],
+    </pre>
+    <p class="bold-text">
+      Send source metadata to the Getty Research Portal (<%= mail_to "portal@getty.edu" %>)
+      via one of the following methods:
+    </p>
+    <ul class="normal-size-text">
+      <li>Email attachment</li>
+      <li>
+        OAI harvest or API - One-time email with link to OAI or API repository which will be harvested quarterly unless asked otherwise.
+      </li>
+      <li>FTP</li>
+      <li>Please email portal@getty.edu if none of the above methods are possible and we will work with you on</li> transmitting files.
+
   </div>
 </section>
