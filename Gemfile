@@ -58,12 +58,13 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rails-controller-testing'
-  gem 'simplecov', '~> 0.9', require: false
 end
 
 group :test do
+  gem 'coveralls', require: false
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'simplecov', '~> 0.9', require: false
 end
 
 gem 'bixby'
