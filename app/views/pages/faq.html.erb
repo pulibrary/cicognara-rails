@@ -7,418 +7,466 @@
       for concise contribution information.
     </p>
     <div class="question-text">
-      1. What are the components of the Digital Cicognara Library?
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        1. What are the components of the Digital Cicognara Library?
+      </a>
     </div>
-    <p>
-      The Digital Cicognara Library brings together digital facsimiles of volumes
-      matching the titles in the two-volume inventory of Count Leopoldo Cicognara’s
-      (1767–1834) private book collection, the
-      <em><%= link_to "Catalogo ragionato dei libri d’arte e d’antichità", "/catalogo" %></em>
-      published in 1821. The project applies the
-      <%= link_to "International Image Interoperability Framework (IIIF)", "https://iiif.io" %>
-      to present the high-resolution color reproductions of matching volumes
-      provided by partner libraries. In addition to the digital color facsimiles,
-      which are gradually being added to the website, the Digital Cicognara Library
-      also provides the digitized microfiche of the original Cicognara volumes.
-      In the 1980s and 1990s, the Samuel H. Kress Foundation sponsored a project to
-      microfiche the original volumes held in the <em>Fondo Cicognara</em> of the Biblioteca
-      Apostolica Vaticana. With support from another Kress grant in 2016 all microfiche
-      were digitized and thanks to the Vatican Library will be available on the Digital
-      Cicognara Library website in open access, making the original volumes in the
-      <em>Fondo Cicognara</em> more easily accessible.
-    </p>
-    <p>
-      The Digital Cicognara Library draws its metadata from three different sources:
-      (1) The basis and foundation of the website is the full text of Cicognara’s
-      <em>Catalogo</em>, which was kindly provided to the project by the
-      <%= link_to "Fondazione Memofonte", "http://www.memofonte.it" %>. (2) The metadata
-      MARC records for the microfiche and the digitized microfiche are regularly updated
-      and kindly provided by the National Gallery of Art Library, Washington. (3)
-      The third source of metadata is provided in a IIIF manifest by the contributing
-      institutions alongside their high-resolution digital color facsimiles of titles
-      matching those of Cicognara’s <em>Catalogo</em>.
-    </p>
+    <div id="collapseOne" class="collapse">
+      <p>
+        The Digital Cicognara Library brings together digital facsimiles of volumes
+        matching the titles in the two-volume inventory of Count Leopoldo Cicognara’s
+        (1767–1834) private book collection, the
+        <em><%= link_to "Catalogo ragionato dei libri d’arte e d’antichità", "/catalogo" %></em>
+        published in 1821. The project applies the
+        <%= link_to "International Image Interoperability Framework (IIIF)", "https://iiif.io" %>
+        to present the high-resolution color reproductions of matching volumes
+        provided by partner libraries. In addition to the digital color facsimiles,
+        which are gradually being added to the website, the Digital Cicognara Library
+        also provides the digitized microfiche of the original Cicognara volumes.
+        In the 1980s and 1990s, the Samuel H. Kress Foundation sponsored a project to
+        microfiche the original volumes held in the <em>Fondo Cicognara</em> of the Biblioteca
+        Apostolica Vaticana. With support from another Kress grant in 2016 all microfiche
+        were digitized and thanks to the Vatican Library will be available on the Digital
+        Cicognara Library website in open access, making the original volumes in the
+        <em>Fondo Cicognara</em> more easily accessible.
+      </p>
+      <p>
+        The Digital Cicognara Library draws its metadata from three different sources:
+        (1) The basis and foundation of the website is the full text of Cicognara’s
+        <em>Catalogo</em>, which was kindly provided to the project by the
+        <%= link_to "Fondazione Memofonte", "http://www.memofonte.it" %>. (2) The metadata
+        MARC records for the microfiche and the digitized microfiche are regularly updated
+        and kindly provided by the National Gallery of Art Library, Washington. (3)
+        The third source of metadata is provided in a IIIF manifest by the contributing
+        institutions alongside their high-resolution digital color facsimiles of titles
+        matching those of Cicognara’s <em>Catalogo</em>.
+      </p>
+    </div>
     <div class="question-text">
-      2. How do I contribute to the Digital Cicognara Library?
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        2. How do I contribute to the Digital Cicognara Library?
+      </a>
     </div>
-    <p>
-      Contributions to the Digital Cicognara Library website are enabled by the
-      <%= link_to "Getty Research Portal", "http://portal.getty.edu/" %>. The Getty
-      Research Portal is an initiative of the Getty Research Institute, which offers
-      free global access to digitized art history texts. The Portal aggregates metadata
-      that links to fully-digitized and downloadable texts hosted by the contributing
-      institutions or their service providers. For further information, see the
-      <%= link_to "Portal’s FAQs page", "http://portal.getty.edu/faq" %> and
-      <%= link_to "guidelines for contribution page", "http://www.getty.edu/research/tools/portal/guidelines.html" %>.
-    </p>
-    <p>
-      The records for the matching digitized Cicognara volumes will be provided from
-      the Getty Research Portal to the Digital Cicognara Library via a JSON-LD. This
-      workflow enables the Digital Cicognara Library project to build upon already
-      existing ones and allows all volumes from the library to be searched within
-      the larger art historical context as offered by the Portal.
-    </p>
-    <p>
-      In order to contribute records for matching digitized volumes to the Digital
-      Cicognara Library, please complete the
-      <%= link_to "Getty Research Portal Contribution Agreement", "http://www.getty.edu/research/tools/portal/terms.html", class: "bold-text" %>.
-    </p>
+    <div id="collapseTwo" class="collapse">
+      <p>
+        Contributions to the Digital Cicognara Library website are enabled by the
+        <%= link_to "Getty Research Portal", "http://portal.getty.edu/" %>. The Getty
+        Research Portal is an initiative of the Getty Research Institute, which offers
+        free global access to digitized art history texts. The Portal aggregates metadata
+        that links to fully-digitized and downloadable texts hosted by the contributing
+        institutions or their service providers. For further information, see the
+        <%= link_to "Portal’s FAQs page", "http://portal.getty.edu/faq" %> and
+        <%= link_to "guidelines for contribution page", "http://www.getty.edu/research/tools/portal/guidelines.html" %>.
+      </p>
+      <p>
+        The records for the matching digitized Cicognara volumes will be provided from
+        the Getty Research Portal to the Digital Cicognara Library via JSON-LD. This
+        workflow enables the Digital Cicognara Library project to build upon already
+        existing ones and allows all volumes from the library to be searched within
+        the larger art historical context as offered by the Portal.
+      </p>
+      <p>
+        In order to contribute records for matching digitized volumes to the Digital
+        Cicognara Library, please complete the
+        <%= link_to "Getty Research Portal Contribution Agreement", "http://www.getty.edu/research/tools/portal/terms.html", class: "bold-text" %>.
+      </p>
+    </div>
     <div class="question-text">
-      3. Does the Getty Research Portal or the Digital Cicognara Library ingest the digital facsimiles?
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        3. Does the Getty Research Portal or the Digital Cicognara Library ingest the digital facsimiles?
+      </a>
     </div>
-    <p>
-      The technology applied for adding digital facsimiles to the Getty Research Portal
-      and the Digital Cicognara Library assures that the control over the data remains
-      with the contributing institution. Both portals either link to the presentation
-      or display the digital content stored on the contributing institution’s servers
-      via API in a viewer. This also implies that the Getty Research Portal and the
-      Digital Cicognara Library rely on the digital content being persistent and long
-      term archived.
-    </p>
+    <div id="collapseThree" class="collapse">
+      <p>
+        The technology applied for adding digital facsimiles to the Getty Research Portal
+        and the Digital Cicognara Library assures that the control over the data remains
+        with the contributing institution. Both portals either link to the presentation
+        or display the digital content stored on the contributing institution’s servers
+        via API in a viewer. This also implies that the Getty Research Portal and the
+        Digital Cicognara Library rely on the digital content being persistent and long
+        term archived.
+      </p>
+    </div>
     <div class="question-text">
-      4. What are the specifications for digitizing matching Cicognara volumes?
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        4. What are the specifications for digitizing matching Cicognara volumes?
+      </a>
     </div>
-    <p>
-      The following recommendations have been made by the charter partners for digitizing
-      matching Cicognara volumes. Before digitizing please check that each title exactly
-      matches the corresponding title in Cicognara’s
-      <em><%= link_to "Catalogo ragionato dei libri d’arte e d’antichità (1821)", "/catalogo" %></em>.
-      If in doubt, please contact the project team at <%= mail_to "cicognara@googlegroups.com" %>.
-    </p>
-    <p>
-      The digitized object should include the following:
-    </p>
-    <ul class="normal-size-text">
-      <li>full text (including blank pages)</li>
-      <li>binding (front and back covers)</li>
-      <li>spine</li>
-      <li>edges</li>
-      <li>front and rear pastedowns</li>
-      <li>flyleaves</li>
-      <li>color chart and scale</li>
-    </ul>
-    <p>
-      The following technical specifications for digitization are recommended:
+    <div id="collapseFour" class="collapse">
+      <p>
+        The following recommendations have been made by the charter partners for digitizing
+        matching Cicognara volumes. Before digitizing please check that each title exactly
+        matches the corresponding title in Cicognara’s
+        <em><%= link_to "Catalogo ragionato dei libri d’arte e d’antichità (1821)", "/catalogo" %></em>.
+        If in doubt, please contact the project team at <%= mail_to "cicognara@googlegroups.com" %>.
+      </p>
+      <p>
+        The digitized object should include the following:
+      </p>
       <ul class="normal-size-text">
-        <li>format for original digitization: TIFF or RAW</li>
-        <li>format for access copies:  JPEG2000</li>
-        <li>resolution: 300 dpi</li>
-        <li>color depth: 24-bit color</li>
+        <li>full text (including blank pages)</li>
+        <li>binding (front and back covers)</li>
+        <li>spine</li>
+        <li>edges</li>
+        <li>front and rear pastedowns</li>
+        <li>flyleaves</li>
+        <li>color chart and scale</li>
       </ul>
-    </p>
-    <div class="question-text">
-      5. What are the requirements for contributing links to digitized texts?
+      <p>
+        The following technical specifications for digitization are recommended:
+        <ul class="normal-size-text">
+          <li>format for original digitization: TIFF or RAW</li>
+          <li>format for access copies:  JPEG2000</li>
+          <li>resolution: 300 dpi</li>
+          <li>color depth: 24-bit color</li>
+        </ul>
+      </p>
     </div>
-    <p>
-      <ul class="normal-size-text">
-        <li>
-          Source records must include one or more fully-formed hyperlinks to a high-quality,
-          fully digitized text
-        </li>
-        <li>
-          The digital facsimile must be freely available open access (e.g. not password-protected
-          or IP-dependent) and downloadable
-        </li>
-        <li>Ideally, a full-text search should be possible</li>
-      </ul>
-    </p>
     <div class="question-text">
-      6. What are the source metadata requirements?
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        5. What are the requirements for contributing links to digitized texts?
+      </a>
     </div>
-    <p>
-      Contributed records must be in one of the four formats accepted by the Getty
-      Research Portal: MARC, MODS, Dublin Core, or CSV (please contact
-      <%= mail_to "portal@getty.edu" %> for a specialized Getty CSV) and include the
-      following:
-    </p>
-    <ul class="normal-size-text">
-     <li>A link to the digital facsimile</li>
-     <li>Title</li>
-     <li>If in MARC format:
-       <ul>
-        <li>static unique identifier in 001 field</li>
-        <li>please export MARC records in Unicode (UTF8/UTF-8) format</li>
-       </ul>
-      </li>
-      <li>A IIIF manifest</li>
-      <li>The Digital Cicognara Library number (DCL#, see below)</li>
-      <li>The Cicognara <em>Catalogo</em> number (see below)
-        <ul>
+    <div id="collapseFive" class="collapse">
+      <p>
+        <ul class="normal-size-text">
           <li>
-            The DCL # and Cicognara <em>Catalogo</em> number should also be included in
-            the IIIF manifest itself (see below)
+            Source records must include one or more fully-formed hyperlinks to a high-quality,
+            fully digitized text
+          </li>
+          <li>
+            The digital facsimile must be freely available open access (e.g. not password-protected
+            or IP-dependent) and downloadable
+          </li>
+          <li>Ideally, a full-text search should be possible</li>
+        </ul>
+      </p>
+    </div>
+    <div class="question-text">
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        6. What are the source metadata requirements?
+      </a>
+    </div>
+    <div id="collapseSix" class="collapse">
+      <p>
+        Contributed records must be in one of the four formats accepted by the Getty
+        Research Portal: MARC, MODS, Dublin Core, or CSV (please contact
+        <%= mail_to "portal@getty.edu" %> for a specialized Getty CSV) and include the
+        following:
+      </p>
+      <ul class="normal-size-text">
+       <li>A link to the digital facsimile</li>
+       <li>Title</li>
+       <li>If in MARC format:
+         <ul>
+          <li>static unique identifier in 001 field</li>
+          <li>please export MARC records in Unicode (UTF8/UTF-8) format</li>
+         </ul>
+        </li>
+        <li>A IIIF manifest</li>
+        <li>The Digital Cicognara Library number (DCL#, see below)</li>
+        <li>The Cicognara <em>Catalogo</em> number (see below)
+          <ul>
+            <li>
+              The DCL # and Cicognara <em>Catalogo</em> number should also be included in
+              the IIIF manifest itself (see below)
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        <span class="bold-text">*Please note:</span> If you cannot provide source
+        metadata and/or are unable to meet these requirements but are interested in
+        contributing, please contact <%= mail_to "cicognara@googlegroups.com" %>.
+      </p>
+    </div>
+    <div class="question-text">
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        7. How can records for digital facsimiles be delivered?
+      </a>
+    </div>
+    <div id="collapseSeven" class="collapse">
+      <p>
+        Contributions to the Digital Cicognara Library can be made through the Getty
+        Research Portal via the following methods of delivery:
+      </p>
+      <ul class="normal-size-text">
+        <li>Email attachment</li>
+        <li>Open Archives Initiative (OAI) harvest</li>
+        <li>Institution API</li>
+      </ul>
+      <p>
+        <span class="bold-text">*Please note:</span> If your institution is not using
+        an OAI-repository or API, and changes or updates its source metadata, please
+        send an updated file to the Getty Research Portal.
+      </p>
+    </div>
+    <div class="question-text">
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        8. What is the International Image Interoperability Framework (IIIF)?
+      </a>
+    </div>
+    <div id="collapseEight" class="collapse">
+      <p>
+          The Digital Cicognara Library uses the
+          <%= link_to "International Image Interoperability Framework", "https://iiif.io" %>
+          to add digital content to its website. This enables contributing institutions
+          to maintain the control over their digital files stored on their servers and
+          avoids digital content being superfluously duplicated and archived in multiple
+          places. The IIIF technology offers the ability to present digital content and
+          its related metadata via API in a viewer embedded on the Digital Cicognara
+          Library website, thus providing a coherent and homogeneous user experience.
+      </p>
+      <p>
+        In order to display the digital content on the Digital Cicognara Library:
+      </p>
+      <ul class="normal-size-text">
+        <li>
+          Contributing institutions should provide a clearly identifiable
+          <%= link_to "IIIF manifest", "https://iiif.io/api/presentation/2.1/" %>
+          in the source metadata for each digital volume. (Please contact the project
+          team at <%= mail_to "cicognara@googlegroups.com" %> if your institution
+          cannot provide a IIIF manifest).
+        </li>
+        <li>
+          The link to the IIIF manifest should be included in one of the four formats
+          accepted by the Getty Research Portal, see the following recommendations
+          and examples:
+        </li>
+      </ul>
+
+      <table class="table table-bordered">
+        <td>
+          <div class="bold-text">MARC</div>
+          <div>856 41 $u [URI]</div>
+        </td>
+        <td>
+       	  <div class="bold-text">MODS</div>
+          <div>&lt;relatedItem type="otherFormat"&gt;</div>
+          <div>&nbsp;&nbsp;&lt;identifier type="uri"&gt;</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;[URI]</div>
+          <div>&nbsp;&nbsp;&lt;/identifier&gt;</div>
+          <div>&lt;/relatedItem&gt;</div>
+        </td>
+        <td>
+          <div class="bold-text">Dublin Core</div>
+          <div>&lt;dc:hasFormat&gt;</div>
+          <div>&nbsp;&nbsp;[URI]</div>
+          <div>&lt;/dc:hasFormat&gt;</div>
+        </td>
+        <td>
+      	   <div class="bold-text">CSV</div>
+           IIIF Manifest URL
+        </td>
+      </table>
+
+      <p>
+        <span class="bold-text">*Please note:</span> For any of the above, as these fields
+        may contain other URLs, please indicate to portal@getty.edu which are IIIF when
+        contributing records.
+      </p>
+      <div class="well normal-size-text">
+        <div>
+          <span class="bold-text">Mets:</span> the IIIF manifest is documented as follows:
+        </div>
+        <code>
+          <div>&lt;mets:dmdSec ID="dmd__iiif"&gt;</div>
+          <div>&lt;mets:mdRef LOCTYPE="URL" MDTYPE="IIIF" xlink:href="https://...."/&gt;</div>
+        </code>
+        <div>Recommendation to make IIIF URL identifiable: <code>MDTYPE="IIIF"</code></div>
+      </div>
+      <p>
+        <div class="normal-size-text">
+          Please find an example for a IIIF manifest in the Digital Cicognara Library project
+          here:
+        </div>
+        <div class="normal-size-text">
+        <%= link_to nil, "https://digi.ub.uni-heidelberg.de/diglit/iiif/junius1694/manifest.json" %>
+        </div>
+      </p>
+    </div>
+    <div class="question-text">
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+        9. What information should the IIIF manifest contain?
+      </a>
+    </div>
+    <div id="collapseNine" class="collapse">
+      <p>
+        The following metadata should be recorded in the IIIF manifest:
+        <ul class="normal-size-text">
+          <li>Digital Cicognara Library number (DCL #, see below)</li>
+          <li>Cicognara <em>Catalogo</em> number (see below)</li>
+          <li>Author</li>
+          <li>Title</li>
+          <li>Place of publication</li>
+          <li>Publisher</li>
+          <li>Year of publication</li>
+          <li>Attribution or credit line of holding institution</li>
+          <li>Shelf mark of holding institution</li>
+          <li>Link to the digitized copy (DOI, URL, URN)</li>
+          <li>
+            Link to bibliographic information (further information on the physical
+            description of the matching volume)
+          </li>
+          <li>Rights statement or link to a rights statement</li>
+          <li>Link to OCR full text (if available)</li>
+        </ul>
+      </p>
+    </div>
+    <div class="question-text">
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+        10.  What is the Digital Cicognara Library number (DCL #)?
+      </a>
+    </div>
+    <div id="collapseTen" class="collapse">
+      <p>
+        The Digital Cicognara Library number (DCL #) is a three-character alphanumeric
+        code that has been generated by the project in order to match digitized volumes
+        to the catalog entries in Cicognara’s
+        <%= link_to "Catalogo ragionato dei libri d’arte e d’antichità (1821)", "/catalogo" %>.
+        Please contact <%= mail_to "cicognara@googlegroups.com" %> to receive a
+        list of all DCL #.
+      </p>
+      <p>
+        The DCL # should be documented in <span class="bold-text">both</span> the source
+        metadata and the IIIF manifest:
+        <ul class="normal-size-text">
+          <li>
+            The <span class="bold-text">DCL # should be included in one of the four formats
+            accepted by the Getty Research Portal</span>, see the following recommendations
+            and examples (with the place holders “xyz”):
+          </li>
+          <table class="table table-bordered">
+            <td>
+              <div class="bold-text">MARC</div>
+              <div>024 8_ $a dcl:xyz</div>
+            </td>
+            <td>
+           	  <div class="bold-text">MODS</div>
+                <div>&lt;mods:identifier type="local"&gt;</div>
+                <div>&nbsp;&nbsp;dcl:xyz</div>
+                <div>&lt;/mods:identifier&gt;</div>
+            </td>
+            <td>
+              <div class="bold-text">Dublin Core</div>
+              <div>&lt;dc:identifier&gt;</div>
+              <div>&nbsp;&nbsp;dcl:xyz</div>
+              <div>&lt;/dc:identifier&gt;</div>
+            </td>
+            <td>
+          	   <div class="bold-text">CSV</div>
+               DCL Number
+            </td>
+          </table>
+
+          <li>
+            The <span class="bold-text">DCL # should be documented in the IIIF manifest</span>
+            under the label "local identifier."
+            <ul>
+              <li>
+                Recommendation: <code>{"label":"Local Identifier", "value":["dcl:xyz"]}</code>
+              </li>
+            </ul>
           </li>
         </ul>
-      </li>
-    </ul>
-    <p>
-      <span class="bold-text">*Please note:</span> If you cannot provide source
-      metadata and/or are unable to meet these requirements but are interested in
-      contributing, please contact <%= mail_to "cicognara@googlegroups.com" %>.
-    </p>
-
+      </p>
+    </div>
     <div class="question-text">
-      7. How can records for digital facsimiles be delivered?
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+        11. What is the Cicognara <em>Catalogo</em> number? How should it be documented?
+      </a>
     </div>
-    <p>
-      Contributions to the Digital Cicognara Library can be made through the Getty
-      Research Portal via the following methods of delivery:
-    </p>
-    <ul class="normal-size-text">
-      <li>Email attachment</li>
-      <li>Open Archives Initiative (OAI) harvest</li>
-      <li>Institution API</li>
-    </ul>
-    <p>
-      <span class="bold-text">*Please note:</span> If your institution is not using
-      an OAI-repository or API, and changes or updates its source metadata, please
-      send an updated file to the Getty Research Portal.
-    </p>
-    <div class="question-text">
-      8. What is the International Image Interoperability Framework (IIIF)?
-    </div>
-    <p>
-        The Digital Cicognara Library uses the
-        <%= link_to "International Image Interoperability Framework", "https://iiif.io" %>
-        to add digital content to its website. This enables contributing institutions
-        to maintain the control over their digital files stored on their servers and
-        avoids digital content being superfluously duplicated and archived in multiple
-        places. The IIIF technology offers the ability to present digital content and
-        its related metadata via API in a viewer embedded on the Digital Cicognara
-        Library website, thus providing a coherent and homogeneous user experience.
-    </p>
-    <p>
-      In order to display the digital content on the Digital Cicognara Library:
-    </p>
-    <ul class="normal-size-text">
-      <li>
-        Contributing institutions should provide a clearly identifiable
-        <%= link_to "IIIF manifest", "https://iiif.io/api/presentation/2.1/" %>
-        in the source metadata for each digital volume. (Please contact the project
-        team at <%= mail_to "cicognara@googlegroups.com" %> if your institution
-        cannot provide a IIIF manifest).
-      </li>
-      <li>
-        The link to the IIIF manifest should be included in one of the four formats
-        accepted by the Getty Research Portal, see the following recommendations
-        and examples:
-      </li>
-    </ul>
-
-    <table class="table table-bordered">
-      <td>
-        <div class="bold-text">MARC</div>
-        <div>856 41 $u [URI]</div>
-      </td>
-      <td>
-     	  <div class="bold-text">MODS</div>
-        <div>&lt;relatedItem type="otherFormat"&gt;</div>
-        <div>&nbsp;&nbsp;&lt;identifier type="uri"&gt;</div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;[URI]</div>
-        <div>&nbsp;&nbsp;&lt;/identifier&gt;</div>
-        <div>&lt;/relatedItem&gt;</div>
-      </td>
-      <td>
-        <div class="bold-text">Dublin Core</div>
-        <div>&lt;dc:hasFormat&gt;</div>
-        <div>&nbsp;&nbsp;[URI]</div>
-        <div>&lt;/dc:hasFormat&gt;</div>
-      </td>
-      <td>
-    	   <div class="bold-text">CSV</div>
-         IIIF Manifest URL
-      </td>
-    </table>
-
-    <p>
-      <span class="bold-text">*Please note:</span> For any of the above, as these fields
-      may contain other URLs, please indicate to portal@getty.edu which are IIIF when
-      contributing records.
-    </p>
-    <div class="well normal-size-text">
-      <div>
-        <span class="bold-text">Mets:</span> the IIIF manifest is documented as follows:
-      </div>
-      <code>
-        <div>&lt;mets:dmdSec ID="dmd__iiif"&gt;</div>
-        <div>&lt;mets:mdRef LOCTYPE="URL" MDTYPE="IIIF" xlink:href="https://...."/&gt;</div>
-      </code>
-      <div>Recommendation to make IIIF URL identifiable: <code>MDTYPE="IIIF"</code></div>
-    </div>
-    <p>
-      <div class="normal-size-text">
-        Please find an example for a IIIF manifest in the Digital Cicognara Library project
-        here:
-      </div>
-      <div class="normal-size-text">
-      <%= link_to nil, "https://digi.ub.uni-heidelberg.de/diglit/iiif/junius1694/manifest.json" %>
-      </div>
-    </p>
-    <div class="question-text">
-      9. What information should the IIIF manifest contain?
-    </div>
-    <p>
-      The following metadata should be recorded in the IIIF manifest:
-      <ul class="normal-size-text">
-        <li>Digital Cicognara Library number (DCL #, see below)</li>
-        <li>Cicognara <em>Catalogo</em> number (see below)</li>
-        <li>Author</li>
-        <li>Title</li>
-        <li>Place of publication</li>
-        <li>Publisher</li>
-        <li>Year of publication</li>
-        <li>Attribution or credit line of holding institution</li>
-        <li>Shelf mark of holding institution</li>
-        <li>Link to the digitized copy (DOI, URL, URN)</li>
-        <li>
-          Link to bibliographic information (further information on the physical
-          description of the matching volume)
-        </li>
-        <li>Rights statement or link to a rights statement</li>
-        <li>Link to OCR full text (if available)</li>
-      </ul>
-    </p>
-
-    <div class="question-text">
-      10.  What is the Digital Cicognara Library number (DCL #)?
-    </div>
-    <p>
-      The Digital Cicognara Library number (DCL #) is a three-character alphanumeric
-      code that has been generated by the project in order to match digitized volumes
-      to the catalog entries in Cicognara’s
-      <%= link_to "Catalogo ragionato dei libri d’arte e d’antichità (1821)", "/catalogo" %>.
-      Please contact <%= mail_to "cicognara@googlegroups.com" %> to receive a
-      list of all DCL #.
-    </p>
-    <p>
-      The DCL # should be documented in <span class="bold-text">both</span> the source
-      metadata and the IIIF manifest:
-      <ul class="normal-size-text">
-        <li>
-          The <span class="bold-text">DCL # should be included in one of the four formats
-          accepted by the Getty Research Portal</span>, see the following recommendations
-          and examples (with the place holders “xyz”):
-        </li>
-        <table class="table table-bordered">
-          <td>
-            <div class="bold-text">MARC</div>
-            <div>024 8_ $a dcl:xyz</div>
-          </td>
-          <td>
-         	  <div class="bold-text">MODS</div>
-              <div>&lt;mods:identifier type="local"&gt;</div>
-              <div>&nbsp;&nbsp;dcl:xyz</div>
-              <div>&lt;/mods:identifier&gt;</div>
-          </td>
-          <td>
-            <div class="bold-text">Dublin Core</div>
-            <div>&lt;dc:identifier&gt;</div>
-            <div>&nbsp;&nbsp;dcl:xyz</div>
-            <div>&lt;/dc:identifier&gt;</div>
-          </td>
-          <td>
-        	   <div class="bold-text">CSV</div>
-             DCL Number
-          </td>
-        </table>
-
-        <li>
-          The <span class="bold-text">DCL # should be documented in the IIIF manifest</span>
-          under the label "local identifier."
-          <ul>
-            <li>
-              Recommendation: <code>{"label":"Local Identifier", "value":["dcl:xyz"]}</code>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </p>
-    <div class="question-text">
-      11. What is the Cicognara <em>Catalogo</em> number? How should it be documented?
-    </div>
-    <p>
-      In 1821, Leopoldo Cicognara compiled a two-volume inventory for his library
-      with the title <em>Catalogo ragionato dei libri d’arte e d’antichità (1821)</em>.
-      This full text of the <em>Catalogo</em> forms the basic structure of the Digital Cicognara
-      Library website. Each title in the <em>Catalogo</em> was assigned a sequential number
-      (see <%= link_to "https://www.cicognara.org/catalogo", "/catalogo" %>).
-    </p>
-    <p>
-      The Cicognara <em>Catalogo</em> number, which is the scholarly reference number for each
-      volume listed in the library, should be documented in <span class="bold-text">both</span>
-      the source metadata and IIIF manifest:
-      <ul class="normal-size-text">
-        <li>
-          The <span class="bold-text">Cicognara <em>Catalogo</em> number should be included in
-          one of the four formats accepted by the Getty Research Portal,</span> see
-          the following recommendations and examples (with the place holders “xyz”):
-        </li>
-        <table class="table table-bordered">
-          <td>
-            <div class="bold-text">MARC</div>
-            <div>510 4_ $a Cicognara, $c xyz</div>
-          </td>
-          <td>
-         	  <div class="bold-text">MODS</div>
-              <div>&lt;mods:identifier type="local"&gt;</div>
+    <div id="collapseEleven" class="collapse">
+      <p>
+        In 1821, Leopoldo Cicognara compiled a two-volume inventory for his library
+        with the title <em>Catalogo ragionato dei libri d’arte e d’antichità (1821)</em>.
+        This full text of the <em>Catalogo</em> forms the basic structure of the Digital Cicognara
+        Library website. Each title in the <em>Catalogo</em> was assigned a sequential number
+        (see <%= link_to "https://www.cicognara.org/catalogo", "/catalogo" %>).
+      </p>
+      <p>
+        The Cicognara <em>Catalogo</em> number, which is the scholarly reference number for each
+        volume listed in the library, should be documented in <span class="bold-text">both</span>
+        the source metadata and IIIF manifest:
+        <ul class="normal-size-text">
+          <li>
+            The <span class="bold-text">Cicognara <em>Catalogo</em> number should be included in
+            one of the four formats accepted by the Getty Research Portal,</span> see
+            the following recommendations and examples (with the place holders “xyz”):
+          </li>
+          <table class="table table-bordered">
+            <td>
+              <div class="bold-text">MARC</div>
+              <div>510 4_ $a Cicognara, $c xyz</div>
+            </td>
+            <td>
+           	  <div class="bold-text">MODS</div>
+                <div>&lt;mods:identifier type="local"&gt;</div>
+                <div>&nbsp;&nbsp;Cicognara, xyz</div>
+                <div>&lt;/mods:identifier&gt;</div>
+            </td>
+            <td>
+              <div class="bold-text">Dublin Core</div>
+              <div>&lt;dc:identifier&gt;</div>
               <div>&nbsp;&nbsp;Cicognara, xyz</div>
-              <div>&lt;/mods:identifier&gt;</div>
-          </td>
-          <td>
-            <div class="bold-text">Dublin Core</div>
-            <div>&lt;dc:identifier&gt;</div>
-            <div>&nbsp;&nbsp;Cicognara, xyz</div>
-            <div>&lt;/dc:identifier&gt;</div>
-          </td>
-          <td>
-        	   <div class="bold-text">CSV</div>
-             Cicognara Number
-          </td>
-        </table>
-        <li>
-          The Cicognara <em>Catalogo</em> number should be documented in the IIIF manifest under
-          the label "local identifier."
-          <ul>
-            <li>
-              Recommendation: <code>{"label":"Local Identifier","value":["Cicognara, xyz"]}</code>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </p>
-
-    <div class="question-text">
-      12. Are the MARC records for Digital Cicognara Library available?
+              <div>&lt;/dc:identifier&gt;</div>
+            </td>
+            <td>
+          	   <div class="bold-text">CSV</div>
+               Cicognara Number
+            </td>
+          </table>
+          <li>
+            The Cicognara <em>Catalogo</em> number should be documented in the IIIF manifest under
+            the label "local identifier."
+            <ul>
+              <li>
+                Recommendation: <code>{"label":"Local Identifier","value":["Cicognara, xyz"]}</code>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </p>
     </div>
-    <p>
-      In collaboration with the National Gallery of Art Library Washington the Digital
-      Cicognara Library is regularly updating the MARC records for the microfiche
-      edition of the <em>Fondo Cicognara</em> held at the Biblioteca Apostolica Vaticana. The
-      microfiche were filmed in a project in the 1980s and 1990s sponsored by the
-      Samuel H. Kress Foundation. All microfiche have been digitized as part of the
-      Digital Cicognara Library project and will be available online in open access.
-    </p>
-    <p>
-      The National Gallery of Art Library Washington is updating its MARC records
-      on the microfiche and displaying them in their
-      <%= link_to "local catalog", "https://library.nga.gov/" %>,
-      in <%= link_to "OCLC", "http://www.worldcat.org" %> as well as the Digital
-      Cicognara website.
-    </p>
-    <p>
-      Should your institution be interested in receiving updated microfiche MARC
-      records please contact <%= mail_to "cicognara@googlegroups.com" %>.
-    </p>
     <div class="question-text">
-      13. Can structmaps be displayed on the Digital Cicognara Library website?
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+        12. Are the MARC records for Digital Cicognara Library available?
+      </a>
     </div>
-    <p>
-      Structmaps have been created for the digital microfiche and are displayed in the
-      IIIF viewer on the Digital Cicognara Library website. Should your institution
-      provide or wish to create structmaps for your digital facsimiles, please contact
-      <%= mail_to "cicognara@googlegroups.com" %>.
-    </p>
-
+    <div id="collapseTwelve" class="collapse">
+      <p>
+        In collaboration with the National Gallery of Art Library Washington the Digital
+        Cicognara Library is regularly updating the MARC records for the microfiche
+        edition of the <em>Fondo Cicognara</em> held at the Biblioteca Apostolica Vaticana. The
+        microfiche were filmed in a project in the 1980s and 1990s sponsored by the
+        Samuel H. Kress Foundation. All microfiche have been digitized as part of the
+        Digital Cicognara Library project and will be available online in open access.
+      </p>
+      <p>
+        The National Gallery of Art Library Washington is updating its MARC records
+        on the microfiche and displaying them in their
+        <%= link_to "local catalog", "https://library.nga.gov/" %>,
+        in <%= link_to "OCLC", "http://www.worldcat.org" %> as well as the Digital
+        Cicognara website.
+      </p>
+      <p>
+        Should your institution be interested in receiving updated microfiche MARC
+        records please contact <%= mail_to "cicognara@googlegroups.com" %>.
+      </p>
+    </div>
+    <div class="question-text">
+      <a role="button" class="collapsed" data-toggle="collapse" href="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+        13. Can structmaps be displayed on the Digital Cicognara Library website?
+      </a>
+    </div>
+    <div id="collapseThirteen" class="collapse">
+      <p>
+        Structmaps have been created for the digital microfiche and are displayed in the
+        IIIF viewer on the Digital Cicognara Library website. Should your institution
+        provide or wish to create structmaps for your digital facsimiles, please contact
+        <%= mail_to "cicognara@googlegroups.com" %>.
+      </p>
+    </div>
     <h3>Contact</h3>
     <p>
       For further information or questions on the Digital Cicognara Library please
