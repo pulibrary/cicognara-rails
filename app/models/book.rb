@@ -26,7 +26,7 @@ class Book < ActiveRecord::Base
   end
 
   def manifests
-    @manifests ||= versions.map(&:manifest)
+    versions.map(&:manifest)
   end
 
   def range_labels_from_manifests

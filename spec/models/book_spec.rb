@@ -18,13 +18,10 @@ RSpec.describe Book, type: :model do
   let(:solr_documents) { tei_indexer.solr_docs }
 
   before do
+    stub_manifest('http://example.org/2.json')
+
     solr_client.add(solr_documents)
     solr_client.commit
-  end
-
-  before do
-    stub_manifest('http://example.org/2.json')
-    stub_manifest('http://example.org/3.json')
   end
 
   it 'has a digital cico number' do
@@ -106,6 +103,7 @@ RSpec.describe Book, type: :model do
     end
     context 'when a matching version is available' do
       before do
+        stub_manifest('http://example.org/3.json')
         matching_version
       end
       it 'indexes the manifest and digitized_version=Matching copy' do
@@ -119,6 +117,7 @@ RSpec.describe Book, type: :model do
     end
     context 'when both microfiche and a matching version are available' do
       before do
+        stub_manifest('http://example.org/3.json')
         microfiche_version
         matching_version
       end
