@@ -65,6 +65,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'simplecov', '~> 0.9', require: false
+  gem 'webmock'
 end
 
 gem 'bixby'
@@ -73,6 +74,7 @@ gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'devise-guests', '~> 0.6.1'
 gem 'trix'
+gem 'faraday'
 gem 'high_voltage', '~> 3.0.0'
 gem 'iiif-presentation'
 gem 'loofah', '>= 2.2.3'

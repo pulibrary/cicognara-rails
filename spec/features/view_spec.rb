@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'entry views', type: :feature do
   before(:all) do
+    stub_manifest('http://example.org/1.json')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     MarcIndexer.new.process(marc)
 

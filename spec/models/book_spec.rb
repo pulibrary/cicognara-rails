@@ -12,6 +12,11 @@ RSpec.describe Book, type: :model do
   let(:creator2) { Creator.new label: 'Bob' }
   let(:creator_role2) { CreatorRole.new creator: creator2, role: role2 }
 
+  before do
+    stub_manifest('http://example.org/2.json')
+    stub_manifest('http://example.org/3.json')
+  end
+
   it 'has a digital cico number' do
     expect(book.digital_cico_number).to eq(digital_cico_number)
   end
@@ -69,6 +74,7 @@ RSpec.describe Book, type: :model do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Microfiche')
         expect(b.to_solr['manifests_s']).to eq ['http://example.org/2.json']
+        expect(b.to_solr['text']).to include('Logical', 'Microfiche Header', 'Title Page')
       end
     end
     context 'when a matching version is available' do
@@ -79,6 +85,7 @@ RSpec.describe Book, type: :model do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Matching copy')
         expect(b.to_solr['manifests_s']).to eq ['http://example.org/3.json']
+        expect(b.to_solr['text']).to include('Title Page', 'Cap. I')
       end
     end
     context 'when both microfiche and a matching version are available' do

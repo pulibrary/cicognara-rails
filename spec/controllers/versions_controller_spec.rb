@@ -8,7 +8,7 @@ RSpec.describe VersionsController, type: :controller do
     {
       book_id: book.id,
       label: 'Version 1',
-      manifest: 'http://example.org/1',
+      manifest: 'http://example.org/1.json',
       contributing_library_id: contrib.id,
       rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
       owner_system_number: '1234',
@@ -19,6 +19,8 @@ RSpec.describe VersionsController, type: :controller do
 
   before do
     stub_admin_user
+    stub_manifest('http://example.org/1.json')
+    stub_manifest('http://example.org/2.json')
   end
 
   describe 'GET #show' do
@@ -89,14 +91,14 @@ RSpec.describe VersionsController, type: :controller do
 
   describe 'PUT #update' do
     context 'with valid params' do
-      let(:new_attributes) { { label: 'Version 2', manifest: 'http://example.org/2' } }
+      let(:new_attributes) { { label: 'Version 2', manifest: 'http://example.org/2.json' } }
 
       it 'updates the requested version' do
         version = Version.create! valid_attributes
         put :update, params: { book_id: book, id: version.to_param, version: new_attributes }
         version.reload
         expect(version.label).to eq('Version 2')
-        expect(version.manifest).to eq('http://example.org/2')
+        expect(version.manifest).to eq('http://example.org/2.json')
       end
 
       it 'assigns the requested version as @version' do

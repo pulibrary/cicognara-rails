@@ -4,6 +4,7 @@ require 'json'
 RSpec.describe 'Blacklight search fields', type: :request do
   let(:docs) { JSON.parse(response.body)['response']['docs'] }
   before(:all) do
+    stub_manifest('http://example.org/1.json')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])

@@ -10,3 +10,27 @@ img.community-logo {
   float: left;
   max-width: 200px;
 }
+
+.normal-size-text {
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.question-text {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5em;
+}
+
+code {
+  font-size: 14px;
+}
+
+.code-block {
+  color: #c7254e;
+  font-size: 14px;
+}

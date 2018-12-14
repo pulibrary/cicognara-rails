@@ -1,8 +1,17 @@
 <div class="navbar-right">
   <ul class="nav navbar-nav">
     <li><%= link_to 'About', static_page_path('about') %></li>
-    <li><%= link_to 'Partners', static_page_path('partners') %></li>
-    <li><%= link_to 'Community', static_page_path('community') %></li>
+    <li class="dropdown">
+      <%= content_tag :a, class: 'dropdown-toggle', id: "community-menu", "data-toggle" => "dropdown" do %>
+        Community <span class="caret"></span>
+      <% end %>
+      <ul class="dropdown-menu" id="community-menu">
+        <li><%= link_to 'Partners', static_page_path('partners') %></li>
+        <li><%= link_to 'Become a Contributor', static_page_path('contributor') %></li>
+        <li><%= link_to 'Contributor FAQs', static_page_path('faq') %></li>
+        <li><%= link_to 'Metadata Checklist', static_page_path('checklist') %></li>
+      </ul>
+    </li>
     <li><%= link_to 'Contact', static_page_path('contact') %></li>
     <li><%= link_to 'News', news_items_path %></li>
     <li class="banner"><%= link_to 'https://twitter.com/DigiCicognara' do %>

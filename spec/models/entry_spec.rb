@@ -3,6 +3,7 @@ require 'rails_helper'
 
 RSpec.describe Entry, type: :model do
   before do
+    stub_manifest('http://example.org/1.json')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     book = Book.find_or_create_by! digital_cico_number: 'cico:m87'
