@@ -1,6 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 require 'coveralls'
 require 'simplecov'
+require 'webmock/rspec'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [
@@ -8,8 +9,9 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
     Coveralls::SimpleCov::Formatter
   ]
 )
-
 SimpleCov.start
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

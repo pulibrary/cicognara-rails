@@ -1,0 +1,291 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Manifest",
+  "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest",
+  "label": [
+    "Dissertatio juridica de jure aedificandi in suo von dem Recht auf dem seinigen zu bauen quam sub praesidio Georg. Henrici Linckens ... defendit Gottlob Ferdinandus Teubnerus ... AltdorfI Noric. D. Junii A.O.R. [1723]"
+  ],
+  "viewingHint": "individuals",
+  "metadata": [
+    {
+      "label": "Created At",
+      "value": [
+        "12/11/18 09:42:51 PM UTC"
+      ]
+    },
+    {
+      "label": "Updated At",
+      "value": [
+        "12/11/18 09:42:51 PM UTC"
+      ]
+    },
+    {
+      "label": "Author",
+      "value": [
+        "Lincke, Georg Heinrich, 1692-1739"
+      ]
+    },
+    {
+      "label": "Depositor",
+      "value": [
+        "tpend"
+      ]
+    },
+    {
+      "label": "References",
+      "value": [
+        "Cicognara, 548"
+      ]
+    },
+    {
+      "label": "Created",
+      "value": [
+        "01/01/1723"
+      ]
+    },
+    {
+      "label": "Extent",
+      "value": [
+        "32 p."
+      ]
+    },
+    {
+      "label": "Identifier",
+      "value": [
+        "ark:/88435/x059cb564"
+      ]
+    },
+    {
+      "label": "Title",
+      "value": [
+        {
+          "@value": "Dissertatio juridica de jure aedificandi in suo von dem Recht auf dem seinigen zu bauen quam sub praesidio Georg. Henrici Linckens ... defendit Gottlob Ferdinandus Teubnerus ... AltdorfI Noric. D. Junii A.O.R. [1723]",
+          "@language": "lat"
+        }
+      ]
+    },
+    {
+      "label": "Type",
+      "value": [
+        "Early works to 1800"
+      ]
+    },
+    {
+      "label": "Contributor",
+      "value": [
+        "Teubner, Gottlob Ferdinand",
+        "Fondo Cicognara (Biblioteca apostolica vaticana)",
+        "Leopoldo Cicognara Program (University of Illinois at Urbana-Champaign)"
+      ]
+    },
+    {
+      "label": "Creator",
+      "value": [
+        "Lincke, Georg Heinrich, 1692-1739"
+      ]
+    },
+    {
+      "label": "Date",
+      "value": [
+        "1723"
+      ]
+    },
+    {
+      "label": "Language",
+      "value": [
+        "Latin"
+      ]
+    },
+    {
+      "label": "Local Identifier",
+      "value": [
+        "dcl:0wh"
+      ]
+    },
+    {
+      "label": "Publisher",
+      "value": [
+        "[Altdorf : Typis Jod. Guil Kohlesii Acad. Typogr., 1723]"
+      ]
+    },
+    {
+      "label": "Subject",
+      "value": [
+        "Building laws—Germany—Early works to 1800"
+      ]
+    },
+    {
+      "label": "Source Metadata Identifier",
+      "value": [
+        "8544667"
+      ]
+    },
+    {
+      "label": "Call Number",
+      "value": [
+        "MICROFICHE 5"
+      ]
+    },
+    {
+      "label": "Location",
+      "value": [
+        "SAFI MICROFICHE 5"
+      ]
+    },
+    {
+      "label": "PDF Type",
+      "value": [
+        "gray"
+      ]
+    },
+    {
+      "label": "Member Of Collections",
+      "value": [
+        "Bibliotheca Cicognara"
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/sequence/normal",
+      "rendering": [
+        {
+          "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/pdf",
+          "label": "Download as PDF",
+          "format": "application/pdf"
+        }
+      ],
+      "canvases": [
+        {
+          "@type": "sc:Canvas",
+          "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/canvas/224249b0-efb6-4cac-b775-33c2d8bc7aef",
+          "label": "0wh_0001.tif",
+          "local_identifier": "px346gx563",
+          "rendering": [
+            {
+              "@id": "https://figgy.princeton.edu/downloads/224249b0-efb6-4cac-b775-33c2d8bc7aef/file/fec5dcc4-879f-45e7-850f-8490a88c4d24",
+              "label": "Download the original file",
+              "format": "image/tiff"
+            }
+          ],
+          "width": 2984,
+          "height": 275,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@type": "dctypes:Image",
+                "@id": "https://libimages1.princeton.edu/loris/figgy_prod/cf%2Ff3%2F00%2Fcff300d2e56e4ef3a2fccf925550332c%2Fintermediate_file.jp2/full/!1000,/0/default.jpg",
+                "height": 275,
+                "width": 2984,
+                "format": "image/jpeg",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://libimages1.princeton.edu/loris/figgy_prod/cf%2Ff3%2F00%2Fcff300d2e56e4ef3a2fccf925550332c%2Fintermediate_file.jp2",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              },
+              "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/image/224249b0-efb6-4cac-b775-33c2d8bc7aef",
+              "on": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/canvas/224249b0-efb6-4cac-b775-33c2d8bc7aef"
+            }
+          ]
+        },
+        {
+          "@type": "sc:Canvas",
+          "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/canvas/76c695fb-e509-4fff-8430-56cd329b615f",
+          "label": "0wh_0019.tif",
+          "local_identifier": "pw37661790",
+          "rendering": [
+            {
+              "@id": "https://figgy.princeton.edu/downloads/76c695fb-e509-4fff-8430-56cd329b615f/file/f78e626f-1567-4e45-a6b5-d50bed76c43f",
+              "label": "Download the original file",
+              "format": "image/tiff"
+            }
+          ],
+          "width": 2872,
+          "height": 3778,
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@type": "dctypes:Image",
+                "@id": "https://libimages1.princeton.edu/loris/figgy_prod/36%2F88%2F8b%2F36888b80590443148eaa9bcd332d2e7d%2Fintermediate_file.jp2/full/!1000,/0/default.jpg",
+                "height": 3778,
+                "width": 2872,
+                "format": "image/jpeg",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://libimages1.princeton.edu/loris/figgy_prod/36%2F88%2F8b%2F36888b80590443148eaa9bcd332d2e7d%2Fintermediate_file.jp2",
+                  "profile": "http://iiif.io/api/image/2/level2.json"
+                }
+              },
+              "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/image/76c695fb-e509-4fff-8430-56cd329b615f",
+              "on": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/canvas/76c695fb-e509-4fff-8430-56cd329b615f"
+            }
+          ]
+        }
+      ],
+      "viewingHint": "individuals"
+    }
+  ],
+  "structures": [
+    {
+      "@type": "sc:Range",
+      "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/range/r825684a5-c78f-42c7-8aa1-23562bd78f69",
+      "label": "",
+      "viewingHint": "top",
+      "ranges": [
+        "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/range/r2be3b215-20de-40b5-a8d8-be0ea40215bf",
+        "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/range/r244d90cc-0135-4de9-99c0-85e7498dd596"
+      ],
+      "canvases": [
+        "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/canvas/224249b0-efb6-4cac-b775-33c2d8bc7aef"
+      ]
+    },
+    {
+      "@type": "sc:Range",
+      "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/range/r2be3b215-20de-40b5-a8d8-be0ea40215bf",
+      "label": "Title Page",
+      "ranges": [],
+      "canvases": [
+        "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/canvas/aa727f63-84c1-43b6-9539-40c766827be5"
+      ]
+    },
+    {
+      "@type": "sc:Range",
+      "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/range/r244d90cc-0135-4de9-99c0-85e7498dd596",
+      "label": "Cap. I",
+      "ranges": [],
+      "canvases": [
+        "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest/canvas/76c695fb-e509-4fff-8430-56cd329b615f"
+      ]
+    }
+  ],
+  "seeAlso": [
+    {
+      "@id": "https://figgy.princeton.edu/catalog/72b685b0-7503-47bd-8d32-77d03c7d11a4.jsonld",
+      "format": "application/ld+json"
+    },
+    {
+      "@id": "https://bibdata.princeton.edu/bibliographic/8544667",
+      "format": "text/xml"
+    }
+  ],
+  "license": "http://cicognara.org/microfiche_copyright",
+  "thumbnail": {
+    "@id": "https://libimages1.princeton.edu/loris/figgy_prod/50%2Fa3%2Ff0%2F50a3f0b982b945ada6120587e14684cf%2Fintermediate_file.jp2/full/!200,150/0/default.jpg",
+    "service": {
+      "@context": "http://iiiif.io/api/image/2/context.json",
+      "@id": "https://libimages1.princeton.edu/loris/figgy_prod/50%2Fa3%2Ff0%2F50a3f0b982b945ada6120587e14684cf%2Fintermediate_file.jp2",
+      "profile": "http;//iiiif.io/api/image/2/level2.json"
+    }
+  },
+  "rendering": {
+    "@id": "http://arks.princeton.edu/ark:/88435/x059cb564",
+    "format": "text/html"
+  },
+  "logo": "https://figgy.princeton.edu/assets/vatican-f101dc8edbdd7cfb0b0152c2d2304e805c215cbff0e7ac25fb72dbfd1c568bfc.png"
+}

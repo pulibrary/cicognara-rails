@@ -16,9 +16,26 @@ class Book < ActiveRecord::Base
     {
       'contributing_library_facet' => contributing_libraries.map(&:label),
       'digitized_version_available_facet' => digitized_version_available,
-      'manifests_s' => versions.map(&:manifest),
+      'manifests_s' => manifests,
+      'text' => range_labels_from_manifests,
       'book_id_s' => [id]
     }
+  end
+
+  def manifests
+    @manifests ||= versions.map(&:manifest)
+  end
+
+  def range_labels_from_manifests
+    manifests.map do |url|
+      begin
+        manifest_response = Faraday.get(url)
+        json = JSON.parse(manifest_response.body)
+        json['structures']&.map { |s| s['label'] }
+      rescue StandardError
+        []
+      end
+    end.flatten
   end
 
   def digitized_version_available

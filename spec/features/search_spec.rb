@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'searching', type: :feature do
   before(:all) do
+    stub_manifest('http://example.org/1.json')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
@@ -50,6 +51,12 @@ RSpec.describe 'searching', type: :feature do
 
     expect(page).to have_selector 'h3.facet-field-heading', text: 'Digitized Version Available'
     expect(page).to have_link 'Microfiche'
+  end
+
+  it 'retrieves items by manifest range labels' do
+    visit '/catalog?q=aardvark'
+    expect(page).to have_selector 'span.catalogo-author', text: 'Agrippae Henrici Corn.'
+    expect(page).to have_selector 'span.catalogo-title', text: 'De incertitude et vanitate scientiarum, declamatio invectiva, ex postrema'
   end
 
   it 'suggests titles, authors, subjects and institutions, but not other fields' do

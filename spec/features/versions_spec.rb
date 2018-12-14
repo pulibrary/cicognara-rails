@@ -6,6 +6,8 @@ RSpec.describe 'version CRUD', type: :feature do
 
   before do
     stub_admin_user
+    stub_manifest('http://example.org/1.json')
+    stub_manifest('http://example.org/2.json')
   end
 
   after do
@@ -23,7 +25,7 @@ RSpec.describe 'version CRUD', type: :feature do
 
     expect(page).to have_content('New Version')
     fill_in 'version_label', with: 'Version 1'
-    fill_in 'version_manifest', with: 'http://example.org/1'
+    fill_in 'version_manifest', with: 'http://example.org/1.json'
     select 'Library 1', from: 'version_contributing_library_id'
     fill_in 'version_rights', with: 'http://creativecommons.org/publicdomain/mark/1.0/'
     fill_in 'version_owner_system_number', with: '1234'
@@ -31,7 +33,7 @@ RSpec.describe 'version CRUD', type: :feature do
 
     expect(page).to have_content('Version was successfully created.')
     expect(page).to have_content('Version 1')
-    expect(page).to have_link('http://example.org/1', href: 'http://example.org/1')
+    expect(page).to have_link('http://example.org/1', href: 'http://example.org/1.json')
 
     # update the version
     visit book_path book
@@ -40,12 +42,12 @@ RSpec.describe 'version CRUD', type: :feature do
 
     expect(page).to have_content('Editing Version')
     fill_in 'version_label', with: 'Version 1a'
-    fill_in 'version_manifest', with: 'http://example.org/1a'
+    fill_in 'version_manifest', with: 'http://example.org/2.json'
     click_on 'Update Version'
 
     expect(page).to have_content('Version was successfully updated.')
     expect(page).to have_content('Version 1a')
-    expect(page).to have_link('http://example.org/1a', href: 'http://example.org/1a')
+    expect(page).to have_link('http://example.org/2.json', href: 'http://example.org/2.json')
 
     # delete the version
     visit book_path book
