@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713162431) do
+ActiveRecord::Schema.define(version: 20181211164622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20180713162431) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "marc_file_uri"
-    t.integer "marc_record_id"
+    t.bigint "marc_record_id"
     t.index ["marc_record_id"], name: "index_books_on_marc_record_id"
   end
 
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20180713162431) do
   create_table "marc_records", force: :cascade do |t|
     t.string "file_uri"
     t.text "source"
-    t.integer "book_id"
+    t.bigint "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_marc_records_on_book_id"
@@ -181,12 +181,14 @@ ActiveRecord::Schema.define(version: 20180713162431) do
 
   add_foreign_key "book_subjects", "books"
   add_foreign_key "book_subjects", "subjects"
+  add_foreign_key "books", "marc_records"
   add_foreign_key "comments", "entries"
   add_foreign_key "creator_roles", "books"
   add_foreign_key "creator_roles", "creators"
   add_foreign_key "creator_roles", "roles"
   add_foreign_key "entry_books", "books"
   add_foreign_key "entry_books", "entries"
+  add_foreign_key "marc_records", "books"
   add_foreign_key "versions", "books"
   add_foreign_key "versions", "contributing_libraries"
 end
