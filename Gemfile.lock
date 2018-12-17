@@ -352,6 +352,8 @@ GEM
       marc-fastxmlwriter (~> 1.0)
       slop (>= 3.4.5, < 4.0)
       yell
+    trix (0.11.1)
+      rails (> 4.1, < 5.2)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -432,6 +434,7 @@ DEPENDENCIES
   spring
   sqlite3
   traject
+  trix
   turbolinks
   uglifier (>= 1.3.0)
   validate_url

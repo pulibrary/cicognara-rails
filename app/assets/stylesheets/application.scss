@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require trix
  */
 
 @import "components/mixins";
@@ -18,6 +19,7 @@
 
 @import "blacklight";
 @import "scaffolds";
+@import "news_items";
 
 // components
 @import "components/catalogo__browse";
