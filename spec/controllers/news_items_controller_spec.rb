@@ -10,10 +10,11 @@ RSpec.describe NewsItemsController, type: :controller do
   end
 
   describe 'GET #index' do
-    it 'assigns all news_items as @news_items' do
-      news_item = NewsItem.create! valid_attributes
+    it 'assigns all news_items as @news_items, in reverse creation order' do
+      first_news_item = NewsItem.create! valid_attributes
+      second_news_item = NewsItem.create! valid_attributes
       get :index, params: {}
-      expect(assigns(:news_items)).to eq([news_item])
+      expect(assigns(:news_items)).to eq([second_news_item, first_news_item])
     end
   end
 

@@ -4,7 +4,7 @@ class NewsItemsController < ApplicationController
 
   # GET /news_items
   def index
-    @news_items = NewsItem.all
+    @news_items = NewsItem.order(created_at: :desc)
   end
 
   # GET /news_items/1
