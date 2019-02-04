@@ -59,5 +59,8 @@ RSpec/ExampleLength:
 RSpec/InstanceVariable:
   Enabled: false
 
+Style/SafeNavigation:
+  Enabled: false
+
 Style/RegexpLiteral:
   Enabled: false
