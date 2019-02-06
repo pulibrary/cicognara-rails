@@ -31,7 +31,7 @@ class Book < ActiveRecord::Base
       begin
         manifest_response = Faraday.get(url)
         json = JSON.parse(manifest_response.body)
-        json['structures']&.map { |s| s['label'] }
+        json['structures'].map { |s| s['label'] } if json['structures']
       rescue StandardError
         []
       end
