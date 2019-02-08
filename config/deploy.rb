@@ -30,7 +30,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('app/views/pages/catalogo', 'log'
 set :default_env,
     'MARCPATH' => 'public/cicognara.mrx.xml',
     'TEIPATH' => 'public/catalogo.tei.xml',
-    'CATALOGO_VERSION' => 'v2.0a'
+    'CATALOGO_VERSION' => 'v2.1'
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
