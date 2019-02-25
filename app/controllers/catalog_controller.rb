@@ -1,9 +1,18 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  include BlacklightRangeLimit::ControllerOverride
+  include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
   include Blacklight::Marc::Catalog
 
   configure_blacklight do |config|
+    # default advanced config values
+    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    # config.advanced_search[:qt] ||= 'advanced'
+    config.advanced_search[:url_key] ||= 'advanced'
+    config.advanced_search[:query_parser] ||= 'dismax'
+    config.advanced_search[:form_solr_parameters] ||= {}
+
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -72,7 +81,11 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'name_facet', label: 'Name', limit: true
-    config.add_facet_field 'pub_date', label: 'Publication Year', single: true, limit: true
+    config.add_facet_field 'pub_date', label: 'Publication year', single: true, range: {
+      num_segments: 10,
+      assumed_boundaries: [1500, Time.zone.now.year + 1],
+      segments: true
+    }
     config.add_facet_field 'subject_era_facet', label: 'Era', limit: true
     config.add_facet_field 'language_facet', label: 'Language', limit: true
     config.add_facet_field 'subject_geo_facet', label: 'Region', limit: true

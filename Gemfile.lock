@@ -73,6 +73,13 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 2.1)
+    blacklight_advanced_search (6.4.1)
+      blacklight (~> 6.0, >= 6.0.1)
+      parslet
+    blacklight_range_limit (6.3.3)
+      blacklight (>= 6.0.2)
+      jquery-rails
+      rails (>= 3.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -102,6 +109,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chosen-rails (1.8.7)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -216,6 +227,7 @@ GEM
     parallel (1.12.0)
     parser (2.4.0.0)
       ast (~> 2.2)
+    parslet (1.8.2)
     pg (0.18.4)
     powerpack (0.1.1)
     pry (0.10.4)
@@ -397,12 +409,15 @@ DEPENDENCIES
   bixby
   blacklight (~> 6.0)
   blacklight-marc (~> 6.0)
+  blacklight_advanced_search (~> 6.4)
+  blacklight_range_limit (~> 6.3)
   byebug
   cancancan (~> 1.10)
   capistrano-passenger
   capistrano-rails
   capistrano-rails-console
   capybara
+  chosen-rails (~> 1.8)
   coffee-rails (~> 4.2.2)
   coveralls
   database_cleaner

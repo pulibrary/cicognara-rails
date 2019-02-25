@@ -1,0 +1,11 @@
+// Styling for the advanced search form
+
+form.advanced {
+  .input-criteria {
+    .limit-criteria {
+      &-heading {
+        margin-top: 0px;
+      }
+    }
+  }
+}

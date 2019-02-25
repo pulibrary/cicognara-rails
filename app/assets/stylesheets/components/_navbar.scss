@@ -16,7 +16,11 @@
 }
 
 @media (min-width: 768px) {
-  #search-navbar .search-query-form,
+  #search-navbar .search-query-form {
+    display: inline-block;
+    float: left;
+    width: calc(100% - 314px);
+  }
   .search-browse--home .search-query-form {
     display: inline-block;
     float: left;
@@ -96,6 +100,22 @@
   @media (min-width: 768px){
     display: inline-block;
     float: right;
-    margin: 18px 0;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    margin-left: 8px;
+    margin-right: 0px;
+  }
+}
+
+.advanced_search {
+  display: block;
+  margin: 0 auto 1em;
+
+  @media (min-width: 768px){
+    display: inline-block;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    margin-left: 16px;
+    margin-right: 8px;
   }
 }
