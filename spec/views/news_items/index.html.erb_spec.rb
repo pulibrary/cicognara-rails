@@ -6,7 +6,7 @@ RSpec.describe 'news_items/index', type: :view do
       body: 'Body',
       title: 'Title',
       timestamp: DateTime.current,
-      user_id: 2
+      user_id: user.id
     )
   end
 
@@ -15,9 +15,10 @@ RSpec.describe 'news_items/index', type: :view do
       body: 'Body',
       title: 'Title',
       timestamp: DateTime.current,
-      user_id: 2
+      user_id: user.id
     )
   end
+  let(:user) { stub_admin_user }
 
   before do
     assign(:news_items, [item_1, item_2])

@@ -5,9 +5,10 @@ RSpec.describe 'news_items/edit', type: :view do
     NewsItem.create!(
       body: 'Body',
       title: 'Title',
-      user_id: 1
+      user_id: user.id
     )
   end
+  let(:user) { stub_admin_user }
 
   before do
     @news_item = assign(:news_item, news_item)

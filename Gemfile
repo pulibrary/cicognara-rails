@@ -52,6 +52,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
   gem 'capistrano-rails-console'
+  gem 'listen'
 end
 
 group :development, :test do
@@ -88,3 +89,4 @@ gem 'rack', '>= 2.0.6'
 gem 'rubyzip', '>= 1.2.2'
 gem 'traject'
 gem 'validate_url'
+gem 'bootsnap', require: false
