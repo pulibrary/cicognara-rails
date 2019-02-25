@@ -90,3 +90,4 @@ gem 'rubyzip', '>= 1.2.2'
 gem 'traject'
 gem 'validate_url'
 gem 'bootsnap', require: false
+gem 'bootstrap-sass', '~> 3.4.1'
