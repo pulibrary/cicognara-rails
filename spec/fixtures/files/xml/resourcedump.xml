@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<urlset xmlns:rs="http://www.openarchives.org/rs/terms/" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <rs:ln href="http://portal.getty.edu/resources/json_data/capabilitylist.xml" rel="up"/>
+  <rs:md at="2019-01-08 14:46:04.127501" capability="resourcedump"/>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-08-part1.zip</loc>
+    <rs:md at="2019-01-08 14:54:59.914290" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-08-part1/resourcedump_manifest_2019-01-08-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-08-part2.zip</loc>
+    <rs:md at="2019-01-08 15:04:03.010914" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-08-part2/resourcedump_manifest_2019-01-08-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-08-part3.zip</loc>
+    <rs:md at="2019-01-08 15:09:14.959365" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-08-part3/resourcedump_manifest_2019-01-08-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-22-part1.zip</loc>
+    <rs:md at="2019-01-22 07:36:05.856157" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-22-part1/resourcedump_manifest_2019-01-22-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-22-part2.zip</loc>
+    <rs:md at="2019-01-22 07:44:41.165331" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-22-part2/resourcedump_manifest_2019-01-22-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-22-part3.zip</loc>
+    <rs:md at="2019-01-22 07:49:42.511293" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-22-part3/resourcedump_manifest_2019-01-22-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-23-part1.zip</loc>
+    <rs:md at="2019-01-23 08:02:28.880718" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-23-part1/resourcedump_manifest_2019-01-23-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-23-part2.zip</loc>
+    <rs:md at="2019-01-23 08:11:36.723053" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-23-part2/resourcedump_manifest_2019-01-23-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-23-part3.zip</loc>
+    <rs:md at="2019-01-23 08:16:52.333304" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-23-part3/resourcedump_manifest_2019-01-23-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-30-part1.zip</loc>
+    <rs:md at="2019-01-30 07:50:04.777295" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-30-part1/resourcedump_manifest_2019-01-30-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-30-part2.zip</loc>
+    <rs:md at="2019-01-30 07:52:23.608036" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-30-part2/resourcedump_manifest_2019-01-30-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-30-part3.zip</loc>
+    <rs:md at="2019-01-30 07:53:47.581819" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-30-part3/resourcedump_manifest_2019-01-30-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part1.zip</loc>
+    <rs:md at="2019-01-31 10:18:26.379966" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part1/resourcedump_manifest_2019-01-31-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part2.zip</loc>
+    <rs:md at="2019-01-31 10:20:43.875030" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part2/resourcedump_manifest_2019-01-31-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part3.zip</loc>
+    <rs:md at="2019-01-31 10:22:09.856672" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part3/resourcedump_manifest_2019-01-31-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part1.zip</loc>
+    <rs:md at="2019-01-31 10:51:48.425949" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part1/resourcedump_manifest_2019-01-31-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part2.zip</loc>
+    <rs:md at="2019-01-31 10:54:08.649425" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part2/resourcedump_manifest_2019-01-31-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part3.zip</loc>
+    <rs:md at="2019-01-31 10:55:34.865804" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-01-31-part3/resourcedump_manifest_2019-01-31-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-12-part1.zip</loc>
+    <rs:md at="2019-02-12 14:33:50.825909" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-12-part1/resourcedump_manifest_2019-02-12-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-12-part2.zip</loc>
+    <rs:md at="2019-02-12 14:36:10.007435" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-12-part2/resourcedump_manifest_2019-02-12-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-12-part3.zip</loc>
+    <rs:md at="2019-02-12 14:37:36.766799" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-12-part3/resourcedump_manifest_2019-02-12-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part1.zip</loc>
+    <rs:md at="2019-02-25 17:07:52.715735" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part1/resourcedump_manifest_2019-02-25-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part2.zip</loc>
+    <rs:md at="2019-02-25 17:10:10.771636" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part2/resourcedump_manifest_2019-02-25-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part3.zip</loc>
+    <rs:md at="2019-02-25 17:11:36.556008" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part3/resourcedump_manifest_2019-02-25-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part1.zip</loc>
+    <rs:md at="2019-02-25 17:45:01.633266" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part1/resourcedump_manifest_2019-02-25-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part2.zip</loc>
+    <rs:md at="2019-02-25 17:47:19.817887" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part2/resourcedump_manifest_2019-02-25-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part3.zip</loc>
+    <rs:md at="2019-02-25 17:48:46.157590" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-25-part3/resourcedump_manifest_2019-02-25-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-28-part1.zip</loc>
+    <rs:md at="2019-02-28 08:04:13.579664" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-28-part1/resourcedump_manifest_2019-02-28-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-28-part2.zip</loc>
+    <rs:md at="2019-02-28 08:06:33.541424" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-28-part2/resourcedump_manifest_2019-02-28-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/resourcedump_2019-02-28-part3.zip</loc>
+    <rs:md at="2019-02-28 08:07:58.807970" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-02-28-part3/resourcedump_manifest_2019-02-28-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/testresourcedump_2019-03-04-part1.zip</loc>
+    <rs:md at="2019-03-04 08:12:38.924325" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-03-04-part1/resourcedump_manifest_2019-03-04-part1.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/testresourcedump_2019-03-04-part2.zip</loc>
+    <rs:md at="2019-03-04 08:14:58.285550" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-03-04-part2/resourcedump_manifest_2019-03-04-part2.xml" rel="contents" type="application/xml"/>
+  </url>
+  <url>
+    <loc>http://portal.getty.edu/resources/json_data/testresourcedump_2019-03-04-part3.zip</loc>
+    <rs:md at="2019-03-04 08:16:24.776883" type="application/zip"/>
+    <rs:ln href="http://portal.getty.edu/resources/json_data/resourcedump_2019-03-04-part3/resourcedump_manifest_2019-03-04-part3.xml" rel="contents" type="application/xml"/>
+  </url>
+</urlset>

@@ -48,22 +48,22 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'capistrano-rails'
   gem 'capistrano-passenger'
+  gem 'capistrano-rails'
   gem 'capistrano-rails-console'
   gem 'listen'
+  gem 'spring'
 end
 
 group :development, :test do
-  gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'rails-controller-testing'
 end
 
 group :test do
-  gem 'coveralls', require: false
   gem 'capybara'
+  gem 'coveralls', require: false
   gem 'database_cleaner'
   gem 'simplecov', '~> 0.9', require: false
   gem 'webmock'
@@ -79,6 +79,7 @@ gem 'cancancan', '~> 1.10'
 gem 'chosen-rails', '~> 1.8'
 gem 'devise'
 gem 'devise-guests', '~> 0.6.1'
+gem 'down', '~> 4.4'
 gem 'faraday'
 gem 'high_voltage', '~> 3.0.0'
 gem 'iiif-presentation'
@@ -88,6 +89,7 @@ gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-google-oauth2'
 gem 'pul_uv_rails', github: 'pulibrary/pul_uv_rails'
 gem 'rack', '>= 2.0.6'
+gem 'resync-client'
 gem 'rsolr', '~> 1.0'
 gem 'rubyzip', '>= 1.2.2'
 gem 'solr_wrapper', '~> 2.0.0'

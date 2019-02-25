@@ -41,6 +41,8 @@ Metrics/MethodLength:
     - 'app/controllers/catalog_controller.rb'
     - 'app/models/ability.rb'
     - 'app/helpers/advanced_helper.rb'
+    - 'spec/support/**/*'
+    - 'app/services/getty_parser/importer.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
