@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -73,7 +73,7 @@ gem 'blacklight-marc', '~> 6.0'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'devise-guests', '~> 0.6.1'
-gem 'trix'
+gem 'trix-gem'
 gem 'faraday'
 gem 'high_voltage', '~> 3.0.0'
 gem 'iiif-presentation'
