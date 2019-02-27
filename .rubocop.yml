@@ -64,6 +64,10 @@ RSpec/DescribeClass:
     - 'spec/routing/**/*'
     - 'spec/views/**/*'
 
+Rails/Output:
+  Exclude:
+    - 'config/deploy.rb'
+
 Style/Documentation:
   Enabled: false
 

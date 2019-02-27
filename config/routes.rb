@@ -4,6 +4,14 @@ Rails.application.routes.draw do
     resources :versions, except: :index
   end
   resources :contributing_libraries
+  require 'sidekiq/web'
+  if Rails.env.development?
+    mount Sidekiq::Web => '/sidekiq'
+  else
+    authenticate :user do
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  end
 
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
