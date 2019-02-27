@@ -26,7 +26,8 @@ RSpec.describe 'searching', type: :feature do
     expect(page.status_code).to eq(200)
 
     expect(page).to have_selector 'h3.facet-field-heading', text: 'Publication Year'
-    expect(page).to have_link '1541'
+    expect(page).to have_css '#range_pub_date_begin'
+    expect(page).to have_css '#range_pub_date_end'
 
     expect(page).to have_selector 'h3.facet-field-heading', text: 'Topic'
     expect(page).to have_link 'Humanism'

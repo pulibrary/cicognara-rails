@@ -81,7 +81,7 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'name_facet', label: 'Name', limit: true
-    config.add_facet_field 'pub_date', label: 'Publication year', single: true, range: {
+    config.add_facet_field 'pub_date', label: 'Publication Year', single: true, range: {
       num_segments: 10,
       assumed_boundaries: [1500, Time.zone.now.year + 1],
       segments: true

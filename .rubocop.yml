@@ -15,14 +15,23 @@ Rails:
 Metrics/AbcSize:
   Exclude:
     - 'spec/support/login_helper.rb'
+    - 'app/helpers/advanced_helper.rb'
 
 Metrics/BlockLength:
   Exclude:
     - 'spec/models/entry_spec.rb'
 
+Metrics/BlockNesting:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
+
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
 
 Metrics/LineLength:
   Enabled: false
@@ -31,6 +40,11 @@ Metrics/MethodLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
     - 'app/models/ability.rb'
+    - 'app/helpers/advanced_helper.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/helpers/advanced_helper.rb'
 
 Style/BlockComments:
   Exclude:
@@ -58,6 +72,10 @@ RSpec/ExampleLength:
 
 RSpec/InstanceVariable:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/features/search_spec.rb'
 
 Style/SafeNavigation:
   Enabled: false
