@@ -27,15 +27,7 @@ class Book < ActiveRecord::Base
   end
 
   def range_labels_from_manifests
-    manifests.map do |url|
-      begin
-        manifest_response = Faraday.get(url)
-        json = JSON.parse(manifest_response.body)
-        json['structures'].map { |s| s['label'] } if json['structures']
-      rescue StandardError
-        []
-      end
-    end.flatten
+    versions.flat_map(&:ocr_text).compact
   end
 
   def digitized_version_available
