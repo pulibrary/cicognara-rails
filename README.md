@@ -28,7 +28,7 @@ A non-default partials path can be specified:
 ```
 rake set_admin_role
 ```
-You can also specify an email address to make a particular user an amdin:
+You can also specify an email address to make a particular user an admin:
 ```
 EMAIL=user@example.org rake set_admin_role
 ```
@@ -40,5 +40,10 @@ When deploying, make sure the desired cicognara-catalogo (MARC and TEI) release 
 set :default_env,
     'MARCPATH' => 'public/cicognara.mrx.xml',
     'TEIPATH' => 'public/catalogo.tei.xml',
-    'CATALOGO_VERSION' => 'v1.2'
+    'CATALOGO_VERSION' => 'v2.1'
+```
+
+After deploying, please invoke the following in order to reindex from the latest release of the Catalogo, and rebuild the partials:
+```
+cap [STAGE] deploy:reindex
 ```
