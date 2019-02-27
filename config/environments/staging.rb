@@ -30,7 +30,6 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  config.relative_url_root = '/cicognara'
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -78,5 +77,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'libruby-dev.princeton.edu/cicognara' }
+  config.action_mailer.default_url_options = { host: 'cicognara-staging.princeton.edu' }
 end

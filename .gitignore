@@ -10,8 +10,6 @@ capybara-*.html
 /public/catalogo.tei.xml
 /coverage/
 /spec/tmp
-/app/views/pages/catalogo/section*
-/app/views/pages/catalogo/_item*
 **.orig
 rerun.txt
 pickle-email-*.html

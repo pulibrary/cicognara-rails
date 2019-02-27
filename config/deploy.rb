@@ -20,11 +20,8 @@ set :deploy_to, '/opt/cicognara'
 # Default value for :pty is false
 # set :pty, true
 
-# Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/secrets.yml')
-
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('app/views/pages/catalogo', 'log', 'vendor/bundle')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'vendor/bundle')
 
 # Default value for default_env is {}
 set :default_env,
@@ -41,11 +38,11 @@ set :passenger_restart_with_touch, true
 set :passenger_restart_with_touch, true
 
 namespace :deploy do
-  desc 'Reindex and generate partials'
+  desc 'Reindex the TEI entries and MARC records'
   task :reindex do
     on roles(:web), in: :groups, limit: 3, wait: 5 do
       within release_path do
-        execute :rake, 'tei:deploy'
+        execute :rake, 'tei:index'
       end
     end
   end
