@@ -1,6 +1,17 @@
 require 'cicognara/tei_indexer'
 
 namespace :tei do
+  namespace :catalogo do
+    desc 'Pulls in the Catalogo TEI and MARC'
+    task :update do
+      teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '..', '..', 'public', 'cicognara.tei.xml')
+      marcpath = ENV['MARCPATH'] || File.join(File.dirname(__FILE__), '..', '..', 'public', 'cicognara.mrx.xml')
+      catalogo_version = ENV['CATALOGO_VERSION'] || 'master'
+      `wget https://raw.githubusercontent.com/pulibrary/cicognara-catalogo/#{catalogo_version}/catalogo.tei.xml -O #{teipath}`
+      `wget https://raw.githubusercontent.com/pulibrary/cicognara-catalogo/#{catalogo_version}/cicognara.mrx.xml -O #{marcpath}`
+    end
+  end
+
   desc 'index solr documents from path to document at TEIPATH and MARCPATH.'
   task index: :environment do
     teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.tei.xml')
@@ -27,8 +38,7 @@ namespace :tei do
 
   desc 'Pulls catalogo tei/marc then indexes and generates partials'
   task :deploy do
-    `wget https://raw.githubusercontent.com/pulibrary/cicognara-catalogo/#{ENV['CATALOGO_VERSION']}/catalogo.tei.xml -O #{ENV['TEIPATH']}`
-    `wget https://raw.githubusercontent.com/pulibrary/cicognara-catalogo/#{ENV['CATALOGO_VERSION']}/cicognara.mrx.xml -O #{ENV['MARCPATH']}`
+    Rake::Task['tei:catalogo:update'].invoke
     Rake::Task['tei:index'].invoke
     Rake::Task['tei:partials'].invoke
   end
