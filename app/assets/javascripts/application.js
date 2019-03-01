@@ -15,8 +15,10 @@
 //= require bootstrap-sprockets
 // Required by Blacklight
 //= require blacklight/blacklight
-
+//= require 'blacklight_advanced_search'
+//= require 'blacklight_range_limit'
 //= require trix
+//= require chosen-jquery
 //= require_tree .
 
 $(document).ready(function() {
@@ -60,4 +62,14 @@ $(document).ready(function() {
     document.addEventListener("MSFullscreenChange",function() { exitHandler(this) }, false)
   }
   $(".viewer").trigger("resize")
+
+  /**
+   * Integration for the chosen jQuery plugin
+   * Please see https://rubygems.org/gems/chosen-rails
+   */
+  $('.chosen-select').chosen({
+    allow_single_deselect: true,
+    no_results_text: 'No results matched'
+  });
 })
+

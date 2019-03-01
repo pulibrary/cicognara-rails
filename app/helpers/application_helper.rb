@@ -22,4 +22,12 @@ module ApplicationHelper
     args[:document][args[:field]].map!(&:html_safe)
     ul(args)
   end
+
+  # Generate the URL for the search form
+  # @param options [Hash]
+  # @return [String]
+  def search_form_action_url(options = {})
+    return url_for(options.merge(action: 'index', controller: 'catalog')) if controller_name == 'advanced'
+    search_action_url(options)
+  end
 end
