@@ -12,7 +12,13 @@
  *
  *= require_self
  *= require trix
- */
+ *= require 'blacklight_advanced_search'
+
+ *
+ * Used by blacklight_range_limit
+ *= require  'blacklight_range_limit'
+ *
+*/
 
 @import "components/mixins";
 @import "components/variables";
@@ -20,6 +26,7 @@
 @import "blacklight";
 @import "scaffolds";
 @import "news_items";
+@import "chosen";
 
 // components
 @import "components/catalogo__browse";
@@ -31,12 +38,14 @@
 @import "components/edit";
 @import "components/form__contact";
 @import "components/forms";
+@import "components/advanced_search_form";
 @import "components/images";
 @import "components/menu";
 @import "components/navbar";
 @import "components/news";
 @import "components/record";
 @import "components/results";
+@import "components/advanced_search__index";
 @import "components/section";
 @import "components/splash";
 @import "components/typography";

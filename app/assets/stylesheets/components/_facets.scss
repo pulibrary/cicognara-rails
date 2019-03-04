@@ -25,6 +25,7 @@
   }
 
   #facet-panel-collapse.affix {
+    z-index: 1;
     top: 30px;
 
     @media (min-width: 768px) {
@@ -41,7 +42,6 @@
   position: static;
   width: auto;
   top: 0;
-  bottom: 141px;
   max-height: 100%;
   overflow-y: auto !important;
 
