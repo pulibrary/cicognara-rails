@@ -15,6 +15,16 @@ RSpec.describe Book, type: :model do
   before do
     stub_manifest('http://example.org/2.json')
     stub_manifest('http://example.org/3.json')
+    stub_request(:get, 'https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest').to_return(
+      status: 200,
+      body: file_fixture('manifests/2.json').read,
+      headers: { "Content-Type": 'application/json' }
+    )
+    stub_request(:get, 'https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest').to_return(
+      status: 200,
+      body: file_fixture('manifests/3.json').read,
+      headers: { "Content-Type": 'application/json' }
+    )
   end
 
   it 'has a digital cico number' do
@@ -73,7 +83,7 @@ RSpec.describe Book, type: :model do
       it 'indexes the manifest and digitized_version=Microfiche' do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Microfiche')
-        expect(b.to_solr['manifests_s']).to eq ['http://example.org/2.json']
+        expect(b.to_solr['manifests_s']).to eq ['https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest']
         expect(b.to_solr['text']).to include('Logical', 'Microfiche Header', 'Title Page')
       end
     end
@@ -84,7 +94,7 @@ RSpec.describe Book, type: :model do
       it 'indexes the manifest and digitized_version=Matching copy' do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Matching copy')
-        expect(b.to_solr['manifests_s']).to eq ['http://example.org/3.json']
+        expect(b.to_solr['manifests_s']).to eq ['https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest']
         expect(b.to_solr['text']).to include('Title Page', 'Cap. I')
       end
     end
@@ -96,7 +106,7 @@ RSpec.describe Book, type: :model do
       it 'indexes both manifests and digitized_version=Microfiche & Matching copy' do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Microfiche', 'Matching copy')
-        expect(b.to_solr['manifests_s']).to contain_exactly('http://example.org/2.json', 'http://example.org/3.json')
+        expect(b.to_solr['manifests_s']).to contain_exactly('https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest', 'https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest')
       end
     end
     context "when a digitized version isn't available" do
