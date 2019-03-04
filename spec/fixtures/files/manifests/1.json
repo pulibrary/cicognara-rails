@@ -1,7 +1,7 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
   "@type": "sc:Manifest",
-  "@id": "https://figgy.princeton.edu/concern/scanned_resources/65d234ac-b6bb-482a-9e01-afe1167a446a/manifest",
+  "@id": "http://example.org/1.json",
   "label": [
     "L'Antenore"
   ],

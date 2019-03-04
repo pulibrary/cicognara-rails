@@ -1,7 +1,7 @@
 {
   "@context": "http://iiif.io/api/presentation/2/context.json",
   "@type": "sc:Manifest",
-  "@id": "https://figgy.princeton.edu/concern/scanned_resources/72b685b0-7503-47bd-8d32-77d03c7d11a4/manifest",
+  "@id": "http://example.org/1.json",
   "label": [
     "Dissertatio juridica de jure aedificandi in suo von dem Recht auf dem seinigen zu bauen quam sub praesidio Georg. Henrici Linckens ... defendit Gottlob Ferdinandus Teubnerus ... AltdorfI Noric. D. Junii A.O.R. [1723]"
   ],
