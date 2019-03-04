@@ -42,6 +42,7 @@ namespace :deploy do
   task :reindex do
     on roles(:web), in: :groups, limit: 3, wait: 5 do
       within release_path do
+        execute :rake, 'tei:catalogo:update'
         execute :rake, 'tei:index'
       end
     end
