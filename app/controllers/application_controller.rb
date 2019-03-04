@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
   def new_session_path(_scope)
     new_user_session_path
   end
+
+  def current_user
+    if Rails.env.development?
+      User.first
+    else
+      super
+    end
+  end
 end

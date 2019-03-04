@@ -10,9 +10,8 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'GET #index' do
     it 'assigns all users as @users' do
-      user = User.create! valid_attributes
       get :index
-      expect(assigns(:users)).to eq([user])
+      expect(assigns(:users)).to eq([User.first])
     end
   end
 

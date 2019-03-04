@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -52,6 +52,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-passenger'
   gem 'capistrano-rails-console'
+  gem 'listen'
 end
 
 group :development, :test do
@@ -70,10 +71,14 @@ end
 
 gem 'bixby'
 gem 'blacklight-marc', '~> 6.0'
+gem 'blacklight_advanced_search', '~> 6.4'
+gem 'blacklight_range_limit', '~> 6.3'
+gem 'bootsnap', require: false
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'cancancan', '~> 1.10'
+gem 'chosen-rails', '~> 1.8'
 gem 'devise'
 gem 'devise-guests', '~> 0.6.1'
-gem 'trix'
 gem 'faraday'
 gem 'high_voltage', '~> 3.0.0'
 gem 'iiif-presentation'
@@ -82,12 +87,10 @@ gem 'nokogiri', '~> 1.8.1'
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-google-oauth2'
 gem 'pul_uv_rails', github: 'pulibrary/pul_uv_rails'
-gem 'rsolr', '~> 1.0'
-gem 'solr_wrapper', '~> 2.0.0'
 gem 'rack', '>= 2.0.6'
+gem 'rsolr', '~> 1.0'
 gem 'rubyzip', '>= 1.2.2'
+gem 'solr_wrapper', '~> 2.0.0'
 gem 'traject'
+gem 'trix-gem'
 gem 'validate_url'
-gem 'blacklight_advanced_search', '~> 6.4'
-gem 'blacklight_range_limit', '~> 6.3'
-gem 'chosen-rails', '~> 1.8'

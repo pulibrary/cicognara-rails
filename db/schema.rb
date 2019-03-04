@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212212903) do
+ActiveRecord::Schema.define(version: 2018_12_12_212903) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "book_subjects", id: :serial, force: :cascade do |t|
     t.integer "book_id"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20181212212903) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "entry_id"
+    t.bigint "entry_id"
     t.string "text"
     t.datetime "timestamp"
     t.integer "user_id"
@@ -97,7 +100,7 @@ ActiveRecord::Schema.define(version: 20181212212903) do
     t.index ["entry_id"], name: "index_entry_books_on_entry_id"
   end
 
-  create_table "news_items", id: :serial, force: :cascade do |t|
+  create_table "news_items", force: :cascade do |t|
     t.string "body"
     t.datetime "timestamp"
     t.string "title"
