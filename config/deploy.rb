@@ -48,3 +48,20 @@ namespace :deploy do
     end
   end
 end
+
+namespace :sidekiq do
+  task :quiet do
+    # Horrible hack to get PID without having to use terrible PID files
+    on roles(:worker) do
+      puts capture("kill -USR1 $(sudo initctl status cicognara-workers | grep /running | awk '{print $NF}') || :")
+    end
+  end
+  task :restart do
+    on roles(:worker) do
+      execute :sudo, :service, 'cicognara-workers', :restart
+    end
+  end
+end
+after 'deploy:starting', 'sidekiq:quiet'
+after 'deploy:reverted', 'sidekiq:restart'
+after 'deploy:published', 'sidekiq:restart'

@@ -1,0 +1,14 @@
+development:
+  host: localhost
+  port: 6379
+  namespace: "cicognara"
+test:
+  host: localhost
+  port: 6379
+  namespace: "cicognara"
+production: &production
+  host: <%= ENV['CICOGNARA_REDIS_URL'] || 'localhost' %>
+  port: <%= ENV['CICOGNARA_REDIS_PORT'] || '6379' %>
+  db: <%= ENV['CICOGNARA_REDIS_DB'] || 0 %>
+staging:
+  <<: *production

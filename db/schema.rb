@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_12_212903) do
+ActiveRecord::Schema.define(version: 20190227221348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_212903) do
     t.string "manifest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "ocr_text"
     t.index ["book_id"], name: "index_versions_on_book_id"
     t.index ["contributing_library_id"], name: "index_versions_on_contributing_library_id"
   end

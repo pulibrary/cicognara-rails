@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
       'contributing_library_facet' => contributing_libraries.map(&:label),
       'digitized_version_available_facet' => digitized_version_available,
       'manifests_s' => manifests,
-      'text' => range_labels_from_manifests,
+      'text' => manifest_content,
       'book_id_s' => [id]
     }
   end
@@ -26,16 +26,9 @@ class Book < ActiveRecord::Base
     @manifests ||= versions.map(&:manifest)
   end
 
-  def range_labels_from_manifests
-    manifests.map do |url|
-      begin
-        manifest_response = Faraday.get(url)
-        json = JSON.parse(manifest_response.body)
-        json['structures'].map { |s| s['label'] } if json['structures']
-      rescue StandardError
-        []
-      end
-    end.flatten
+  # Index manifest range labels and OCR which is cached in Version#ocr_text.
+  def manifest_content
+    versions.flat_map(&:ocr_text).compact
   end
 
   def digitized_version_available
