@@ -49,25 +49,28 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">IIIF Manifest	856</th>
-          <td>856 41 $u [URI]</td>
+          <th scope="row">IIIF Manifest</th>
+          <td>
+            <div>856 41 $u [Manifest URI]</div>
+            <div>$q JSON (IIIF Manifest)</div>
+          </td>
           <td>
             <div>&lt;relatedItem type="otherFormat"&gt;</div>
             <div>&nbsp;&nbsp;&lt;identifier type="uri"&gt;</div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;[URI]</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;[Manifest URI]</div>
             <div>&nbsp;&nbsp;&lt;/identifier&gt;</div>
             <div>&lt;/relatedItem&gt;</div>
           </td>
           <td>
             <div>&lt;dc:hasFormat&gt;</div>
-            <div>&nbsp;&nbsp;[URI]</div>
+            <div>&nbsp;&nbsp;[Manifest URI]</div>
             <div>&lt;/dc:hasFormat&gt;</div>
           </td>
           <td>IIIF Manifest URL</td>
         </tr>
         <tr>
           <th scope="row">DCL Number (DCL#)</th>
-          <td>024 8_ $a dcl:xyz 	</td>
+          <td>024 8_ $a dcl:xyz</td>
           <td>
             <div>&lt;mods:identifier type="local"&gt;</div>
             <div>&nbsp;&nbsp;dcl:xyz</div>
@@ -190,6 +193,12 @@
           }
        ],
     </pre>
+
+    <p>Manifests can be checked in the <%= link_to "IIIF Presentation API Validator",
+      "https://iiif.io/api/presentation/validator/service/" %> to determine whether they have been configured
+      correctly according to IIIF specifications. The manifest should generate no errors and minimal warnings
+      when run through the Validator.</p>
+
     <p class="bold-text">
       Send source metadata to the Getty Research Portal (<%= mail_to "portal@getty.edu" %>)
       via one of the following methods:
@@ -199,8 +208,7 @@
       <li>
         OAI harvest or API - One-time email with link to OAI or API repository which will be harvested quarterly unless asked otherwise.
       </li>
-      <li>FTP</li>
-      <li>Please email portal@getty.edu if none of the above methods are possible and we will work with you on</li> transmitting files.
-
+      <li>Please email portal@getty.edu if none of the above methods are possible and we will work with you on transmitting files.</li>
+    </ul>
   </div>
 </section>

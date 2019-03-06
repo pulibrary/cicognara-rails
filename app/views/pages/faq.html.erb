@@ -193,12 +193,11 @@
       <ul class="normal-size-text">
         <li>Email attachment</li>
         <li>Open Archives Initiative (OAI) harvest</li>
-        <li>Institution API</li>
       </ul>
       <p>
         <span class="bold-text">*Please note:</span> If your institution is not using
-        an OAI-repository or API, and changes or updates its source metadata, please
-        send an updated file to the Getty Research Portal.
+        an OAI-repository, and changes or updates its source metadata, please send an updated
+        file to the Getty Research Portal.
       </p>
     </div>
     <div class="question-text">
@@ -238,20 +237,21 @@
       <table class="table table-bordered">
         <td>
           <div class="bold-text">MARC</div>
-          <div>856 41 $u [URI]</div>
+          <div>856 41 $u [Manifest URI]</div>
+          <div>$q JSON (IIIF Manifest)</div>
         </td>
         <td>
        	  <div class="bold-text">MODS</div>
           <div>&lt;relatedItem type="otherFormat"&gt;</div>
           <div>&nbsp;&nbsp;&lt;identifier type="uri"&gt;</div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;[URI]</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;[Manifest URI]</div>
           <div>&nbsp;&nbsp;&lt;/identifier&gt;</div>
           <div>&lt;/relatedItem&gt;</div>
         </td>
         <td>
           <div class="bold-text">Dublin Core</div>
           <div>&lt;dc:hasFormat&gt;</div>
-          <div>&nbsp;&nbsp;[URI]</div>
+          <div>&nbsp;&nbsp;[Manifest URI]</div>
           <div>&lt;/dc:hasFormat&gt;</div>
         </td>
         <td>
@@ -278,12 +278,17 @@
       <p>
         <div class="normal-size-text">
           Please find an example for a IIIF manifest in the Digital Cicognara Library project
-          here:
-        </div>
-        <div class="normal-size-text">
-        <%= link_to nil, "https://digi.ub.uni-heidelberg.de/diglit/iiif/junius1694/manifest.json" %>
+          here: <%= link_to nil, "https://digi.ub.uni-heidelberg.de/diglit/iiif/junius1694/manifest.json" %>
         </div>
       </p>
+      <p>
+        <div class="normal-size-text">
+          Manifests can be checked in the <%= link_to "IIIF Presentation API Validator",
+          "https://iiif.io/api/presentation/validator/service/" %> to determine whether they have
+          been configured correctly according to IIIF specifications. The manifest should generate
+          no errors and minimal warnings when run through the Validator.
+        </div>
+      <p>
     </div>
     <div class="question-text">
       <a role="button" class="collapsed" data-toggle="collapse" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
