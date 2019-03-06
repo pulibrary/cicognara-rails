@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/pulibrary/pul_uv_rails.git
-  revision: ce493942cfdbfd398f686c34324312df03cf6bf2
+  revision: c2579866d36fa13e482a1b1dd867feadda8f9a57
+  branch: jrgriffiniii-share-volumes
   specs:
     pul_uv_rails (2.0.1)
 
