@@ -31,7 +31,7 @@ class SolrDocument
   use_extension(Blacklight::Document::DublinCore)
 
   def manifests
-    fetch(:manifests_s, [])
+    fetch(:manifests_s, ['https://figgy.princeton.edu/concern/scanned_resources/30a28d91-c3c5-44be-9bb6-6b55f7113861/manifest'])
   end
 
   def book
