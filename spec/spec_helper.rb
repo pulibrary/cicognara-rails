@@ -28,10 +28,6 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
-  config.before(:all) do
-    system 'rake tei:partials'
-  end
-
   # clean the database before each test
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
