@@ -158,6 +158,11 @@ GEM
     down (4.5.0)
     erubi (1.8.0)
     execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
+      railties (>= 3.0.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
@@ -479,6 +484,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.6.1)
   down (~> 4.4)
+  factory_bot_rails
   faraday
   high_voltage (~> 3.0.0)
   iiif-presentation

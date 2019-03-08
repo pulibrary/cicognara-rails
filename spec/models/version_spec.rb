@@ -22,6 +22,7 @@ RSpec.describe Version, type: :model do
   end
 
   it 'has a contributor' do
+    binding.pry
     expect(subject.contributing_library).to eq(contributing_library)
   end
 
