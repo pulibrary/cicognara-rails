@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
+  subject(:book) { FactoryBot.create(:book) }
+
   let(:digital_cico_number) { 'xyz' }
-  let(:book) { described_class.new digital_cico_number: digital_cico_number }
   let(:subject1) { Subject.new label: 'puppies' }
   let(:subject2) { Subject.new label: 'kittens' }
   let(:role1) { Role.new label: 'author' }
