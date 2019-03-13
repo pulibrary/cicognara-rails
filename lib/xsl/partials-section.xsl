@@ -19,7 +19,7 @@
     <xsl:template match="tei:teiCorpus" mode="toc">
         <xsl:param name="current-item-number"/>
         <ol class="toc">
-            <xsl:for-each select="//tei:div[@type = 'section']">
+            <xsl:for-each select="//tei:div[@type = ['section', 'preface']]">
                 <li>
                     <xsl:if test="$current-item-number eq @n">
                         <xsl:attribute name="class">current</xsl:attribute>
@@ -40,7 +40,7 @@
         </ol>
     </xsl:template>
 
-    <xsl:template match="tei:div[@type = 'section']">
+    <xsl:template match="tei:div[@type = ['section', 'preface']]">
         <xsl:result-document exclude-result-prefixes="#all" method="xml"
             href="{$path_to_partials}/section_{@n}.html">
             <div class="container">
@@ -77,7 +77,6 @@
         </xsl:result-document>
     </xsl:template>
 
-
     <xsl:template match="tei:pb[@type = 'cico']">
         <span class="catalogo-pb" id="page_{@n}">
             <xsl:value-of select="@n"/>
@@ -92,6 +91,7 @@
         </head>
     </xsl:template>
 
+<!-- Why are this section's subheads special? -->
     <xsl:template match="tei:div[@n = '2.13']/tei:div/tei:head">
         <head>
             <h2>
@@ -126,22 +126,24 @@
         </span>
     </xsl:template>
 
-
     <xsl:template match="tei:bibl">
         <span class="catalogo-bibl">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+
     <xsl:template match="tei:author">
         <span class="catalogo-author">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+
     <xsl:template match="tei:note">
         <div class="catalogo-note">
             <xsl:apply-templates/>
         </div>
     </xsl:template>
+
     <xsl:template match="tei:title">
         <span class="catalogo-title">
             <a class="catalog-link" href="/{$url_path_prefix}catalog/{./ancestor::tei:item/@n}">
@@ -149,21 +151,25 @@
             </a>
         </span>
     </xsl:template>
+
     <xsl:template match="tei:pubPlace">
         <span class="catalogo-pubPlace">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+
     <xsl:template match="tei:date">
         <span class="catalogo-date">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+    
     <xsl:template match="tei:extent">
         <span class="catalogo-extent">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+    
     <xsl:template match="tei:p">
         <p>
             <xsl:apply-templates/>
