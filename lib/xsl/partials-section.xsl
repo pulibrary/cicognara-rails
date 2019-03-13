@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="#all" version="2.0">
+    exclude-result-prefixes="tei xsl xs xd" version="1.0">
     <xd:doc scope="stylesheet">
         <xd:desc>
             <xd:p><xd:b>Created on:</xd:b> Aug 29, 2016</xd:p>
@@ -19,7 +19,7 @@
     <xsl:template match="tei:teiCorpus" mode="toc">
         <xsl:param name="current-item-number"/>
         <ol class="toc">
-            <xsl:for-each select="//tei:div[@type = ['section', 'preface']]">
+            <xsl:for-each select="//tei:div[@type = 'section' or @type = 'preface']">
                 <li>
                     <xsl:if test="$current-item-number eq @n">
                         <xsl:attribute name="class">current</xsl:attribute>
@@ -40,7 +40,7 @@
         </ol>
     </xsl:template>
 
-    <xsl:template match="tei:div[@type = ['section', 'preface']]">
+    <xsl:template match="tei:div[@type = 'section' or @type = 'preface']">
         <xsl:result-document exclude-result-prefixes="#all" method="xml"
             href="{$path_to_partials}/section_{@n}.html">
             <div class="container">
