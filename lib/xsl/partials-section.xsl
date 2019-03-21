@@ -11,7 +11,7 @@
         </xd:desc>
     </xd:doc>
 
-    <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes"/>
+    <xsl:output method="html" encoding="UTF-8" omit-xml-declaration="yes" indent="yes"/>
 
     <xsl:param name="path_to_partials">/tmp/item-partials</xsl:param>
     <xsl:param name="url_path_prefix"></xsl:param>
