@@ -60,7 +60,11 @@ class GettyParser
     end
 
     def rights_statement
-      source['accessRights'][0]['value']
+      source['accessRights'] && source['accessRights']&.first&.dig('value') || default_rights_statement
+    end
+
+    def default_rights_statement
+      'http://rightsstatements.org/vocab/CNE/1.0/'
     end
   end
 end
