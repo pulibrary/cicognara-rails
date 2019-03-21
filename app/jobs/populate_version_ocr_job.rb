@@ -3,6 +3,10 @@ class PopulateVersionOCRJob < ApplicationJob
     json = parse_manifest(version)
     version.ocr_text = extract_ocr_text(json)
     version.rights = extract_license(json) if extract_license(json)
+    if version.rights == vatican_copyright
+      version.based_on_original = true
+      version.contributing_library = vatican_library
+    end
     version.save!
   end
 
@@ -21,5 +25,13 @@ class PopulateVersionOCRJob < ApplicationJob
     json['structures'].map { |s| s['label'] } if json['structures']
   rescue StandardError
     nil
+  end
+
+  def vatican_copyright
+    'http://cicognara.org/microfiche_copyright'
+  end
+
+  def vatican_library
+    ContributingLibrary.find_or_create_by(label: 'Biblioteca Apostolica Vaticana', uri: 'https://www.vaticanlibrary.va')
   end
 end

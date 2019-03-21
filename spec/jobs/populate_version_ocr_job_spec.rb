@@ -10,7 +10,7 @@ RSpec.describe PopulateVersionOCRJob do
   let(:book) { Book.create!(digital_cico_number: '1') }
 
   context 'when given a version pointing at a manifest with OCR content' do
-    it 'indexes it' do
+    it 'indexes it and pulls metadata from the manifest' do
       stub_manifest('http://example.org/1.json')
       version = Version.create!(
         manifest: 'http://example.org/1.json',
@@ -26,6 +26,8 @@ RSpec.describe PopulateVersionOCRJob do
 
       expect(version.ocr_text).to eq %w[Logical Aardvark]
       expect(version.rights).to eq 'http://cicognara.org/microfiche_copyright'
+      expect(version.based_on_original).to eq true
+      expect(version.contributing_library.label).to eq 'Biblioteca Apostolica Vaticana'
     end
   end
   context 'when a manifest errors' do
