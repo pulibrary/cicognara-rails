@@ -1,12 +1,23 @@
 class PopulateVersionOCRJob < ApplicationJob
   def perform(version)
-    version.ocr_text = extract_ocr_text(version)
+    json = parse_manifest(version)
+    version.ocr_text = extract_ocr_text(json)
+    version.rights = extract_license(json) if extract_license(json)
     version.save!
   end
 
-  def extract_ocr_text(version)
+  def parse_manifest(version)
     manifest_response = Faraday.get(version.manifest)
-    json = JSON.parse(manifest_response.body)
+    JSON.parse(manifest_response.body)
+  rescue StandardError
+    {}
+  end
+
+  def extract_license(json)
+    json['license']
+  end
+
+  def extract_ocr_text(json)
     json['structures'].map { |s| s['label'] } if json['structures']
   rescue StandardError
     nil

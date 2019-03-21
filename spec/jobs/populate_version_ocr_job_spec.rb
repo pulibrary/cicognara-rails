@@ -25,6 +25,7 @@ RSpec.describe PopulateVersionOCRJob do
       described_class.perform_now(version)
 
       expect(version.ocr_text).to eq %w[Logical Aardvark]
+      expect(version.rights).to eq 'http://cicognara.org/microfiche_copyright'
     end
   end
   context 'when a manifest errors' do
