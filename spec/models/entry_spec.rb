@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe Entry, type: :model do
   before do
-    stub_manifest('http://example.org/1.json')
+    stub_manifest('http://example.org/4.json')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
     book = Book.find_or_create_by! digital_cico_number: 'cico:m87'
@@ -11,7 +11,7 @@ RSpec.describe Entry, type: :model do
     Version.create! contributing_library: contrib, book: book,
                     label: 'version 2', based_on_original: false, owner_system_number: '1234',
                     rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
-                    manifest: 'http://example.org/1.json'
+                    manifest: 'http://example.org/4.json'
 
     solr = RSolr.connect(url: Blacklight.connection_config[:url])
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
