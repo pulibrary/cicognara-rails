@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   after_initialize :set_default_role
   validates :role, inclusion: { in: %w(admin curator user), message: '%{value} is not a valid role' }
+  validates :email, presence: true
 
   def admin?
     role == 'admin'
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
   include Blacklight::User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :omniauthable, omniauth_providers: [:google_oauth2]
+  devise :omniauthable, :registerable, omniauth_providers: [:google_oauth2]
 
   def self.from_omniauth(access_token)
     data = access_token.info

@@ -66,8 +66,7 @@ RSpec.describe UsersController, type: :controller do
       it "re-renders the 'edit' template" do
         user = User.create! valid_attributes
         put :update, params: { id: user.to_param, user: invalid_attributes }
-        expect(response).to redirect_to(user_path(user))
-        expect(response).not_to be_successful
+        expect(response).to render_template('edit')
       end
     end
   end

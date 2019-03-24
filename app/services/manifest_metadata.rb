@@ -22,8 +22,6 @@ class ManifestMetadata
 
   def extract_ocr_text(json)
     json['structures'].map { |s| s['label'] } if json['structures']
-  rescue StandardError
-    nil
   end
 
   def vatican_copyright
