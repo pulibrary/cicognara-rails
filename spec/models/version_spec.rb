@@ -50,13 +50,4 @@ RSpec.describe Version, type: :model do
     expect { described_class.create! attr.merge(manifest: 'foo') }.to raise_error ActiveRecord::RecordInvalid
     expect { described_class.create! attr.merge(rights: 'foo') }.to raise_error ActiveRecord::RecordInvalid
   end
-
-  it 'queues a job to index ocr_text' do
-    allow(PopulateVersionOCRJob).to receive(:perform_later)
-    subject.save!
-    # Ensure an update that doesn't touch manifest doesn't trigger a job
-    subject.update(label: 'Update again')
-
-    expect(PopulateVersionOCRJob).to have_received(:perform_later).with(subject).exactly(1).times
-  end
 end

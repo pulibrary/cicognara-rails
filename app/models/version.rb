@@ -6,7 +6,7 @@ class Version < ApplicationRecord
   validates :based_on_original, inclusion: { in: [true, false] }
 
   after_commit :update_index
-  after_commit :populate_ocr_text, if: :saved_change_to_manifest?, on: [:create, :update]
+  before_save :manifest_metadata
   serialize :ocr_text
 
   def update_index
@@ -14,8 +14,8 @@ class Version < ApplicationRecord
     solr.add(docs, params: { softCommit: true })
   end
 
-  def populate_ocr_text
-    PopulateVersionOCRJob.perform_later(self)
+  def manifest_metadata
+    ManifestMetadata.new.update(self)
   end
 
   private

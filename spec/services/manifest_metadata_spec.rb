@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe PopulateVersionOCRJob do
+RSpec.describe ManifestMetadata do
+  subject(:manifest_metadata) { described_class.new }
+
   let(:contributing_library) do
     ContributingLibrary.create!(
       label: 'Example Library',
@@ -22,7 +24,7 @@ RSpec.describe PopulateVersionOCRJob do
         book: book
       )
 
-      described_class.perform_now(version)
+      manifest_metadata.update(version)
 
       expect(version.ocr_text).to eq %w[Logical Aardvark]
       expect(version.rights).to eq 'http://cicognara.org/microfiche_copyright'
@@ -44,7 +46,7 @@ RSpec.describe PopulateVersionOCRJob do
         book: book
       )
 
-      expect { described_class.perform_now(version) }.not_to raise_error
+      expect { manifest_metadata.update(version) }.not_to raise_error
     end
   end
 end
