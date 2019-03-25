@@ -1,12 +1,15 @@
-class PopulateVersionOCRJob < ApplicationJob
-  def perform(version)
+class ManifestMetadata
+  def update(version)
     json = parse_manifest(version)
     version.ocr_text = extract_ocr_text(json)
     version.rights = extract_license(json) if extract_license(json)
-    version.save!
+    return unless version.rights == vatican_copyright
+    version.based_on_original = true
+    version.contributing_library = vatican_library
   end
 
   def parse_manifest(version)
+    Rails.logger.info "Updating metadata from #{version.manifest}"
     manifest_response = Faraday.get(version.manifest)
     JSON.parse(manifest_response.body)
   rescue StandardError
@@ -21,5 +24,13 @@ class PopulateVersionOCRJob < ApplicationJob
     json['structures'].map { |s| s['label'] } if json['structures']
   rescue StandardError
     nil
+  end
+
+  def vatican_copyright
+    'http://cicognara.org/microfiche_copyright'
+  end
+
+  def vatican_library
+    ContributingLibrary.find_or_create_by(label: 'Biblioteca Apostolica Vaticana', uri: 'https://www.vaticanlibrary.va')
   end
 end

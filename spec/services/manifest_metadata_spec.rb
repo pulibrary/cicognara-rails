@@ -1,6 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe PopulateVersionOCRJob do
+RSpec.describe ManifestMetadata do
+  subject(:manifest_metadata) { described_class.new }
+
   let(:contributing_library) do
     ContributingLibrary.create!(
       label: 'Example Library',
@@ -10,7 +12,7 @@ RSpec.describe PopulateVersionOCRJob do
   let(:book) { Book.create!(digital_cico_number: '1') }
 
   context 'when given a version pointing at a manifest with OCR content' do
-    it 'indexes it' do
+    it 'indexes it and pulls metadata from the manifest' do
       stub_manifest('http://example.org/1.json')
       version = Version.create!(
         manifest: 'http://example.org/1.json',
@@ -22,10 +24,12 @@ RSpec.describe PopulateVersionOCRJob do
         book: book
       )
 
-      described_class.perform_now(version)
+      manifest_metadata.update(version)
 
       expect(version.ocr_text).to eq %w[Logical Aardvark]
       expect(version.rights).to eq 'http://cicognara.org/microfiche_copyright'
+      expect(version.based_on_original).to eq true
+      expect(version.contributing_library.label).to eq 'Biblioteca Apostolica Vaticana'
     end
   end
   context 'when a manifest errors' do
@@ -42,7 +46,7 @@ RSpec.describe PopulateVersionOCRJob do
         book: book
       )
 
-      expect { described_class.perform_now(version) }.not_to raise_error
+      expect { manifest_metadata.update(version) }.not_to raise_error
     end
   end
 end

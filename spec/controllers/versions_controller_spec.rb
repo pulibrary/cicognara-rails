@@ -8,7 +8,7 @@ RSpec.describe VersionsController, type: :controller do
     {
       book_id: book.id,
       label: 'Version 1',
-      manifest: 'http://example.org/1.json',
+      manifest: 'http://example.org/4.json',
       contributing_library_id: contrib.id,
       rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
       owner_system_number: '1234',
@@ -19,7 +19,7 @@ RSpec.describe VersionsController, type: :controller do
 
   before do
     stub_admin_user
-    stub_manifest('http://example.org/1.json')
+    stub_manifest('http://example.org/4.json')
     stub_manifest('http://example.org/2.json')
   end
 

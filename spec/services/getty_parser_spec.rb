@@ -34,7 +34,7 @@ RSpec.describe GettyParser do
 
   describe '#import!' do
     it 'imports a version for a matching book with a DCL number' do
-      stub_manifest('https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json', manifest_file: '1.json')
+      stub_manifest('https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json', manifest_file: '4.json')
       book = Book.create!(digital_cico_number: 'dcl:srq')
 
       described_class.new.import!

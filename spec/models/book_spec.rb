@@ -14,7 +14,7 @@ RSpec.describe Book, type: :model do
 
   before do
     stub_manifest('http://example.org/2.json')
-    stub_manifest('http://example.org/3.json')
+    stub_manifest('http://example.org/4.json')
   end
 
   it 'has a digital cico number' do
@@ -48,23 +48,24 @@ RSpec.describe Book, type: :model do
       @subject = Cicognara::TEIIndexer.new(pathtotei, pathtomarc)
     end
     let(:microfiche_version) do
-      Version.create! contributing_library: contributing_library, book: described_class.first,
+      Version.create! contributing_library: vatican_library, book: described_class.first,
                       label: 'version 2', based_on_original: true, owner_system_number: '1234',
-                      rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+                      rights: 'http://cicognara.org/microfiche_copyright',
                       manifest: 'http://example.org/2.json'
     end
     let(:matching_version) do
       Version.create! contributing_library: contributing_library, book: described_class.first,
                       label: 'version 3', based_on_original: false, owner_system_number: '1234',
                       rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
-                      manifest: 'http://example.org/3.json'
+                      manifest: 'http://example.org/4.json'
     end
     let(:contributing_library) { ContributingLibrary.create! label: 'Example Library', uri: 'http://www.example.org' }
+    let(:vatican_library) { ContributingLibrary.create! label: 'Biblioteca Apostolica Vaticana', uri: 'http://www.vaticanlibrary.va' }
     it 'indexes contributing libraries' do
       microfiche_version
       b = described_class.first
 
-      expect(b.to_solr['contributing_library_facet']).to eq ['Example Library']
+      expect(b.to_solr['contributing_library_facet']).to eq ['Biblioteca Apostolica Vaticana']
     end
     context 'when a microfiche version is available' do
       before do
@@ -84,8 +85,8 @@ RSpec.describe Book, type: :model do
       it 'indexes the manifest and digitized_version=Matching copy' do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Matching copy')
-        expect(b.to_solr['manifests_s']).to eq ['http://example.org/3.json']
-        expect(b.to_solr['text']).to include('Title Page', 'Cap. I')
+        expect(b.to_solr['manifests_s']).to eq ['http://example.org/4.json']
+        expect(b.to_solr['text']).to include('Logical', 'Aardvark')
       end
     end
     context 'when both microfiche and a matching version are available' do
@@ -96,7 +97,7 @@ RSpec.describe Book, type: :model do
       it 'indexes both manifests and digitized_version=Microfiche & Matching copy' do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Microfiche', 'Matching copy')
-        expect(b.to_solr['manifests_s']).to contain_exactly('http://example.org/2.json', 'http://example.org/3.json')
+        expect(b.to_solr['manifests_s']).to contain_exactly('http://example.org/2.json', 'http://example.org/4.json')
       end
     end
     context "when a digitized version isn't available" do
