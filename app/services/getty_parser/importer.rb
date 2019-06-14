@@ -12,8 +12,8 @@ class GettyParser
             import_record(record)
           rescue ActiveRecord::RecordNotFound
             Rails.logger.warn "Unable to import #{record.primary_identifier} - no matching Book entry for DCL dcl:#{record.dcl_number}"
-          rescue ActiveRecord::RecordInvalid
-            Rails.logger.warn "Unable to import #{record.primary_identifier} - failed validations"
+          rescue ActiveRecord::RecordInvalid => e
+            Rails.logger.warn "Unable to import #{record.primary_identifier} - failed validations: #{e}"
           end
         end
       end

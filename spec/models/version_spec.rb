@@ -46,8 +46,12 @@ RSpec.describe Version, type: :model do
     expect { described_class.create! attr.except(:rights) }.to raise_error ActiveRecord::RecordInvalid
   end
 
-  it 'validates manifest and rights are urls' do
+  it 'validates manifest is a url' do
     expect { described_class.create! attr.merge(manifest: 'foo') }.to raise_error ActiveRecord::RecordInvalid
-    expect { described_class.create! attr.merge(rights: 'foo') }.to raise_error ActiveRecord::RecordInvalid
+  end
+
+  it 'allows plain text rights statements' do
+    new_attr = attr.except(:rights).merge(rights: 'All Rights Reserved')
+    expect { described_class.create! new_attr }.not_to raise_error
   end
 end

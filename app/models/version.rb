@@ -1,8 +1,8 @@
 class Version < ApplicationRecord
   belongs_to :contributing_library
   belongs_to :book
-  validates :label, :contributing_library, :owner_system_number, presence: true
-  validates :manifest, :rights, url: true
+  validates :label, :contributing_library, :owner_system_number, :rights, presence: true
+  validates :manifest, url: true
   validates :based_on_original, inclusion: { in: [true, false] }
 
   after_commit :update_index
