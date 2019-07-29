@@ -8,6 +8,7 @@ RSpec.describe Ability, type: :model do
   let(:book) { Book.new }
   let(:version) { Version.new }
   let(:news_item) { NewsItem.new }
+  let(:comment) { Comment.new(user_id: curator.id) }
   let(:curator_news_item) { NewsItem.new(user_id: curator.id) }
 
   describe 'an admin user can CRUD books, versions, users, and news items' do
@@ -59,6 +60,8 @@ RSpec.describe Ability, type: :model do
     it { should be_able_to(:read, curator_news_item) }
     it { should be_able_to(:update, curator_news_item) }
     it { should be_able_to(:destroy, curator_news_item) }
+    it { should be_able_to(:update, comment) }
+    it { should be_able_to(:destroy, comment) }
   end
 
   describe 'a default user cannot CRUD books, versions, or users' do

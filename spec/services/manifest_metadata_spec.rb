@@ -33,7 +33,7 @@ RSpec.describe ManifestMetadata do
     end
   end
   context 'when a manifest errors' do
-    it 'captures it' do
+    it 'captures parse errors' do
       allow(JSON).to receive(:parse).and_raise 'Broken'
       stub_manifest('http://example.org/1.json')
       version = Version.create!(
