@@ -16,6 +16,8 @@ jobs:
           POSTGRES_USER: cicognara
           POSTGRES_DB: cicognara_test
           POSTGRES_PASSWORD: ""
+      - image: solr:7.1-alpine
+        command: bin/solr -cloud -noprompt -f -p 8888
     steps:
       - checkout
       - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
@@ -26,6 +28,14 @@ jobs:
         key: cicognara-rails-{{ checksum "Gemfile.lock" }}
       - run: 'bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
           --jobs=4 --retry=3 '
+      - run:
+          name: Load config into solr
+          command: |
+            cd solr/config
+            zip -1 -r solr_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_config.zip "http://localhost:8888/solr/admin/configs?action=UPLOAD&name=cicognara"
+            curl -H 'Content-type: application/json' http://localhost:8888/api/collections/ -d '{create: {name: cicognara, config: cicognara, numShards: 1}}'
+
       # Cache Dependencies
       - type: cache-save
         name: Store bundle cache
@@ -38,7 +48,7 @@ jobs:
       - run: bundle exec rails db:migrate RAILS_ENV=test
       # Test
       - run: bundle exec rake rubocop
-      - run: bundle exec rake ci
+      - run: bundle exec rspec
       # Save test results
       - store_test_results:
           path: /tmp/circleci-test-results
