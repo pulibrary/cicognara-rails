@@ -1,6 +1,6 @@
 # Place any default configuration for solr_wrapper here
 port: 8888
-version: 7.7.1
+version: 7.7.2
 cloud: true
 instance_dir: tmp/solr-test
 collection:
