@@ -158,11 +158,15 @@ class CatalogController < ApplicationController
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
 
-      # :solr_local_parameters will be sent using Solr LocalParams
+      # :solr_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qf: '${title_qf}',
+        pf: '${title_pf}'
+      }
+      field.solr_adv_parameters = {
         qf: '$title_qf',
         pf: '$title_pf'
       }
@@ -170,7 +174,11 @@ class CatalogController < ApplicationController
 
     config.add_search_field('author') do |field|
       field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qf: '${author_qf}',
+        pf: '${author_pf}'
+      }
+      field.solr_adv_parameters = {
         qf: '$author_qf',
         pf: '$author_pf'
       }
@@ -182,7 +190,11 @@ class CatalogController < ApplicationController
     config.add_search_field('subject') do |field|
       field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
       field.qt = 'search'
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qf: '${subject_qf}',
+        pf: '${subject_pf}'
+      }
+      field.solr_adv_parameters = {
         qf: '$subject_qf',
         pf: '$subject_pf'
       }
@@ -190,7 +202,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('catalogo') do |field|
       field.label = 'Catalogo Nr'
-      field.solr_local_parameters = { qf: 'id' }
+      field.solr_parameters = { qf: 'id' }
     end
 
     # "sort results by" select (pulldown)
