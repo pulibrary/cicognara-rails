@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.7.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'blacklight', '~> 6.0'
+gem 'blacklight', '~> 7.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -70,11 +70,11 @@ group :test do
 end
 
 gem 'bixby'
-gem 'blacklight-marc', '~> 6.0'
-gem 'blacklight_advanced_search', '~> 6.4'
-gem 'blacklight_range_limit', '~> 6.3'
+gem 'blacklight-marc', git: 'https://github.com/projectblacklight/blacklight-marc', branch: 'master'
+gem 'blacklight_advanced_search', git: 'https://github.com/projectblacklight/blacklight_advanced_search', branch: 'master'
+gem 'blacklight_range_limit', '~> 7.1'
 gem 'bootsnap', require: false
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap'
 gem 'cancancan', '~> 1.10'
 gem 'chosen-rails', '~> 1.8'
 gem 'devise', '~> 4.6.0'

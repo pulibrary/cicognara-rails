@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
 
-  Blacklight::Marc.add_routes(self)
+  concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
+
   root to: 'high_voltage/pages#show', id: 'home'
   concern :searchable, Blacklight::Routes::Searchable.new
 
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
   concern :exportable, Blacklight::Routes::Exportable.new
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
-    concerns :exportable
+    concerns [:exportable, :marc_viewable]
   end
 
   resources :bookmarks do
