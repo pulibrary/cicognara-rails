@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/pulibrary/pul_uv_rails.git
-  revision: ce493942cfdbfd398f686c34324312df03cf6bf2
+  remote: https://github.com/pulibrary/pul_uv_rails.git
+  revision: e3dd14a13aa8468751dd5d870b3647bafc0db9ff
   specs:
     pul_uv_rails (2.0.1)
 
@@ -518,4 +518,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.17.3
+   2.0.2
