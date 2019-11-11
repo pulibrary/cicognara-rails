@@ -16,7 +16,7 @@ jobs:
           POSTGRES_USER: cicognara
           POSTGRES_DB: cicognara_test
           POSTGRES_PASSWORD: ""
-      - image: solr:7.1-alpine
+      - image: solr:7.7-alpine
         command: bin/solr -cloud -noprompt -f -p 8888
     steps:
       - checkout
