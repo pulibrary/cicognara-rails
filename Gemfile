@@ -77,7 +77,7 @@ gem 'bootsnap', require: false
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'cancancan', '~> 1.10'
 gem 'chosen-rails', '~> 1.8'
-gem 'devise', '~> 4.6.0'
+gem 'devise', '~> 4.7.1'
 gem 'devise-guests', '~> 0.6.1'
 gem 'down', '~> 4.4'
 gem 'faraday'
