@@ -31,38 +31,8 @@ $(document).ready(function() {
     $("*[data-manifest-uri]").parent().removeClass("active")
     $(this).parent().addClass("active")
     document.location.hash = ''
-    window.initPlayers($(".uv"))
+    $("#uv-frame").attr("src", "https://figgy.princeton.edu/viewer?reload="+Date.now()+"#?manifest="+encodeURIComponent($(".uv").attr("data-uri")))
   })
-  function exitHandler() {
-    var fullscreen = document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement
-
-    if (fullscreen !== true) {
-      sleep(200).then(function() {
-        var frame = document.getElementsByTagName("iframe")[0]
-        frame.style.position = null
-        frame.style.top = null
-        frame.style.left = null
-        frame.style.width = "100%"
-        frame.style.height = "100%"
-      })
-    } else {
-      sleep(200).then(function() {
-        var frame = document.getElementsByTagName("iframe")[0]
-        frame.style.position = "absolute"
-      })
-    }
-  }
-  function sleep(time) {
-    return new Promise(function(resolve) { setTimeout(resolve, time) } )
-  }
-  if (document.addEventListener) {
-    document.addEventListener("webkitfullscreenchange",function() { exitHandler(this) }, false)
-    document.addEventListener("mozfullscreenchange",function() { exitHandler(this) }, false)
-    document.addEventListener("fullscreenchange",function() { exitHandler(this) }, false)
-    document.addEventListener("MSFullscreenChange",function() { exitHandler(this) }, false)
-  }
-  $(".viewer").trigger("resize")
-
   /**
    * Integration for the chosen jQuery plugin
    * Please see https://rubygems.org/gems/chosen-rails

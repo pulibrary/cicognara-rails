@@ -13,8 +13,9 @@
       </ul>
     </div>
     <div class="col-md-9">
-      <div class="uv viewer" data-uri="<%= document.manifests.first %>"></div>
-      <%= PulUvRails::UniversalViewer.script_tag %>
+      <div class="uv viewer" onClick="style.pointerEvents='none'">
+        <iframe id="uv-frame" allowfullscreen="true" src="https://figgy.princeton.edu/uv/uv#?manifest=<%= CGI.escape(document.manifests.first) %>"></iframe>
+      </div>
     </div>
   </div>
 <% end %>
