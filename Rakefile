@@ -12,7 +12,7 @@ require 'solr_wrapper/rake_task'
 desc 'Run Solr and Blacklight for interactive development'
 task :server, [:rails_server_args] do |_t, args|
   SolrWrapper.wrap do |solr|
-    solr.with_collection(name: 'cicognara', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'config')) do
+    solr.with_collection(name: 'cicognara', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'config'), persist: true) do
       puts 'Indexing TEI...'
       Rake::Task['tei:index'].invoke
       puts 'Generating partials...'

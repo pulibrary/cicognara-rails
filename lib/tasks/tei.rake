@@ -12,13 +12,17 @@ namespace :tei do
     end
   end
 
+  desc 'delete solr index'
+  task clean_solr: :environment do
+    solr.delete_by_query('*:*')
+  end
+
   desc 'index solr documents from path to document at TEIPATH and MARCPATH.'
   task index: :environment do
     teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.tei.xml')
     marcpath = ENV['MARCPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.marc.xml')
     solr_server = Blacklight.connection_config[:url]
     solr = RSolr.connect(url: solr_server)
-    solr.delete_by_query('*:*')
     solr.add(Cicognara::TEIIndexer.new(teipath, marcpath).solr_docs)
     solr.commit
   end
@@ -39,6 +43,7 @@ namespace :tei do
   desc 'Pulls catalogo tei/marc then indexes and generates partials'
   task :deploy do
     Rake::Task['tei:catalogo:update'].invoke
+    Rake::Task['clean_solr'].invoke
     Rake::Task['tei:index'].invoke
     Rake::Task['tei:partials'].invoke
   end
