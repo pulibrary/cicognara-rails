@@ -22,18 +22,18 @@ Remember you'll need to run `bundle install` on an ongoing basis as dependencies
 ## Setup server
 
 1. For test:
-   - `RAILS_ENV=test rake db:setup`
-   - `rake test_server`
+   - `RAILS_ENV=test bundle exec rake db:setup`
+   - `bundle exec rake test_server`
    - In a separate terminal: `bundle exec rspec`
 2. For development:
-   - `rake db:setup`
-   - `rake server`
+   - `bundle exec rake db:setup`
+   - `bundle exec rake server`
      - This will run Solr/Index Example Records/Launch a web server.
    - Access at http://localhost:3000/
    - Log in once
-   - Become an admin with `rake set_admin_role`
+   - Become an admin with `bundle exec rake set_admin_role`
      - You can also specify an email address to make a user an admin:
-       `EMAIL=user@example.org rake set_admin_role`
+       `EMAIL=user@example.org bundle exec rake set_admin_role`
 
 ## Index/Generate Partials for full Catalogo:
 
@@ -41,13 +41,13 @@ Remember you'll need to run `bundle install` on an ongoing basis as dependencies
 2. `cd tmp`
 3. `git clone git@github.com:pulibrary/cicognara-catalogo.git`
 4. `cd ..`
-5. `TEIPATH=tmp/cicognara-catalogo/catalogo.tei.xml MARCPATH=tmp/cicognara-catalogo/cicognara.mrx.xml rake tei:index`
-6. `TEIPATH=tmp/cicognara-catalogo/catalogo.tei.xml rake tei:partials`
+5. `TEIPATH=tmp/cicognara-catalogo/catalogo.tei.xml MARCPATH=tmp/cicognara-catalogo/cicognara.mrx.xml bundle exec rake tei:index`
+6. `TEIPATH=tmp/cicognara-catalogo/catalogo.tei.xml bundle exec rake tei:partials`
 
 ## Indexing Full Manifests from Getty
 
 1. Ensure full Catalogo is indexed (see above)
-2. `rake getty:import`
+2. `bundle exec rake getty:import`
 
 ## Deploying:
 When deploying, make sure the desired cicognara-catalogo (MARC and TEI) release is specified:
