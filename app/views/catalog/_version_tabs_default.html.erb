@@ -1,0 +1,30 @@
+<% @linked_books.each do |book| %>
+    <%= render partial: 'linked_books_default', locals: { book: book, document_id: "book_#{book['id']}" } %>
+
+    <% book_record = Book.where(digital_cico_number: book['id']).first %>
+    <% if book_record %>
+      <% versions = Version.where(book_id: book_record.id) %>
+      <% versions.each do |version| %>
+        <div class="version" id="version_<%= version.id %>">
+          <%= render partial: 'linked_books_default', locals: { book: version_show_document, document_id: "version_#{version.id}" } %>
+        </div>
+      <% end %>
+
+      <%# Only show the admin-stuff box if it's going to have content %>
+      <% if can?(:create, Version) || versions.select { |v| can?(:show, v) }.present? %>
+        <div class="row col-xs-offset-3 linked-books">
+          <ul>
+            <% versions.each do |version| %>
+              <% if can? :show, version %>
+                <li><%= link_to version.label, book_version_path(book_record, version) %></li>
+              <% end %>
+            <% end %>
+            <% if can? :create, Version %>
+              <li><%= link_to 'Add a version', new_book_version_path(book_record) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+
+<% end %>
