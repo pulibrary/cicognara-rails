@@ -16,6 +16,7 @@ Metrics/AbcSize:
   Exclude:
     - 'spec/support/login_helper.rb'
     - 'app/helpers/advanced_helper.rb'
+    - 'spec/support/stub_blacklight_views.rb'
 
 Metrics/BlockLength:
   Exclude:
