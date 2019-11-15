@@ -6,7 +6,7 @@
       <% versions = Version.where(book_id: book_record.id) %>
       <% versions.each do |version| %>
         <div class="version" id="version_<%= version.id %>">
-          <%= render partial: 'linked_books_default', locals: { book: version_show_document, document_id: "version_#{version.id}" } %>
+          <%= render partial: 'linked_books_default', locals: { book: version_show_document(version), document_id: "version_#{version.id}" } %>
         </div>
       <% end %>
 

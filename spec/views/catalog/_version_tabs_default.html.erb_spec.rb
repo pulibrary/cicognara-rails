@@ -6,7 +6,8 @@ RSpec.describe 'catalog/_version_tabs_default.html.erb' do
     Version.new(
       id: 1,
       book_id: book_record.id,
-      manifest: 'manifest1'
+      manifest: 'manifest1',
+      imported_metadata: { 'tei_title_txt' => 'First title' }
     )
   end
 
@@ -14,7 +15,8 @@ RSpec.describe 'catalog/_version_tabs_default.html.erb' do
     Version.new(
       id: 2,
       book_id: book_record.id,
-      manifest: 'manifest2'
+      manifest: 'manifest2',
+      imported_metadata: { 'tei_title_txt' => 'Title 2' }
     )
   end
 
@@ -38,5 +40,6 @@ RSpec.describe 'catalog/_version_tabs_default.html.erb' do
     render
     expect(rendered).to have_selector 'div#version_1'
     expect(rendered).to have_selector 'div#version_2'
+    expect(rendered).to match(/First title/)
   end
 end
