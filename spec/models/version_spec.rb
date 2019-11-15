@@ -13,7 +13,8 @@ RSpec.describe Version, type: :model do
       based_on_original: true,
       manifest: 'http://example.org/1.json',
       rights: 'https://creativecommons.org/publicdomain/mark/1.0/',
-      owner_system_number: 'abc123'
+      owner_system_number: 'abc123',
+      imported_metadata: { 'tei_title_txt' => 'a tei title', 'tei_author_txt' => 'an author' }
     }
   end
 
@@ -35,6 +36,10 @@ RSpec.describe Version, type: :model do
 
   it 'has a based_on_original' do
     expect(subject.based_on_original).to be true
+  end
+
+  it 'has an imported_metadata attribute' do
+    expect(subject.imported_metadata).to include('tei_title_txt' => 'a tei title', 'tei_author_txt' => 'an author')
   end
 
   it 'validates attributes are present' do

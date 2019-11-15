@@ -8,6 +8,7 @@ class Version < ApplicationRecord
   after_commit :update_index
   before_save :manifest_metadata
   serialize :ocr_text
+  serialize :imported_metadata
 
   def update_index
     docs = ([book.try(:to_solr)] + Array(book.try(:entries)).map(&:to_solr)).compact
