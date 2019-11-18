@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "DCMIType": "http://purl.org/dc/terms/DCMIType",
+        "LCSH": "http://purl.org/dc/terms/LCSH",
+        "Person": "http://schema.org/Person",
+        "URI": "http://purl.org/dc/terms/URI",
+        "aat": "http://www.getty.edu/research/tools/vocabularies/aat/",
+        "alternative": "http://purl.org/dc/terms/alternative",
+        "contributor": "http://purl.org/dc/elements/1.1/contributor",
+        "coverage": "http://purl.org/dc/elements/1.1/coverage",
+        "creator": "http://purl.org/dc/elements/1.1/creator",
+        "description": "http://purl.org/dc/elements/1.1/description",
+        "extent": "http://purl.org/dc/terms/extent",
+        "format": "http://purl.org/dc/elements/1.1/format",
+        "grpContributor": "http://portal.getty.edu/terms/gri/grpContributor",
+        "identifier": "http://purl.org/dc/elements/1.1/identifier",
+        "issued": "http://purl.org/dc/terms/issued",
+        "language": "http://purl.org/dc/elements/1.1/language",
+        "oclc": "http://portal.getty.edu/terms/gri/oclc",
+        "publisher": "http://purl.org/dc/elements/1.1/publisher",
+        "source": "http://purl.org/dc/elements/1.1/source",
+        "spatial": "http://purl.org/dc/terms/spatial",
+        "subject": "http://purl.org/dc/elements/1.1/subject",
+        "title": "http://purl.org/dc/elements/1.1/title",
+        "type": "http://purl.org/dc/elements/1.1/type"
+    },
+    "@id": "http://portal.getty.edu/books/gri_9923593930001551",
+    "alternative": [
+        {
+            "value": "Commentatio de optima extracta parandi methodo"
+        },
+        {
+            "value": "Caroli Ivsti Lvdovici de Crell Commentatio de optima extracta parandi methodo"
+        }
+    ],
+    "contributor": [
+        {
+            "@type": "Person",
+            "label": "Dieterich, Johann Christian, 1722-1800."
+        }
+    ],
+    "creator": [
+        {
+            "@type": "Person",
+            "label": "Crell, Carl Justus Ludwig von, 1772-1793."
+        }
+    ],
+    "description": [
+        {
+            "value": "Signatures: A-D4."
+        },
+        {
+            "value": "Final page blank."
+        },
+        {
+            "value": "\"In certamine literario ciuium Academiae Georgiae Augustae die IV. junii MDCCXCIII praemio a rege M. Britanniae Aug. constituto iudicio ordinis medici ornata.\""
+        },
+        {
+            "value": "Includes bibliographical references."
+        }
+    ],
+    "extent": [
+        {
+            "value": "31, [1] p., [1] leaf of plates"
+        }
+    ],
+    "grpContributor": [
+        {
+            "value": "Getty Research Institute"
+        }
+    ],
+    "identifier": [
+        {
+            "@type": "URI",
+            "value": "http://portal.getty.edu/api/rp874b"
+        },
+        {
+            "@type": "oclc",
+            "value": "85177734"
+        }
+    ],
+    "issued": [
+        {
+            "value": "[1793]"
+        },
+        {
+            "value": "1793"
+        }
+    ],
+    "language": [
+        {
+            "value": "Latin"
+        }
+    ],
+    "publisher": [
+        {
+            "value": "Gottingae : Typis Ioann. Christian. Dieterich"
+        }
+    ],
+    "source": [
+        {
+            "value": "Getty Research Portal"
+        },
+        {
+            "value": "Getty Research Institute"
+        }
+    ],
+    "spatial": [
+        {
+            "value": "Germany G\u00f6ttingen."
+        }
+    ],
+    "subject": [
+        {
+            "@type": "LCSH",
+            "label": "Chemistry -- Early works to 1800."
+        },
+        {
+            "@type": "LCSH",
+            "label": "Extracts -- Early works to 1800."
+        }
+    ],
+    "title": [
+        {
+            "value": "Caroli Iusti Ludouici de Crell Commentatio de optima extracta parandi methodo ..."
+        }
+    ],
+    "type": [
+        {
+            "@type": "DCMIType",
+            "label": "Text"
+        },
+        {
+            "@type": "aat",
+            "id": [
+                "http://vocab.getty.edu/page/aat/300041340"
+            ],
+            "label": "Engravings"
+        }
+    ]
+}

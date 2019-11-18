@@ -1,0 +1,123 @@
+{
+    "@context": {
+        "DCMIType": "http://purl.org/dc/terms/DCMIType",
+        "LCC": "http://purl.org/dc/terms/LCC",
+        "LCSH": "http://purl.org/dc/terms/LCSH",
+        "Organization": "http://schema.org/Organization",
+        "Person": "http://schema.org/Person",
+        "URI": "http://purl.org/dc/terms/URI",
+        "contributor": "http://purl.org/dc/elements/1.1/contributor",
+        "creator": "http://purl.org/dc/elements/1.1/creator",
+        "extent": "http://purl.org/dc/terms/extent",
+        "format": "http://purl.org/dc/elements/1.1/format",
+        "grpContributor": "http://portal.getty.edu/terms/gri/grpContributor",
+        "identifier": "http://purl.org/dc/elements/1.1/identifier",
+        "issued": "http://purl.org/dc/terms/issued",
+        "language": "http://purl.org/dc/elements/1.1/language",
+        "oclc": "http://portal.getty.edu/terms/gri/oclc",
+        "publisher": "http://purl.org/dc/elements/1.1/publisher",
+        "source": "http://purl.org/dc/elements/1.1/source",
+        "subject": "http://purl.org/dc/elements/1.1/subject",
+        "title": "http://purl.org/dc/elements/1.1/title",
+        "type": "http://purl.org/dc/elements/1.1/type"
+    },
+    "@id": "http://portal.getty.edu/books/met_00573979",
+    "contributor": [
+        {
+            "@type": "Person",
+            "label": "Edwards, George Wharton, 1859-1950, binding designer."
+        },
+        {
+            "@type": "Organization",
+            "label": "Dodd, Mead & Company, publisher."
+        }
+    ],
+    "creator": [
+        {
+            "@type": "Person",
+            "label": "Ellwanger, George H. (George Herman), 1848-1906."
+        }
+    ],
+    "extent": [
+        {
+            "value": "xvi pages, 1 leaf, 208 pages"
+        }
+    ],
+    "grpContributor": [
+        {
+            "value": "Metropolitan Museum of Art"
+        }
+    ],
+    "identifier": [
+        {
+            "@type": "URI",
+            "value": "http://portal.getty.edu/api/fs9v11"
+        },
+        {
+            "@type": "oclc",
+            "value": "00573979"
+        }
+    ],
+    "issued": [
+        {
+            "value": "[1897]"
+        },
+        {
+            "value": "1897"
+        }
+    ],
+    "language": [
+        {
+            "value": "English"
+        }
+    ],
+    "publisher": [
+        {
+            "value": "New York : Dodd, Mead & Company"
+        }
+    ],
+    "source": [
+        {
+            "value": "Getty Research Portal"
+        },
+        {
+            "value": "Metropolitan Museum of Art"
+        }
+    ],
+    "subject": [
+        {
+            "@type": "LCSH",
+            "label": "Gout."
+        },
+        {
+            "label": "Gout."
+        },
+        {
+            "@type": "LCC",
+            "label": "RC291 .E44"
+        }
+    ],
+    "title": [
+        {
+            "value": "Meditations on gout with a consideration of its cure through the use of wine / by George H. Ellwanger ... With a frontispiece & decoration by George Wharton Edwards."
+        }
+    ],
+    "type": [
+        {
+            "@type": "DCMIType",
+            "label": "Text"
+        },
+        {
+            "label": "Publishers{u2019} cloth bindings (Binding)"
+        },
+        {
+            "id": [
+                "http://vocab.getty.edu/page/aat/300417814"
+            ],
+            "label": "Pictorial cloth bindings (Binding)"
+        },
+        {
+            "label": "Gilt edges (Binding)"
+        }
+    ]
+}

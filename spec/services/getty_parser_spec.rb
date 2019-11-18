@@ -24,12 +24,13 @@ RSpec.describe GettyParser do
       # Only return the 1 cicognara record with a manifest, skip the rest.
       expect(records.length).to eq 1
       record = records.first
+      title = "Iconologia Di Cesare Ripa Pervgino Cav.re De S.ti Mavritio, E Lazzaro: Nella Qvale Si Descrivono Diverse Imagini di Virtù, Vitij, Affetti, Passioni humane, Arti, Discipline, Humori, Elementi, Corpi Celesti, Prouincie d'Italia, Fiumi, Tutte le parti del Mondo, ed altre infinite materie ; Opera Vtile Ad Oratori, Predicatori, Poeti, Pittori, Scvltori, Disegnatori, e ad o"
       expect(record.primary_identifier).to eq 'http://portal.getty.edu/api/tp3j85'
       expect(record.cicognara?).to eq true
       expect(record.manifest_url).to eq 'https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json'
       expect(record.dcl_number).to eq 'srq'
       expect(record.cicognara_number).to eq '4741'
-      expect(record.title).to eq "Iconologia Di Cesare Ripa Pervgino Cav.re De S.ti Mavritio, E Lazzaro: Nella Qvale Si Descrivono Diverse Imagini di Virtù, Vitij, Affetti, Passioni humane, Arti, Discipline, Humori, Elementi, Corpi Celesti, Prouincie d'Italia, Fiumi, Tutte le parti del Mondo, ed altre infinite materie ; Opera Vtile Ad Oratori, Predicatori, Poeti, Pittori, Scvltori, Disegnatori, e ad o"
+      expect(record.title).to eq title
       expect(record.rights_statement).to eq 'https://creativecommons.org/licenses/by-sa/3.0/'
     end
   end

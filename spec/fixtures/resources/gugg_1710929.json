@@ -1,0 +1,156 @@
+{
+    "@context": {
+        "DCMIType": "http://purl.org/dc/terms/DCMIType",
+        "DDC": "http://purl.org/dc/terms/DDC",
+        "LCC": "http://purl.org/dc/terms/LCC",
+        "LCSH": "http://purl.org/dc/terms/LCSH",
+        "Organization": "http://schema.org/Organization",
+        "Person": "http://schema.org/Person",
+        "URI": "http://purl.org/dc/terms/URI",
+        "abstract": "http://purl.org/dc/terms/abstract",
+        "alternative": "http://purl.org/dc/terms/alternative",
+        "contributor": "http://purl.org/dc/elements/1.1/contributor",
+        "creator": "http://purl.org/dc/elements/1.1/creator",
+        "description": "http://purl.org/dc/elements/1.1/description",
+        "edition": "http://portal.getty.edu/terms/gri/edition",
+        "extent": "http://purl.org/dc/terms/extent",
+        "format": "http://purl.org/dc/elements/1.1/format",
+        "grpContributor": "http://portal.getty.edu/terms/gri/grpContributor",
+        "identifier": "http://purl.org/dc/elements/1.1/identifier",
+        "issued": "http://purl.org/dc/terms/issued",
+        "language": "http://purl.org/dc/elements/1.1/language",
+        "oclc": "http://portal.getty.edu/terms/gri/oclc",
+        "publisher": "http://purl.org/dc/elements/1.1/publisher",
+        "source": "http://purl.org/dc/elements/1.1/source",
+        "subject": "http://purl.org/dc/elements/1.1/subject",
+        "tableOfContents": "http://purl.org/dc/terms/tableOfContents",
+        "title": "http://purl.org/dc/elements/1.1/title",
+        "type": "http://purl.org/dc/elements/1.1/type"
+    },
+    "@id": "http://portal.getty.edu/books/gugg_1710929",
+    "abstract": [
+        {
+            "value": "Claes Oldenburg (b. 1929) first made his mark on the New York art scene in the early 1960s, and from that time he has been widely regarded as one of America's most influential and appealing artists. His subject matter is the everyday object - food, clothing, mechanical devices, and the like - which he reincarnates into witty and provocative sculptures ranging in scale from the intimate to the expansive."
+        }
+    ],
+    "alternative": [
+        {
+            "value": "Anthology"
+        }
+    ],
+    "contributor": [
+        {
+            "@type": "Person",
+            "label": "Celant, Germano."
+        },
+        {
+            "@type": "Organization",
+            "label": "National Gallery of Art (U.S.)"
+        },
+        {
+            "@type": "Organization",
+            "label": "Solomon R. Guggenheim Museum."
+        }
+    ],
+    "creator": [
+        {
+            "@type": "Person",
+            "label": "Oldenburg, Claes, 1929-"
+        }
+    ],
+    "description": [
+        {
+            "value": "Exhibition 577."
+        },
+        {
+            "value": "Catalog of an exhibition held at the National Gallery of Art, Washington, D.C., Feb. 12-May 7, 1995; Museum of Contemporary Art, Los Angeles, June 18-Sept. 3, 1995; Solomon R. Guggenheim Oct. 7, 1995-Jan. 21, 1996; Kunst- und Ausstellungshalle der Bundesrepublik Deutschland, Bonn, Feb. 15-May 12, 1996; Hayward Gallery, London, June 6-August 19, 1996."
+        },
+        {
+            "value": "Includes essays by Germano Celant and others."
+        },
+        {
+            "value": "Includes bibliographical references, filmography, and index."
+        }
+    ],
+    "edition": [
+        {
+            "value": "2nd ed."
+        }
+    ],
+    "extent": [
+        {
+            "value": "575 p."
+        }
+    ],
+    "grpContributor": [
+        {
+            "value": "Solomon R. Guggenheim Museum Library"
+        }
+    ],
+    "identifier": [
+        {
+            "@type": "URI",
+            "value": "http://portal.getty.edu/api/040v6x"
+        },
+        {
+            "@type": "oclc",
+            "value": "32291365"
+        }
+    ],
+    "issued": [
+        {
+            "value": "1995"
+        }
+    ],
+    "language": [
+        {
+            "value": "English"
+        }
+    ],
+    "publisher": [
+        {
+            "value": "New York, N.Y. : Guggenheim Museum :"
+        }
+    ],
+    "source": [
+        {
+            "value": "Getty Research Portal"
+        },
+        {
+            "value": "Solomon R. Guggenheim Museum Library"
+        }
+    ],
+    "subject": [
+        {
+            "@type": "LCSH",
+            "label": "Oldenburg, Claes, 1929-  -- Exhibitions."
+        },
+        {
+            "@type": "DDC",
+            "label": "709/.2/074"
+        },
+        {
+            "@type": "LCC",
+            "label": "N6537.O4 A4 1995b"
+        }
+    ],
+    "tableOfContents": [
+        {
+            "value": "Claes Oldenburg: A Biographical Overview / Marla Prather -- Claes Oldenburg and the Feeling of Things / Germano Celant -- \"Unbridled Monuments\"; or, How Claes Oldenburg Set Out to Change the World / Mark Rosenthal -- The Sculptor versus the Architect / Germano Celant -- From the Entropic Library / Dieter Koepplin -- Selected Exhibition History, with Large-Scale Projects and Sited Works -- Performance History and Selected Filmography."
+        }
+    ],
+    "title": [
+        {
+            "value": "Claes Oldenburg : an anthology."
+        }
+    ],
+    "type": [
+        {
+            "@type": "DCMIType",
+            "id": [
+                "http://vocab.getty.edu/page/aat/300026384"
+            ],
+            "label": "Text"
+        }
+    ]
+}

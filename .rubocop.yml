@@ -18,6 +18,7 @@ Metrics/AbcSize:
     - 'spec/support/login_helper.rb'
     - 'app/helpers/advanced_helper.rb'
     - 'spec/support/stub_blacklight_views.rb'
+    - 'app/services/getty_parser/getty_record.rb'
 
 Metrics/BlockLength:
   Exclude:
@@ -30,6 +31,7 @@ Metrics/BlockNesting:
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
+    - 'app/services/getty_parser/getty_record.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -45,6 +47,7 @@ Metrics/MethodLength:
     - 'app/helpers/advanced_helper.rb'
     - 'spec/support/**/*'
     - 'app/services/getty_parser/importer.rb'
+    - 'app/services/getty_parser/getty_record.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:

@@ -1,0 +1,149 @@
+{
+    "@context": {
+        "DCMIType": "http://purl.org/dc/terms/DCMIType",
+        "URI": "http://purl.org/dc/terms/URI",
+        "accessRights": "http://purl.org/dc/terms/accessRights",
+        "cicognaraNumber": "http://portal.getty.edu/terms/cicognara/cicognaraNumber",
+        "dclNumber": "http://portal.getty.edu/terms/cicognara/dclNumber",
+        "extent": "http://purl.org/dc/terms/extent",
+        "format": "http://purl.org/dc/elements/1.1/format",
+        "grpContributor": "http://portal.getty.edu/terms/gri/grpContributor",
+        "hasFormat": "http://purl.org/dc/terms/hasFormat",
+        "identifier": "http://purl.org/dc/elements/1.1/identifier",
+        "iiif": "http://portal.getty.edu/terms/cicognara/iiif",
+        "isPartOf": "http://purl.org/dc/terms/isPartOf",
+        "issued": "http://purl.org/dc/terms/issued",
+        "language": "http://purl.org/dc/elements/1.1/language",
+        "relation": "http://purl.org/dc/elements/1.1/relation",
+        "rights": "http://purl.org/dc/elements/1.1/rights",
+        "series": "http://portal.getty.edu/terms/gri/series",
+        "source": "http://purl.org/dc/elements/1.1/source",
+        "subject": "http://purl.org/dc/elements/1.1/subject",
+        "title": "http://purl.org/dc/elements/1.1/title",
+        "type": "http://purl.org/dc/elements/1.1/type",
+        "virtualCollection": "http://portal.getty.edu/terms/gri/virtualCollection"
+    },
+    "@id": "http://portal.getty.edu/books/uh_urn:nbn:de:bsz:16-diglit-32330",
+    "accessRights": [
+        {
+            "value": "https://creativecommons.org/licenses/by-sa/3.0/"
+        },
+        {
+            "value": "http://www.ub.uni-heidelberg.de/Englisch/helios/digi/nutzung/Welcome.html"
+        },
+        {
+            "value": "https://creativecommons.org/licenses/by-sa/3.0/de/"
+        },
+        {
+            "value": "http://www.ub.uni-heidelberg.de/helios/digi/nutzung/Welcome.html"
+        }
+    ],
+    "extent": [
+        {
+            "value": "[7], 436 S."
+        },
+        {
+            "value": "Ill."
+        }
+    ],
+    "grpContributor": [
+        {
+            "value": "Heidelberg University Library"
+        }
+    ],
+    "hasFormat": [
+        {
+            "@type": "iiif",
+            "value": "https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json"
+        }
+    ],
+    "identifier": [
+        {
+            "@type": "URI",
+            "value": "http://portal.getty.edu/api/tp3j85"
+        },
+        {
+            "@type": "cicognaraNumber",
+            "value": "4741"
+        },
+        {
+            "@type": "dclNumber",
+            "value": "srq"
+        }
+    ],
+    "isPartOf": [
+        {
+            "@type": "series",
+            "id": "http://gkg-digital.uni-hd.de",
+            "label": "Quellen zur Geschichte der Kunstgeschichte"
+        },
+        {
+            "@type": "series",
+            "id": "http://gkg-digital.uni-hd.de",
+            "label": "Sources for the history of art history"
+        },
+        {
+            "@type": "series",
+            "label": "Kunstwissenschaftliche Literatur"
+        },
+        {
+            "@type": "series",
+            "label": "Cicognara"
+        },
+        {
+            "@type": "series",
+            "label": "Druckschriften"
+        },
+        {
+            "@type": "series",
+            "label": "Heidelberger historische Best\u00e4nde \u2014 digital: Quellen zur Geschichte der Kunstgeschichte"
+        },
+        {
+            "@type": "virtualCollection",
+            "label": "Cicognara Collection"
+        }
+    ],
+    "issued": [
+        {
+            "value": "1613"
+        },
+        {
+            "value": "1613"
+        }
+    ],
+    "language": [
+        {
+            "value": "Italian"
+        }
+    ],
+    "source": [
+        {
+            "value": "Getty Research Portal"
+        },
+        {
+            "value": "Heidelberg University Library"
+        }
+    ],
+    "subject": [
+        {
+            "label": "Cicognara"
+        },
+        {
+            "label": "Parte Seconda"
+        },
+        {
+            "label": "Mitologia, Immagini Sacre, e Costumi Religiosi di diversi Popoli"
+        }
+    ],
+    "title": [
+        {
+            "value": "Iconologia Di Cesare Ripa Pervgino Cav.re De S.ti Mavritio, E Lazzaro: Nella Qvale Si Descrivono Diverse Imagini di Virt\u00f9, Vitij, Affetti, Passioni humane, Arti, Discipline, Humori, Elementi, Corpi Celesti, Prouincie d'Italia, Fiumi, Tutte le parti del Mondo, ed altre infinite materie ; Opera Vtile Ad Oratori, Predicatori, Poeti, Pittori, Scvltori, Disegnatori, e ad o"
+        }
+    ],
+    "type": [
+        {
+            "@type": "DCMIType",
+            "label": "Text"
+        }
+    ]
+}
