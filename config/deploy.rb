@@ -37,6 +37,8 @@ set :passenger_restart_with_touch, true
 # passenger-config restart-app which requires sudo access
 set :passenger_restart_with_touch, true
 
+before 'deploy:assets:precompile', 'deploy:whenever'
+
 namespace :deploy do
   desc 'Reindex the TEI entries and MARC records'
   task :reindex do
@@ -44,6 +46,15 @@ namespace :deploy do
       within release_path do
         execute :rake, 'tei:catalogo:update'
         execute :rake, 'tei:index'
+      end
+    end
+  end
+
+  desc 'Generate the crontab tasks using Whenever'
+  task :whenever do
+    on roles(:db) do
+      within release_path do
+        execute("cd #{release_path} && bundle exec whenever --update-crontab #{fetch :application} --set environment=#{fetch :rails_env, fetch(:stage, 'production')} --user deploy")
       end
     end
   end

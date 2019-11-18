@@ -8,6 +8,7 @@ AllCops:
     - 'db/**/*'
     - 'app/models/marc_indexer.rb' # TODO
     - 'vendor/**/*'
+    - 'tmp/**/*'
 
 Rails:
   Enabled: true
