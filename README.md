@@ -43,10 +43,10 @@ In a separate terminal: `bundle exec rspec`
 You may want to run solr separately from the rails server so it's easier to stop
 / start one or the other more quickly.
 
-`bundle exec rake cico:development` will run the development solr server
-`bin/rails s` will run the rails server
-`bundle exec rake tei:index` and
-`bundle exec rake tei:partials` will load the seed data
+- `bundle exec rake cico:development` will run the development solr server
+- `bin/rails s` will run the rails server
+- `bundle exec rake tei:index` and
+- `bundle exec rake tei:partials` will load the seed data
 
 ## Index/Generate Partials for full Catalogo:
 
