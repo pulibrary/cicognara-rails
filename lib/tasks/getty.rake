@@ -1,7 +1,6 @@
 namespace :getty do
   desc 'Import resources from Getty'
   task import: :environment do
-    Rails.logger = Logger.new(STDOUT)
     Rails.logger.info 'Beginning Import'
     GettyParser.new.import!
     Rails.logger.info 'Committing Solr'
