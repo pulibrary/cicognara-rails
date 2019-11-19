@@ -14,30 +14,43 @@ book collection.
 git clone https://github.com/pulibrary/cicognara-rails.git
 cd cicognara-rails
 bundle install
+bundle exec rake db:setup
 ```
 
 Remember you'll need to run `bundle install` on an ongoing basis as dependencies are updated.
 
 
-## Setup server
+## Run tests
 
-1. For test:
-   - `RAILS_ENV=test bundle exec rake db:setup`
-   - `bundle exec rake test_server`
-   - In a separate terminal: `bundle exec rspec`
-2. For development:
-   - `bundle exec rake db:setup`
-   - `bundle exec rake server`
-     - This will run Solr/Index Example Records/Launch a web server.
+`RAILS_ENV=test bundle exec rake db:setup`
+`bundle exec rake cico:test`
+In a separate terminal: `bundle exec rspec`
+
+## Development setup
+
+### Quick start
+   - `bundle exec rake cico:development:server`
+     - This will run Solr/Index Example Records, launch a rails server, and seed
+       some tei data.
    - Access at http://localhost:3000/
    - Log in once
    - Become an admin with `bundle exec rake set_admin_role`
      - You can also specify an email address to make a user an admin:
        `EMAIL=user@example.org bundle exec rake set_admin_role`
 
+### Individual services
+
+You may want to run solr separately from the rails server so it's easier to stop
+/ start one or the other more quickly.
+
+`bundle exec rake cico:development` will run the development solr server
+`bin/rails s` will run the rails server
+`bundle exec rake tei:index` and
+`bundle exec rake tei:partials` will load the seed data
+
 ## Index/Generate Partials for full Catalogo:
 
-1. Ensure Development server is running
+1. Ensure development solr is running
 2. `cd tmp`
 3. `git clone git@github.com:pulibrary/cicognara-catalogo.git`
 4. `cd ..`

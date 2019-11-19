@@ -9,39 +9,6 @@ require 'bundler/setup'
 require 'rubocop/rake_task'
 require 'solr_wrapper/rake_task'
 
-desc 'Run Solr and Blacklight for interactive development'
-task :server, [:rails_server_args] do |_t, args|
-  SolrWrapper.wrap do |solr|
-    solr.with_collection(name: 'cicognara', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'config'), persist: true) do
-      puts 'Indexing TEI...'
-      Rake::Task['tei:index'].invoke
-      puts 'Generating partials...'
-      Rake::Task['tei:partials'].invoke
-      begin
-        puts 'Starting Rails'
-        system "bundle exec rails s #{args[:rails_server_args]}"
-      rescue Interrupt
-        puts 'Shutting down...'
-      end
-    end
-  end
-end
-
-desc 'Run Solr and Blacklight for test suite'
-task :test_server do
-  ENV['RAILS_ENV'] ||= 'test'
-  SolrWrapper.wrap(config: 'config/solr_wrapper_test.yml') do |solr|
-    solr.with_collection(name: 'cicognara', dir: File.join(File.expand_path(File.dirname(__FILE__)), 'solr', 'config')) do
-      begin
-        puts 'Solr running at http://localhost:8888/solr/cicognara/, ^C to exit'
-        sleep
-      rescue Interrupt
-        puts 'Shutting down...'
-      end
-    end
-  end
-end
-
 desc 'Run RuboCop style checker'
 RuboCop::RakeTask.new(:rubocop) do |task|
   task.requires << 'rubocop-rspec'
