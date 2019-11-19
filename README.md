@@ -22,9 +22,9 @@ Remember you'll need to run `bundle install` on an ongoing basis as dependencies
 
 ## Run tests
 
-`RAILS_ENV=test bundle exec rake db:setup`
-`bundle exec rake cico:test`
-In a separate terminal: `bundle exec rspec`
+1. `RAILS_ENV=test bundle exec rake db:setup`
+2. `bundle exec rake cico:test`
+3. In a separate terminal: `bundle exec rspec`
 
 ## Development setup
 
