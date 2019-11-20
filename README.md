@@ -28,17 +28,13 @@ Remember you'll need to run `bundle install` on an ongoing basis as dependencies
 
 ## Development setup
 
-### Quick start
-   - `bundle exec rake cico:development:server`
-     - This will run Solr/Index Example Records, launch a rails server, and seed
-       some tei data.
-   - Access at http://localhost:3000/
-   - Log in once
-   - Become an admin with `bundle exec rake set_admin_role`
-     - You can also specify an email address to make a user an admin:
-       `EMAIL=user@example.org bundle exec rake set_admin_role`
+### Running development services together
 
-### Individual services
+To run Solr/Index Example Records, launch a rails server, and seed some tei data:
+
+`bundle exec rake cico:development:server`
+
+### Running development services individually
 
 You may want to run solr separately from the rails server so it's easier to stop
 / start one or the other more quickly.
@@ -47,6 +43,17 @@ You may want to run solr separately from the rails server so it's easier to stop
 - `bin/rails s` will run the rails server
 - `bundle exec rake tei:index` and
 - `bundle exec rake tei:partials` will load the seed data
+
+### Create a development admin user
+
+`bin/rails c`
+`> u = User.new`
+`> u.email = me@example.com`
+`> u.role = "admin"`
+
+Look at `app/controllers/application_controller.rb` to see how this user is
+always logged in on a development site. You can comment out the `current_user`
+method there if you want to see a non-admin view.
 
 ## Index/Generate Partials for full Catalogo:
 
@@ -76,3 +83,9 @@ After deploying, please invoke the following in order to reindex from the latest
 ```
 cap [STAGE] deploy:reindex
 ```
+
+### Create a production admin user
+
+If you need to make someone an admin on a production box, ensure they've logged in once, then run the `set_admin_role` task for their email address:
+
+`EMAIL=user@example.org bundle exec rake set_admin_role`
