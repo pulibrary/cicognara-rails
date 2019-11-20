@@ -45,6 +45,7 @@ RSpec.describe GettyParser do
       expect(book.reload.versions.length).to eq 1
       version = book.versions.first
       expect(version.contributing_library.label).to eq 'Heidelberg University Library'
+      expect(version.imported_metadata['tei_title_txt']).to start_with 'Iconologia Di Cesare Ripa'
     end
 
     it 'handles missing books' do

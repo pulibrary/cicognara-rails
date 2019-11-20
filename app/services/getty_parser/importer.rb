@@ -37,6 +37,7 @@ class GettyParser
       version.label = record.title
       version.based_on_original = false
       version.rights = record.rights_statement
+      version.imported_metadata = record.imported_metadata
     end
   end
 end
