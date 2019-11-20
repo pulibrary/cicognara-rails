@@ -10,7 +10,7 @@ RSpec.describe GettyParser::GettyRecord do
 
       it 'maps all the fields' do
         expect(record.imported_metadata).to include(
-          'tei_title_txt' => "Iconologia Di Cesare Ripa Pervgino Cav.re De S.ti Mavritio, E Lazzaro: Nella Qvale Si Descrivono Diverse Imagini di Virtù, Vitij, Affetti, Passioni humane, Arti, Discipline, Humori, Elementi, Corpi Celesti, Prouincie d'Italia, Fiumi, Tutte le parti del Mondo, ed altre infinite materie ; Opera Vtile Ad Oratori, Predicatori, Poeti, Pittori, Scvltori, Disegnatori, e ad o",
+          'title_display' => "Iconologia Di Cesare Ripa Pervgino Cav.re De S.ti Mavritio, E Lazzaro: Nella Qvale Si Descrivono Diverse Imagini di Virtù, Vitij, Affetti, Passioni humane, Arti, Discipline, Humori, Elementi, Corpi Celesti, Prouincie d'Italia, Fiumi, Tutte le parti del Mondo, ed altre infinite materie ; Opera Vtile Ad Oratori, Predicatori, Poeti, Pittori, Scvltori, Disegnatori, e ad o",
           'subject_t' => [
             'Cicognara',
             'Parte Seconda',
@@ -36,7 +36,7 @@ RSpec.describe GettyParser::GettyRecord do
 
       it 'maps all the fields' do
         expect(record.imported_metadata).to include(
-          'tei_title_txt' => 'Meditations on gout with a consideration of its cure through the use of wine / by George H. Ellwanger ... With a frontispiece & decoration by George Wharton Edwards.',
+          'title_display' => 'Meditations on gout with a consideration of its cure through the use of wine / by George H. Ellwanger ... With a frontispiece & decoration by George Wharton Edwards.',
           'author_display' => ['Ellwanger, George H. (George Herman), 1848-1906.'],
           'subject_t' => [
             'Gout.',
@@ -78,7 +78,7 @@ RSpec.describe GettyParser::GettyRecord do
 
       it 'maps all the fields' do
         expect(record.imported_metadata).to include(
-          'tei_title_txt' => 'Claes Oldenburg : an anthology.',
+          'title_display' => 'Claes Oldenburg : an anthology.',
           'title_addl_display' => ['Anthology'],
           'edition_display' => ['2nd ed.'],
           'contents_display' => ['Claes Oldenburg: A Biographical Overview / Marla Prather -- Claes Oldenburg and the Feeling of Things / Germano Celant -- "Unbridled Monuments"; or, How Claes Oldenburg Set Out to Change the World / Mark Rosenthal -- The Sculptor versus the Architect / Germano Celant -- From the Entropic Library / Dieter Koepplin -- Selected Exhibition History, with Large-Scale Projects and Sited Works -- Performance History and Selected Filmography.'],

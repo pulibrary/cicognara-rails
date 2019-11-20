@@ -137,7 +137,7 @@ class GettyParser
         'related_name_display' => contributors,
         'subject_t' => subjects,
         'tei_date_display' => issued,
-        'tei_title_txt' => title,
+        'title_display' => title,
         'title_addl_display' => alternatives,
         'title_series_display' => series
       ).compact
