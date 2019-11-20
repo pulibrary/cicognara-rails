@@ -1,5 +1,5 @@
 <% if book['format'] %>
-    <div class="row linked-books" id="<%= document_id %>">
+    <div class="row linked-books" id="<%= document_id %>"<%= " style=display:none" if hide %> >
       <h4><%= book['title_display'] %></h4>
       <%= render partial: 'show_default', locals: { document: book } %>
     </div>

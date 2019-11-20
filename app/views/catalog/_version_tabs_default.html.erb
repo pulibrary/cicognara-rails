@@ -1,31 +1,31 @@
 <% @linked_books.each do |book| %>
-    <%= render partial: 'linked_books_default', locals: { book: book, document_id: "book_#{book['id']}" } %>
-
     <% book_record = Book.where(digital_cico_number: book['id']).first %>
     <% if book_record %>
       <% versions = Version.where(book_id: book_record.id) %>
-      <% versions.each do |version| %>
-        <div class="version" id="version_<%= version.id %>">
-          <%= render partial: 'linked_books_default', locals: { book: version_show_document(version), document_id: "version_#{version.id}" } %>
-        </div>
+      <%= render partial: 'linked_books_default', locals: { book: book, document_id: "book_#{book['id']}", hide: versions.present? } %>
+
+      <% versions.each_with_index do |version, i| %>
+        <%= render partial: 'linked_books_default', locals: { book: version_show_document(version), document_id: "version_#{version.id}", hide: (i > 0) } %>
       <% end %>
 
       <%# Only show the admin-stuff box if it's going to have content %>
       <% if can?(:create, Version) || versions.select { |v| can?(:show, v) }.present? %>
-          <div class="row col-xs-offset-3 linked-books">
-	      <h4>For Administrative Staff</h4>
+          <div class="row col-xs-offset-3 admin-functions">
+            <h4>For Administrative Staff</h4>
               <ul>
-		  <% versions.each do |version| %>
-		      <% if can? :show, version %>
-			  <li><%= link_to version.label, book_version_path(book_record, version) %></li>
-		      <% end %>
-		  <% end %>
-	      </ul>
+                <% versions.each do |version| %>
+                  <% if can? :show, version %>
+                    <li><%= link_to version.label, book_version_path(book_record, version) %></li>
+                  <% end %>
+                <% end %>
+              </ul>
               <% if can? :create, Version %>
-		  <p><%= link_to 'Add a version', new_book_version_path(book_record) %></p>
+                <p><%= link_to 'Add a version', new_book_version_path(book_record) %></p>
               <% end %>
           </div>
       <% end %>
+    <% else %>
+      <%# If there's no book record, just show the metadata from the marc %>
+      <%= render partial: 'linked_books_default', locals: { book: book, document_id: "book_#{book['id']}", hide: false } %>
     <% end %>
-
 <% end %>

@@ -38,8 +38,8 @@ RSpec.describe 'catalog/_version_tabs_default.html.erb' do
   it 'shows a metadata box for each version' do
     assign(:linked_books, [book_solr_document])
     render
-    expect(rendered).to have_selector 'div#version_1'
-    expect(rendered).to have_selector 'div#version_2'
+    expect(rendered).to have_selector('div#version_1')
+    expect(rendered).to have_selector('div#version_2', visible: false)
     expect(rendered).to match(/First title/)
   end
 end
