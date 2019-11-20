@@ -12,18 +12,19 @@
 
       <%# Only show the admin-stuff box if it's going to have content %>
       <% if can?(:create, Version) || versions.select { |v| can?(:show, v) }.present? %>
-        <div class="row col-xs-offset-3 linked-books">
-          <ul>
-            <% versions.each do |version| %>
-              <% if can? :show, version %>
-                <li><%= link_to version.label, book_version_path(book_record, version) %></li>
+          <div class="row col-xs-offset-3 linked-books">
+	      <h4>For Administrative Staff</h4>
+              <ul>
+		  <% versions.each do |version| %>
+		      <% if can? :show, version %>
+			  <li><%= link_to version.label, book_version_path(book_record, version) %></li>
+		      <% end %>
+		  <% end %>
+	      </ul>
+              <% if can? :create, Version %>
+		  <p><%= link_to 'Add a version', new_book_version_path(book_record) %></p>
               <% end %>
-            <% end %>
-            <% if can? :create, Version %>
-              <li><%= link_to 'Add a version', new_book_version_path(book_record) %></li>
-            <% end %>
-          </ul>
-        </div>
+          </div>
       <% end %>
     <% end %>
 
