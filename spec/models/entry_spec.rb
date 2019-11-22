@@ -6,7 +6,7 @@ RSpec.describe Entry, type: :model do
     stub_manifest('http://example.org/4.json')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
     tei = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.tei.xml')
-    book = Book.find_or_create_by! digital_cico_number: 'cico:m87'
+    book = Book.find_or_create_by! digital_cico_number: 'dcl:m87'
     contrib = ContributingLibrary.find_or_create_by! label: 'Example Library', uri: 'http://example.org'
     Version.create! contributing_library: contrib, book: book,
                     label: 'version 2', based_on_original: false, owner_system_number: '1234',
@@ -49,7 +49,7 @@ RSpec.describe Entry, type: :model do
         end
 
         it 'has the right value' do
-          expect(subject.corresp[0]).to eq('cico:m87')
+          expect(subject.corresp[0]).to eq('dcl:m87')
         end
       end
 
@@ -61,7 +61,7 @@ RSpec.describe Entry, type: :model do
         end
 
         it 'has the right value' do
-          expect(subject.corresp[1]).to eq('cico:98g')
+          expect(subject.corresp[1]).to eq('dcl:98g')
         end
       end
     end
@@ -117,7 +117,7 @@ RSpec.describe Entry, type: :model do
         end
 
         it 'has the right value for the dclib_s field' do
-          expect(subject.to_solr[:dclib_s].first).to eq('cico:m87')
+          expect(subject.to_solr[:dclib_s].first).to eq('dcl:m87')
         end
 
         it 'indexes the item number for display' do

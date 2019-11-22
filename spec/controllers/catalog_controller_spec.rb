@@ -17,11 +17,11 @@ RSpec.describe CatalogController, type: :controller do
 
       linked_books = assigns(:linked_books)
       expect(linked_books.length).to eq 1
-      expect(linked_books.first['id']).to eq 'cico:m87'
+      expect(linked_books.first['id']).to eq 'dcl:m87'
     end
 
     it 'does not error when there are no linked books' do
-      get :show, params: { id: 'cico:m87' }
+      get :show, params: { id: 'dcl:m87' }
       expect(assigns(:linked_books)).to eq []
     end
 

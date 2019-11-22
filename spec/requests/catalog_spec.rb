@@ -12,7 +12,7 @@ RSpec.describe 'CatalogController config', type: :request do
   end
   describe 'document stored fields' do
     let(:doc) { JSON.parse(response.body)['response']['document'] }
-    before { get solr_document_path('cico:m87'), as: :json }
+    before { get solr_document_path('dcl:m87'), as: :json }
     it 'stores language_facet for display' do
       expect(doc['language_facet']).to eq(['Latin'])
     end
@@ -20,16 +20,16 @@ RSpec.describe 'CatalogController config', type: :request do
       expect(doc['published_t']).to eq(['Coloniae : Apud Theodorum Baumium ..., Anno 1584.'])
     end
     it 'stores dclib for display' do
-      expect(doc['dclib_display']).to eq(['cico:m87'])
+      expect(doc['dclib_display']).to eq(['dcl:m87'])
     end
     describe 'multiple dclibs in single marc record' do
       it 'multiple dclibs can display for a single marc record' do
-        get solr_document_path('cico:gzw'), as: :json
-        expect(doc['dclib_display']).to eq(['cico:gzw', 'cico:vzk'])
+        get solr_document_path('dcl:gzw'), as: :json
+        expect(doc['dclib_display']).to eq(['dcl:gzw', 'dcl:vzk'])
       end
       it 'document is retrieved on alt_id' do
-        get solr_document_path('cico:vzk'), as: :json
-        expect(doc['id']).to eq('cico:gzw')
+        get solr_document_path('dcl:vzk'), as: :json
+        expect(doc['id']).to eq('dcl:gzw')
       end
     end
   end
@@ -37,7 +37,7 @@ RSpec.describe 'CatalogController config', type: :request do
     it 'marc records do not appear in search results' do
       get search_catalog_path, as: :json
       docs = JSON.parse(response.body)['response']['docs']
-      expect(docs.select { |d| d['id'] == 'cico:m87' }.length).to eq 0
+      expect(docs.select { |d| d['id'] == 'dcl:m87' }.length).to eq 0
     end
   end
   describe 'show view' do
@@ -52,13 +52,13 @@ RSpec.describe 'CatalogController config', type: :request do
     end
     describe 'when solr doc from dc_lib is not found' do
       it 'dclib marc record is not indexed' do
-        get solr_document_path('cico:6gq')
+        get solr_document_path('dcl:6gq')
         expect(response).to have_http_status(404)
       end
       it 'catalog item refers to missing solr doc' do
         get solr_document_path('66'), as: :json
         dclib = JSON.parse(response.body)['response']['document']['dclib_s']
-        expect(dclib).to include('cico:6gq')
+        expect(dclib).to include('dcl:6gq')
       end
       it 'catalog item has alt_id field' do
         get solr_document_path('66'), as: :json
