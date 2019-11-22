@@ -108,7 +108,7 @@
 	      per illustrare le oscure epoche de’ bassi tempi.</note>
 	    </item>
 	    
-	    <item xml:id="c1d1e444" n="2" corresp="cico:m87">
+	    <item xml:id="c1d1e444" n="2" corresp="dcl:m87">
 	      <label>2.</label>
 	      <bibl>
 		<author>Agrippae Henrici Corn.</author>, <title>De
@@ -137,7 +137,7 @@
 	    
 	    
 	    <!-- Number 15 has additional title.  Same author? Bound with? -->
-	    <item xml:id="c1d1e818" n="15" corresp="cico:88n cico:98g">
+	    <item xml:id="c1d1e818" n="15" corresp="dcl:88n dcl:98g">
               <label>15.</label> 
               <bibl>
                 <author>BROTIO Duacensi Nicol.</author>,
@@ -151,7 +151,7 @@
 	      quelle del primo lib. e 21 sono quelle del secondo. Magnif. esemp.</note>
             </item>
 
-        <item xml:id="c1d1e1398" n="35" corresp="cico:gzw cico:vzk">
+        <item xml:id="c1d1e1398" n="35" corresp="dcl:gzw dcl:vzk">
           <label>35.</label>
           <bibl>
             <author>GHIBERTI (Lorenzo)</author>,
@@ -170,7 +170,7 @@
 	  <fw type="head"/>
 	  <head><seg type="main">Della Pittura Trattati</seg></head>
 	  <list type="catalog">
-	    <item xml:id="c1d1e2260" n="66" corresp="cico:6gq cico:vzk">
+	    <item xml:id="c1d1e2260" n="66" corresp="dcl:6gq dcl:vzk">
               <label>66.</label> 
               <bibl>
                 <author>ALBERTI Leon Battista</author>, 
@@ -255,7 +255,7 @@
           <div type="section" n="2.1">
             <head><seg type="main">Dell’antichità in genere</seg></head>
             <list type="catalog">
-              <item xml:id="c2d1e550" n="2475" corresp="cico:kc5">
+              <item xml:id="c2d1e550" n="2475" corresp="dcl:kc5">
                 <label>2475.</label> <bibl><author>ABREGE</author><title> des transactions philosophiques de la Societé Royale de Londres: redigé par Gibelin. Onzieme Partie:
                 antiquité, et beaux arts</title>, <pubPlace>Paris</pubPlace> <date>1789 e 1790</date>, vol. 2, en 8, fig.
 	      </bibl></item>
