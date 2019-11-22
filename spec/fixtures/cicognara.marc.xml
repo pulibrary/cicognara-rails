@@ -14,7 +14,7 @@
       <subfield code="2">cico</subfield>
     </datafield>
     <datafield ind1="7" ind2=" " tag="024">
-      <subfield code="a">cico:m87</subfield>
+      <subfield code="a">dcl:m87</subfield>
       <subfield code="2">dclib</subfield>
     </datafield>
     <datafield ind1=" " ind2=" " tag="035">
@@ -125,7 +125,7 @@
       <subfield code="2">cico</subfield>
     </datafield>
     <datafield ind1="7" ind2=" " tag="024">
-      <subfield code="a">cico:88n</subfield>
+      <subfield code="a">dcl:88n</subfield>
       <subfield code="2">dclib</subfield>
     </datafield>
     <datafield ind1=" " ind2=" " tag="035">
@@ -221,7 +221,7 @@
       <subfield code="2">cico</subfield>
     </datafield>
     <datafield ind1="7" ind2=" " tag="024">
-      <subfield code="a">cico:98g</subfield>
+      <subfield code="a">dcl:98g</subfield>
       <subfield code="2">dclib</subfield>
     </datafield>
     <datafield ind1=" " ind2=" " tag="035">
@@ -313,11 +313,11 @@
       <subfield code="2">cico</subfield>
     </datafield>
     <datafield ind1="7" ind2=" " tag="024">
-      <subfield code="a">cico:gzw</subfield>
+      <subfield code="a">dcl:gzw</subfield>
       <subfield code="2">dclib</subfield>
     </datafield>
     <datafield ind1="7" ind2=" " tag="024">
-      <subfield code="a">cico:vzk</subfield>
+      <subfield code="a">dcl:vzk</subfield>
       <subfield code="2">dclib</subfield>
     </datafield>
     <datafield ind1=" " ind2=" " tag="035">
@@ -528,6 +528,138 @@
       <subfield code="b">FICH</subfield>
       <subfield code="h">MFC 49</subfield>
       <subfield code="i">no. 4716</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>02042cam a2200397 a 4500</leader>
+    <controlfield tag="001">8540468</controlfield>
+    <controlfield tag="005">20160422003125.0</controlfield>
+    <controlfield tag="007">he|amu|||bacu</controlfield>
+    <controlfield tag="008">000731m17891790fr a    b     000 0 fre d</controlfield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="9">0189-69860</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="024">
+      <subfield code="a">2475</subfield>
+      <subfield code="2">cico</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="024">
+      <subfield code="a">dcl:kc5</subfield>
+      <subfield code="2">dclib</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="9">DCNA00-B5649</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">163196</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DNGA</subfield>
+      <subfield code="c">DNGA</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="041">
+      <subfield code="a">fre</subfield>
+      <subfield code="h">eng</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="099">
+      <subfield code="a">49 no. 2475</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="110">
+      <subfield code="a">Royal Society (Great Britain)</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/n79127772</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="240">
+      <subfield code="a">Philosophical transactions of the Royal Society of London.</subfield>
+      <subfield code="f">1790.</subfield>
+      <subfield code="l">French</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Abre&#x301;ge&#x301; des Transactions philosophiques de la Socie&#x301;te&#x301; royale de Londres</subfield>
+      <subfield code="h">[microform] /</subfield>
+      <subfield code="c">ouvrage traduit de l'anglois, &amp; re&#x301;dige&#x301; par M. Gibelin ...</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="246">
+      <subfield code="a">Antiquite&#x301;s et beuax-arts</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">A Paris :</subfield>
+      <subfield code="b">Chez Buisson ...,</subfield>
+      <subfield code="c">1789-90.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">2 v. :</subfield>
+      <subfield code="b">ill.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Vol. 2, "onzie&#x301;me et douzie&#x301;me parties," has sub-title: Antiquite&#x301;s, beaux-arts, inventions et machines / par M. Millin de Grandmaison.</subfield>
+    </datafield>
+    <datafield ind1="4" ind2=" " tag="510">
+      <subfield code="a">Cicognara,</subfield>
+      <subfield code="c">2475</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="533">
+      <subfield code="a">Microfiche.</subfield>
+      <subfield code="b">Cambridge, England :</subfield>
+      <subfield code="c">Chadwyck-Healey,</subfield>
+      <subfield code="d">1989-</subfield>
+      <subfield code="e">15 microfiche : positive.</subfield>
+      <subfield code="f">(Cicognara library)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Antiquities</subfield>
+      <subfield code="v">Early works to 1800.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Art</subfield>
+      <subfield code="v">Early works to 1800.</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh2007101417</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Inventions</subfield>
+      <subfield code="v">Early works to 1800.</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh2008124079</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Machinery</subfield>
+      <subfield code="v">Early works to 1800.</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh2010100242</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Science</subfield>
+      <subfield code="v">Early works to 1800.</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/subjects/sh85118565</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Gibelin, Jacques,</subfield>
+      <subfield code="d">1744-1828.</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/n86869386</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Millin, A. L.</subfield>
+      <subfield code="q">(Aubin Louis),</subfield>
+      <subfield code="d">1759-1818.</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/n84229399</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Fondo Cicognara (Biblioteca apostolica vaticana)</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/nr94016468</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="830">
+      <subfield code="a">Cicognara library.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">jwl</subfield>
+      <subfield code="b">z</subfield>
+      <subfield code="6">a</subfield>
+      <subfield code="7">m</subfield>
+      <subfield code="d">w</subfield>
+      <subfield code="f">0</subfield>
+      <subfield code="e">20140707</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="852">
+      <subfield code="0">8286033</subfield>
+      <subfield code="b">safi</subfield>
+      <subfield code="h">MICROFICHE 5</subfield>
     </datafield>
   </record>
 </collection>

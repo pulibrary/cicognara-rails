@@ -20,7 +20,7 @@ RSpec.describe 'entry views', type: :feature do
 
   it 'displays metadata' do
     visit '/catalog/15'
-    expect(page).to have_selector 'dd.blacklight-dclib_display', text: 'cico:88n'
+    expect(page).to have_selector 'dd.blacklight-dclib_display', text: 'dcl:88n'
     expect(page).to have_selector 'dd.blacklight-cico_id_display', text: '15-1'
     expect(page).to have_selector 'dd.blacklight-language_display', text: 'Latin'
     expect(page).to have_selector 'dd.blacklight-description_display', text: '2 v. : ill.'

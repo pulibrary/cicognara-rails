@@ -43,6 +43,7 @@ You may want to run solr separately from the rails server so it's easier to stop
 - `bin/rails s` will run the rails server
 - `bundle exec rake tei:index` and
 - `bundle exec rake tei:partials` will load the seed data
+- `bundle exec rake getty:seed` will load seed getty manifests
 
 ### Create a development admin user
 
