@@ -14,7 +14,8 @@ namespace :tei do
 
   desc 'delete solr index'
   task clean_solr: :environment do
-    solr.delete_by_query('*:*')
+    Blacklight.default_index.connection.delete_by_query('*:*')
+    Blacklight.default_index.connection.commit
   end
 
   desc 'index solr documents from path to document at TEIPATH and MARCPATH.'
