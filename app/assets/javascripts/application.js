@@ -31,7 +31,7 @@ $(document).ready(function() {
     $("*[data-manifest-uri]").parent().removeClass("active")
     $(this).parent().addClass("active")
     document.location.hash = ''
-    $("#uv-frame").attr("src", "https://figgy.princeton.edu/viewer?reload="+Date.now()+"#?manifest="+encodeURIComponent($(".uv").attr("data-uri")))
+    $("#uv-frame").attr("src", "https://figgy.princeton.edu/uv/uv?reload="+Date.now()+"#?manifest="+encodeURIComponent($(".uv").attr("data-uri")))
   })
   /**
    * Integration for the chosen jQuery plugin
