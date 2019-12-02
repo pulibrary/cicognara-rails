@@ -29,7 +29,7 @@ class GettyParser
       version.book = book
       version.contributing_library = contributing_library
       version.save!
-      Rails.logger.info "Imported #{record.primary_identifier}"
+      Rails.logger.info "Imported #{record.primary_identifier} as Version #{version.id}"
     end
 
     def populate_version(version, record)
@@ -37,6 +37,7 @@ class GettyParser
       version.label = record.title
       version.based_on_original = false
       version.rights = record.rights_statement
+      version.imported_metadata = record.imported_metadata
     end
   end
 end

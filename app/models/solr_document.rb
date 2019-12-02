@@ -37,4 +37,8 @@ class SolrDocument
   def book
     @book ||= Book.find(fetch(:book_id_s, []).first)
   end
+
+  def books
+    @books ||= Book.find(fetch(:book_id_s, []))
+  end
 end
