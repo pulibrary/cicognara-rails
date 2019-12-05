@@ -42,4 +42,7 @@
       }
     }
   }
+  .admin-functions {
+    @extend .linked-books;
+  }
 }

@@ -48,7 +48,7 @@ class CatalogController < ApplicationController
     config.index.title_field = 'title_display'
     config.index.display_type_field = 'format'
     config.index.partials = [:item_partial, :index_links]
-    config.show.partials = [:show_header, :show_browse, :linked_books, :comments]
+    config.show.partials = [:show_header, :show_browse, :version_tabs, :comments]
     config.show.partials.insert(1, :universal_viewer)
     config.show.document_actions.replace({})
 
@@ -222,6 +222,7 @@ class CatalogController < ApplicationController
 
   def show
     super
+    # Make an Array of SolrDocuments
     @linked_books = @document.fetch('dclib_s', []).map do |dcn|
       begin
         fetch_one(dcn, {}).last
