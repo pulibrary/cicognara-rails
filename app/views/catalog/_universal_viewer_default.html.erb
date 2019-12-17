@@ -4,7 +4,7 @@
       <ul class="nav nav-pills nav-stacked" id="manifest-tabs">
         <% document.books.to_a.each_with_index do |book, b_index| %>
           <% book.versions.to_a.each_with_index do |version, v_index| %>
-            <li <%= 'class="active"'.html_safe if (b_index == 0 && v_index ==0) %>>
+            <li data-version-id="version_<%= version.id %>" <%= 'class="active"'.html_safe if (b_index == 0 && v_index ==0) %>>
               <a href="#" data-manifest-uri='<%= version.manifest %>'>
                 <%= version.based_on_original? ? 'Microfiche' : 'Matching Copy' %> (<%= book.digital_cico_number %>)<br/>
                 <span class="contrib"><%= version.contributing_library.label %></span>

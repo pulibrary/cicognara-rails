@@ -30,7 +30,7 @@ $(document).ready(function() {
     $(".uv").attr("data-uri", $(this).attr("data-manifest-uri"))
     $("*[data-manifest-uri]").parent().removeClass("active")
     $(this).parent().addClass("active")
-    version_id = $(this).attr("data-version-id")
+    version_id = $(this).parent().attr("data-version-id")
     $(".linked-books").hide()
     $("#" + version_id).show()
     document.location.hash = ''
