@@ -6,7 +6,7 @@ RSpec.describe 'catalog/_universal_viewer_default.html.erb' do
   let(:book) { instance_double(Book, versions: [version], digital_cico_number: 'dcl:xyz') }
   let(:book2) { instance_double(Book, versions: [], digital_cico_number: 'dcl:abc') }
   let(:contributing_library) { instance_double(ContributingLibrary, label: 'Princeton University Library') }
-  let(:version) { instance_double(Version, manifest: manifests.first, label: 'Best Copy', contributing_library: contributing_library, based_on_original?: false) }
+  let(:version) { instance_double(Version, manifest: manifests.first, label: 'Best Copy', contributing_library: contributing_library, based_on_original?: false, id: '12345') }
 
   context 'when the document has no manifests' do
     before do
