@@ -8,5 +8,6 @@ RSpec.describe SolrDocument, type: :model do
 
   it 'looks up books by id' do
     expect(described_class.new(solr_doc).book).to eq(book)
+    expect(described_class.new(solr_doc).books.first).to eq(book)
   end
 end
