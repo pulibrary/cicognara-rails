@@ -1,0 +1,12 @@
+<div class="partner-desc">
+  <%= link_to partner["link"] do %>
+    <div class="logo">
+      <%= image_tag partner["logo"], alt: partner["label"] %>
+    </div>
+    <div class="title">
+      <h2 class="<%= "focus" if partner["focus"] %>">
+        <%= partner["label"] %>
+      </h2>
+    </div>
+  <% end %>
+</div>

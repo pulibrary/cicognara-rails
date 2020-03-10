@@ -1,0 +1,40 @@
+---
+founders:
+  - label: Biblioteca Apostolica Vaticana
+    link: https://www.vaticanlibrary.va/home.php
+    logo: vatican.png
+    focus: true
+  - label: Frick Art Reference Library
+    link: https://www.frick.org/research/library
+    logo: frick.png
+  - label: Getty Research Institute
+    link: https://www.getty.edu/research/
+    logo: getty.png
+  - label: Harvard University Library
+    link: https://library.harvard.edu/
+    logo: harvard.png
+  - label: Heidelberg University Library
+    link: https://www.ub.uni&#45;heidelberg.de/
+    logo: heidelberg.png
+  - label: National Gallery of Art Library
+    link: https://library.nga.gov/
+    logo: national.png
+  - label: Princeton University Library
+    link: https://library.princeton.edu
+    logo: princeton.png
+contributors:
+  - label: American Academy in Rome
+    link: https://www.aarome.org/
+    logo: american_academy_rome.png
+  - logo: columbia.png
+    label: Columbia University Library
+    link: https://library.columbia.edu/
+  - logo: the_met.png
+    label: Metropolitan Museum of Art, New York
+    link: https://www.metmuseum.org/ %>
+  - logo: national_gallery_london.png
+    label: National Gallery, London, National Art Library
+    link: https://www.nationalgallery.org.uk/research/research-centre/library
+  - logo: illinois.png
+    label: University of Illinois at Urbana-Champaign Library
+    link: https://www.library.illinois.edu/

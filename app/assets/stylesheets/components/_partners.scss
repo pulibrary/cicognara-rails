@@ -8,4 +8,30 @@
     font-weight: normal;
     text-align: left;
   }
+  .partner-desc {
+    margin-bottom: 20px;
+    a {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-items: left;
+    }
+    .logo {
+      min-width: 120px;
+      img {
+        margin: auto;
+      }
+    }
+    .title {
+      font-size: medium;
+      font-weight: normal;
+      h2 {
+        margin: 0;
+        &.focus {
+          font-size: large;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
