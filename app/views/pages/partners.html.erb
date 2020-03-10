@@ -1,38 +1,39 @@
 <section class="partners-page" id="partners-page">
   <div class="wrap">
-    <h1>Charter Partners</h1>
-    <p>
-      The charter partners in The Digital Cicognara Library initiative include:
-      <%= link_to "Biblioteca Apostolica Vaticana", "https://www.vaticanlibrary.va/home.php" %>,
-      <%= link_to "Columbia University Library", "http://library.columbia.edu/" %>,
-      <%= link_to "Frick Art Reference Library", "http://www.frick.org/research/library" %>,
-      <%= link_to "Getty Research Institute", "https://www.getty.edu/research/" %>,
-      <%= link_to "Harvard University Library", "http://library.harvard.edu/" %>,
-      <%= link_to "Heidelberg University Library", "http://www.ub.uni-heidelberg.de/" %>,
-      <%= link_to "National Gallery of Art Library", "https://library.nga.gov/" %>,
-      <%= link_to "Princeton University Library", "http://library.princeton.edu/" %>,
-      <%= link_to "and University of Illinois at Urbana-Champaign Library", "http://www.library.illinois.edu/" %>.
-      The current partners, excluding the Vatican, collectively hold approximately
-      fifty percent of the corpus of more than five thousand titles and are actively
-      seeking new partners to complete the collection of matching editions.
-    </p>
+    <h1>Founding Partners</h1>
+    <p>Thanks to the generous support of the Samuel H. Kress Foundation, the founding partners have
+       provided essential administrative and project management assistance since 2015.</p>
+    <table>
+      <tr><td><%= link_to image_tag('vatican.png', alt: 'Biblioteca Apostolica Vaticana', title: 'Biblioteca Apostolica Vaticana'), "https://www.vaticanlibrary.va/home.php" %></td>
+          <td><h2><%= link_to "Biblioteca Apostolica Vaticana", "https://www.vaticanlibrary.va/home.php" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('frick.png', alt: 'Frick Art Reference Library', title: 'Frick Art Reference Library'), "https://www.frick.org/research/library" %></td>
+          <td><h2><%= link_to "Frick Art Reference Library", "https://www.frick.org/research/library" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('getty.png', alt: 'Getty Research Institute', title: 'Getty Research Institute'), "https://www.getty.edu/research/" %></td>
+          <td><h2><%= link_to "Getty Research Institute", "https://www.getty.edu/research/" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('harvard.png', alt: 'Harvard University Library', title: 'Harvard University Library'), "https://library.harvard.edu/" %></td>
+          <td><h2><%= link_to "Harvard University Library", "https://library.harvard.edu/" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('heidelberg.png', alt: 'Heidelberg University Library', title: 'Heidelberg University Library'), "https://www.ub.uni-heidelberg.de/" %></td>
+          <td><h2><%= link_to "Heidelberg University Library", "https://www.ub.uni-heidelberg.de/" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('national.png', alt: 'National Gallery of Art Library', title: 'National Gallery of Art Library'), "https://library.nga.gov/" %></td>
+          <td><h2><%= link_to "National Gallery of Art Library", "https://library.nga.gov/" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('princeton.png', alt: 'Princeton University Library', title: 'Princeton University Library'), "https://library.princeton.edu/" %></td>
+          <td><h2><%= link_to "Princeton University Library", "https://library.princeton.edu/" %></h2></td></tr>
+    </table>
+
+    <h1>Contributing Partners</h1>
+    <p>Read more on how to become a contributing partner <%= link_to "here", static_page_path('contributor') %>.
+
+    <table>
+      <tr><td><%= link_to image_tag('american_academy_rome.png', alt: 'American Academy in Rome', title: 'American Academy in Rome'), "https://www.aarome.org/" %></td>
+          <td><h2><%= link_to "American Academy in Rome", "https://www.aarome.org/" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('columbia.png', alt: 'Columbia University Library', title: 'Columbia University Library'), "https://library.columbia.edu/" %></td>
+          <td><h2><%= link_to "Columbia University Library", "https://library.columbia.edu/" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('the_met.png', alt: 'Metropolitan Museum of Art, New York', title: 'Metropolitan Museum of Art, New York'), "https://www.metmuseum.org/" %></td>
+          <td><h2><%= link_to "Metropolitan Museum of Art, New York", "https://www.metmuseum.org/" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('national_gallery_london.png', alt: 'National Gallery, London', title: 'National Gallery, London'), "https://www.nationalgallery.org.uk/research/research-centre/library" %></td>
+          <td><h2><%= link_to "National Gallery, London, National Art Library", "https://www.nationalgallery.org.uk/research/research-centre/library" %></h2></td></tr>
+      <tr><td><%= link_to image_tag('illinois.png', alt: 'University of Illinois at Urbana-Champaign Library', title: 'University of Illinois at Urbana-Champaign Library'), "https://www.library.illinois.edu/" %></td>
+          <td><h2><%= link_to "University of Illinois at Urbana-Champaign Library", "https://www.library.illinois.edu/" %></h2></td></tr>
+    </table>
   </div>
-  <div class="community-entry">
-    <%= link_to "http://portal.getty.edu/" do %>
-      <%= image_tag("getty_research_portal.png", class: "community-logo") %>
-    <% end %>
-    <p>The <a href="http://portal.getty.edu/">Getty Research Portal</a>, an initiative of the Getty Research
-    Institute, is a free online search platform providing access to an extensive collection of digitized art
-    history texts from a range of art libraries and museums around the world. Begun in 2012, in
-    collaboration with eight international institutions, the Portal is a multilingual and multicultural
-    union catalog that affords art historians and other researchers the ability to search and download
-    complete digital copies of publications devoted to art, architecture, material culture, and related
-    fields. With more than thirty contributing institutions and access to more than 140,000 volumes at
-    present, the project continues to expand its virtual holdings. The Portal also facilitates participation
-    in various database, bibliographic, and digital art history projects such the Digital Cicognara Library.
-    The volumes of the Cicognara Library can be seen within the larger art historical context of the
-    Portal’s expanding collection, which has grown to include not only the foundational literature of
-    western art history but more recently to assemble digitized art historical texts from contributors in
-    Asia, Eastern Europe and Latin America as well.</p>
-</div>
 </section>

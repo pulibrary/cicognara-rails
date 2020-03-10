@@ -1,19 +1,21 @@
 <section class="contributor" id="contributor">
   <div class="wrap">
-    <h1>Become a Contributor</h1>
-    <p>Contributions to the Digital Cicognara Library project website are enabled by the
+    <h1>Become a Contributing Partner</h1>
+    <p>Contributions to the Digital Cicognara Library project are made through the
        <%= link_to "Getty Research Portal", "http://portal.getty.edu" %>. This workflow allows
-       the project to build upon already existing ones and also permits all volumes from the
-       Cicognara Library to be searched within the larger art historical context as offered by
-       the Portal. The digital facsimiles are displayed via
+       the project to complement related Portal resources by presenting volumes from the Cicognara
+       Library within the larger art historical context. The digital facsimiles are displayed via
        <%= link_to "International Image Interoperability Framework (IIIF)", "https://iiif.io" %>
        on the Digital Cicognara Library website.
+    </p>
+    <p>To become a contributing partner, an institution must submit at least one digital surrogate
+       to the Getty Research Portal within one year of the initial committment.
     </p>
     <p>
       <ul class="normal-size-text">
         <li>
-          For detailed information on how to contribute to the Digital Cicognara Library
-          see the <%= link_to "contributor FAQs", static_page_path('faq') %> page or contact
+          For detailed information on how to contribute to the Digital Cicognara Library see the
+          <%= link_to "contributor FAQs", static_page_path('faq') %> page or contact
           <%= mail_to "cicognara@googlegroups.com" %> with questions.
         </li>
         <li>
@@ -21,6 +23,16 @@
           for contribution specifications.
         </li>
       </ul>
+    </p>
+    <%= link_to "http://portal.getty.edu/" do %>
+      <%= image_tag("getty_research_portal.png", class: "community-logo") %>
+    <% end %>
+    <p>An initiative of the Getty Research Institute, the Getty Research Portal is a free online
+       search platform providing access to an extensive collection of digitized art history texts
+       from a range of art libraries and museums around the world. With thirty-seven contributing
+       institutions and access to more than 160,000 volumes, the Portal also facilitates
+       participation in various database, bibliographic, and digital art history projects including
+       the Digital Cicognara Library.
     </p>
   </div>
 </section>
