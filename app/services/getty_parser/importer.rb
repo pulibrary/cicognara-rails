@@ -9,9 +9,9 @@ class GettyParser
     # create Versions from them, and then reindex all existing Books + Entries
     # at the end so there's no time where there's no versions in the interface.
     def import!
-      records.each do |record|
-        Version.transaction do
-          Version.delete_all
+      Version.transaction do
+        Version.delete_all
+        records.each do |record|
           begin
             import_record(record)
           rescue ActiveRecord::RecordNotFound
