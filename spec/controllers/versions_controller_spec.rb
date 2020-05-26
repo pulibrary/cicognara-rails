@@ -65,15 +65,6 @@ RSpec.describe VersionsController, type: :controller do
         post :create, params: { book_id: book.id, version: valid_attributes }
         expect(response).to redirect_to(book_version_url(book, Version.last))
       end
-
-      it 'updates the solr index for its book and its entries' do
-        post :create, params: { book_id: book, version: valid_attributes }
-
-        doc = solr.get('select', params: { qt: 'document', q: "id:#{RSolr.solr_escape(book.digital_cico_number)} OR id:#{RSolr.solr_escape(entry.n_value)}", :"facet.field" => 'contributing_library_facet', :facet => 'on' })
-        facets = Hash[doc['facet_counts']['facet_fields']['contributing_library_facet'].each_slice(2).to_a]
-
-        expect(facets['Library 1']).to eq 2
-      end
     end
 
     context 'with invalid params' do

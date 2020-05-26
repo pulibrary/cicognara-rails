@@ -17,6 +17,14 @@ class GettyParser
           end
         end
       end
+      reindex!
+    end
+
+    def reindex!
+      entry_indexer = Cicognara::BulkEntryIndexer.new(Entry.all)
+      book_documents = Book.all.map(&:to_solr)
+      solr.add(entry_indexer.entry_documents + book_documents)
+      solr.commit
     end
 
     def import_record(record)
@@ -38,6 +46,10 @@ class GettyParser
       version.based_on_original = false
       version.rights = record.rights_statement
       version.imported_metadata = record.imported_metadata
+    end
+
+    def solr
+      Blacklight.default_index.connection
     end
   end
 end

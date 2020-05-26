@@ -46,6 +46,9 @@ RSpec.describe GettyParser do
       version = book.versions.first
       expect(version.contributing_library.label).to eq 'Heidelberg University Library'
       expect(version.imported_metadata['title_display']).to start_with 'Iconologia Di Cesare Ripa'
+
+      doc = Blacklight.default_index.connection.get('select', params: { qt: 'document', q: "id:#{RSolr.solr_escape(book.digital_cico_number)}" })['response']['docs'][0]
+      expect(doc['manifests_s']).to eq ['https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json']
     end
 
     it 'handles missing books' do
