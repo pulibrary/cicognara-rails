@@ -15,7 +15,5 @@ production: &deploy
   database: <%= ENV["CICOGNARA_DB"] %>
 
 staging:
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
-  database: db/staging.sqlite3
+  <<: *default
+  database: <%= ENV["CICOGNARA_DB"] %>
