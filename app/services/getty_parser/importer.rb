@@ -8,6 +8,7 @@ class GettyParser
     def import!
       records.each do |record|
         Version.transaction do
+          Version.delete_all
           begin
             import_record(record)
           rescue ActiveRecord::RecordNotFound
