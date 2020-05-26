@@ -5,6 +5,9 @@ class GettyParser
       @records = records
     end
 
+    # Delete all old versions in a transaction, process all the getty records to
+    # create Versions from them, and then reindex all existing Books + Entries
+    # at the end so there's no time where there's no versions in the interface.
     def import!
       records.each do |record|
         Version.transaction do
