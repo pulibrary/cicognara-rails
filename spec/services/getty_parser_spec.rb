@@ -46,10 +46,34 @@ RSpec.describe GettyParser do
       version = book.versions.first
       expect(version.contributing_library.label).to eq 'Heidelberg University Library'
       expect(version.imported_metadata['title_display']).to start_with 'Iconologia Di Cesare Ripa'
+
+      doc = Blacklight.default_index.connection.get('select', params: { qt: 'document', q: "id:#{RSolr.solr_escape(book.digital_cico_number)}" })['response']['docs'][0]
+      expect(doc['manifests_s']).to eq ['https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json']
     end
 
     it 'handles missing books' do
       expect { described_class.new.import! }.not_to raise_error
+    end
+
+    it 'gets rid of Versions now missing' do
+      stub_manifest('https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json', manifest_file: '4.json')
+      stub_manifest('http://example.org/4.json')
+      book = Book.create!(digital_cico_number: 'dcl:srq')
+      contrib = ContributingLibrary.find_or_create_by! label: 'Example Library', uri: 'http://example.org'
+      Version.create! contributing_library: contrib, book: book,
+                      label: 'version 2', based_on_original: false, owner_system_number: '1234',
+                      rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+                      manifest: 'http://example.org/4.json'
+
+      described_class.new.import!
+
+      expect(book.reload.versions.length).to eq 1
+      version = book.versions.first
+      expect(version.contributing_library.label).to eq 'Heidelberg University Library'
+      expect(version.imported_metadata['title_display']).to start_with 'Iconologia Di Cesare Ripa'
+
+      doc = Blacklight.default_index.connection.get('select', params: { qt: 'document', q: "id:#{RSolr.solr_escape(book.digital_cico_number)}" })['response']['docs'][0]
+      expect(doc['manifests_s']).to eq ['https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json']
     end
 
     context 'with an invalid source record' do

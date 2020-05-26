@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
-  resources :books, only: [:index, :show] do
-    resources :versions, except: :index
-  end
+  resources :books, only: [:index, :show]
   resources :contributing_libraries
   require 'sidekiq/web'
   if Rails.env.development?

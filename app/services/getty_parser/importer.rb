@@ -5,9 +5,13 @@ class GettyParser
       @records = records
     end
 
+    # Delete all old versions in a transaction, process all the getty records to
+    # create Versions from them, and then reindex all existing Books + Entries
+    # at the end so there's no time where there's no versions in the interface.
     def import!
       records.each do |record|
         Version.transaction do
+          Version.delete_all
           begin
             import_record(record)
           rescue ActiveRecord::RecordNotFound
@@ -17,6 +21,14 @@ class GettyParser
           end
         end
       end
+      reindex!
+    end
+
+    def reindex!
+      entry_indexer = Cicognara::BulkEntryIndexer.new(Entry.all)
+      book_documents = Book.all.map(&:to_solr)
+      solr.add(entry_indexer.entry_documents + book_documents)
+      solr.commit
     end
 
     def import_record(record)
@@ -38,6 +50,10 @@ class GettyParser
       version.based_on_original = false
       version.rights = record.rights_statement
       version.imported_metadata = record.imported_metadata
+    end
+
+    def solr
+      Blacklight.default_index.connection
     end
   end
 end
