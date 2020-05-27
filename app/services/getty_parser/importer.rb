@@ -25,9 +25,9 @@ class GettyParser
     end
 
     def reindex!
-      entry_indexer = Cicognara::BulkEntryIndexer.new(Entry.all)
-      book_documents = Book.includes(:versions, :contributing_libraries).all.map(&:to_solr)
-      solr.add(entry_indexer.entry_documents + book_documents)
+      version_entries = Version.includes(book: [{ entries: :books }, :contributing_libraries, :versions]).map(&:book).flat_map(&:entries)
+      bulk_indexer = Cicognara::BulkEntryIndexer.new(version_entries)
+      solr.add(bulk_indexer.book_documents + bulk_indexer.entry_documents)
       solr.commit
     end
 
