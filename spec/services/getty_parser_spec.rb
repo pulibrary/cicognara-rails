@@ -39,6 +39,7 @@ RSpec.describe GettyParser do
     it 'imports a version for a matching book with a DCL number' do
       stub_manifest('https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json', manifest_file: '4.json')
       book = Book.create!(digital_cico_number: 'dcl:srq')
+      Entry.create!(books: [book])
 
       described_class.new.import!
 
@@ -59,6 +60,7 @@ RSpec.describe GettyParser do
       stub_manifest('https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json', manifest_file: '4.json')
       stub_manifest('http://example.org/4.json')
       book = Book.create!(digital_cico_number: 'dcl:srq')
+      Entry.create!(books: [book])
       contrib = ContributingLibrary.find_or_create_by! label: 'Example Library', uri: 'http://example.org'
       Version.create! contributing_library: contrib, book: book,
                       label: 'version 2', based_on_original: false, owner_system_number: '1234',
@@ -82,7 +84,8 @@ RSpec.describe GettyParser do
       before do
         allow(Version).to receive(:find_or_initialize_by).and_return(version)
         allow(version).to receive(:save!).and_raise(ActiveRecord::RecordInvalid)
-        Book.create!(digital_cico_number: 'dcl:srq')
+        book = Book.create!(digital_cico_number: 'dcl:srq')
+        Entry.create!(books: [book])
       end
       it 'handles invalid version' do
         stub_manifest('https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json', manifest_file: '4.json')
