@@ -59,4 +59,23 @@ RSpec.describe Version, type: :model do
     new_attr = attr.except(:rights).merge(rights: 'All Rights Reserved')
     expect { described_class.create! new_attr }.not_to raise_error
   end
+
+  describe '#manifest_url' do
+    context "when there's only one owner system number with that version" do
+      it 'returns the stored manifest' do
+        subject.save!
+
+        expect(subject.decorate.manifest_url).to eq 'http://example.org/1.json'
+      end
+    end
+    context "when there's another owner system number with that version" do
+      it 'returns a collection manifest URL of all combined versions' do
+        subject.save!
+        stub_manifest('http://example.org/2.json')
+        described_class.create!(attr.merge(manifest: 'http://example.org/2.json'))
+
+        expect(subject.decorate.manifest_url).to eq "http://test.host/versions/#{subject.id}/manifest"
+      end
+    end
+  end
 end

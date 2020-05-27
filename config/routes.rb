@@ -43,6 +43,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :versions, only: [] do
+    member do
+      get :manifest, defaults: { format: :json }
+    end
+  end
+
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :news_items
 
