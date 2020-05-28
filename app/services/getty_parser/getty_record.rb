@@ -20,9 +20,13 @@ class GettyParser
     end
 
     def manifest_url
-      formats.find do |format|
-        format['@type'] == 'iiif'
-      end.try(:[], 'value')
+      manifest_urls.first
+    end
+
+    def manifest_urls
+      formats.select { |x| x['@type'] == 'iiif' }.map do |iiif_format|
+        iiif_format.try(:[], 'value')
+      end
     end
 
     def formats

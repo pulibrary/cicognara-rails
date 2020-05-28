@@ -40,6 +40,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
+  gem 'puma'
   gem 'rspec-rails', '~> 3.0'
 end
 
@@ -89,6 +90,7 @@ gem 'nokogiri', '~> 1.10.5'
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-google-oauth2', '~> 0.6.0 '
 gem 'rack', '>= 2.0.6'
+gem 'rack-cors'
 gem 'redis', '~> 3.0'
 gem 'redis-namespace'
 gem 'resync-client'

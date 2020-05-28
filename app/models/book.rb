@@ -12,6 +12,10 @@ class Book < ActiveRecord::Base
     ::Cicognara::BookIndexer.new(self).to_solr.values.first.merge(extra_solr)
   end
 
+  def unique_versions
+    versions.order(:id).uniq(&:owner_system_number)
+  end
+
   def extra_solr
     {
       'contributing_library_facet' => contributing_libraries.map(&:label),

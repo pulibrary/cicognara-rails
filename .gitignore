@@ -34,3 +34,6 @@ bower.json
 .powenv
 
 .byebug_history
+
+# Ignore dev SSL certs
+config/ssl

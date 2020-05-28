@@ -21,6 +21,35 @@ RSpec.describe Book, type: :model do
     expect(book.digital_cico_number).to eq(digital_cico_number)
   end
 
+  describe '#unique_versions' do
+    it 'returns distinct versions by owner system number' do
+      book.save!
+      stub_manifest('http://example.org/1.json')
+      stub_manifest('http://example.org/2.json')
+      contributing_library = ContributingLibrary.create! label: 'Example Library', uri: 'http://www.example.org'
+      v1 = Version.create!(
+        contributing_library: contributing_library,
+        book: book,
+        label: 'volume 1',
+        based_on_original: false,
+        owner_system_number: '1234',
+        rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+        manifest: 'http://example.org/1.json'
+      )
+      Version.create!(
+        contributing_library: contributing_library,
+        book: book,
+        label: 'volume 2',
+        based_on_original: false,
+        owner_system_number: '1234',
+        rights: 'http://creativecommons.org/publicdomain/mark/1.0/',
+        manifest: 'http://example.org/2.json'
+      )
+
+      expect(book.unique_versions).to eq [v1]
+    end
+  end
+
   it 'has multiple subjects' do
     book.subjects = [subject1, subject2]
     expect(book.subjects.first).to eq(subject1)

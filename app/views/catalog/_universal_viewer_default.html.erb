@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <ul class="nav nav-pills nav-stacked" id="manifest-tabs">
         <% document.books.to_a.each_with_index do |book, b_index| %>
-          <% book.versions.uniq(:owner_system_number).to_a.each_with_index do |version, v_index| %>
+          <% book.unique_versions.to_a.each_with_index do |version, v_index| %>
             <li data-version-id="version_<%= version.id %>" <%= 'class="active"'.html_safe if (b_index == 0 && v_index ==0) %>>
               <a href="#" data-manifest-uri='<%= version.decorate.manifest_url %>'>
                 <%= version.based_on_original? ? 'Microfiche' : 'Matching Copy' %> (<%= book.digital_cico_number %>)<br/>
@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-9">
       <div class="uv viewer" onClick="style.pointerEvents='none'">
-        <iframe id="uv-frame" allowfullscreen="true" src="https://figgy.princeton.edu/uv/uv#?manifest=<%= CGI.escape(document.manifests.first) %>"></iframe>
+        <iframe id="uv-frame" allowfullscreen="true" src="https://figgy.princeton.edu/uv/uv#?manifest=<%= CGI.escape(document.books.first.try(:unique_versions).first.try(:decorate).try(:manifest_url).to_s) %>"></iframe>
       </div>
     </div>
   </div>
