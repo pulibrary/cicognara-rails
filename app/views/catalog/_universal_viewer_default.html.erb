@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-9">
       <div class="uv viewer" onClick="style.pointerEvents='none'">
-        <iframe id="uv-frame" allowfullscreen="true" src="https://figgy.princeton.edu/uv/uv#?manifest=<%= CGI.escape(document.books.first.try(:unique_versions).first.try(:decorate).try(:manifest_url).to_s) %>"></iframe>
+        <iframe id="uv-frame" allowfullscreen="true" src="https://figgy.princeton.edu/uv/uv#?manifest=<%= CGI.escape(document.books.first.try(:unique_versions).first.try(:decorate).try(:manifest_url).to_s) %>&config=https://figgy.princeton.edu/uv/uv_config.json"></iframe>
       </div>
     </div>
   </div>

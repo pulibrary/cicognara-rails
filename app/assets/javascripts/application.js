@@ -34,7 +34,7 @@ $(document).ready(function() {
     $(".linked-books").hide()
     $("#" + version_id).show()
     document.location.hash = ''
-    $("#uv-frame").attr("src", "https://figgy.princeton.edu/uv/uv?reload="+Date.now()+"#?manifest="+encodeURIComponent($(".uv").attr("data-uri")))
+    $("#uv-frame").attr("src", "https://figgy.princeton.edu/uv/uv?reload="+Date.now()+"#?manifest="+encodeURIComponent($(".uv").attr("data-uri"))+"&config=https://figgy.princeton.edu/uv/uv_config.json")
   })
   /**
    * Integration for the chosen jQuery plugin
