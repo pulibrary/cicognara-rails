@@ -5,6 +5,22 @@ RSpec.describe GettyParser::GettyRecord do
     let(:file) { Rails.root.join('spec', 'fixtures', 'resources', filename) }
     let(:record) { described_class.from(JSON.parse(file.read)) }
 
+    context 'with three volume getty fixture' do
+      let(:file) { Rails.root.join('spec', 'fixtures', 'getty_seeds', filename) }
+      let(:filename) { 'three_volumes_getty.json' }
+
+      it 'maps multiple manifests' do
+        expect(record.manifest_urls).to eq(
+          [
+            'https://media.getty.edu/iiif/manifest/faa831e6-a8f9-424c-8b6e-f933769cbb85',
+            'https://media.getty.edu/iiif/manifest/ff201095-ab2b-427c-830c-46845bb7043c',
+            'https://media.getty.edu/iiif/manifest/002a0dd8-35f0-43e8-a9c4-219c9e04a260'
+
+          ]
+        )
+      end
+    end
+
     context 'with Heidelberg fixture' do
       let(:filename) { 'uh_urnnbndebsz16-diglit-32330.json' }
 

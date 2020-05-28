@@ -1,6 +1,7 @@
 class ManifestMetadata
   def update(version)
     json = parse_manifest(version)
+    version.label = extract_label(json) if extract_label(json)
     version.ocr_text = extract_ocr_text(json)
     version.rights = extract_license(json) if extract_license(json)
     return unless version.rights == vatican_copyright
@@ -18,6 +19,11 @@ class ManifestMetadata
 
   def extract_license(json)
     json['license']
+  end
+
+  def extract_label(json)
+    label = Array.wrap(json['label']).first
+    return label if label.is_a?(String)
   end
 
   def extract_ocr_text(json)

@@ -28,6 +28,7 @@ RSpec.describe GettyParser do
       expect(record.primary_identifier).to eq 'http://portal.getty.edu/api/tp3j85'
       expect(record.cicognara?).to eq true
       expect(record.manifest_url).to eq 'https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json'
+      expect(record.manifest_urls).to eq ['https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json']
       expect(record.dcl_number).to eq 'srq'
       expect(record.cicognara_number).to eq '4741'
       expect(record.title).to eq title
@@ -50,6 +51,18 @@ RSpec.describe GettyParser do
 
       doc = Blacklight.default_index.connection.get('select', params: { qt: 'document', q: "id:#{RSolr.solr_escape(book.digital_cico_number)}" })['response']['docs'][0]
       expect(doc['manifests_s']).to eq ['https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json']
+    end
+
+    it 'imports a version per manifest' do
+      stub_manifest('https://media.getty.edu/iiif/manifest/faa831e6-a8f9-424c-8b6e-f933769cbb85', manifest_file: '4.json')
+      stub_manifest('https://media.getty.edu/iiif/manifest/ff201095-ab2b-427c-830c-46845bb7043c', manifest_file: '4.json')
+      stub_manifest('https://media.getty.edu/iiif/manifest/002a0dd8-35f0-43e8-a9c4-219c9e04a260', manifest_file: '4.json')
+      book = Book.create!(digital_cico_number: 'dcl:xnb')
+      Entry.create!(books: [book])
+      record = GettyParser::GettyRecord.from(JSON.parse(File.read(Rails.root.join('spec', 'fixtures', 'getty_seeds', 'three_volumes_getty.json'))))
+
+      GettyParser::Importer.new(records: [record]).import!
+      expect(book.reload.versions.length).to eq 3
     end
 
     it 'handles missing books' do
