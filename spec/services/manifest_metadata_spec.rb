@@ -26,6 +26,7 @@ RSpec.describe ManifestMetadata do
 
       manifest_metadata.update(version)
 
+      expect(version.label).to eq "L'Antenore"
       expect(version.ocr_text).to eq %w[Logical Aardvark]
       expect(version.rights).to eq 'http://cicognara.org/microfiche_copyright'
       expect(version.based_on_original).to eq true
