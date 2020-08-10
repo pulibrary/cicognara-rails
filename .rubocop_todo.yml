@@ -40,7 +40,7 @@ Lint/DuplicateMethods:
     - 'lib/cicognara/tei_indexer.rb'
 
 # Offense count: 1
-Lint/RescueWithoutErrorClass:
+Style/RescueStandardError:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
 

@@ -15,6 +15,7 @@ module Cicognara
     def self.map_reference(model, field, label)
       result = model.where(field => label).first
       raise(ArgumentError, "#{model} not found '#{label}'") unless result
+
       result
     end
   end

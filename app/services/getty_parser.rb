@@ -15,6 +15,7 @@ class GettyParser
         download_and_read_each do |record|
           next unless record.cicognara? && record.dcl_number.present?
           next if record.manifest_url.blank?
+
           records << record
         end
         records
@@ -31,6 +32,7 @@ class GettyParser
       Zip::File.open(file) do |zip_file|
         zip_file.each do |entry|
           next unless entry.name.include?('json')
+
           record = GettyRecord.from(JSON.parse(entry.get_input_stream.read))
           yield record
         end

@@ -37,6 +37,7 @@ class Book < ActiveRecord::Base
 
   def digitized_version_available
     return ['None'] if versions.empty?
+
     versions.map { |v| v.based_on_original? ? 'Microfiche' : 'Matching copy' }
   end
 end

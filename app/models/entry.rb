@@ -61,6 +61,7 @@ class Entry < ApplicationRecord
 
     def value
       return nil unless string.respond_to?(:text)
+
       string.text.gsub(/\s+/, ' ').strip
     end
 

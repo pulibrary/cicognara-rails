@@ -33,6 +33,7 @@ RSpec.describe ManifestMetadata do
       expect(version.contributing_library.label).to eq 'Biblioteca Apostolica Vaticana'
     end
   end
+
   context 'when a manifest errors' do
     it 'captures parse errors' do
       allow(JSON).to receive(:parse).and_raise 'Broken'

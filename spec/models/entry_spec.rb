@@ -2,6 +2,8 @@
 require 'rails_helper'
 
 RSpec.describe Entry, type: :model do
+  subject { described_class.first }
+
   before do
     stub_manifest('http://example.org/4.json')
     marc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
@@ -17,7 +19,6 @@ RSpec.describe Entry, type: :model do
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
     solr.commit
   end
-  subject { described_class.first }
 
   describe '#entries' do
     it 'has an n property' do
@@ -128,6 +129,7 @@ RSpec.describe Entry, type: :model do
           expect(subject.to_solr['digitized_version_available_facet']).to eq(['Matching copy'])
         end
       end
+
       context 'when corresp has 2 values' do
         subject { described_class.third }
 

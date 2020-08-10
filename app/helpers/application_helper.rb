@@ -28,6 +28,7 @@ module ApplicationHelper
   # @return [String]
   def search_form_action_url(options = {})
     return url_for(options.merge(action: 'index', controller: 'catalog')) if controller_name == 'advanced'
+
     search_action_url(options)
   end
 end

@@ -34,6 +34,7 @@ describe AdvancedHelper do
 
         test_helper.process_query(_params, config)
       end
+
       it 'logs an error' do
         expect(Blacklight.logger).to have_received(:error).with(/Failed to parse the advanced search, config. settings are not accessible for: /)
       end

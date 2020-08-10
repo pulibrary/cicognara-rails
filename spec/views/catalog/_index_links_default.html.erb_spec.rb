@@ -16,6 +16,7 @@ RSpec.describe 'catalog/_index_links_default.html.erb' do
       expect(rendered).not_to have_selector '.digitized-microfiche'
     end
   end
+
   context 'when there is a microfiche copy' do
     let(:document) { base_doc.merge(digitized_version_available_facet: ['Microfiche']).stringify_keys }
 
@@ -24,6 +25,7 @@ RSpec.describe 'catalog/_index_links_default.html.erb' do
       expect(rendered).not_to have_selector '.digitized-matching'
     end
   end
+
   context 'when there is a matching copy' do
     let(:document) { base_doc.merge(digitized_version_available_facet: ['Matching copy']).stringify_keys }
 
@@ -32,6 +34,7 @@ RSpec.describe 'catalog/_index_links_default.html.erb' do
       expect(rendered).not_to have_selector '.digitized-microfiche'
     end
   end
+
   context 'when there is a matching copy' do
     let(:document) { base_doc.merge(digitized_version_available_facet: ['Microfiche', 'Matching copy']).stringify_keys }
 

@@ -26,6 +26,7 @@ RSpec.describe 'News Items', type: :feature do
     before do
       stub_public_user
     end
+
     it 'displays news items without links for creating, editing, and deleting' do
       visit news_items_url
       expect(page).not_to have_css 'input.news-item-add-button'

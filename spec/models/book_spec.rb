@@ -76,6 +76,7 @@ RSpec.describe Book, type: :model do
       pathtomarc = File.join(File.dirname(__FILE__), '..', 'fixtures', 'cicognara.marc.xml')
       @subject = Cicognara::TEIIndexer.new(pathtotei, pathtomarc)
     end
+
     let(:microfiche_version) do
       Version.create! contributing_library: vatican_library, book: described_class.first,
                       label: 'version 2', based_on_original: true, owner_system_number: '1234',
@@ -100,6 +101,7 @@ RSpec.describe Book, type: :model do
       before do
         microfiche_version
       end
+
       it 'indexes the manifest and digitized_version=Microfiche' do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Microfiche')
@@ -107,10 +109,12 @@ RSpec.describe Book, type: :model do
         expect(b.to_solr['text']).to include('Logical', 'Microfiche Header', 'Title Page')
       end
     end
+
     context 'when a matching version is available' do
       before do
         matching_version
       end
+
       it 'indexes the manifest and digitized_version=Matching copy' do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Matching copy')
@@ -118,17 +122,20 @@ RSpec.describe Book, type: :model do
         expect(b.to_solr['text']).to include('Logical', 'Aardvark')
       end
     end
+
     context 'when both microfiche and a matching version are available' do
       before do
         microfiche_version
         matching_version
       end
+
       it 'indexes both manifests and digitized_version=Microfiche & Matching copy' do
         b = described_class.first
         expect(b.to_solr['digitized_version_available_facet']).to contain_exactly('Microfiche', 'Matching copy')
         expect(b.to_solr['manifests_s']).to contain_exactly('http://example.org/2.json', 'http://example.org/4.json')
       end
     end
+
     context "when a digitized version isn't available" do
       it 'indexes no manifests and digitized_version=None' do
         b = described_class.first
