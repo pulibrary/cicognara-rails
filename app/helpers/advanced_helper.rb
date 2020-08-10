@@ -36,7 +36,7 @@ module AdvancedHelper
     if params[op_num]
       params[op_num] == operation
     else
-      op == 'AND'
+      operation == 'AND'
     end
   end
 

@@ -98,3 +98,10 @@ Style/RegexpLiteral:
 Security/Open:
   Exclude:
     - 'app/services/getty_parser.rb'
+
+Style/RedundantBegin:
+  Exclude:
+    - 'lib/tasks/csv.rake'
+    - 'lib/tasks/dev.rake'
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/services/getty_parser/importer.rb'
