@@ -6,12 +6,12 @@ jobs:
       CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
       CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
     docker:
-      - image: circleci/ruby:2.4-node-browsers
+      - image: circleci/ruby:2.6-node-browsers
         environment:
           RAILS_ENV: test
           CICOGNARA_DB_HOST: localhost
           CICOGNARA_DB_USERNAME: cicognara
-      - image: postgres:10.3-alpine
+      - image: postgres:10
         environment:
           POSTGRES_USER: cicognara
           POSTGRES_DB: cicognara_test
@@ -20,16 +20,17 @@ jobs:
         command: bin/solr -cloud -noprompt -f -p 8888
     steps: &test_steps
       - checkout
+      - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
       - run:
-          name: Install node@8.17.0 (need right version for `yarn`)
+          name: Install node@lts/erbium (need right version for `yarn`)
           command: |
             set +e
             touch $BASH_ENV
-            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
             echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            echo 'nvm install v8.17.0' >> $BASH_ENV
-            echo 'nvm alias default v8.17.0' >> $BASH_ENV
+            echo 'nvm install lts/erbium' >> $BASH_ENV
+            echo 'nvm alias default lts/erbium' >> $BASH_ENV
       - run:
           name: Check current version of node
           command: node -v
@@ -89,12 +90,12 @@ jobs:
       # Service container image available at 'host: localhost'
       - image: postgres:10
         environment:
-          POSTGRES_DB: lae_blacklight_test
+          POSTGRES_DB: cicognara_test
           POSTGRES_USER: root
           POSTGRES_HOST_AUTH_METHOD: trust
       - image: solr:7.7-alpine
         command: bin/solr -cloud -noprompt -f -p 8888
-    working_directory: ~/lae-blacklight
+    working_directory: ~/cicognara-rails
     steps: *test_steps
 workflows:
   version: 2
