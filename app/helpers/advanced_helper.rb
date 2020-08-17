@@ -26,12 +26,12 @@ module AdvancedHelper
 
   # carries over original search field and original guided search fields if user switches to guided search from regular search
   def guided_field(field_num, default_val)
-    return search_fields_for_advanced_search[params[:search_field]].key || default_val if switched_to_guided_search?
+    return search_fields_for_advanced_search[params[:search_field]].key || default_val if switched_to_guided_search?(field_num)
 
     params[field_num] || default_val
   end
 
-  def switched_to_guided_search?
+  def switched_to_guided_search?(field_num)
     field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
   end
 
