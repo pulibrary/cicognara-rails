@@ -39,6 +39,6 @@ describe Cicognara::CSVMapper do
   end
 end
 
-def load_csv(fn)
-  CSV.read(File.join(File.dirname(__FILE__), '..', 'fixtures', fn), headers: true).first.to_h
+def load_csv(file_name)
+  CSV.read(File.join(File.dirname(__FILE__), '..', 'fixtures', file_name), headers: true).first.to_h
 end

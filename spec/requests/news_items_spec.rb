@@ -6,7 +6,7 @@ RSpec.describe 'NewsItems', type: :request do
   describe 'GET /news_items' do
     it 'shows a list of news items' do
       get news_items_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
   end
 end

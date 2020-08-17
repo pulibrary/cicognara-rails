@@ -9,6 +9,7 @@ AllCops:
     - 'app/models/marc_indexer.rb' # TODO
     - 'vendor/**/*'
     - 'tmp/**/*'
+    - 'bin/*'
 
 Rails:
   Enabled: true
@@ -93,3 +94,14 @@ Style/SafeNavigation:
 
 Style/RegexpLiteral:
   Enabled: false
+
+Security/Open:
+  Exclude:
+    - 'app/services/getty_parser.rb'
+
+Style/RedundantBegin:
+  Exclude:
+    - 'lib/tasks/csv.rake'
+    - 'lib/tasks/dev.rake'
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/services/getty_parser/importer.rb'

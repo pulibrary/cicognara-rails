@@ -17,6 +17,7 @@ RSpec.describe GettyParser do
     before do
       FileUtils.rm_f(Rails.root.join('tmp', 'testresourcedump_2019-03-04-part1.zip'))
     end
+
     it 'downloads zip files from those URLs and parses records out of them' do
       parser = described_class.new
 
@@ -100,6 +101,7 @@ RSpec.describe GettyParser do
         book = Book.create!(digital_cico_number: 'dcl:srq')
         Entry.create!(books: [book])
       end
+
       it 'handles invalid version' do
         stub_manifest('https://digi.ub.uni-heidelberg.de/diglit/iiif/ripa1613bd1/manifest.json', manifest_file: '4.json')
         expect { described_class.new.import! }.not_to raise_error

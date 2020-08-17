@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'creates a new user if not found' do
-      expect { User.from_omniauth(token) }.to change { User.count }.by(1)
+      expect { User.from_omniauth(token) }.to change(User, :count).by(1)
     end
   end
 end

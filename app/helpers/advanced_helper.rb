@@ -26,18 +26,21 @@ module AdvancedHelper
 
   # carries over original search field and original guided search fields if user switches to guided search from regular search
   def guided_field(field_num, default_val)
-    if field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
-      return search_fields_for_advanced_search[params[:search_field]].key || default_val
-    end
+    return search_fields_for_advanced_search[params[:search_field]].key || default_val if switched_to_guided_search?(field_num)
+
     params[field_num] || default_val
   end
 
+  def switched_to_guided_search?(field_num)
+    field_num == :f1 && params[:f1].nil? && params[:f2].nil? && params[:f3].nil? && params[:search_field] && search_fields_for_advanced_search[params[:search_field]]
+  end
+
   # carries over guided search operations if user switches back to guided search from regular search
-  def guided_radio(op_num, op)
+  def guided_radio(op_num, operation)
     if params[op_num]
-      params[op_num] == op
+      params[op_num] == operation
     else
-      op == 'AND'
+      operation == 'AND'
     end
   end
 
@@ -160,6 +163,7 @@ module BlacklightAdvancedSearch
 
         # Test if the field is valid
         next unless config.search_fields[field]
+
         local_param = local_param_hash(field, config)
         queries << parsed.to_query(local_param)
         queries << ops.shift

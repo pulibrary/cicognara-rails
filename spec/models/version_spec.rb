@@ -68,6 +68,7 @@ RSpec.describe Version, type: :model do
         expect(subject.decorate.manifest_url).to eq 'http://example.org/1.json'
       end
     end
+
     context "when there's another owner system number with that version" do
       it 'returns a collection manifest URL of all combined versions' do
         subject.save!

@@ -11,6 +11,7 @@ RSpec.describe 'Blacklight search fields', type: :request do
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
     solr.commit
   end
+
   it 'section head is searchable in all_fields' do
     get '/catalog.json?search_field=all_fields&q=Delle+belle+arti+in+generale'
     expect(docs.select { |d| d['id'] == '1' }.length).to eq 1

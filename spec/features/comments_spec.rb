@@ -17,7 +17,7 @@ RSpec.describe 'comments', type: :feature do
     comment
   end
 
-  context 'a logged in user' do
+  context 'with a logged in user' do
     before do
       stub_admin_user
     end
@@ -34,10 +34,11 @@ RSpec.describe 'comments', type: :feature do
     end
   end
 
-  context 'a user who is not logged in' do
+  context 'with a user who is not logged in' do
     before do
       stub_public_user
     end
+
     it 'displays comments without buttons for editing/deleting' do
       visit solr_document_path entry.id
       expect(page).to have_selector 'p.comment-text', text: 'comment 1'

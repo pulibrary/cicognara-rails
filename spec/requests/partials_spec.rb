@@ -5,11 +5,12 @@ RSpec.describe 'xsl', type: :request do
   describe 'section partials' do
     it 'html page for each section partial' do
       get static_page_path('catalogo/section_2.1')
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
 
     describe 'section links' do
       before { get static_page_path('catalogo/section_1.2') }
+
       it 'contain links to other sections' do
         expect(response.body).to have_link('Dell’antichità in genere', href: '/catalogo/section_2.1')
       end
@@ -20,6 +21,7 @@ RSpec.describe 'xsl', type: :request do
 
     describe 'partials content' do
       before { get static_page_path('catalogo/section_1.1') }
+
       describe 'section structure' do
         it 'includes id attribute for items' do
           expect(response.body).to have_selector('li#item_2')
@@ -28,6 +30,7 @@ RSpec.describe 'xsl', type: :request do
           expect(response.body).to have_selector('span#page_1')
         end
       end
+
       describe 'item structure' do
         it 'list is wrapped in a ol with class catalogo-list' do
           expect(response.body).to have_selector('ol.catalogo-list')
@@ -69,7 +72,7 @@ RSpec.describe 'xsl', type: :request do
   describe 'item partials' do
     it 'html page for each item partial' do
       get static_page_path('catalogo/_item_15')
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:ok)
     end
   end
 end

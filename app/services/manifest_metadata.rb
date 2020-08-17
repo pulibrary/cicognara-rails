@@ -5,6 +5,7 @@ class ManifestMetadata
     version.ocr_text = extract_ocr_text(json)
     version.rights = extract_license(json) if extract_license(json)
     return unless version.rights == vatican_copyright
+
     version.based_on_original = true
     version.contributing_library = vatican_library
   end

@@ -6,7 +6,7 @@ module Cicognara
     end
 
     def to_solr
-      @to_solr ||= marc_solr.present? ? marc_solr : blank_records
+      @to_solr ||= marc_solr.presence || blank_records
     end
 
     private
@@ -42,6 +42,7 @@ module Cicognara
       builder = Nokogiri::XML('<collection></collection>')
       all_marc.each do |record|
         next unless record.root.present?
+
         builder.root << record.root
       end
       builder.to_xml

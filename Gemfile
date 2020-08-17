@@ -70,7 +70,7 @@ group :test do
   gem 'webmock'
 end
 
-gem 'bixby'
+gem 'bixby', '~> 2.0'
 gem 'blacklight-marc', '~> 6.0'
 gem 'blacklight_advanced_search', '~> 6.4'
 gem 'blacklight_range_limit', '~> 6.3'

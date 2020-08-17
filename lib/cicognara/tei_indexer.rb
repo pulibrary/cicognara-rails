@@ -42,6 +42,7 @@ module Cicognara
     def build_entries
       entries.each do |entry|
         next unless entry.corresp.present?
+
         entry.books = []
         entry.corresp.each do |book_id|
           entry.books << grouped_books[book_id] if grouped_books[book_id]

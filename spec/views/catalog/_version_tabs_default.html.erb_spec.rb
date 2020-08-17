@@ -29,7 +29,7 @@ RSpec.describe 'catalog/_version_tabs_default.html.erb' do
     )
   end
 
-  context 'The book has no versions' do
+  context 'when the book has no versions' do
     before do
       stub_blacklight_views
       allow(Version).to receive(:where).with(book_id: book_record.id).and_return([])
@@ -44,7 +44,7 @@ RSpec.describe 'catalog/_version_tabs_default.html.erb' do
     end
   end
 
-  context 'The book has one version' do
+  context 'when the book has one version' do
     before do
       stub_blacklight_views
       allow(Version).to receive(:where).with(book_id: book_record.id).and_return([version1])
@@ -60,7 +60,7 @@ RSpec.describe 'catalog/_version_tabs_default.html.erb' do
     end
   end
 
-  context 'The book has two versions' do
+  context 'when the book has two versions' do
     before do
       stub_blacklight_views
       allow(Version).to receive(:where).with(book_id: book_record.id).and_return([version1, version2])

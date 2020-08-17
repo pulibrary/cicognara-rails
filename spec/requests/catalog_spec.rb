@@ -10,9 +10,11 @@ RSpec.describe 'CatalogController config', type: :request do
     solr.add(Cicognara::TEIIndexer.new(tei, marc).solr_docs)
     solr.commit
   end
+
   describe 'document stored fields' do
     let(:doc) { JSON.parse(response.body)['response']['document'] }
     before { get solr_document_path('dcl:m87'), as: :json }
+
     it 'stores language_facet for display' do
       expect(doc['language_facet']).to eq(['Latin'])
     end
@@ -33,6 +35,7 @@ RSpec.describe 'CatalogController config', type: :request do
       end
     end
   end
+
   describe 'index view' do
     it 'marc records do not appear in search results' do
       get search_catalog_path, as: :json
@@ -40,6 +43,7 @@ RSpec.describe 'CatalogController config', type: :request do
       expect(docs.select { |d| d['id'] == 'dcl:m87' }.length).to eq 0
     end
   end
+
   describe 'show view' do
     it 'contains link to catalogo item view' do
       get solr_document_path('15')
@@ -53,7 +57,7 @@ RSpec.describe 'CatalogController config', type: :request do
     describe 'when solr doc from dc_lib is not found' do
       it 'dclib marc record is not indexed' do
         get solr_document_path('dcl:6gq')
-        expect(response).to have_http_status(404)
+        expect(response).to have_http_status(:not_found)
       end
       it 'catalog item refers to missing solr doc' do
         get solr_document_path('66'), as: :json
@@ -67,7 +71,7 @@ RSpec.describe 'CatalogController config', type: :request do
       end
       it 'catalog item renders without error' do
         get solr_document_path('66')
-        expect(response).to have_http_status(200)
+        expect(response).to have_http_status(:ok)
       end
     end
   end
