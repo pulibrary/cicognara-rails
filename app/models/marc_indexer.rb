@@ -63,6 +63,15 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
       # configurable logging, quiet by default
       provide 'log.level', ENV['TRAJECT_LOG_LEVEL'] || 'warn'
+      if c = Blacklight.connection_config
+        url = URI.parse(c[:url])
+        if url.user
+          client = HTTPClient.new
+          client.set_auth(c[:url], url.user, url.password)
+          provide "solr_json_writer.http_client", client
+        end
+        provide "solr.url", c[:url]
+      end
     end
 
     to_field 'id' do |record, accumulator|
