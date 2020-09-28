@@ -14,6 +14,7 @@ book collection.
 git clone https://github.com/pulibrary/cicognara-rails.git
 cd cicognara-rails
 bundle install
+lando start
 bundle exec rake db:setup
 ```
 
@@ -22,28 +23,21 @@ Remember you'll need to run `bundle install` on an ongoing basis as dependencies
 
 ## Run tests
 
+1. `lando start`
 1. `RAILS_ENV=test bundle exec rake db:setup`
-2. `bundle exec rake cico:test`
 3. In a separate terminal: `bundle exec rspec`
 
 ## Development setup
 
 ### Running development services together
 
-To run Solr/Index Example Records, launch a rails server, and seed some tei data:
+Install Lando:
 
-`bundle exec rake cico:development:server`
+* [[https://github.com/lando/lando/releases]]
 
-### Running development services individually
-
-You may want to run solr separately from the rails server so it's easier to stop
-/ start one or the other more quickly.
-
-- `bundle exec rake cico:development` will run the development solr server
-- `bin/rails s` will run the rails server
-- `bundle exec rake tei:index` and
-- `bundle exec rake tei:partials` will load the seed data
-- `bundle exec rake getty:seed` will load seed getty manifests
+1. `lando start`
+2. `bundle exec rake cico:development:clean_and_seed`
+3. `bin/rails s`
 
 ### Create a development admin user
 
