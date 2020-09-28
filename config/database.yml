@@ -1,9 +1,10 @@
 development: &default
   adapter: postgresql
   database: cicognara_development
-  host: <%= ENV["CICOGNARA_DB_HOST"] %>
-  username: <%= ENV["CICOGNARA_DB_USERNAME"] %>
-  password: <%= ENV["CICOGNARA_DB_PASSWORD"] %>
+  host: <%= ENV["CICOGNARA_DB_HOST"] || ENV["lando_cicognara_database_conn_host"] %>
+  port: <%= ENV["CICOGNARA_DB_PORT"] || ENV["lando_cicognara_database_conn_port"] %>
+  username: <%= ENV["CICOGNARA_DB_USERNAME"] || ENV["lando_cicognara_database_creds_user"] %>
+  password: <%= ENV["CICOGNARA_DB_PASSWORD"] || ENV["lando_cicognara_database_creds_password"] %>
   timeout: 5000
 
 test:

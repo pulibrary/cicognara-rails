@@ -60,6 +60,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rails-controller-testing'
+  gem 'solargraph'
 end
 
 group :test do

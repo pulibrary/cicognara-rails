@@ -1,0 +1,22 @@
+name: cicognara
+services:
+  cicognara_test_solr:
+    type: solr:7
+    portforward: true
+    core: cicognara
+    config:
+      dir: solr/config
+  cicognara_development_solr:
+    type: solr:7
+    portforward: true
+    core: cicognara
+    config:
+      dir: solr/config
+  cicognara_database:
+    type: postgres:10
+    portforward: true
+proxy:
+  cicognara_test_solr:
+    - cicognara.test.solr.lndo.site:8983
+  cicognara_development_solr:
+    - cicognara.dev.solr.lndo.site:8983

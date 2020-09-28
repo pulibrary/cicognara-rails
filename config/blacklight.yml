@@ -12,10 +12,10 @@
 
 development:
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/cicognara" %>
+  url: <%= ENV['SOLR_URL'] || "http://#{ENV["lando_cicognara_development_solr_conn_host"] || "127.0.0.1"}:#{ENV['TEST_JETTY_PORT'] || ENV["lando_cicognara_development_solr_conn_port"] || 8983}/solr/cicognara" %>
 test: &test
   adapter: solr
-  url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8888}/solr/cicognara" %>
+  url: <%= ENV['SOLR_URL'] || "http://#{ENV["lando_cicognara_test_solr_conn_host"] || "127.0.0.1"}:#{ENV['TEST_JETTY_PORT'] || ENV["lando_cicognara_test_solr_conn_port"] || 8888}/solr/cicognara" %>
 production: &production
   adapter: solr
   url: <%= ENV['CICOGNARA_SOLR_URL'] || "http://127.0.0.1:8983/solr/cicognara" %>
