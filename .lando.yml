@@ -1,13 +1,13 @@
 name: cicognara
 services:
   cicognara_test_solr:
-    type: solr:7
+    type: solr:8.4
     portforward: true
     core: cicognara
     config:
       dir: solr/config
   cicognara_development_solr:
-    type: solr:7
+    type: solr:8.4
     portforward: true
     core: cicognara
     config:
