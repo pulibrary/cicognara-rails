@@ -32,15 +32,11 @@ gem 'blacklight', '~> 6.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :production do
-  gem 'pg'
-end
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  gem 'puma'
+  gem 'puma', '~> 4.3.6'
   gem 'rspec-rails', '~> 3.0'
 end
 
@@ -87,9 +83,11 @@ gem 'faraday'
 gem 'high_voltage', '~> 3.0.0'
 gem 'iiif-presentation'
 gem 'loofah', '>= 2.2.3'
+gem 'mimemagic', '>= 0.3.10'
 gem 'nokogiri', '~> 1.10.5'
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-google-oauth2', '~> 0.6.0 '
+gem 'pg', '~> 0.19'
 gem 'rack', '>= 2.0.6'
 gem 'rack-cors'
 gem 'redis', '~> 3.0'
