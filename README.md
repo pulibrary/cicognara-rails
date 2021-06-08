@@ -5,7 +5,7 @@ in an effort to create a high quality digital version of Count Leopoldo Cicognar
 book collection.
 
 [![CircleCI](https://circleci.com/gh/pulibrary/cicognara-rails.svg?style=svg)](https://circleci.com/gh/pulibrary/cicognara-rails)
-[![Coverage Status](https://coveralls.io/repos/pulibrary/cicognara-rails/badge.svg?branch=master&service=github)](https://coveralls.io/github/pulibrary/cicognara-rails?branch=master)
+[![Coverage Status](https://coveralls.io/repos/pulibrary/cicognara-rails/badge.svg?branch=main&service=github)](https://coveralls.io/github/pulibrary/cicognara-rails?branch=main)
 
 
 ## Initial Setup
