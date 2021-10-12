@@ -34,7 +34,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  gem 'puma', '~> 4.3.6'
+  gem 'puma', '~> 4.3.9'
   gem 'rspec-rails', '~> 3.0'
 end
 
