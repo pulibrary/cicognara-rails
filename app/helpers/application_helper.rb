@@ -34,8 +34,8 @@ module ApplicationHelper
     search_action_url(options)
   end
 
-  def render_thumbnail(manifest_url, document)
-    response = HTTParty.get(manifest_url)
+  def render_thumbnail(document)
+    response = HTTParty.get(document.manifests.first)
     return '' if response['thumbnail'].blank?
 
     content_tag(:div, link_to(image_tag(response['thumbnail']['@id']), "/catalog/#{document.id}"), 'class': 'thumbnail', 'alt': "Thumbnail image for #{document._source['title_display']}")
