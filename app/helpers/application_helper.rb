@@ -1,5 +1,3 @@
-require 'open-uri'
-
 module ApplicationHelper
   def catalogo_link(document)
     item = document['id']
@@ -35,7 +33,7 @@ module ApplicationHelper
   end
 
   def render_thumbnail(manifest_url, document_id)
-    json = JSON.parse(URI.open(manifest_url))
+    json = JSON.parse(Net::HTTP.get(URI(manifest_url)))
     return '' if json['thumbnail'].blank?
 
     content_tag(:div, link_to(image_tag(json['thumbnail']['@id']), "/catalog/#{document_id}"), 'class': 'thumbnail')
