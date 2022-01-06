@@ -35,9 +35,9 @@ module ApplicationHelper
   end
 
   def render_thumbnail(manifest_url, document_id)
-    json = JSON.load(open(manifest_url))
-    return '' unless json['thumbnail'].present?
-    content_tag(:div, link_to(image_tag(json['thumbnail']['@id']), "/catalog/#{document_id}"), :class => 'thumbnail')
-  end
+    json = JSON.parse(URI.open(manifest_url))
+    return '' if json['thumbnail'].blank?
 
+    content_tag(:div, link_to(image_tag(json['thumbnail']['@id']), "/catalog/#{document_id}"), 'class': 'thumbnail')
+  end
 end
