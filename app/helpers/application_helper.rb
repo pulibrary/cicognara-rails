@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module ApplicationHelper
   def catalogo_link(document)
     item = document['id']
@@ -31,4 +33,11 @@ module ApplicationHelper
 
     search_action_url(options)
   end
+
+  def render_thumbnail(manifest_url, document_id)
+    json = JSON.load(open(manifest_url))
+    return '' unless json['thumbnail'].present?
+    content_tag(:div, link_to(image_tag(json['thumbnail']['@id']), "/catalog/#{document_id}"), :class => 'thumbnail')
+  end
+
 end
