@@ -1,2 +1,2 @@
-<%= render_thumbnail(document.manifests.first, document.id) if document.manifests.present? %>
+<%= render_thumbnail(document.manifests.first, document) if document.manifests.present? %>
 <%= render "pages/catalogo/item_#{document.id}" %>

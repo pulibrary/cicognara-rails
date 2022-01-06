@@ -55,6 +55,13 @@ RSpec.describe 'searching', type: :feature do
   end
 
   it 'retrieves items by manifest range labels' do
+    stub_request(:get, 'http://example.org/4.json').with(
+      headers: {
+        'Accept' => '*/*',
+        'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'User-Agent' => 'Ruby'
+      }
+    ).to_return(status: 200, body: '', headers: {})
     visit '/catalog?q=aardvark'
     expect(page).to have_selector 'span.catalogo-author', text: 'Agrippae Henrici Corn.'
     expect(page).to have_selector 'span.catalogo-title', text: 'De incertitude et vanitate scientiarum, declamatio invectiva, ex postrema'

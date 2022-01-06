@@ -1,3 +1,5 @@
+require 'httparty'
+
 module ApplicationHelper
   def catalogo_link(document)
     item = document['id']
@@ -32,10 +34,10 @@ module ApplicationHelper
     search_action_url(options)
   end
 
-  def render_thumbnail(manifest_url, document_id)
-    json = JSON.parse(Net::HTTP.get(URI(manifest_url)))
-    return '' if json['thumbnail'].blank?
+  def render_thumbnail(manifest_url, document)
+    response = HTTParty.get(manifest_url)
+    return '' if response['thumbnail'].blank?
 
-    content_tag(:div, link_to(image_tag(json['thumbnail']['@id']), "/catalog/#{document_id}"), 'class': 'thumbnail')
+    content_tag(:div, link_to(image_tag(response['thumbnail']['@id']), "/catalog/#{document.id}"), 'class': 'thumbnail', 'alt': "Thumbnail image for #{document._source['title_display']}")
   end
 end
