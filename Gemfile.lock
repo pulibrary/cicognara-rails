@@ -177,6 +177,9 @@ GEM
     high_voltage (3.0.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.20.0)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     httpclient (2.8.2.3)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -526,6 +529,7 @@ DEPENDENCIES
   draper
   faraday
   high_voltage (~> 3.0.0)
+  httparty
   iiif-presentation
   jbuilder (~> 2.7.0)
   jquery-rails

@@ -1,3 +1,5 @@
+require 'httparty'
+
 module ApplicationHelper
   def catalogo_link(document)
     item = document['id']
@@ -30,5 +32,14 @@ module ApplicationHelper
     return url_for(options.merge(action: 'index', controller: 'catalog')) if controller_name == 'advanced'
 
     search_action_url(options)
+  end
+
+  def render_thumbnail(document)
+    response = HTTParty.get(document.manifests.first)
+    return '' if response['thumbnail'].blank?
+
+    content_tag(:div, link_to(image_tag(response['thumbnail']['@id']), "/catalog/#{document.id}"), 'class': 'thumbnail', 'alt': "Thumbnail image for #{document._source['title_display']}")
+  rescue StandardError
+    ''
   end
 end
