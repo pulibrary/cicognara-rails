@@ -8,6 +8,7 @@ module Cicognara
       @entry = entry
     end
 
+    # rubocop:disable Metrics/AbcSize
     def solr_doc
       doc = doc_tei_fields
       unless books.empty? && corresp.empty?
@@ -17,19 +18,10 @@ module Cicognara
       end
       doc[:title_display] = solr_title_display(item_label || n)
       doc['digitized_version_available_facet'] = resolve_avail(doc['digitized_version_available_facet'])
-
-      tei_year = single_tei_year(doc[:tei_date_display] || [])
-      if tei_year != nil
-        # Use the year in the TEI data rather than the one in the MARC data.
-        # These values are usually identical but not always. It makes sense to use store in Solr the
-        # year from the TEI data because that is the value that we _display_ to the user and therefore
-        # we want to make sure Solr sorts by this year (rather than the year in MARC that is not
-        # displayed to the user).
-        doc["pub_date"] = tei_year
-      end
-
+      doc['pub_date'] = resolve_pub_date(doc)
       doc
     end
+    # rubocop:enable Metrics/AbcSize
 
     private
 
@@ -81,6 +73,22 @@ module Cicognara
          related_name_display dclib_display).each { |f| book.delete(f) }
     end
 
+    # Decides what publication year to use (the one from the MARC data or the one from TEI)
+    def resolve_pub_date(doc)
+      tei_year = single_tei_year(doc[:tei_date_display] || [])
+      if tei_year.nil?
+        # Use whatever value we had before (could be nil)
+        doc['pub_date']
+      else
+        # Use the year in the TEI data rather than the one in the MARC data.
+        # These values are usually identical but not always. It makes sense to use store in Solr the
+        # year from the TEI data because that is the value that we _display_ to the user and therefore
+        # we want to make sure Solr sorts by this year (rather than the year in MARC that is not
+        # displayed to the user).
+        tei_year
+      end
+    end
+
     # Extracts a single year from an array of TEI display dates.
     # Notice that each value in the array is a string with maybe a year somewhere
     # (e.g. "1891" or "A. 1541,", or "1813 al 1818,") and the code makes its best
@@ -88,13 +96,9 @@ module Cicognara
     def single_tei_year(tei_date_display)
       years = tei_date_display.map do |date|
         year_match = date.match(/\d\d\d\d/)&.to_s
-        if year_match
-          year_match.to_i
-        else
-          nil
-        end
+        year_match ? year_match.to_i : nil
       end
-      years.compact.sort.first
+      years.compact.min
     end
   end
 end
