@@ -74,7 +74,7 @@ RSpec.describe MarcIndexer, type: :model do
     expect(@values.first['published_t']).to eq(['Coloniae : Apud Theodorum Baumium ..., Anno 1584.'])
   end
   it 'takes pub_date from 008' do
-    expect(@values.first['pub_date']).to eq([1584])
+    expect(@values.first['pub_date']).to eq([1600])
   end
   it 'does not have the term microform in the 245 field' do
     expect(@values.first['title_display'].first).not_to match(/microform/)

@@ -24,6 +24,15 @@ describe Cicognara::TEIIndexer do
       expect(@subject.books[0].to_solr).to eq @subject.solr_docs[0]
       expect(@subject.solr_docs[6]).to eq @subject.entries[0].to_solr
     end
+
+    it 'prefers the year in TEI over the year in MARC for catalog items' do
+      # Notice that we evaluate against the same Cigonara ID from MARC and from TEI.
+      marc_record = @subject.solr_docs.find { |x| x['cico_id_t'] == ['2'] }
+      expect(marc_record['pub_date']).to eq [1600]
+
+      catalog_item = @subject.solr_docs.find { |x| x[:cico_s] == '2' }
+      expect(catalog_item['pub_date']).to eq 1584
+    end
   end
 
   describe '#solr_docs' do
