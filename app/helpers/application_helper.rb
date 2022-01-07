@@ -39,5 +39,7 @@ module ApplicationHelper
     return '' if response['thumbnail'].blank?
 
     content_tag(:div, link_to(image_tag(response['thumbnail']['@id']), "/catalog/#{document.id}"), 'class': 'thumbnail', 'alt': "Thumbnail image for #{document._source['title_display']}")
+  rescue StandardError
+    ''
   end
 end
