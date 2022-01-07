@@ -67,7 +67,7 @@
         </span>
     </xsl:template>
     <xsl:template match="tei:note">
-        <div class="catalogo-note">
+        <div class="catalogo-note collapse">
             <xsl:apply-templates/>
         </div>
     </xsl:template>
