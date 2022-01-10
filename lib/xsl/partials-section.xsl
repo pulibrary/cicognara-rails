@@ -78,30 +78,25 @@
                         See https://stackoverflow.com/a/11680802/446681 for the weird [1] syntax.
                          -->
                         <xsl:choose>
-                            <xsl:when test="current()/preceding-sibling::*[@type='section' and @n!='']">
-                                <xsl:variable name="prev_section" select="(current()/preceding-sibling::*[@type='section'])/@n" />
-                                <a rel="prev" class="btn btn-default btn-sm" href="/{$url_path_prefix}catalogo/section_{$prev_section}">« Previous</a>
-                            </xsl:when>
-                            <xsl:when test="current()/preceding::*[@type='section' and @n!=''][1]">
-                                <xsl:variable name="prev_section" select="(current()/preceding::*[@type='section'][1])/@n" />
+                            <xsl:when test="current()/preceding::*[(@type='section' or @type = 'preface') and @n!=''][1]">
+                                <xsl:variable name="prev_section" select="(current()/preceding::*[(@type='section' or @type = 'preface') and @n!=''][1])/@n" />
                                 <a rel="prev" class="btn btn-default btn-sm" href="/{$url_path_prefix}catalogo/section_{$prev_section}">« Previous</a>
                             </xsl:when>
                             <xsl:otherwise>
                                 <a rel="prev" class="btn btn-default btn-sm disabled" href="#">« Previous</a>
                             </xsl:otherwise>
                         </xsl:choose>
-                        <span> </span>
+
                         <!-- Next button -->
                         <xsl:choose>
-                            <xsl:when test="empty(current()/following::*[@type='section'])">
+                            <xsl:when test="empty(current()/following::*[(@type='section' or @type = 'preface') and @n!=''])">
                                 <a rel="next" class="btn btn-default btn-sm disabled" href="#">Next »</a>
                             </xsl:when>
                             <xsl:otherwise>
-                                <xsl:variable name="next_section" select="(current()/following::*[@type='section'])/@n" />
+                                <xsl:variable name="next_section" select="(current()/following::*[(@type='section' or @type = 'preface') and @n!=''])/@n" />
                                 <a rel="next" class="btn btn-default btn-sm" href="/{$url_path_prefix}catalogo/section_{$next_section}">Next »</a>
                             </xsl:otherwise>
                         </xsl:choose>
-
                     </div>
                 </div>
             </div>
