@@ -35,6 +35,13 @@ RSpec.describe 'entry views', type: :feature do
   end
 
   it 'searches by catalogo # without finding dates, etc.' do
+    stub_request(:get, 'http://example.org/4.json').with(
+      headers: {
+        'Accept' => '*/*',
+        'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'User-Agent' => 'Ruby'
+      }
+    ).to_return(status: 200, body: '', headers: {})
     visit '/catalog?search_field=catalogo&q=2'
     expect(page).to have_link 'De incertitude et vanitate scientiarum, declamatio invectiva, ex postrema auctoris recognitione'
     expect(page).not_to have_link 'Addito Libellus Compendiarum virtutis adipiscendæ ec. et carmina.'

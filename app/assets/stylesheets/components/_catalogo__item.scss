@@ -56,6 +56,7 @@ span.catalogo-item-label {
 .catalogo-note {
   background: $light-gray;
   border-left: 10px solid $medium-gray;
+  clear: both;
   font-family: $sans-serif;
   font-size: 14px;
   margin: 1.5em 10px;
@@ -85,6 +86,16 @@ span.catalogo-item-label {
   content: close-quote;
   margin-left: 0.25em;
 
+}
+
+/*
+* Source: https://blog.kritikapattalam.com/2-simple-ways-you-can-truncate-text-using-css
+*/
+.truncate-line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .view-links .btn,

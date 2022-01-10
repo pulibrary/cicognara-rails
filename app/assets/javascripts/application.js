@@ -19,30 +19,37 @@
 //= require 'blacklight_range_limit'
 //= require trix
 //= require chosen-jquery
+//= require toggle
 //= require_tree .
 
-$(document).ready(function() {
-  $("*[data-manifest-uri]").click(function(e) {
-    e.preventDefault()
-    if($(this).parent().hasClass("active")) {
-      return
+$(document).ready(function () {
+  $("*[data-manifest-uri]").click(function (e) {
+    e.preventDefault();
+    if ($(this).parent().hasClass("active")) {
+      return;
     }
-    $(".uv").attr("data-uri", $(this).attr("data-manifest-uri"))
-    $("*[data-manifest-uri]").parent().removeClass("active")
-    $(this).parent().addClass("active")
-    version_id = $(this).parent().attr("data-version-id")
-    $(".linked-books").hide()
-    $("#" + version_id).show()
-    document.location.hash = ''
-    $("#uv-frame").attr("src", "https://figgy.princeton.edu/uv/uv?reload="+Date.now()+"#?manifest="+encodeURIComponent($(".uv").attr("data-uri"))+"&config=https://figgy.princeton.edu/uv/uv_config.json")
-  })
+    $(".uv").attr("data-uri", $(this).attr("data-manifest-uri"));
+    $("*[data-manifest-uri]").parent().removeClass("active");
+    $(this).parent().addClass("active");
+    version_id = $(this).parent().attr("data-version-id");
+    $(".linked-books").hide();
+    $("#" + version_id).show();
+    document.location.hash = "";
+    $("#uv-frame").attr(
+      "src",
+      "https://figgy.princeton.edu/uv/uv?reload=" +
+        Date.now() +
+        "#?manifest=" +
+        encodeURIComponent($(".uv").attr("data-uri")) +
+        "&config=https://figgy.princeton.edu/uv/uv_config.json"
+    );
+  });
   /**
    * Integration for the chosen jQuery plugin
    * Please see https://rubygems.org/gems/chosen-rails
    */
-  $('.chosen-select').chosen({
+  $(".chosen-select").chosen({
     allow_single_deselect: true,
-    no_results_text: 'No results matched'
+    no_results_text: "No results matched",
   });
-})
-
+});

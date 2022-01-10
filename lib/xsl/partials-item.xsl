@@ -67,9 +67,10 @@
         </span>
     </xsl:template>
     <xsl:template match="tei:note">
-        <div class="catalogo-note collapse">
+        <div id="catalogo-note-text-{./ancestor::tei:item/@n}" class="catalogo-note truncate-line-clamp">
             <xsl:apply-templates/>
         </div>
+        <a id="catalogo-note-text-toggle-{./ancestor::tei:item/@n}" href="#"><i class="bi bi-caret-down"></i><span>Show More</span></a>
     </xsl:template>
     <xsl:template match="tei:title">
         <span class="catalogo-title">
