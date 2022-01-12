@@ -1,17 +1,27 @@
-ol.catalogo-list { list-style-type: none; }
+ol.catalogo-list {
+  list-style-type: none;
+}
 
-span.catalogo-pb { display: none; }
+span.catalogo-pb {
+  display: none;
+}
 
-span.catalogo-pb::before { content: "["; }
+span.catalogo-pb::before {
+  content: "[";
+}
 
-span.catalogo-pb::after { content: "]"; }
+span.catalogo-pb::after {
+  content: "]";
+}
 
-span.catalogo-title { font-style: italic; }
+span.catalogo-title {
+  font-style: italic;
+}
 
 span.catalogo-item-label {
-    font-size: 18px;
-    font-weight: bold;
-    padding-right: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-right: 5px;
 }
 
 .catalogo-section h1 {
