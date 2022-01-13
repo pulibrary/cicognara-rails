@@ -8,7 +8,6 @@
         <%= render partial: 'linked_books_default', locals: { book: version_show_document(version, book), document_id: "version_#{version.id}", hide: (i > 0) } %>
       <% end %>
     <% else %>
-      <h2>No book record</h2>
       <%# If there's no book record, just show the metadata from the marc %>
       <%= render partial: 'linked_books_default', locals: { book: book, document_id: "book_#{book['id']}", hide: false } %>
     <% end %>
