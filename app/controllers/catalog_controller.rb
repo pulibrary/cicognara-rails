@@ -124,7 +124,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'note_display', label: 'Note(s)', helper_method: :html_safe
     config.add_show_field 'title_added_entry_display', label: 'Added entry title(s)'
     config.add_show_field 'related_name_display', label: 'Related name(s)', link_to_search: :name_facet
-    config.add_show_field 'subject_t', label: 'Subject', link_to_search: :subject_facet
+    config.add_show_field 'subject_topic_facet', label: 'Subject', link_to_search: :subject_topic_facet
     config.add_show_field 'place_display', label: 'Place of publications'
     config.add_show_field 'description_display', label: 'Description'
     config.add_show_field 'title_series_display', label: 'Series'
