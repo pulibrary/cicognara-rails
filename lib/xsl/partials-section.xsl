@@ -57,6 +57,7 @@
                                   Table of Contents
                                 </h2>
                           </div>
+                          <a class="btn btn-primary vatican-catalogo" href="https://digi.vatlib.it/view/STP_Riserva.IV.169(1)">Vatican Annotated Catalogo</a>
 
                           <div id="facet-panel-collapse" class="collapse panel-group" data-spy="affix" data-offset-top="120">
                             <xsl:apply-templates select="./ancestor::tei:teiCorpus" mode="toc">
