@@ -39,3 +39,17 @@ header {
   }
 }
 
+.browse-catalogo--home {
+  display: block;
+  clear: both;
+  float: left;
+
+  ul {
+    padding: 0px;
+  }
+
+  li {
+    list-style: none;
+    float: left;
+  }
+}

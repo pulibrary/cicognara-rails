@@ -29,7 +29,12 @@
             <h1>The Digital Cicognara Library <span class="small"><span class="italic">An</span> Open-Access Collection <span class="italic">of the</span> Early Literature of the Arts</span></h1>
             <div class="search-browse--home">
               <%= render_search_bar  %>
-              <%= link_to 'Browse full Catalogo', browse_catalogo_path, class: 'btn btn-primary browse-catalogo' %>
+              <div class="browse-catalogo--home">
+                <ul>
+                  <li><%= link_to 'Browse full Catalogo', browse_catalogo_path, class: 'btn btn-primary browse-catalogo' %></li>
+                  <li><%= link_to 'Vatican Annotated Catalogo', "https://digi.vatlib.it/view/STP_Riserva.IV.169(1)", class: 'btn btn-primary browse-catalogo' %></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
