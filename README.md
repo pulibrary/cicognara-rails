@@ -33,7 +33,7 @@ Remember you'll need to run `bundle install` on an ongoing basis as dependencies
 
 Install Lando:
 
-* [[https://github.com/lando/lando/releases]]
+* [Lando on GitHub](https://github.com/lando/lando/releases)
 
 1. `lando start`
 2. `bundle exec rake cico:development:clean_and_seed`
