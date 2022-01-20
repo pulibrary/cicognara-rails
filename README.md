@@ -84,3 +84,42 @@ cap [STAGE] deploy:reindex
 If you need to make someone an admin on a production box, ensure they've logged in once, then run the `set_admin_role` task for their email address:
 
 `EMAIL=user@example.org bundle exec rake set_admin_role`
+
+### Updating Solr in production
+To make changes to the Solr in production/staging you need to update the files in the [pul_solr](https://github.com/pulibrary/pul_solr) repository and deploy them. The basic steps are:
+
+1. Update the [configuration file for Cicognara](https://github.com/pulibrary/pul_solr/tree/main/solr_configs/cicognara)
+2. Deploy the changes, e.g. `cap solr8-staging deploy`.
+
+You can see the list of Capistrano environments [here](https://github.com/pulibrary/pul_solr/tree/main/config/deploy)
+
+The deploy will update the configuration for all Solr collections in the given environment, but it does not cause downtime. If you need to manually reload a configuration for a given Solr collection you can do it via the Solr Admin UI.
+
+## Data Sources
+
+There are three main sources of information for this project:
+1. Data from TEI files (~4700 records)
+2. Data from MARC files (~4700 records)
+3. Data from the Getty (~9600 records)
+
+The process to index TEI and MARC files (i.e. `rake tei:index`) ingests the data into a single Solr collection, but it creates
+separate documents for each source. For example there are two Solr documents for `alt_id:"dcl:nvx"`, one of these documents
+(the one with `format:marc`) has the MARC data whereas the other one has the TEI data. Records from TEI (i.e. `-format:marc`)
+are what is searched for when a user submits a search.
+
+This part of the import process also creates records in the `Books` and `Entries` tables to represent some of this data.
+
+There is another process that fetches and processes the data from the Getty (i.e. `rake getty:import`). This process downloads
+files from Getty, unzips them into about 50,000 JSON files, and finds records that are associated with the "Cicognara Collection".
+There are about 9,600 records that meet this criteria. For each one of them it process the `manifest_urls` indicated in the Getty
+record and creates a `Version` record to store the metadata for each different manifest.
+
+This part of the process is slow-ish since, for each record, it contacts each different institution indicated in the `manifest_url`
+to fetch the data ([example 1](https://figgy.princeton.edu/concern/scanned_resources/b9aba758-ce0e-47ef-a2f0-8c1273c60829/manifest)
+and [example 2](https://digi.ub.uni-heidelberg.de/diglit/iiif/passeri1770/manifest.json)). This data is saved in the `Version` table.
+Notice that the data stored in the `Version` table is displayed to the user but it is not indexed in Solr.
+
+Check out the following documents for additional information on the data and how it is modeled:
+* [Cicognara Project Notes](https://docs.google.com/document/d/1uyH_RPJcpYwYPOC6wnH888YkTCz-VJiLg30HYhblOUs/edit#).
+* [Cicognara use cases / architecture discussion](https://docs.google.com/document/d/1hpMqtwGgwhK-VwJHNXuklObNPwBfo_OzveUxhELIydU/edit)
+* [Catalogo Cicognara Edge Cases](https://github.com/pulibrary/cicognara-rails/wiki#catalogo-cicognara-edge-cases)
