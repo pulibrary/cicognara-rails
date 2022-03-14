@@ -34,14 +34,14 @@ module Cicognara
       (entry.corresp + books.map(&:digital_cico_number)).uniq
     end
 
+    # rubocop:disable Metrics/AbcSize
     def doc_tei_fields
-
       # A better version of `cico_sort``.
       #
       # This new field pads the value so that it sorts correctly, stores is as a string
       # (so we can fetch it and confirm its value), and it is not subject to Solr's
       # built-in 'alphaOnly' transformations that apply to `_sort` fields.
-      cico_sort_s = n.rjust(6,"0")
+      cico_sort_s = n.rjust(6, '0')
 
       { id: n, alt_id: n, cico_s: n, cico_sort: n, tei_description_unstem_search: text, tei_section_display: section_display,
         tei_section_head_italian: section_head, tei_section_number_display: section_number,
@@ -49,6 +49,7 @@ module Cicognara
         tei_note_italian: item_notes, tei_title_txt: item_titles, tei_section_facet: section_display,
         cico_sort_s: cico_sort_s }
     end
+    # rubocop:enable Metrics/AbcSize
 
     def solr_title_display(label)
       "Catalogo Item #{label.chomp('.')}"
