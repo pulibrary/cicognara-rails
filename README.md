@@ -79,6 +79,16 @@ After deploying, please invoke the following in order to reindex from the latest
 cap [STAGE] deploy:reindex
 ```
 
+## Deploying (alternative)
+Another way to reindex after a deployment is to SSH to the machine and execute the following rake tasks. This is what we did in March/2022. Notice that we ran `rake getty:import` twice to make sure the alternate names search feature works correctly.
+
+```
+bundle exec rake getty:import
+TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:index
+TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:partials
+bundle exec rake getty:import
+```
+
 ### Create a production admin user
 
 If you need to make someone an admin on a production box, ensure they've logged in once, then run the `set_admin_role` task for their email address:
