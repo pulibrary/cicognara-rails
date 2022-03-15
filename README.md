@@ -80,7 +80,7 @@ cap [STAGE] deploy:reindex
 ```
 
 ## Deploying (alternative)
-Another way to reindex after a deployment is to SSH to the machine and execute the following rake tasks. This is what we did in March/2022. Notice that we had to manually get the Getty files via cURL because the download fails intermittently (however, once the files are on disk the rake task will use them and complete successfully).
+Another way to reindex after a deployment is to SSH to the machine and execute the following rake tasks. This is what we did in March/2022. Notice that we had to manually get the Getty files via cURL before running `getty:import` because download process fails intermittently (however, once the files are on disk the rake task will use them and complete successfully).
 
 ```
 cd /opt/cicognara/current
