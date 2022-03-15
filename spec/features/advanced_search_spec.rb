@@ -48,7 +48,7 @@ RSpec.describe 'searching', type: :feature do
     choose('op2_NOT')
     fill_in('q2', with: 'Lorenzo')
     find('#advanced-search-submit').click
-    expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=author&q1=GHIBERTI&op2=NOT&f2=author&q2=Lorenzo&op3=AND&f3=title&q3=&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort+asc&commit=Search')
+    expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=author&q1=GHIBERTI&op2=NOT&f2=author&q2=Lorenzo&op3=AND&f3=title&q3=&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort_s+asc&commit=Search')
   end
 
   it 'populates advanced search form fields from an existing query' do
@@ -59,7 +59,7 @@ RSpec.describe 'searching', type: :feature do
     choose('op2_NOT')
     fill_in('q2', with: 'Lorenzo')
     find('#advanced-search-submit').click
-    expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=author&q1=GHIBERTI&op2=NOT&f2=author&q2=Lorenzo&op3=AND&f3=title&q3=&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort+asc&commit=Search')
+    expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=author&q1=GHIBERTI&op2=NOT&f2=author&q2=Lorenzo&op3=AND&f3=title&q3=&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort_s+asc&commit=Search')
 
     find('a.advanced_search').click
     expect(page).to have_selector('#q1[value="GHIBERTI"]')
@@ -68,7 +68,7 @@ RSpec.describe 'searching', type: :feature do
   end
 
   it 'permits users to filter by facets' do
-    visit '/catalog?utf8=%E2%9C%93&q=&search_field=all_fields&f1=all_fields&q1=&op2=AND&f2=author&q2=&op3=AND&f3=title&q3=&f_inclusive%5Bname_facet%5D%5B%5D=Agrippa+von+Nettesheim%2C+Heinrich+Cornelius%2C+1486%3F-1535&range%5Bpub_date%5D%5Bbegin%5D=&range%5Bpub_date%5D%5Bend%5D=&sort=cico_sort+asc&search_field=advanced&commit=Search'
+    visit '/catalog?utf8=%E2%9C%93&q=&search_field=all_fields&f1=all_fields&q1=&op2=AND&f2=author&q2=&op3=AND&f3=title&q3=&f_inclusive%5Bname_facet%5D%5B%5D=Agrippa+von+Nettesheim%2C+Heinrich+Cornelius%2C+1486%3F-1535&range%5Bpub_date%5D%5Bbegin%5D=&range%5Bpub_date%5D%5Bend%5D=&sort=cico_sort_s+asc&search_field=advanced&commit=Search'
 
     expect(page).to have_selector('.filterValue', text: 'Agrippa von Nettesheim, Heinrich Cornelius, 1486?-1535')
   end
@@ -92,7 +92,7 @@ RSpec.describe 'searching', type: :feature do
     fill_in('q3', with: 'Corn')
 
     find('#advanced-search-submit').click
-    expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=author&q1=Agrippae&op2=AND&f2=author&q2=Henrici&op3=AND&f3=author&q3=Corn&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort+asc&commit=Search')
+    expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=author&q1=Agrippae&op2=AND&f2=author&q2=Henrici&op3=AND&f3=author&q3=Corn&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort_s+asc&commit=Search')
   end
 
   context 'when searching with three queries' do
@@ -106,7 +106,7 @@ RSpec.describe 'searching', type: :feature do
       fill_in('q3', with: 'Corn')
 
       find('#advanced-search-submit').click
-      expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=all_fields&q1=Agrippae&op2=AND&f2=author&q2=Henrici&op3=AND&f3=title&q3=Corn&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort+asc&commit=Search')
+      expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=all_fields&q1=Agrippae&op2=AND&f2=author&q2=Henrici&op3=AND&f3=title&q3=Corn&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort_s+asc&commit=Search')
     end
   end
 
@@ -123,7 +123,7 @@ RSpec.describe 'searching', type: :feature do
       fill_in('q3', with: 'Corn')
 
       find('#advanced-search-submit').click
-      expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=all_fields&q1=Agrippae&op2=NOT&f2=author&q2=Henrici&op3=NOT&f3=title&q3=Corn&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort+asc&commit=Search')
+      expect(page).to have_current_path('/catalog?utf8=%E2%9C%93&q=&search_field=advanced&f1=all_fields&q1=Agrippae&op2=NOT&f2=author&q2=Henrici&op3=NOT&f3=title&q3=Corn&range[pub_date][begin]=&range[pub_date][end]=&sort=cico_sort_s+asc&commit=Search')
     end
   end
 end
