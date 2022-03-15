@@ -80,12 +80,29 @@ cap [STAGE] deploy:reindex
 ```
 
 ## Deploying (alternative)
-Another way to reindex after a deployment is to SSH to the machine and execute the following rake tasks. This is what we did in March/2022. Notice that we ran `rake getty:import` twice to make sure the alternate names search feature works correctly.
+Another way to reindex after a deployment is to SSH to the machine and execute the following rake tasks. This is what we did in March/2022. Notice that we had to manually get the Getty files via cURL because the download fails intermittently (however, once the files are on disk the rake task will use them and complete successfully).
 
 ```
-bundle exec rake getty:import
+cd /opt/cicognara/current
+
+# Get latest source data files
+TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:catalogo:update
+
+# Run TEI Index (about 5 minutes)
 TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:index
-TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:partials
+
+# Regenerate the partials
+TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake rake tei:partials
+
+# Run Getty import (1 hr)
+# (get files via cURL because it requires retries)
+cd tmp
+curl -OL http://portal.getty.edu/resources/json_data/resourcedump_2022-01-26-part1.zip
+curl -OL http://portal.getty.edu/resources/json_data/resourcedump_2022-01-26-part2.zip
+curl -OL http://portal.getty.edu/resources/json_data/resourcedump_2022-01-26-part3.zip
+curl -OL http://portal.getty.edu/resources/json_data/resourcedump_2022-01-26-part4.zip
+cd ..
+
 bundle exec rake getty:import
 ```
 
