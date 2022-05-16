@@ -2,7 +2,7 @@ set :application, 'cicognara'
 set :repo_url, 'https://github.com/pulibrary/cicognara-rails.git'
 
 # Default branch is :master
-set :branch, ENV['BRANCH'] || 'master'
+set :branch, ENV['BRANCH'] || 'main'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/opt/cicognara'
