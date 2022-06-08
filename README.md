@@ -64,6 +64,10 @@ method there if you want to see a non-admin view.
 1. Ensure full Catalogo is indexed (see above)
 2. `bundle exec rake getty:import`
 
+## Tagging a Release
+
+To create a tagged release use the [steps in the RDSS handbook](https://github.com/pulibrary/rdss-handbook/blob/main/release_process.md)
+
 ## Deploying:
 When deploying, make sure the desired cicognara-catalogo (MARC and TEI) release is specified:
 ```
