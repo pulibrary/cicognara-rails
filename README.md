@@ -96,7 +96,7 @@ TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec r
 TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:index
 
 # Regenerate the partials
-TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake rake tei:partials
+TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:partials
 
 # Run Getty import (1 hr)
 # (get files via cURL because it requires retries)
