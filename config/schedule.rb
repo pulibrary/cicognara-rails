@@ -23,4 +23,6 @@ job_type :logging_rake, 'cd :path && :environment_variable=:environment bundle e
 
 every :tuesday, at: '11pm', roles: [:db] do
   rake 'getty:import'
+  rake 'tei:catalogo:update'
+  rake 'tei:index'
 end

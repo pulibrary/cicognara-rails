@@ -34,3 +34,18 @@ code {
   color: #c7254e;
   font-size: 14px;
 }
+
+.research {
+  h2 {
+    text-align: left;
+    margin-top: 2em;
+    margin-bottom: 0;
+    font-size: 24px;
+  }
+  h3 {
+    text-align: left;
+    font-size: 18px;
+    font-family: $sans-serif;
+    font-weight: bold;
+  }
+}
