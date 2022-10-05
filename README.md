@@ -108,6 +108,9 @@ curl -OL http://portal.getty.edu/resources/json_data/resourcedump_2022-01-26-par
 cd ..
 
 bundle exec rake getty:import
+
+# Re-index the TEI
+TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:index
 ```
 
 ### Create a production admin user
