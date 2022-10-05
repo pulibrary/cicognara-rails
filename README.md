@@ -108,6 +108,9 @@ curl -OL http://portal.getty.edu/resources/json_data/resourcedump_2022-01-26-par
 cd ..
 
 bundle exec rake getty:import
+
+# Re-index the TEI
+TEIPATH=public/cicognara.tei.xml MARCPATH=public/cicognara.mrx.xml bundle exec rake tei:index
 ```
 
 ### Create a production admin user
@@ -125,6 +128,9 @@ To make changes to the Solr in production/staging you need to update the files i
 You can see the list of Capistrano environments [here](https://github.com/pulibrary/pul_solr/tree/main/config/deploy)
 
 The deploy will update the configuration for all Solr collections in the given environment, but it does not cause downtime. If you need to manually reload a configuration for a given Solr collection you can do it via the Solr Admin UI.
+
+## Google OAuth integration
+The environment values used for integration with Google Authentication (`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`) are defined via the `console.cloud.google.com`. You can use this [page](https://console.cloud.google.com/apis/credentials/oauthclient/639448642333-klf2kb6d7ka0dl4ph1vp9prblulp9l7a.apps.googleusercontent.com?project=pulibrary-figgy-storage-1&supportedpurview=project) to reset the `Client ID` and `Client secret` values. If you don't have access to this page please contact Esmé.
 
 ## Data Sources
 
