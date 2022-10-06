@@ -3,12 +3,14 @@ require 'cicognara/tei_indexer'
 namespace :tei do
   namespace :catalogo do
     desc 'Pulls in the Catalogo TEI and MARC'
-    task :update do
+    task update: :environment do
+      Rails.logger.info 'Running tei:catalogo:update'
       teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '..', '..', 'public', 'cicognara.tei.xml')
       marcpath = ENV['MARCPATH'] || File.join(File.dirname(__FILE__), '..', '..', 'public', 'cicognara.mrx.xml')
       catalogo_version = ENV['CATALOGO_VERSION'] || 'main'
       `wget https://raw.githubusercontent.com/pulibrary/cicognara-catalogo/#{catalogo_version}/catalogo.tei.xml -O #{teipath}`
       `wget https://raw.githubusercontent.com/pulibrary/cicognara-catalogo/#{catalogo_version}/cicognara.mrx.xml -O #{marcpath}`
+      Rails.logger.info 'Completed tei:catalogo:update'
     end
   end
 
@@ -20,12 +22,23 @@ namespace :tei do
 
   desc 'index solr documents from path to document at TEIPATH and MARCPATH.'
   task index: :environment do
+    Rails.logger.info 'Running tei:index'
     teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.tei.xml')
     marcpath = ENV['MARCPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.marc.xml')
     solr_server = Blacklight.connection_config[:url]
     solr = RSolr.connect(url: solr_server)
     solr.add(Cicognara::TEIIndexer.new(teipath, marcpath).solr_docs)
     solr.commit
+    Rails.logger.info 'Completed tei:index'
+  end
+
+  desc 'Import Getty data and reindex'
+  task reindex: :environment do
+    Rails.logger.info 'Running reindex'
+    Rake::Task['tei:catalogo:update'].invoke
+    Rake::Task['getty:import'].invoke
+    Rake::Task['tei:index'].invoke
+    Rails.logger.info 'Completed reindex'
   end
 
   desc 'Create partials at PARTIALSPATH from document at TEIPATH'

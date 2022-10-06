@@ -22,7 +22,5 @@ set :job_template, "bash -l -c 'export PATH=\"/usr/local/bin/:$PATH\" && :job'"
 job_type :logging_rake, 'cd :path && :environment_variable=:environment bundle exec rake :task :output'
 
 every :tuesday, at: '11pm', roles: [:db] do
-  rake 'getty:import'
-  rake 'tei:catalogo:update'
-  rake 'tei:index'
+  rake 'tei:reindex'
 end

@@ -1,11 +1,11 @@
 namespace :getty do
   desc 'Import resources from Getty'
   task import: :environment do
-    Rails.logger.info 'Beginning Import'
+    Rails.logger.info 'Beginning getty:import'
     GettyParser.new.import!
     Rails.logger.info 'Committing Solr'
     Blacklight.default_index.connection.commit
-    Rails.logger.info 'Import Finished'
+    Rails.logger.info 'Import finished getty:import'
   end
 
   desc 'Import subset of getty resources that matches tei fixtures'
