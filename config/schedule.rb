@@ -21,6 +21,10 @@
 set :job_template, "bash -l -c 'export PATH=\"/usr/local/bin/:$PATH\" && :job'"
 job_type :logging_rake, 'cd :path && :environment_variable=:environment bundle exec rake :task :output'
 
+env :MARCPATH, 'public/cicognara.mrx.xml'
+env :TEIPATH, 'public/catalogo.tei.xml'
+
+# 11pm UTC is 6PM EST
 every :tuesday, at: '11pm', roles: [:db] do
   rake 'tei:reindex'
 end
