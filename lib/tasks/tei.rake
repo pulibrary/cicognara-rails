@@ -4,9 +4,9 @@ namespace :tei do
   namespace :catalogo do
     desc 'Pulls in the Catalogo TEI and MARC'
     task update: :environment do
-      Rails.logger.info 'Running tei:catalogo:update'
       teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '..', '..', 'public', 'cicognara.tei.xml')
       marcpath = ENV['MARCPATH'] || File.join(File.dirname(__FILE__), '..', '..', 'public', 'cicognara.mrx.xml')
+      Rails.logger.info "Running tei:catalogo:update with #{teipath}, #{marcpath}"
       catalogo_version = ENV['CATALOGO_VERSION'] || 'main'
       `wget https://raw.githubusercontent.com/pulibrary/cicognara-catalogo/#{catalogo_version}/catalogo.tei.xml -O #{teipath}`
       `wget https://raw.githubusercontent.com/pulibrary/cicognara-catalogo/#{catalogo_version}/cicognara.mrx.xml -O #{marcpath}`
@@ -22,9 +22,9 @@ namespace :tei do
 
   desc 'index solr documents from path to document at TEIPATH and MARCPATH.'
   task index: :environment do
-    Rails.logger.info 'Running tei:index'
     teipath = ENV['TEIPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.tei.xml')
     marcpath = ENV['MARCPATH'] || File.join(File.dirname(__FILE__), '../../', 'spec/fixtures', 'cicognara.marc.xml')
+    Rails.logger.info "Running tei:index with #{teipath}, #{marcpath}"
     solr_server = Blacklight.connection_config[:url]
     solr = RSolr.connect(url: solr_server)
     solr.add(Cicognara::TEIIndexer.new(teipath, marcpath).solr_docs)
