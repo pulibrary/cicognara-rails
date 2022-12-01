@@ -1,0 +1,83 @@
+<record>
+    <leader>01751cam a2200289 a 4500</leader>
+    <controlfield tag="001">8543935</controlfield>
+    <controlfield tag="005">20160422003631.0</controlfield>
+    <controlfield tag="007">he|amu|||bacu</controlfield>
+    <controlfield tag="008">010523s1805    fr      b     00010 fre d</controlfield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="9">fake</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="024">
+      <subfield code="a">cico-placeholder</subfield>
+      <subfield code="2">cico</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="024">
+      <subfield code="a">dcl-placeholder</subfield>
+      <subfield code="2">dclib</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="9">fake</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">fake</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">fake</subfield>
+      <subfield code="c">fake</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="099">
+      <subfield code="a">fake</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">fake</subfield>
+      <subfield code="c">fake</subfield>
+      <subfield code="d">fake</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="4" tag="245">
+      <subfield code="a">fake</subfield>
+      <subfield code="h">fake</subfield>
+      <subfield code="b">fake</subfield>
+      <subfield code="c">fake</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">fake</subfield>
+      <subfield code="b">fake</subfield>
+      <subfield code="c">fake</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">fake</subfield>
+    </datafield>
+    <datafield ind1="4" ind2=" " tag="510">
+      <subfield code="a">fake</subfield>
+      <subfield code="c">fake</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="533">
+      <subfield code="a">fake</subfield>
+      <subfield code="b">fake</subfield>
+      <subfield code="c">fake</subfield>
+      <subfield code="d">fake</subfield>
+      <subfield code="e">fake</subfield>
+      <subfield code="f">(Cicognara library)</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Fondo Cicognara (Biblioteca apostolica vaticana)</subfield>
+      <subfield code="0">(uri)http://id.loc.gov/authorities/names/nr94016468</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="830">
+      <subfield code="a">Cicognara library.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">fake</subfield>
+      <subfield code="b">fake</subfield>
+      <subfield code="6">fake</subfield>
+      <subfield code="7">fake</subfield>
+      <subfield code="d">fake</subfield>
+      <subfield code="f">fake</subfield>
+      <subfield code="e">fake</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="852">
+      <subfield code="0">fake</subfield>
+      <subfield code="b">fake</subfield>
+      <subfield code="h">fake</subfield>
+    </datafield>
+  </record>
